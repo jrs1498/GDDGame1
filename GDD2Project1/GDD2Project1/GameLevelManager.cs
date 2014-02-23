@@ -29,11 +29,12 @@ namespace GDD2Project1
         protected int               _numRows;
         protected int               _numCols;
         protected const String      TILE_NAME_PREFIX = "t";
+        protected const String      TILE_NUMBER_SEPARATOR = "T";
         protected Vector2           _tileOrigin;
 
         protected Player                        _player;
         protected Dictionary<String, Drawable>  _drawables;
-        protected Dictionary<String, Character> _characters;
+        protected Dictionary<String, GameCharacter> _characters;
 
         protected int _displayWidth;
         protected int _displayHeight;
@@ -73,7 +74,7 @@ namespace GDD2Project1
 
             // Initialize dictionaries
             _drawables = new Dictionary<string, Drawable>();
-            _characters = new Dictionary<string, Character>();
+            _characters = new Dictionary<string, GameCharacter>();
 
             // Load an example level
             loadLevel(11, 11, "textures/tiles/rocktile");
@@ -108,9 +109,11 @@ namespace GDD2Project1
                     position.Y = 0;
                     position.Z -= nodeOffset.Y;
 
-                    GameNode node = _rootNode.createChildNode(TILE_NAME_PREFIX + x + y, position, _tileOrigin);
-                    node.GraphIndex = x * cols + y;
-                    node.attachDrawable(defaultTile);
+                    GameObject tile = createGameObject(
+                        TILE_NAME_PREFIX + x + TILE_NUMBER_SEPARATOR + y, defaultTile, _rootNode);
+                    tile.GraphIndex = x * cols + y;
+                    tile.Origin = _tileOrigin;
+                    tile.PositionIsometric = position;
                 }
 
             generateNeighbors();
@@ -121,7 +124,6 @@ namespace GDD2Project1
             dudesNode.Origin = new Vector2(20, 120);
 
             // Test character
-            Character dude = createCharacter("textures/characters/character", "dude", dudesNode);
             DrawableAnimated.Animation walkSW = new DrawableAnimated.Animation(16, 19, 0.132f, true);
             DrawableAnimated.Animation walkSE = new DrawableAnimated.Animation(20, 23, 0.132f, true);
             DrawableAnimated.Animation walkNW = new DrawableAnimated.Animation(24, 27, 0.132f, true);
@@ -132,21 +134,26 @@ namespace GDD2Project1
             DrawableAnimated.Animation idleNW = new DrawableAnimated.Animation(24, 24, 0.132f, false);
             DrawableAnimated.Animation idleNE = new DrawableAnimated.Animation(28, 28, 0.132f, false);
 
-            dude.Drawable.addAnimation(walkSW, "walkSW");
-            dude.Drawable.addAnimation(walkSE, "walkSE");
-            dude.Drawable.addAnimation(walkNE, "walkNE");
-            dude.Drawable.addAnimation(walkNW, "walkNW");
+            DrawableAnimated drawable = createDrawable<DrawableAnimated>("textures/characters/character", "character");
+            drawable.addAnimation(walkSW, "walkSW");
+            drawable.addAnimation(walkSE, "walkSE");
+            drawable.addAnimation(walkNW, "walkNW");
+            drawable.addAnimation(walkNE, "walkNE");
 
-            dude.Drawable.addAnimation(idleSW, "idleSW");
-            dude.Drawable.addAnimation(idleSE, "idleSE");
-            dude.Drawable.addAnimation(idleNE, "idleNE");
-            dude.Drawable.addAnimation(idleNW, "idleNW");
+            drawable.addAnimation(idleSW, "idleSW");
+            drawable.addAnimation(idleSE, "idleSE");
+            drawable.addAnimation(idleNW, "idleNW");
+            drawable.addAnimation(idleNE, "idleNE");
 
-            dude.setCharacterState(Character.CharacterState.CHRSTATE_IDLE);
+            GameCharacter anotherDude = createCharacter("dudetwo", drawable,
+                getNodeFromIndex(3, 3));
+            anotherDude.Origin = new Vector2(20, 120);
+            
 
-            _player = new Player(this, dude);
+            _player = new Player(this, anotherDude);
 
 
+            // Move some tiles
             getNodeFromIndex(0, 0).translate(new Vector3(0.0f, -250.0f, 0.0f));
             getNodeFromIndex(1, 0).translate(new Vector3(0.0f, -200.0f, 0.0f));
             getNodeFromIndex(2, 0).translate(new Vector3(0.0f, -150.0f, 0.0f));
@@ -154,23 +161,24 @@ namespace GDD2Project1
             getNodeFromIndex(9, 0).translate(new Vector3(0.0f, -25.0f, 0.0f));
             getNodeFromIndex(8, 0).translate(new Vector3(0.0f, -75.0f, 0.0f));
 
-            _rootNode.detachChildNode(getNodeFromIndex(4, 4).Name);
-            _rootNode.detachChildNode(getNodeFromIndex(5, 4).Name);
-            _rootNode.detachChildNode(getNodeFromIndex(6, 4).Name);
-            _rootNode.detachChildNode(getNodeFromIndex(6, 5).Name);
-            _rootNode.detachChildNode(getNodeFromIndex(6, 6).Name);
-            _rootNode.detachChildNode(getNodeFromIndex(6, 7).Name);
-            _rootNode.detachChildNode(getNodeFromIndex(7, 7).Name);
-            _rootNode.detachChildNode(getNodeFromIndex(6, 8).Name);
-            _rootNode.detachChildNode(getNodeFromIndex(7, 8).Name);
-            _rootNode.detachChildNode(getNodeFromIndex(8, 8).Name);
-            _rootNode.detachChildNode(getNodeFromIndex(9, 8).Name);
-            _rootNode.detachChildNode(getNodeFromIndex(9, 9).Name);
-            _rootNode.detachChildNode(getNodeFromIndex(10, 9).Name);
-            _rootNode.detachChildNode(getNodeFromIndex(10, 10).Name);
-            _rootNode.detachChildNode(getNodeFromIndex(9, 10).Name);
-            _rootNode.detachChildNode(getNodeFromIndex(5, 5).Name);
-            _rootNode.detachChildNode(getNodeFromIndex(4, 5).Name);
+            // Remove some tiles
+            _rootNode.detachChildNode(getNodeFromIndex(4, 4).getName);
+            _rootNode.detachChildNode(getNodeFromIndex(5, 4).getName);
+            _rootNode.detachChildNode(getNodeFromIndex(6, 4).getName);
+            _rootNode.detachChildNode(getNodeFromIndex(6, 5).getName);
+            _rootNode.detachChildNode(getNodeFromIndex(6, 6).getName);
+            _rootNode.detachChildNode(getNodeFromIndex(6, 7).getName);
+            _rootNode.detachChildNode(getNodeFromIndex(7, 7).getName);
+            _rootNode.detachChildNode(getNodeFromIndex(6, 8).getName);
+            _rootNode.detachChildNode(getNodeFromIndex(7, 8).getName);
+            _rootNode.detachChildNode(getNodeFromIndex(8, 8).getName);
+            _rootNode.detachChildNode(getNodeFromIndex(9, 8).getName);
+            _rootNode.detachChildNode(getNodeFromIndex(9, 9).getName);
+            _rootNode.detachChildNode(getNodeFromIndex(10, 9).getName);
+            _rootNode.detachChildNode(getNodeFromIndex(10, 10).getName);
+            _rootNode.detachChildNode(getNodeFromIndex(9, 10).getName);
+            _rootNode.detachChildNode(getNodeFromIndex(5, 5).getName);
+            _rootNode.detachChildNode(getNodeFromIndex(4, 5).getName);
 
             // end test stuff-----------
 
@@ -219,9 +227,9 @@ namespace GDD2Project1
             _cameraController.update(dt);
             _camera.update(dt);
 
-            // Update all characters
-            foreach (KeyValuePair<String, Character> entry in _characters)
-                entry.Value.update(dt);
+            // Update all character movement
+            foreach (KeyValuePair<String, GameCharacter> entry in _characters)
+                entry.Value.applyDisplacement(dt);
         }
 
         /// <summary>
@@ -302,16 +310,18 @@ namespace GDD2Project1
         /// <param name="recursive">If true, all of this nodes children will be drawn</param>
         public void drawNode(SpriteBatch spriteBatch, GameNode node, float dt, bool recursive = true)
         {
-            // Draw this node
-            if (node != null)
-            {
-                node.drawContents(spriteBatch, dt);
+            if (node == null)
+                return;
 
-                // If recursive, draw all children
-                if (recursive)
-                    foreach (KeyValuePair<String, GameNode> childEntry in node.Children)
-                        drawNode(spriteBatch, childEntry.Value, dt, true);
-            }
+            if(!(node is GameObject))
+                return;
+
+            GameObject go = node as GameObject;
+            go.drawContents(spriteBatch, dt);
+
+            if (recursive)
+                foreach (KeyValuePair<String, GameNode> childEntry in node.getChildren)
+                    drawNode(spriteBatch, childEntry.Value, dt, true);
         }
 
 
@@ -345,21 +355,21 @@ namespace GDD2Project1
 
 
         //-------------------------------------------------------------------------
-        /// <summary>
-        /// Creates a character, adds it to this GameLevelManager and returns it.
-        /// In order to make a character active within the level, you must attach it
-        /// to a GameNode. To deactivate it, simply detach it.
-        /// </summary>
-        /// <param name="texturePath">Drawable texture path</param>
-        /// <param name="name">Character's name</param>
-        /// <returns>Newly created character</returns>
-        public Character createCharacter(String texturePath, String name, GameNode node)
+        public GameObject createGameObject(String name, Drawable drawable, GameNode parent)
         {
-            DrawableAnimated drawable = createDrawable<DrawableAnimated>(texturePath, name + "drawable");
-            node.attachDrawable(drawable);
-            Character character = new Character(drawable, node);
-            _characters.Add(name, character);
+            GameObject gameObject = new GameObject(this, name);
+            parent.attachChildNode(gameObject);
+            gameObject.attachDrawable(drawable);
+            return gameObject;
+        }
+
+        public GameCharacter createCharacter(String name, DrawableAnimated drawable, GameNode parent)
+        {
+            GameCharacter character = new GameCharacter(this, name, drawable);
             character.subscribeToCamera(_camera);
+            parent.attachChildNode(character);
+            _characters.Add(name, character);
+            character.PositionIsometric = parent.PositionIsometric;
             return character;
         }
 
@@ -379,7 +389,7 @@ namespace GDD2Project1
                 ||  y < 0 || y > _numRows)
                 return null;
 
-            return _rootNode.getChildNode(TILE_NAME_PREFIX + x + y);
+            return _rootNode.getChildNode(TILE_NAME_PREFIX + x + TILE_NUMBER_SEPARATOR + y);
         }
 
         /// <summary>

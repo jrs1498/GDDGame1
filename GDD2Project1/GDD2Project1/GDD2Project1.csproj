@@ -77,11 +77,12 @@
   <ItemGroup>
     <Compile Include="Camera2D.cs" />
     <Compile Include="CameraController.cs" />
-    <Compile Include="Character.cs" />
     <Compile Include="Drawable.cs" />
     <Compile Include="DrawableAnimated.cs" />
+    <Compile Include="GameCharacter.cs" />
     <Compile Include="GameLevelManager.cs" />
     <Compile Include="GameNode.cs" />
+    <Compile Include="Actor.cs" />
     <Compile Include="GameObject.cs" />
     <Compile Include="InputManager.cs" />
     <Compile Include="Player.cs" />

@@ -8,11 +8,10 @@ namespace GDD2Project1
 {
     class Player
     {
-        protected Character         _character;
+        protected GameCharacter     _character;
         protected GameLevelManager  _gameLevelMgr;
-        protected int thing = 0;
 
-        public Player(GameLevelManager gameLevelMgr, Character character)
+        public Player(GameLevelManager gameLevelMgr, GameCharacter character)
         {
             _gameLevelMgr   = gameLevelMgr;
             _character      = character;
@@ -26,7 +25,7 @@ namespace GDD2Project1
                 GameNode clickedNode =
                     _gameLevelMgr.getNodeFromScreenCoordinates(InputManager.GetMouseLocation());
                 if (clickedNode != null)
-                    _character.moveToNode(clickedNode);
+                    _character.setDestination(clickedNode);
             }
         }
     }

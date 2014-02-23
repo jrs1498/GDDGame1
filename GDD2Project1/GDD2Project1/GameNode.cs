@@ -7,57 +7,26 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace GDD2Project1
 {
-    class GameNode : GameObject
+    /// <summary>
+    /// GameNode class represents an arbitrary node existing within the GameLevel.
+    /// A GameNode may have neighbors (nodes adjacent to it) and children (nodes
+    /// connected to it).
+    /// 
+    /// This class also takes care of managing an isometric position, as well
+    /// as a screen position cache.
+    /// </summary>
+    class GameNode : Actor
     {
+        protected GameNode                      _parent;
         protected GameNode[]                    _neighbors;
         protected Dictionary<String, GameNode>  _children;
 
-        protected String        _name;
-        protected int           _graphIndex;
+        protected String                        _name;
+        protected int                           _graphIndex;
 
-        protected GameNode      _parent;
-
-        protected Vector3       _positionIsometric;
-        protected Vector2       _scale;
-        protected float         _rotation;
-
-        protected Drawable      _drawable;
-        protected Color         _color;
-
-
-        //-------------------------------------------------------------------------
-        public String Name { get { return _name; } }
-        public int GraphIndex { get { return _graphIndex; } set { _graphIndex = value; } }
-
-        public GameNode Parent { get { return _parent; } }
-        public Dictionary<String, GameNode> Children { get { return _children; } }
-        public GameNode[] Neighbors { get { return _neighbors; } }
-
-        public Vector3 PositionIsometric
-        {
-            get { return _positionIsometric; }
-            set { _positionIsometric = value; }
-        }
-        public override Vector2 Position
-        {
-            get { return _position; }
-        }
-        public Vector2 Scale
-        {
-            get { return _scale; }
-            set { _scale = value; }
-        }
-        public float Rotation
-        {
-            get { return _rotation; }
-            set { _rotation = value; }
-        }
-
-        public Color Color
-        {
-            get { return _color; }
-            set { _color = value; }
-        }
+        protected Vector3                       _positionIsometric;
+        protected Vector2                       _scale;
+        protected float                         _rotation;
 
 
         //-------------------------------------------------------------------------
@@ -74,7 +43,6 @@ namespace GDD2Project1
 
             _scale                  = new Vector2(1.0f);
             _rotation               = 0;
-            _color                  = Color.White;
 
             _neighbors              = new GameNode[4];
             _children               = new Dictionary<string, GameNode>();
@@ -101,17 +69,124 @@ namespace GDD2Project1
         }
 
 
+
         //-------------------------------------------------------------------------
+        /// <summary>
+        /// Return this GameNode's parent
+        /// </summary>
+        public GameNode getParent
+        {
+            get { return _parent; }
+        }
+
+        /// <summary>
+        /// Returns this GameNode's neighbor array.
+        /// This array will hold a maximum of four adjacent nodes
+        /// and each node MAY be null. When iterating, you must
+        /// check that each node is not null.
+        /// </summary>
+        public GameNode[] getNeighbors
+        {
+            get { return _neighbors; }
+        }
+
+        /// <summary>
+        /// Attach a neighboring GameNode to this GameNode.
+        /// Neighboring GameNode's should only be node's adjacent to this one
+        /// </summary>
+        /// <param name="node">Neighboring node</param>
+        /// <param name="index">Index location</param>
+        public virtual void attachNeighbor(GameNode node, int index)
+        {
+            _neighbors[index] = node;
+        }
+
+
+        //-------------------------------------------------------------------------
+        /// <summary>
+        /// Returns this GameNode's name
+        /// </summary>
+        public String getName
+        {
+            get { return _name; }
+        }
+
+        /// <summary>
+        /// Get / Set this GameNode's graph index. This index is used
+        /// for graph traversal purposes, i.e. pathfinding.
+        /// </summary>
+        public int GraphIndex
+        {
+            get { return _graphIndex; }
+            set { _graphIndex = value; }
+        }
+
+
+        //-------------------------------------------------------------------------
+        /// <summary>
+        /// Get / Set this GameNode's isometric position. These coordinates
+        /// correspond to the GameNode's world position.
+        /// </summary>
+        public Vector3 PositionIsometric
+        {
+            get { return _positionIsometric; }
+            set { _positionIsometric = value; }
+        }
+
+        /// <summary>
+        /// Returns this GameNode's screen position vector.
+        /// </summary>
+        public override Vector2 Position
+        {
+            get { return _position; }
+        }
+
+        /// <summary>
+        /// Get / Set this GameNode's scale factor. This scale is applied to this node,
+        /// as well as all of its children nodes. (not yet functional)
+        /// </summary>
+        public Vector2 Scale
+        {
+            get { return _scale; }
+            set { _scale = value; }
+        }
+
+        /// <summary>
+        /// Get / Set this GameNode's rotation amount. This rotation is applied
+        /// to this GameNode, as well as all children nodes. (not yet functional)
+        /// </summary>
+        public float Rotation
+        {
+            get { return _rotation; }
+            set { _rotation = value; }
+        }
+
+        /// <summary>
+        /// Translate this GameNode by some specified amount.
+        /// Vector's X and Y coordinates correspond to isometric
+        /// X and Z coordinates.
+        /// </summary>
+        /// <param name="amount">Amount to translate</param>
         public override void translate(Vector2 amount)
         {
             translate(new Vector3(amount.X, 0.0f, amount.Y));
         }
 
-        public override void translate(float x, float y)
+        /// <summary>
+        /// Translate this node by some specified amount.
+        /// X and Z coordinates coorespond to isometric coordinates.
+        /// </summary>
+        /// <param name="x">X translation</param>
+        /// <param name="z">Z translation</param>
+        public override void translate(float x, float z)
         {
-            translate(new Vector3(x, 0, y));
+            translate(new Vector3(x, 0, z));
         }
 
+        /// <summary>
+        /// Translate this GameNode by some specified amount.
+        /// </summary>
+        /// <param name="amount">Amount to translate</param>
         public virtual void translate(Vector3 amount)
         {
             _positionIsometric += amount;
@@ -119,6 +194,12 @@ namespace GDD2Project1
                 entry.Value.translate(amount);
         }
 
+        /// <summary>
+        /// Translate this GameNode by some specified amount.
+        /// </summary>
+        /// <param name="x">X translation</param>
+        /// <param name="y">Y translation</param>
+        /// <param name="z">Z translation</param>
         public virtual void translate(float x, float y, float z)
         {
             translate(new Vector3(x, y, z));
@@ -126,6 +207,14 @@ namespace GDD2Project1
 
 
         //-------------------------------------------------------------------------
+        /// <summary>
+        /// Returns this GameNode's children dictionary
+        /// </summary>
+        public Dictionary<String, GameNode> getChildren
+        {
+            get { return _children; }
+        }
+
         /// <summary>
         /// Returns a a child node with the specified name. If no child
         /// is found, returns null
@@ -150,14 +239,22 @@ namespace GDD2Project1
             node._parent = this;
 
             _children.Add(name, node);
+
             return node;
         }
 
+        /// <summary>
+        /// Creates a child node, attaches it to this node, and returns that node.
+        /// </summary>
+        /// <param name="name">Name of new node</param>
+        /// <param name="position">Node's position</param>
+        /// <param name="origin">Node's origin</param>
+        /// <returns>Newly created child node</returns>
         public virtual GameNode createChildNode(String name, Vector3 position, Vector2 origin)
         {
             GameNode node = new GameNode(_gameLevelMgr, name, position, origin);
             node._parent = this;
-
+        
             _children.Add(name, node);
             return node;
         }
@@ -169,7 +266,7 @@ namespace GDD2Project1
         public virtual void attachChildNode(GameNode node)
         {
             node._parent = this;
-            _children.Add(node.Name, node);
+            _children.Add(node.getName, node);
         }
 
         /// <summary>
@@ -187,70 +284,6 @@ namespace GDD2Project1
             child._parent = null;
 
             return child;
-        }
-
-
-        //-------------------------------------------------------------------------
-        /// <summary>
-        /// Attach a neighboring GameNode to this GameNode.
-        /// Neighboring GameNode's should only be node's adjacent to this one
-        /// </summary>
-        /// <param name="node">Neighboring node</param>
-        /// <param name="index">Index location</param>
-        public virtual void attachNeighbor(GameNode node, int index)
-        {
-            _neighbors[index] = node;
-        }
-
-
-        //-------------------------------------------------------------------------
-        /// <summary>
-        /// Attach a drawable object to this GameNode
-        /// </summary>
-        /// <param name="drawable">Drawable to attach</param>
-        /// <returns>True if attach suceeded, false otherwise</returns>
-        public bool attachDrawable(Drawable drawable)
-        {
-            if (_drawable != null)
-                return false;
-
-            _drawable = drawable;
-
-            return true;
-        }
-
-        /// <summary>
-        /// Detach this GameNode's drawable and return it
-        /// </summary>
-        /// <returns>Detached Drawabled</returns>
-        public Drawable detachDrawable()
-        {
-            Drawable drawable = _drawable;
-            _drawable = null;
-            return drawable;
-        }
-
-
-        //-------------------------------------------------------------------------
-        /// <summary>
-        /// If this GameNode contains a Drawable, it will be drawn
-        /// </summary>
-        /// <param name="spriteBatch">SpriteBatch used for drawing</param>
-        public virtual void drawContents(SpriteBatch spriteBatch, float dt)
-        {
-            if (_drawable == null)
-                return;
-
-            _position = _gameLevelMgr.Camera.isometricToCartesian(_positionIsometric);
-
-            _drawable.draw(
-                spriteBatch,
-                _position,
-                _origin,
-                _color,
-                _rotation,
-                _scale,
-                dt);
         }
     }
 }

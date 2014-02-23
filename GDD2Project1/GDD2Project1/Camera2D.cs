@@ -6,7 +6,7 @@ using Microsoft.Xna.Framework;
 
 namespace GDD2Project1
 {
-    class Camera2D : GameObject
+    class Camera2D : Actor
     {
         protected Matrix
             _transformation,
