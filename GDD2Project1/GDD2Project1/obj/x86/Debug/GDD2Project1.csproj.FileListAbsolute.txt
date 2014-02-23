@@ -1,0 +1,10 @@
+E:\Projects\GDD2Project1\GDD2Project1\GDD2Project1\bin\x86\Debug\GDD2Project1.exe
+E:\Projects\GDD2Project1\GDD2Project1\GDD2Project1\bin\x86\Debug\GDD2Project1.pdb
+E:\Projects\GDD2Project1\GDD2Project1\GDD2Project1\obj\x86\Debug\GDD2Project1.csprojResolveAssemblyReference.cache
+E:\Projects\GDD2Project1\GDD2Project1\GDD2Project1\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+E:\Projects\GDD2Project1\GDD2Project1\GDD2Project1\obj\x86\Debug\GDD2Project1.exe
+E:\Projects\GDD2Project1\GDD2Project1\GDD2Project1\obj\x86\Debug\GDD2Project1.pdb
+E:\Projects\GDD2Project1\GDD2Project1\GDD2Project1\bin\x86\Debug\Content\textures\tiles\rocktile.xnb
+E:\Projects\GDD2Project1\GDD2Project1\GDD2Project1\bin\x86\Debug\Content\textures\tiles\greentile.xnb
+E:\Projects\GDD2Project1\GDD2Project1\GDD2Project1\bin\x86\Debug\Content\textures\tiles\whitetile.xnb
+E:\Projects\GDD2Project1\GDD2Project1\GDD2Project1\bin\x86\Debug\Content\textures\characters\character.xnb

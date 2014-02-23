@@ -1,0 +1,4 @@
+Content\textures\tiles\rocktile.xnb
+Content\textures\tiles\greentile.xnb
+Content\textures\tiles\whitetile.xnb
+Content\textures\characters\character.xnb
