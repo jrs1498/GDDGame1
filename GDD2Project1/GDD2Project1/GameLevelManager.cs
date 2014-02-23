@@ -155,13 +155,27 @@ namespace GDD2Project1
 
             // Move some tiles
             getNodeFromIndex(0, 0).translate(new Vector3(0.0f, -250.0f, 0.0f));
+            getNodeFromIndex(0, 1).translate(new Vector3(0.0f, -200.0f, 0.0f));
             getNodeFromIndex(1, 0).translate(new Vector3(0.0f, -200.0f, 0.0f));
+            getNodeFromIndex(1, 1).translate(new Vector3(0.0f, -180.0f, 0.0f));
+            getNodeFromIndex(1, 2).translate(new Vector3(0.0f, -140.0f, 0.0f));
+            getNodeFromIndex(0, 2).translate(new Vector3(0.0f, -120.0f, 0.0f));
+            getNodeFromIndex(2, 1).translate(new Vector3(0.0f, -110.0f, 0.0f));
+            getNodeFromIndex(3, 1).translate(new Vector3(0.0f, -60.0f, 0.0f));
+            getNodeFromIndex(3, 0).translate(new Vector3(0.0f, -80.0f, 0.0f));
+            getNodeFromIndex(2, 2).translate(new Vector3(0.0f, -70.0f, 0.0f));
+            getNodeFromIndex(1, 3).translate(new Vector3(0.0f, -40.0f, 0.0f));
+            getNodeFromIndex(2, 3).translate(new Vector3(0.0f, -20.0f, 0.0f));
             getNodeFromIndex(2, 0).translate(new Vector3(0.0f, -150.0f, 0.0f));
             getNodeFromIndex(10, 0).translate(new Vector3(0.0f, -50.0f, 0.0f));
             getNodeFromIndex(9, 0).translate(new Vector3(0.0f, -25.0f, 0.0f));
             getNodeFromIndex(8, 0).translate(new Vector3(0.0f, -75.0f, 0.0f));
 
             // Remove some tiles
+            _rootNode.detachChildNode(getNodeFromIndex(3, 5).getName);
+            _rootNode.detachChildNode(getNodeFromIndex(3, 6).getName);
+            _rootNode.detachChildNode(getNodeFromIndex(3, 7).getName);
+            _rootNode.detachChildNode(getNodeFromIndex(4, 6).getName);
             _rootNode.detachChildNode(getNodeFromIndex(4, 4).getName);
             _rootNode.detachChildNode(getNodeFromIndex(5, 4).getName);
             _rootNode.detachChildNode(getNodeFromIndex(6, 4).getName);
@@ -179,6 +193,19 @@ namespace GDD2Project1
             _rootNode.detachChildNode(getNodeFromIndex(9, 10).getName);
             _rootNode.detachChildNode(getNodeFromIndex(5, 5).getName);
             _rootNode.detachChildNode(getNodeFromIndex(4, 5).getName);
+
+            // Plant some trees
+            Drawable tree = createDrawable<Drawable>("textures/decorative/tree", "tree");
+            GameObject tree1 = createGameObject("tree1", tree, getNodeFromIndex(8, 0));
+            tree1.Origin = new Vector2(80, 180);
+            GameObject tree2 = createGameObject("tree2", tree, getNodeFromIndex(2, 10));
+            tree2.Origin = new Vector2(80, 180);
+            GameObject tree3 = createGameObject("tree3", tree, getNodeFromIndex(0, 0));
+            tree3.Origin = new Vector2(80, 180);
+            GameObject tree4 = createGameObject("tree4", tree, getNodeFromIndex(2, 0));
+            tree4.Origin = new Vector2(80, 180);
+            GameObject tree5 = createGameObject("tree5", tree, getNodeFromIndex(5, 6));
+            tree5.Origin = new Vector2(80, 180);
 
             // end test stuff-----------
 
@@ -316,8 +343,7 @@ namespace GDD2Project1
             if(!(node is GameObject))
                 return;
 
-            GameObject go = node as GameObject;
-            go.drawContents(spriteBatch, dt);
+            (node as GameObject).drawContents(spriteBatch, dt);
 
             if (recursive)
                 foreach (KeyValuePair<String, GameNode> childEntry in node.getChildren)
@@ -360,6 +386,7 @@ namespace GDD2Project1
             GameObject gameObject = new GameObject(this, name);
             parent.attachChildNode(gameObject);
             gameObject.attachDrawable(drawable);
+            gameObject.PositionIsometric = parent.PositionIsometric;
             return gameObject;
         }
 

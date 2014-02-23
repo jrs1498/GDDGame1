@@ -30,6 +30,12 @@ namespace GDD2Project1
 
 
         //-------------------------------------------------------------------------
+        public delegate void AttachedEventHandler(GameNode sender, GameNode child, EventArgs e);
+        public event AttachedEventHandler ChildAttached;
+        public EventArgs e = null;
+
+
+        //-------------------------------------------------------------------------
         /// <summary>
         /// Common constructor code. Should be called by all constructors
         /// </summary>
@@ -66,6 +72,42 @@ namespace GDD2Project1
             : base(gameLevelMgr)
         {
             construct(name, position, origin);
+        }
+
+
+        //-------------------------------------------------------------------------
+        /// <summary>
+        /// Subscribe to a node to receive events when that node attaches a new child.
+        /// </summary>
+        /// <param name="node">Node to receive events from</param>
+        public void subscribeToNode(GameNode node)
+        {
+            node.ChildAttached += new GameNode.AttachedEventHandler(parentAttachedChild);
+        }
+
+        /// <summary>
+        /// Unsubscribe from a node's attached event handler
+        /// </summary>
+        /// <param name="node">Node to unsubscribe from</param>
+        public void unsubscribeFromNode(GameNode node)
+        {
+            node.ChildAttached -= parentAttachedChild;
+        }
+
+        /// <summary>
+        /// This function is fired whenever one of this node's subscriptions attaches a child node.
+        /// </summary>
+        /// <param name="sender">Node which attached a child</param>
+        /// <param name="child">The child which was attached</param>
+        /// <param name="e">Event args</param>
+        protected virtual void parentAttachedChild(GameNode sender, GameNode child, EventArgs e)
+        {
+            // TODO: This function needs to tell this node to respond to the event.
+            // find out what kind of node child is.
+            // For example, if node is an enemy, then the player should probably die,
+            // because they can't both be on the same tile.
+            // If child is a consumable, however, or if this is a consumable and child is a character,
+            // then the consumable should be eaten by the character
         }
 
 
@@ -235,12 +277,7 @@ namespace GDD2Project1
         /// <returns>Newly created child node</returns>
         public virtual GameNode createChildNode(String name)
         {
-            GameNode node = new GameNode(_gameLevelMgr, name, _positionIsometric, _origin);
-            node._parent = this;
-
-            _children.Add(name, node);
-
-            return node;
+            return createChildNode(name, Vector3.Zero, Vector2.Zero);
         }
 
         /// <summary>
@@ -253,9 +290,9 @@ namespace GDD2Project1
         public virtual GameNode createChildNode(String name, Vector3 position, Vector2 origin)
         {
             GameNode node = new GameNode(_gameLevelMgr, name, position, origin);
-            node._parent = this;
-        
-            _children.Add(name, node);
+
+            attachChildNode(node);
+
             return node;
         }
 
@@ -267,6 +304,13 @@ namespace GDD2Project1
         {
             node._parent = this;
             _children.Add(node.getName, node);
+
+            // Fire event
+            if (ChildAttached != null)
+                ChildAttached(this, node, e);
+
+            // Subscribe
+            node.subscribeToNode(this);
         }
 
         /// <summary>
@@ -279,9 +323,13 @@ namespace GDD2Project1
             if (!_children.ContainsKey(name))
                 return null;
 
+            // Detach the node
             GameNode child = _children[name];
             _children.Remove(name);
             child._parent = null;
+
+            // Unsubscribe
+            child.unsubscribeFromNode(this);
 
             return child;
         }

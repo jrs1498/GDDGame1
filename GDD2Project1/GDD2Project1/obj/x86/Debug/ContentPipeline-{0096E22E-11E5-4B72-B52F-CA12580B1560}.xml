@@ -11,24 +11,6 @@
       <Time>2014-02-21T20:49:06.4964647-05:00</Time>
     </Item>
     <Item>
-      <Source>textures\tiles\greentile.png</Source>
-      <Name>textures\tiles\greentile</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>E:\Projects\GDD2Project1\GDD2Project1\GDD2Project1\bin\x86\Debug\Content\textures\tiles\greentile.xnb</Output>
-      <Time>2014-02-22T02:35:50.2108427-05:00</Time>
-    </Item>
-    <Item>
-      <Source>textures\tiles\whitetile.png</Source>
-      <Name>textures\tiles\whitetile</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>E:\Projects\GDD2Project1\GDD2Project1\GDD2Project1\bin\x86\Debug\Content\textures\tiles\whitetile.xnb</Output>
-      <Time>2014-02-22T02:36:49.0290727-05:00</Time>
-    </Item>
-    <Item>
       <Source>textures\characters\character.png</Source>
       <Name>textures\characters\character</Name>
       <Importer>TextureImporter</Importer>
@@ -36,6 +18,60 @@
       <Options>None</Options>
       <Output>E:\Projects\GDD2Project1\GDD2Project1\GDD2Project1\bin\x86\Debug\Content\textures\characters\character.xnb</Output>
       <Time>2014-02-23T03:30:41.6905383-05:00</Time>
+    </Item>
+    <Item>
+      <Source>textures\decorative\tree.png</Source>
+      <Name>textures\decorative\tree</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>E:\Projects\GDD2Project1\GDD2Project1\GDD2Project1\bin\x86\Debug\Content\textures\decorative\tree.xnb</Output>
+      <Time>2014-02-23T18:18:44.065756-05:00</Time>
+    </Item>
+    <Item>
+      <Source>textures\tiles\tile1.png</Source>
+      <Name>textures\tiles\tile1</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>E:\Projects\GDD2Project1\GDD2Project1\GDD2Project1\bin\x86\Debug\Content\textures\tiles\tile1.xnb</Output>
+      <Time>2014-02-23T18:18:55.6534188-05:00</Time>
+    </Item>
+    <Item>
+      <Source>textures\tiles\tile2.png</Source>
+      <Name>textures\tiles\tile2</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>E:\Projects\GDD2Project1\GDD2Project1\GDD2Project1\bin\x86\Debug\Content\textures\tiles\tile2.xnb</Output>
+      <Time>2014-02-23T18:18:55.6544189-05:00</Time>
+    </Item>
+    <Item>
+      <Source>textures\tiles\tile3.png</Source>
+      <Name>textures\tiles\tile3</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>E:\Projects\GDD2Project1\GDD2Project1\GDD2Project1\bin\x86\Debug\Content\textures\tiles\tile3.xnb</Output>
+      <Time>2014-02-23T18:18:55.6554189-05:00</Time>
+    </Item>
+    <Item>
+      <Source>textures\tiles\tile4.png</Source>
+      <Name>textures\tiles\tile4</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>E:\Projects\GDD2Project1\GDD2Project1\GDD2Project1\bin\x86\Debug\Content\textures\tiles\tile4.xnb</Output>
+      <Time>2014-02-23T18:18:55.656419-05:00</Time>
+    </Item>
+    <Item>
+      <Source>textures\tiles\tile5.png</Source>
+      <Name>textures\tiles\tile5</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>E:\Projects\GDD2Project1\GDD2Project1\GDD2Project1\bin\x86\Debug\Content\textures\tiles\tile5.xnb</Output>
+      <Time>2014-02-23T18:18:55.656419-05:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>

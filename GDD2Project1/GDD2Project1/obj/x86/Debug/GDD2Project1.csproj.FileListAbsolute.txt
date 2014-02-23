@@ -5,6 +5,10 @@ E:\Projects\GDD2Project1\GDD2Project1\GDD2Project1\obj\x86\Debug\Microsoft.Xna.F
 E:\Projects\GDD2Project1\GDD2Project1\GDD2Project1\obj\x86\Debug\GDD2Project1.exe
 E:\Projects\GDD2Project1\GDD2Project1\GDD2Project1\obj\x86\Debug\GDD2Project1.pdb
 E:\Projects\GDD2Project1\GDD2Project1\GDD2Project1\bin\x86\Debug\Content\textures\tiles\rocktile.xnb
-E:\Projects\GDD2Project1\GDD2Project1\GDD2Project1\bin\x86\Debug\Content\textures\tiles\greentile.xnb
-E:\Projects\GDD2Project1\GDD2Project1\GDD2Project1\bin\x86\Debug\Content\textures\tiles\whitetile.xnb
 E:\Projects\GDD2Project1\GDD2Project1\GDD2Project1\bin\x86\Debug\Content\textures\characters\character.xnb
+E:\Projects\GDD2Project1\GDD2Project1\GDD2Project1\bin\x86\Debug\Content\textures\decorative\tree.xnb
+E:\Projects\GDD2Project1\GDD2Project1\GDD2Project1\bin\x86\Debug\Content\textures\tiles\tile1.xnb
+E:\Projects\GDD2Project1\GDD2Project1\GDD2Project1\bin\x86\Debug\Content\textures\tiles\tile2.xnb
+E:\Projects\GDD2Project1\GDD2Project1\GDD2Project1\bin\x86\Debug\Content\textures\tiles\tile3.xnb
+E:\Projects\GDD2Project1\GDD2Project1\GDD2Project1\bin\x86\Debug\Content\textures\tiles\tile4.xnb
+E:\Projects\GDD2Project1\GDD2Project1\GDD2Project1\bin\x86\Debug\Content\textures\tiles\tile5.xnb
