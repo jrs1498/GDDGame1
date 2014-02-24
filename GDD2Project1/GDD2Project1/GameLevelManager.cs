@@ -149,6 +149,9 @@ namespace GDD2Project1
 
             _player = new Player(this, anotherDude);
 
+            // Tell the camera controller to track our player's movement
+            _cameraController.setCharacterTarget(anotherDude, true);
+
 
             // Move some tiles
             getNodeFromIndex(0, 0).translate(new Vector3(0.0f, -250.0f, 0.0f));
@@ -218,7 +221,6 @@ namespace GDD2Project1
             c5.Origin = new Vector2(20, 40);
             Consumable c6 = createConsumable("cnsmble6", consumable, getNodeFromIndex(1, 1), Consumable.ConsumableType.TYPE_POWER, 100);
             c6.Origin = new Vector2(20, 40);
-
 
             // end test stuff-----------
 
@@ -431,6 +433,21 @@ namespace GDD2Project1
             // If it's a Character, remove it from the dictionary
             if (node is GameCharacter)
                 _characters.Remove(node.getName);
+        }
+
+
+        //-------------------------------------------------------------------------
+        /// <summary>
+        /// Get a previously created character
+        /// </summary>
+        /// <param name="name">Character name</param>
+        /// <returns>Character at specified name index</returns>
+        public GameCharacter getCharacter(String name)
+        {
+            if (!(_characters.ContainsKey(name)))
+                return null;
+
+            return _characters[name];
         }
 
 

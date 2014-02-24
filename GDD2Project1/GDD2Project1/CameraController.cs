@@ -3,22 +3,25 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework;
 
 namespace GDD2Project1
 {
     class CameraController
     {
-
-        protected Camera2D      _camera;
-
         protected const float   BASE_OFFSET         = (float)(Math.PI * 0.25);
         protected const float   ROTATION_INTERVAL   = (float)(Math.PI * 0.5f);
         protected const int     MAX_ROTATIONS       = (int)((Math.PI * 2) / ROTATION_INTERVAL + 1);
         protected const float   ZOOM_INTERVAL       = 0.2f;
         protected const float   MIN_ZOOM            = 0.4f;
-        protected const float   MAX_ZOOM            = 0.8f;
+        protected const float   MAX_ZOOM            = 1.0f;
         protected const float   TOLERANCE           = 0.005f;
-        protected const float   SMOOTH_FACTOR       = 4.0f;
+        protected const float   SMOOTH_FACTOR       = 6.0f;
+
+        protected Camera2D      _camera;
+
+        protected GameNode      _nodeTarget;
+        protected bool          _followNodeTarget;
 
         protected int           _rotationIntervalTarget;
         protected float         _rotationTarget;
@@ -57,6 +60,10 @@ namespace GDD2Project1
 
             if (_zooming)
                 applyZoom(dt);
+
+            if (_nodeTarget != null)
+                if (_followNodeTarget)
+                    applyFollowTarget(dt);
         }
 
         /// <summary>
@@ -73,6 +80,46 @@ namespace GDD2Project1
                 setZoomTarget(_zoomTarget + ZOOM_INTERVAL);
             if (InputManager.GetOneKeyPressDown(Keys.OemMinus))
                 setZoomTarget(_zoomTarget - ZOOM_INTERVAL);
+        }
+
+
+        //-------------------------------------------------------------------------
+        /// <summary>
+        /// Give this controller a GameNode to follow
+        /// </summary>
+        /// <param name="target">Target for this controller to follow</param>
+        /// <param name="follow">Whether or not we are initially following the target</param>
+        public void setCharacterTarget(GameNode target, bool follow = true)
+        {
+            _nodeTarget = target;
+            setFollowTarget(follow);
+        }
+
+        /// <summary>
+        /// If this controller already has a target, this function specifies whether or not that
+        /// target is currently being followed by this controller's camera.
+        /// </summary>
+        /// <param name="value">Follow</param>
+        public void setFollowTarget(bool value)
+        {
+            _followNodeTarget = value;
+        }
+
+        /// <summary>
+        /// If we are following out target node, this function updates the
+        /// camera's position to follow that node.
+        /// </summary>
+        /// <param name="dt">Delta time</param>
+        protected void applyFollowTarget(float dt)
+        {
+            Vector2 nodePos = _nodeTarget.Position;
+            if (_camera.Position == nodePos)
+                return;
+
+            _camera.Position = nodePos;
+
+            if (!_zooming)
+                setZoomTarget(1.0f);
         }
 
 
@@ -101,17 +148,16 @@ namespace GDD2Project1
         {
             float diff = _rotationTarget - _camera.RotationZ;
 
+            // If we reach the extremes of either rotation,
+            // add or subtract a full rotation so we don't do
+            // a 135 degree rotation
+            if (diff > Math.PI)
+                diff -= ((float)Math.PI * 2);
+            else if (diff < -Math.PI)
+                diff += ((float)Math.PI * 2);
+
             // Apply the rotation
             _camera.RotationZ += diff * SMOOTH_FACTOR * dt;
-
-            /*
-             * TODO: When the camera reaches either extreme of its rotation,
-             * it performs a 135 degree rotation instead of a 45 degree rotation.
-             * Need to implement a way for the controller to know that it should
-             * make the smaller of the two rotations.
-             * Don't modify the Camera class, that's what this function is for.
-             * Determine the amount of rotation to apply to the camera, as done above.
-             */
 
             // Snap to our target if we've reached it
             if (Math.Abs(diff) < TOLERANCE)
