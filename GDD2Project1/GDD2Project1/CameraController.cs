@@ -8,27 +8,24 @@ namespace GDD2Project1
 {
     class CameraController
     {
-        protected Camera2D      _camera;
-        protected ShiftTarget   _shiftTarget = ShiftTarget.SHIFT0;
-        protected float
-            _shiftOffset        = (float)Math.PI * 0.25f,
-            _shiftAmount        = (float)Math.PI * 0.5f,
-            _zoomTarget         = 1.0f,
-            _zoomMin            = 0.5f,
-            _zoomMax            = 2.0f,
-            _adjustCoeff        = 4.0f,
-            _adjustTolerance    = 0.005f;
-        protected bool
-            _shifting           = true,
-            _zooming            = true;
 
-        public enum ShiftTarget
-        {
-            SHIFT0 = 0,
-            SHIFT1 = 1,
-            SHIFT2 = 2,
-            SHIFT3 = 3
-        };
+        protected Camera2D      _camera;
+
+        protected const float   BASE_OFFSET         = (float)(Math.PI * 0.25);
+        protected const float   ROTATION_INTERVAL   = (float)(Math.PI * 0.5f);
+        protected const int     MAX_ROTATIONS       = (int)((Math.PI * 2) / ROTATION_INTERVAL + 1);
+        protected const float   ZOOM_INTERVAL       = 0.2f;
+        protected const float   MIN_ZOOM            = 0.4f;
+        protected const float   MAX_ZOOM            = 0.8f;
+        protected const float   TOLERANCE           = 0.005f;
+        protected const float   SMOOTH_FACTOR       = 4.0f;
+
+        protected int           _rotationIntervalTarget;
+        protected float         _rotationTarget;
+        protected float         _zoomTarget;
+
+        protected bool          _rotating;
+        protected bool          _zooming;
 
 
         //-------------------------------------------------------------------------
@@ -40,6 +37,8 @@ namespace GDD2Project1
         public CameraController(Camera2D camera)
         {
             _camera = camera;
+            setRotationIntervalTarget(2);
+            setZoomTarget(MIN_ZOOM);
         }
 
 
@@ -53,11 +52,11 @@ namespace GDD2Project1
         {
             pollUserInput();
 
-            if (_shifting)
-                updateShift(dt);
+            if (_rotating)
+                applyRotation(dt);
 
             if (_zooming)
-                updateZoom(dt);
+                applyZoom(dt);
         }
 
         /// <summary>
@@ -66,88 +65,97 @@ namespace GDD2Project1
         protected void pollUserInput()
         {
             if (InputManager.GetOneKeyPressDown(Keys.Right))
-            {
-                int shiftTarget = (int)_shiftTarget + 1;
-                shiftTarget %= 4;
-                shift((ShiftTarget)shiftTarget);
-            }
+                setRotationIntervalTarget(_rotationIntervalTarget + 1);
+            if (InputManager.GetOneKeyPressDown(Keys.Left))
+                setRotationIntervalTarget(_rotationIntervalTarget - 1);
 
-            if (InputManager.GetOneKeyPressDown(Keys.OemMinus))
-                zoom(0.5f);
             if (InputManager.GetOneKeyPressDown(Keys.OemPlus))
-                zoom(1.0f);
+                setZoomTarget(_zoomTarget + ZOOM_INTERVAL);
+            if (InputManager.GetOneKeyPressDown(Keys.OemMinus))
+                setZoomTarget(_zoomTarget - ZOOM_INTERVAL);
         }
 
 
         //-------------------------------------------------------------------------
         /// <summary>
-        /// Shift the camera to a new rotation target. This target indicates
-        /// which rotation to move to, and is not relative to the camera's
-        /// current positioning
+        /// Set the target rotation interval for the camera
         /// </summary>
-        public void shift(ShiftTarget shiftTarget)
+        /// <param name="target">Target rotation interval</param>
+        public void setRotationIntervalTarget(int target)
         {
-            _shiftTarget = shiftTarget;
-            _shifting = true;
+            _rotationIntervalTarget = (target % MAX_ROTATIONS);
+
+            if (_rotationIntervalTarget < 0)
+                _rotationIntervalTarget = MAX_ROTATIONS + _rotationIntervalTarget;
+
+            _rotationTarget = (_rotationIntervalTarget * ROTATION_INTERVAL) + BASE_OFFSET;
+            _rotating = true;
         }
 
         /// <summary>
-        /// If the camera is currently shifting to a new target, this function
-        /// handles the camera's movement
+        /// Rotate the camera towards its target based on its speed and
+        /// the elapsed time
         /// </summary>
         /// <param name="dt">Delta time</param>
-        protected void updateShift(float dt)
+        protected void applyRotation(float dt)
         {
-            float targetRadians = _shiftOffset + ((int)_shiftTarget * _shiftAmount);
-            float diff = Math.Abs(targetRadians - _camera.RotationZ);
+            float diff = _rotationTarget - _camera.RotationZ;
 
-            if (diff < _adjustTolerance)
+            // Apply the rotation
+            _camera.RotationZ += diff * SMOOTH_FACTOR * dt;
+
+            /*
+             * TODO: When the camera reaches either extreme of its rotation,
+             * it performs a 135 degree rotation instead of a 45 degree rotation.
+             * Need to implement a way for the controller to know that it should
+             * make the smaller of the two rotations.
+             * Don't modify the Camera class, that's what this function is for.
+             * Determine the amount of rotation to apply to the camera, as done above.
+             */
+
+            // Snap to our target if we've reached it
+            if (Math.Abs(diff) < TOLERANCE)
             {
-                _camera.RotationZ = targetRadians;
-                _shifting = false;
+                _camera.RotationZ = _rotationTarget;
+                _rotating = false;
                 return;
             }
-
-            diff *= _adjustCoeff;
-            diff *= dt;
-            _camera.RotationZ += diff;
         }
+
 
         //-------------------------------------------------------------------------
         /// <summary>
-        /// Gives the camera a target to zoom to
+        /// Set the target zoom amount for the camera
         /// </summary>
-        /// <param name="amount">Amount for the target zoom</param>
-        public void zoom(float amount)
+        /// <param name="target">Target zoom</param>
+        public void setZoomTarget(float target)
         {
-            if (amount < _zoomMin)
-                amount = _zoomMin;
-            else if (amount > _zoomMax)
-                amount = _zoomMax;
+            if (target > MAX_ZOOM)
+                target = MAX_ZOOM;
+            else if (target < MIN_ZOOM)
+                target = MIN_ZOOM;
 
-            _zoomTarget = amount;
+            _zoomTarget = target;
             _zooming = true;
         }
 
         /// <summary>
-        /// When the Camera is in the process of zooming, this
-        /// function handles its movement
+        /// Adjust the Camera's zoom over time, gradually bringing it
+        /// closer to the target zoom amount
         /// </summary>
         /// <param name="dt">Delta time</param>
-        protected void updateZoom(float dt)
+        protected void applyZoom(float dt)
         {
-            float diff = _zoomTarget - _camera.Zoom;
+            float diff      = _zoomTarget - _camera.Zoom;
 
-            if (diff < _adjustTolerance)
+            _camera.Zoom += diff * SMOOTH_FACTOR * dt;
+
+            // Did we reach our target?
+            if (Math.Abs(diff) < TOLERANCE)
             {
                 _camera.Zoom = _zoomTarget;
                 _zooming = false;
-                return;
             }
-
-            diff *= _adjustCoeff;
-            diff *= dt;
-            _camera.Zoom += diff;
         }
     }
 }

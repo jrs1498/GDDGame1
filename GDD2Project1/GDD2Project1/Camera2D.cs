@@ -40,12 +40,9 @@ namespace GDD2Project1
             get { return _rotationZ; }
             set 
             { 
-                _rotationZ = value;
-                if (_rotationZ >= Math.PI * 2)
-                    _rotationZ = 0;
-                else if (_rotationZ < 0)
-                    _rotationZ = 0;
-
+                _rotationZ = (float)(value % (Math.PI * 2));
+                if (_rotationZ < 0.0f)
+                    _rotationZ += (float)(Math.PI * 2);
                 updateDirection();
             }
         }
