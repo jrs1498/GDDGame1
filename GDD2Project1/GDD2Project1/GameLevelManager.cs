@@ -32,9 +32,9 @@ namespace GDD2Project1
         protected const String      TILE_NUMBER_SEPARATOR = "T";
         protected Vector2           _tileOrigin;
 
-        protected Player                        _player;
-        protected Dictionary<String, Drawable>  _drawables;
-        protected Dictionary<String, GameCharacter> _characters;
+        protected Player                                _player;
+        protected Dictionary<String, Drawable>          _drawables;
+        protected Dictionary<String, GameCharacter>     _characters;
 
         protected int _displayWidth;
         protected int _displayHeight;
@@ -120,9 +120,6 @@ namespace GDD2Project1
 
             // Test stuff=-------------
 
-            GameNode dudesNode = getNodeFromIndex(3, 3).createChildNode("dudesNode");
-            dudesNode.Origin = new Vector2(20, 120);
-
             // Test character
             DrawableAnimated.Animation walkSW = new DrawableAnimated.Animation(16, 19, 0.132f, true);
             DrawableAnimated.Animation walkSE = new DrawableAnimated.Animation(20, 23, 0.132f, true);
@@ -194,7 +191,7 @@ namespace GDD2Project1
             _rootNode.detachChildNode(getNodeFromIndex(5, 5).getName);
             _rootNode.detachChildNode(getNodeFromIndex(4, 5).getName);
 
-            // Plant some trees
+            //// Plant some trees
             Drawable tree = createDrawable<Drawable>("textures/decorative/tree", "tree");
             GameObject tree1 = createGameObject("tree1", tree, getNodeFromIndex(8, 0));
             tree1.Origin = new Vector2(80, 180);
@@ -206,6 +203,22 @@ namespace GDD2Project1
             tree4.Origin = new Vector2(80, 180);
             GameObject tree5 = createGameObject("tree5", tree, getNodeFromIndex(5, 6));
             tree5.Origin = new Vector2(80, 180);
+
+            // Lay down some consumables
+            Drawable consumable = createDrawable<Drawable>("textures/consumables/consumable", "consumable");
+            Consumable c1 = createConsumable("cnsmble1", consumable, getNodeFromIndex(8, 1), Consumable.ConsumableType.TYPE_POWER, 100);
+            c1.Origin = new Vector2(20, 40);
+            Consumable c2 = createConsumable("cnsmble2", consumable, getNodeFromIndex(3, 10), Consumable.ConsumableType.TYPE_HEALTH, 3000);
+            c2.Origin = new Vector2(20, 40);
+            Consumable c3 = createConsumable("cnsmble3", consumable, getNodeFromIndex(1, 8), Consumable.ConsumableType.TYPE_HEALTH, 10000);
+            c3.Origin = new Vector2(20, 40);
+            Consumable c4 = createConsumable("cnsmble4", consumable, getNodeFromIndex(10, 8), Consumable.ConsumableType.TYPE_POWER, 5432);
+            c4.Origin = new Vector2(20, 40);
+            Consumable c5 = createConsumable("cnsmble5", consumable, getNodeFromIndex(7, 6), Consumable.ConsumableType.TYPE_HEALTH, 800);
+            c5.Origin = new Vector2(20, 40);
+            Consumable c6 = createConsumable("cnsmble6", consumable, getNodeFromIndex(1, 1), Consumable.ConsumableType.TYPE_POWER, 100);
+            c6.Origin = new Vector2(20, 40);
+
 
             // end test stuff-----------
 
@@ -398,6 +411,26 @@ namespace GDD2Project1
             _characters.Add(name, character);
             character.PositionIsometric = parent.PositionIsometric;
             return character;
+        }
+
+        public Consumable createConsumable(String name, Drawable drawable, GameNode parent, Consumable.ConsumableType type, int amount)
+        {
+            Consumable consumable = new Consumable(this, name, type, amount);
+            parent.attachChildNode(consumable);
+            consumable.attachDrawable(drawable);
+            consumable.PositionIsometric = parent.PositionIsometric;
+            return consumable;
+        }
+
+        public void destroyNode(GameNode node)
+        {
+            // Detach the node from its parent
+            if (node.getParent != null)
+                node.getParent.detachChildNode(node.getName);
+
+            // If it's a Character, remove it from the dictionary
+            if (node is GameCharacter)
+                _characters.Remove(node.getName);
         }
 
 

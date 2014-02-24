@@ -12,3 +12,4 @@ E:\Projects\GDD2Project1\GDD2Project1\GDD2Project1\bin\x86\Debug\Content\texture
 E:\Projects\GDD2Project1\GDD2Project1\GDD2Project1\bin\x86\Debug\Content\textures\tiles\tile3.xnb
 E:\Projects\GDD2Project1\GDD2Project1\GDD2Project1\bin\x86\Debug\Content\textures\tiles\tile4.xnb
 E:\Projects\GDD2Project1\GDD2Project1\GDD2Project1\bin\x86\Debug\Content\textures\tiles\tile5.xnb
+E:\Projects\GDD2Project1\GDD2Project1\GDD2Project1\bin\x86\Debug\Content\textures\consumables\consumable.xnb

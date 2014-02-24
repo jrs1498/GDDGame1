@@ -64,6 +64,33 @@ namespace GDD2Project1
 
         //-------------------------------------------------------------------------
         /// <summary>
+        /// Set / Get isometric position vector. Overridden to ensure that when
+        /// a GameObject is moved, it will select the correct parent tile.
+        /// </summary>
+        public override Vector3 PositionIsometric
+        {
+            get { return base.PositionIsometric; }
+            set
+            {
+                base.PositionIsometric = value;
+                updateParentTile();
+            }
+        }
+
+        /// <summary>
+        /// Translate this GameNode by some specified amount.
+        /// A GameObject should be moved only through this method.
+        /// </summary>
+        /// <param name="amount">Amount to translate</param>
+        public override void translate(Vector3 amount)
+        {
+            base.translate(amount);
+            updateParentTile();
+        }
+
+
+        //-------------------------------------------------------------------------
+        /// <summary>
         /// Attaches a Drawable to this GameObject. A GameObject may have only one Drawable
         /// at a time, and if this GameObject is currently holding a Drawable, it must be
         /// detached before a different Drawable may be attached.
@@ -169,6 +196,24 @@ namespace GDD2Project1
             // Now update the direction relative to the camera's viewing angle
             tempDir = _gameLevelMgr.Camera.getRelativeDirection(tempDir);
             _isoDirection = tempDir;
+        }
+
+        /// <summary>
+        /// Find out which parent tile node should be holding onto this node.
+        /// If it needs to change, then this function will change it.
+        /// </summary>
+        protected void updateParentTile()
+        {
+            if (_parent == null || _parent == _gameLevelMgr.Root)
+                return;
+
+            GameNode parentTile = _gameLevelMgr.getNodeFromIsometricCoordinates(_positionIsometric);
+
+            if (parentTile == _parent)
+                return;
+
+            _parent.detachChildNode(_name);
+            parentTile.attachChildNode(this);
         }
     }
 }

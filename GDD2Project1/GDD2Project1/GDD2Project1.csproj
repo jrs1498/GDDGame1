@@ -77,6 +77,7 @@
   <ItemGroup>
     <Compile Include="Camera2D.cs" />
     <Compile Include="CameraController.cs" />
+    <Compile Include="Consumable.cs" />
     <Compile Include="Drawable.cs" />
     <Compile Include="DrawableAnimated.cs" />
     <Compile Include="GameCharacter.cs" />

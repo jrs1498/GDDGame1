@@ -142,8 +142,6 @@ namespace GDD2Project1
             {
                 // We have reached our destination
                 _positionIsometric = _destination.PositionIsometric;
-                _parent.detachChildNode(_name);
-                _destination.attachChildNode(this);
 
                 // Check if there's another destination in queue
                 if (_movePath.Count > 0)
@@ -164,16 +162,7 @@ namespace GDD2Project1
             // If not, then apply this character's movement
             else
             {
-                _positionIsometric += displacement;
-
-                // This is a temporary solution for drawing order.
-                // This may be removed after pathfinding is implemented
-                GameNode currNode = _gameLevelMgr.getNodeFromIsometricCoordinates(_positionIsometric);
-                if (currNode != this)
-                {
-                    _parent.detachChildNode(_name);
-                    currNode.attachChildNode(this);
-                }
+                translate(displacement);
             }
         }
 

@@ -30,8 +30,9 @@ namespace GDD2Project1
 
 
         //-------------------------------------------------------------------------
-        public delegate void AttachedEventHandler(GameNode sender, GameNode child, EventArgs e);
-        public event AttachedEventHandler ChildAttached;
+        public delegate void NodeEventHandler(GameNode sender, GameNode child, EventArgs e);
+        public event NodeEventHandler ChildAttached;
+        public event NodeEventHandler ChildDetached;
         public EventArgs e = null;
 
 
@@ -82,7 +83,8 @@ namespace GDD2Project1
         /// <param name="node">Node to receive events from</param>
         public void subscribeToNode(GameNode node)
         {
-            node.ChildAttached += new GameNode.AttachedEventHandler(parentAttachedChild);
+            node.ChildAttached += new GameNode.NodeEventHandler(parentAttachedChild);
+            node.ChildDetached += new GameNode.NodeEventHandler(parentDetachedChild);
         }
 
         /// <summary>
@@ -92,6 +94,7 @@ namespace GDD2Project1
         public void unsubscribeFromNode(GameNode node)
         {
             node.ChildAttached -= parentAttachedChild;
+            node.ChildDetached -= parentDetachedChild;
         }
 
         /// <summary>
@@ -102,12 +105,18 @@ namespace GDD2Project1
         /// <param name="e">Event args</param>
         protected virtual void parentAttachedChild(GameNode sender, GameNode child, EventArgs e)
         {
-            // TODO: This function needs to tell this node to respond to the event.
-            // find out what kind of node child is.
-            // For example, if node is an enemy, then the player should probably die,
-            // because they can't both be on the same tile.
-            // If child is a consumable, however, or if this is a consumable and child is a character,
-            // then the consumable should be eaten by the character
+            Console.WriteLine(_name + " (received event: Parent Attached Child) Sender: " + sender.getName + " Child: " + child.getName);
+        }
+
+        /// <summary>
+        /// This function is fired whenever one of this node's subscriptions detaches a child node.
+        /// </summary>
+        /// <param name="sender">Node which detached a child</param>
+        /// <param name="child">The child which was attached</param>
+        /// <param name="e">Event args</param>
+        protected virtual void parentDetachedChild(GameNode sender, GameNode child, EventArgs e)
+        {
+            Console.WriteLine(_name + " (received event: Parent Detached Child) Sender: " + sender.getName + " Child: " + child.getName);
         }
 
 
@@ -169,7 +178,7 @@ namespace GDD2Project1
         /// Get / Set this GameNode's isometric position. These coordinates
         /// correspond to the GameNode's world position.
         /// </summary>
-        public Vector3 PositionIsometric
+        public virtual Vector3 PositionIsometric
         {
             get { return _positionIsometric; }
             set { _positionIsometric = value; }
@@ -228,23 +237,32 @@ namespace GDD2Project1
         /// <summary>
         /// Translate this GameNode by some specified amount.
         /// </summary>
-        /// <param name="amount">Amount to translate</param>
-        public virtual void translate(Vector3 amount)
-        {
-            _positionIsometric += amount;
-            foreach (KeyValuePair<String, GameNode> entry in _children)
-                entry.Value.translate(amount);
-        }
-
-        /// <summary>
-        /// Translate this GameNode by some specified amount.
-        /// </summary>
         /// <param name="x">X translation</param>
         /// <param name="y">Y translation</param>
         /// <param name="z">Z translation</param>
         public virtual void translate(float x, float y, float z)
         {
             translate(new Vector3(x, y, z));
+        }
+
+        /// <summary>
+        /// Translate this GameNode from it's current position to a target position
+        /// </summary>
+        /// <param name="target">Target position</param>
+        public virtual void translateTo(Vector3 target)
+        {
+            translate(target - _positionIsometric);
+        }
+
+        /// <summary>
+        /// Translate this GameNode by some specified amount.
+        /// </summary>
+        /// <param name="amount">Amount to translate</param>
+        public virtual void translate(Vector3 amount)
+        {
+            _positionIsometric += amount;
+            foreach (KeyValuePair<String, GameNode> entry in _children)
+                entry.Value.translate(amount);
         }
 
 
@@ -305,12 +323,16 @@ namespace GDD2Project1
             node._parent = this;
             _children.Add(node.getName, node);
 
-            // Fire event
-            if (ChildAttached != null)
-                ChildAttached(this, node, e);
+            // Root node cannot fire events
+            if (this != _gameLevelMgr.Root)
+            {
+                // Fire event
+                if (ChildAttached != null)
+                    ChildAttached(this, node, e);
 
-            // Subscribe
-            node.subscribeToNode(this);
+                // Subscribe
+                node.subscribeToNode(this);
+            }
         }
 
         /// <summary>
@@ -328,8 +350,16 @@ namespace GDD2Project1
             _children.Remove(name);
             child._parent = null;
 
-            // Unsubscribe
-            child.unsubscribeFromNode(this);
+            // Root node cannot fire events
+            if (this != _gameLevelMgr.Root)
+            {
+                // Unsubscribe
+                child.unsubscribeFromNode(this);
+
+                // Fire event
+                if (ChildDetached != null)
+                    ChildDetached(this, child, e);
+            }
 
             return child;
         }
