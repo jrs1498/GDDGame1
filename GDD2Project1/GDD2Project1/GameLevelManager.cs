@@ -170,6 +170,9 @@ namespace GDD2Project1
             getNodeFromIndex(10, 0).translate(new Vector3(0.0f, -50.0f, 0.0f));
             getNodeFromIndex(9, 0).translate(new Vector3(0.0f, -25.0f, 0.0f));
             getNodeFromIndex(8, 0).translate(new Vector3(0.0f, -75.0f, 0.0f));
+            getNodeFromIndex(5, 6).translate(new Vector3(0.0f, -75.0f, 0.0f));
+            getNodeFromIndex(5, 7).translate(new Vector3(0.0f, -35.0f, 0.0f));
+            getNodeFromIndex(4, 7).translate(new Vector3(0.0f, -15.0f, 0.0f));
 
             // Remove some tiles
             _rootNode.detachChildNode(getNodeFromIndex(3, 5).getName);
