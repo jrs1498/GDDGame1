@@ -17,23 +17,20 @@ namespace GDD2Project1
         DIR_COUNT = 4
     };
 
-    class GameLevelManager
+    public class GameLevelManager
     {
-        protected ContentManager    _contentManager;
+        protected GameContentManager _gameContentMgr;
 
         protected Camera2D          _camera;
-        protected CameraController  _cameraController;
 
         protected GameNode          _rootNode;
         protected const int         TILE_SIZE = 84;
         protected int               _numRows;
         protected int               _numCols;
-        protected const String      TILE_NAME_PREFIX = "t";
-        protected const String      TILE_NUMBER_SEPARATOR = "T";
+        protected const String      TILE_NAME_PREFIX = "r";
+        protected const String      TILE_NUMBER_SEPARATOR = "c";
         protected Vector2           _tileOrigin;
 
-        protected Player                                _player;
-        protected Dictionary<String, Drawable>          _drawables;
         protected Dictionary<String, GameCharacter>     _characters;
 
         protected int _displayWidth;
@@ -57,9 +54,9 @@ namespace GDD2Project1
         /// Default GameLevelManager constructor
         /// </summary>
         /// <param name="contentManager">ContentManager used for loading game data</param>
-        public GameLevelManager(ContentManager contentManager, GraphicsDevice graphicsDevice)
+        public GameLevelManager(GameContentManager gameContentMgr, GraphicsDevice graphicsDevice)
         {
-            _contentManager = contentManager;
+            _gameContentMgr = gameContentMgr;
             _displayWidth = graphicsDevice.Viewport.Width;
             _displayHeight = graphicsDevice.Viewport.Height;
 
@@ -68,12 +65,8 @@ namespace GDD2Project1
             _camera.Origin = new Vector2(
                 _displayWidth / 2,
                 _displayHeight / 2);
-            _camera.RotationZ = (float)(Math.PI / 4);
-            _camera.RotationX = (float)(Math.PI / 6);
-            _cameraController = new CameraController(_camera);
 
             // Initialize dictionaries
-            _drawables = new Dictionary<string, Drawable>();
             _characters = new Dictionary<string, GameCharacter>();
 
             // Load an example level
@@ -89,7 +82,9 @@ namespace GDD2Project1
             _numCols = cols;
 
             _rootNode = new GameNode(this, "root");
-            Drawable defaultTile = createDrawable<Drawable>(tilePath, "tile");
+
+            _gameContentMgr.loadDrawable<Drawable>("textures/tiles/", "rocktile");
+            Drawable defTile = _gameContentMgr.getDrawable<Drawable>("rocktile");
 
             // Grab the center
             Vector2 nodeOffset = Vector2.Zero;
@@ -110,13 +105,12 @@ namespace GDD2Project1
                     position.Z -= nodeOffset.Y;
 
                     GameObject tile = createGameObject(
-                        TILE_NAME_PREFIX + x + TILE_NUMBER_SEPARATOR + y, defaultTile, _rootNode);
+                        TILE_NAME_PREFIX + x + TILE_NUMBER_SEPARATOR + y, defTile, _rootNode);
+
                     tile.GraphIndex = x * cols + y;
                     tile.Origin = _tileOrigin;
                     tile.PositionIsometric = position;
                 }
-
-            generateNeighbors();
 
             // Test stuff=-------------
 
@@ -131,7 +125,8 @@ namespace GDD2Project1
             DrawableAnimated.Animation idleNW = new DrawableAnimated.Animation(24, 24, 0.132f, false);
             DrawableAnimated.Animation idleNE = new DrawableAnimated.Animation(28, 28, 0.132f, false);
 
-            DrawableAnimated drawable = createDrawable<DrawableAnimated>("textures/characters/character", "character");
+            _gameContentMgr.loadDrawable<DrawableAnimated>("textures/characters/", "character");
+            DrawableAnimated drawable = _gameContentMgr.getDrawable<DrawableAnimated>("character");
             drawable.addAnimation(walkSW, "walkSW");
             drawable.addAnimation(walkSE, "walkSE");
             drawable.addAnimation(walkNW, "walkNW");
@@ -143,115 +138,92 @@ namespace GDD2Project1
             drawable.addAnimation(idleNE, "idleNE");
 
             GameCharacter anotherDude = createCharacter("dudetwo", drawable,
-                getNodeFromIndex(3, 3));
+                getTileFromIndex(3, 3));
             anotherDude.Origin = new Vector2(20, 120);
-            
 
-            _player = new Player(this, anotherDude);
 
             // Tell the camera controller to track our player's movement
-            _cameraController.setCharacterTarget(anotherDude, true);
-
 
             // Move some tiles
-            getNodeFromIndex(0, 0).translate(new Vector3(0.0f, -250.0f, 0.0f));
-            getNodeFromIndex(0, 1).translate(new Vector3(0.0f, -200.0f, 0.0f));
-            getNodeFromIndex(1, 0).translate(new Vector3(0.0f, -200.0f, 0.0f));
-            getNodeFromIndex(1, 1).translate(new Vector3(0.0f, -180.0f, 0.0f));
-            getNodeFromIndex(1, 2).translate(new Vector3(0.0f, -140.0f, 0.0f));
-            getNodeFromIndex(0, 2).translate(new Vector3(0.0f, -120.0f, 0.0f));
-            getNodeFromIndex(2, 1).translate(new Vector3(0.0f, -110.0f, 0.0f));
-            getNodeFromIndex(3, 1).translate(new Vector3(0.0f, -60.0f, 0.0f));
-            getNodeFromIndex(3, 0).translate(new Vector3(0.0f, -80.0f, 0.0f));
-            getNodeFromIndex(2, 2).translate(new Vector3(0.0f, -70.0f, 0.0f));
-            getNodeFromIndex(1, 3).translate(new Vector3(0.0f, -40.0f, 0.0f));
-            getNodeFromIndex(2, 3).translate(new Vector3(0.0f, -20.0f, 0.0f));
-            getNodeFromIndex(2, 0).translate(new Vector3(0.0f, -150.0f, 0.0f));
-            getNodeFromIndex(10, 0).translate(new Vector3(0.0f, -50.0f, 0.0f));
-            getNodeFromIndex(9, 0).translate(new Vector3(0.0f, -25.0f, 0.0f));
-            getNodeFromIndex(8, 0).translate(new Vector3(0.0f, -75.0f, 0.0f));
-            getNodeFromIndex(5, 6).translate(new Vector3(0.0f, -75.0f, 0.0f));
-            getNodeFromIndex(5, 7).translate(new Vector3(0.0f, -35.0f, 0.0f));
-            getNodeFromIndex(4, 7).translate(new Vector3(0.0f, -15.0f, 0.0f));
+            getTileFromIndex(0, 0).translate(new Vector3(0.0f, -250.0f, 0.0f));
+            getTileFromIndex(0, 1).translate(new Vector3(0.0f, -200.0f, 0.0f));
+            getTileFromIndex(1, 0).translate(new Vector3(0.0f, -200.0f, 0.0f));
+            getTileFromIndex(1, 1).translate(new Vector3(0.0f, -180.0f, 0.0f));
+            getTileFromIndex(1, 2).translate(new Vector3(0.0f, -140.0f, 0.0f));
+            getTileFromIndex(0, 2).translate(new Vector3(0.0f, -120.0f, 0.0f));
+            getTileFromIndex(2, 1).translate(new Vector3(0.0f, -110.0f, 0.0f));
+            getTileFromIndex(3, 1).translate(new Vector3(0.0f, -60.0f, 0.0f));
+            getTileFromIndex(3, 0).translate(new Vector3(0.0f, -80.0f, 0.0f));
+            getTileFromIndex(2, 2).translate(new Vector3(0.0f, -70.0f, 0.0f));
+            getTileFromIndex(1, 3).translate(new Vector3(0.0f, -40.0f, 0.0f));
+            getTileFromIndex(2, 3).translate(new Vector3(0.0f, -20.0f, 0.0f));
+            getTileFromIndex(2, 0).translate(new Vector3(0.0f, -150.0f, 0.0f));
+            getTileFromIndex(10, 0).translate(new Vector3(0.0f, -50.0f, 0.0f));
+            getTileFromIndex(9, 0).translate(new Vector3(0.0f, -25.0f, 0.0f));
+            getTileFromIndex(8, 0).translate(new Vector3(0.0f, -75.0f, 0.0f));
+            getTileFromIndex(5, 6).translate(new Vector3(0.0f, -75.0f, 0.0f));
+            getTileFromIndex(5, 7).translate(new Vector3(0.0f, -35.0f, 0.0f));
+            getTileFromIndex(4, 7).translate(new Vector3(0.0f, -15.0f, 0.0f));
 
             // Remove some tiles
-            _rootNode.detachChildNode(getNodeFromIndex(3, 5).getName);
-            _rootNode.detachChildNode(getNodeFromIndex(3, 6).getName);
-            _rootNode.detachChildNode(getNodeFromIndex(3, 7).getName);
-            _rootNode.detachChildNode(getNodeFromIndex(4, 6).getName);
-            _rootNode.detachChildNode(getNodeFromIndex(4, 4).getName);
-            _rootNode.detachChildNode(getNodeFromIndex(5, 4).getName);
-            _rootNode.detachChildNode(getNodeFromIndex(6, 4).getName);
-            _rootNode.detachChildNode(getNodeFromIndex(6, 5).getName);
-            _rootNode.detachChildNode(getNodeFromIndex(6, 6).getName);
-            _rootNode.detachChildNode(getNodeFromIndex(6, 7).getName);
-            _rootNode.detachChildNode(getNodeFromIndex(7, 7).getName);
-            _rootNode.detachChildNode(getNodeFromIndex(6, 8).getName);
-            _rootNode.detachChildNode(getNodeFromIndex(7, 8).getName);
-            _rootNode.detachChildNode(getNodeFromIndex(8, 8).getName);
-            _rootNode.detachChildNode(getNodeFromIndex(9, 8).getName);
-            _rootNode.detachChildNode(getNodeFromIndex(9, 9).getName);
-            _rootNode.detachChildNode(getNodeFromIndex(10, 9).getName);
-            _rootNode.detachChildNode(getNodeFromIndex(10, 10).getName);
-            _rootNode.detachChildNode(getNodeFromIndex(9, 10).getName);
-            _rootNode.detachChildNode(getNodeFromIndex(5, 5).getName);
-            _rootNode.detachChildNode(getNodeFromIndex(4, 5).getName);
+            _rootNode.detachChildNode(getTileFromIndex(3, 5).getName);
+            _rootNode.detachChildNode(getTileFromIndex(3, 6).getName);
+            _rootNode.detachChildNode(getTileFromIndex(3, 7).getName);
+            _rootNode.detachChildNode(getTileFromIndex(4, 6).getName);
+            _rootNode.detachChildNode(getTileFromIndex(4, 4).getName);
+            _rootNode.detachChildNode(getTileFromIndex(5, 4).getName);
+            _rootNode.detachChildNode(getTileFromIndex(6, 4).getName);
+            _rootNode.detachChildNode(getTileFromIndex(6, 5).getName);
+            _rootNode.detachChildNode(getTileFromIndex(6, 6).getName);
+            _rootNode.detachChildNode(getTileFromIndex(6, 7).getName);
+            _rootNode.detachChildNode(getTileFromIndex(7, 7).getName);
+            _rootNode.detachChildNode(getTileFromIndex(6, 8).getName);
+            _rootNode.detachChildNode(getTileFromIndex(7, 8).getName);
+            _rootNode.detachChildNode(getTileFromIndex(8, 8).getName);
+            _rootNode.detachChildNode(getTileFromIndex(9, 8).getName);
+            _rootNode.detachChildNode(getTileFromIndex(9, 9).getName);
+            _rootNode.detachChildNode(getTileFromIndex(10, 9).getName);
+            _rootNode.detachChildNode(getTileFromIndex(10, 10).getName);
+            _rootNode.detachChildNode(getTileFromIndex(9, 10).getName);
+            _rootNode.detachChildNode(getTileFromIndex(5, 5).getName);
+            _rootNode.detachChildNode(getTileFromIndex(4, 5).getName);
 
-            //// Plant some trees
-            Drawable tree = createDrawable<Drawable>("textures/decorative/tree", "tree");
-            GameObject tree1 = createGameObject("tree1", tree, getNodeFromIndex(8, 0));
+            // Plant some trees
+            _gameContentMgr.loadDrawable<Drawable>("textures/decorative/", "tree");
+            Drawable tree = _gameContentMgr.getDrawable<Drawable>("tree");
+
+
+            GameObject tree1 = createGameObject("tree1", tree, getTileFromIndex(8, 0));
             tree1.Origin = new Vector2(80, 180);
-            GameObject tree2 = createGameObject("tree2", tree, getNodeFromIndex(2, 10));
+            GameObject tree2 = createGameObject("tree2", tree, getTileFromIndex(2, 10));
             tree2.Origin = new Vector2(80, 180);
-            GameObject tree3 = createGameObject("tree3", tree, getNodeFromIndex(0, 0));
+            GameObject tree3 = createGameObject("tree3", tree, getTileFromIndex(0, 0));
             tree3.Origin = new Vector2(80, 180);
-            GameObject tree4 = createGameObject("tree4", tree, getNodeFromIndex(2, 0));
+            GameObject tree4 = createGameObject("tree4", tree, getTileFromIndex(2, 0));
             tree4.Origin = new Vector2(80, 180);
-            GameObject tree5 = createGameObject("tree5", tree, getNodeFromIndex(5, 6));
+            GameObject tree5 = createGameObject("tree5", tree, getTileFromIndex(5, 6));
             tree5.Origin = new Vector2(80, 180);
 
             // Lay down some consumables
-            Drawable consumable = createDrawable<Drawable>("textures/consumables/consumable", "consumable");
-            Consumable c1 = createConsumable("cnsmble1", consumable, getNodeFromIndex(8, 1), Consumable.ConsumableType.TYPE_POWER, 100);
+            _gameContentMgr.loadDrawable<Drawable>("textures/consumables/", "consumable");
+            Drawable consumable = _gameContentMgr.getDrawable<Drawable>("consumable");
+
+
+            Consumable c1 = createConsumable("cnsmble1", consumable, getTileFromIndex(8, 1), Consumable.ConsumableType.TYPE_POWER, 100);
             c1.Origin = new Vector2(20, 40);
-            Consumable c2 = createConsumable("cnsmble2", consumable, getNodeFromIndex(3, 10), Consumable.ConsumableType.TYPE_HEALTH, 3000);
+            Consumable c2 = createConsumable("cnsmble2", consumable, getTileFromIndex(3, 10), Consumable.ConsumableType.TYPE_HEALTH, 3000);
             c2.Origin = new Vector2(20, 40);
-            Consumable c3 = createConsumable("cnsmble3", consumable, getNodeFromIndex(1, 8), Consumable.ConsumableType.TYPE_HEALTH, 10000);
+            Consumable c3 = createConsumable("cnsmble3", consumable, getTileFromIndex(1, 8), Consumable.ConsumableType.TYPE_HEALTH, 10000);
             c3.Origin = new Vector2(20, 40);
-            Consumable c4 = createConsumable("cnsmble4", consumable, getNodeFromIndex(10, 8), Consumable.ConsumableType.TYPE_POWER, 5432);
+            Consumable c4 = createConsumable("cnsmble4", consumable, getTileFromIndex(10, 8), Consumable.ConsumableType.TYPE_POWER, 5432);
             c4.Origin = new Vector2(20, 40);
-            Consumable c5 = createConsumable("cnsmble5", consumable, getNodeFromIndex(7, 6), Consumable.ConsumableType.TYPE_HEALTH, 800);
+            Consumable c5 = createConsumable("cnsmble5", consumable, getTileFromIndex(7, 6), Consumable.ConsumableType.TYPE_HEALTH, 800);
             c5.Origin = new Vector2(20, 40);
-            Consumable c6 = createConsumable("cnsmble6", consumable, getNodeFromIndex(1, 1), Consumable.ConsumableType.TYPE_POWER, 100);
+            Consumable c6 = createConsumable("cnsmble6", consumable, getTileFromIndex(1, 1), Consumable.ConsumableType.TYPE_POWER, 100);
             c6.Origin = new Vector2(20, 40);
 
             // end test stuff-----------
 
-        }
-
-        /// <summary>
-        /// Pass through the node graph and generate neighbors for all nodes.
-        /// Neighbors are generated based on which nodes are adjacent.
-        /// </summary>
-        protected void generateNeighbors()
-        {
-            for (int x = 0; x < _numRows; x++)
-                for (int y = 0; y < _numCols; y++)
-                {
-                    GameNode node = getNodeFromIndex(x, y);
-
-                    int indxTOP = y + 1;
-                    if (indxTOP >= 0) node.attachNeighbor(getNodeFromIndex(x, indxTOP), 0);
-
-                    int indxBOTTOM = y - 1;
-                    if (indxBOTTOM < _numRows) node.attachNeighbor(getNodeFromIndex(x, indxBOTTOM), 1);
-
-                    int indxLEFT = x + 1;
-                    if (indxLEFT < _numCols) node.attachNeighbor(getNodeFromIndex(indxLEFT, y), 2);
-
-                    int indxRIGHT = x - 1;
-                    if (indxRIGHT >= 0) node.attachNeighbor(getNodeFromIndex(indxRIGHT, y), 3);
-                }
         }
 
 
@@ -260,29 +232,14 @@ namespace GDD2Project1
         /// Apply one update to the entire GameLevel
         /// </summary>
         /// <param name="gameTime">Used to determine time delta</param>
-        public void update(GameTime gameTime)
+        public void update(float dt)
         {
-            // Get delta time in seconds
-            float dt = (float)gameTime.ElapsedGameTime.Milliseconds / 1000.0f;
-
-            // Poll user input
-            pollInput();
-
             // Update camera
-            _cameraController.update(dt);
             _camera.update(dt);
 
             // Update all character movement
             foreach (KeyValuePair<String, GameCharacter> entry in _characters)
                 entry.Value.applyDisplacement(dt);
-        }
-
-        /// <summary>
-        /// Primary game level function to poll user input
-        /// </summary>
-        protected void pollInput()
-        {
-            _player.pollInput();
         }
 
 
@@ -291,11 +248,8 @@ namespace GDD2Project1
         /// Draw the entire GameLevel
         /// </summary>
         /// <param name="spriteBatch">SpriteBatch used for rendering</param>
-        public void draw(SpriteBatch spriteBatch, GameTime gameTime)
+        public void draw(SpriteBatch spriteBatch, float dt)
         {
-            // Get delta time in seconds
-            float dt = (float)gameTime.ElapsedGameTime.Milliseconds / 1000.0f;
-
             // Begin drawing according to this level's camera
             spriteBatch.Begin(
                 SpriteSortMode.Deferred,
@@ -325,25 +279,25 @@ namespace GDD2Project1
                 case Direction.DIR_NE:
                     for (int x = 0; x < _numRows; x++)
                         for (int y = _numCols - 1; y >= 0; y--)
-                            drawNode(spriteBatch, getNodeFromIndex(x, y), dt, true);
+                            drawNode(spriteBatch, getTileFromIndex(x, y), dt, true);
                     break;
 
                 case Direction.DIR_SE:
                     for (int x = _numRows - 1; x >= 0; x--)
                         for (int y = _numCols - 1; y >= 0; y--)
-                            drawNode(spriteBatch, getNodeFromIndex(x, y), dt, true);
+                            drawNode(spriteBatch, getTileFromIndex(x, y), dt, true);
                     break;
 
                 case Direction.DIR_SW:
                     for (int x = _numRows - 1; x >= 0; x--)
                         for (int y = 0; y < _numCols; y++)
-                            drawNode(spriteBatch, getNodeFromIndex(x, y), dt, true);
+                            drawNode(spriteBatch, getTileFromIndex(x, y), dt, true);
                     break;
 
                 case Direction.DIR_NW:
                     for (int x = 0; x < _numRows; x++)
                         for (int y = 0; y < _numCols; y++)
-                            drawNode(spriteBatch, getNodeFromIndex(x, y), dt, true);
+                            drawNode(spriteBatch, getTileFromIndex(x, y), dt, true);
                     break;
             }
         }
@@ -366,35 +320,6 @@ namespace GDD2Project1
             if (recursive)
                 foreach (KeyValuePair<String, GameNode> childEntry in node.getChildren)
                     drawNode(spriteBatch, childEntry.Value, dt, true);
-        }
-
-
-        //-------------------------------------------------------------------------
-        /// <summary>
-        /// Creates and returns a new Drawable, which may then be attached to a GameNode
-        /// </summary>
-        /// <typeparam name="T">Type of Drawable to create. Must be type Drawable</typeparam>
-        /// <param name="texturePath">Path to texture file</param>
-        /// <returns></returns>
-        public T createDrawable<T>(String texturePath, String name) where T : Drawable
-        {
-            Texture2D texture = _contentManager.Load<Texture2D>(texturePath);
-            T drawable = (T)Activator.CreateInstance(typeof(T), new object[]{texture, name});
-
-            _drawables.Add(name, drawable);
-
-            return drawable;
-        }
-
-        /// <summary>
-        /// Destroy a previously created Drawable
-        /// </summary>
-        /// <param name="name">Name of drawable to destroy</param>
-        public void destroyDrawable(String name)
-        {
-            if (!_drawables.ContainsKey(name))
-                return;
-            _drawables.Remove(name);
         }
 
 
@@ -463,7 +388,7 @@ namespace GDD2Project1
         /// <param name="x">X index</param>
         /// <param name="y">Y index</param>
         /// <returns>Game node at corresponding index</returns>
-        public GameNode getNodeFromIndex(int x, int y)
+        public GameNode getTileFromIndex(int x, int y)
         {
             if (    x < 0 || x > _numCols
                 ||  y < 0 || y > _numRows)
@@ -477,14 +402,14 @@ namespace GDD2Project1
         /// </summary>
         /// <param name="coordinates">Screen coordinates</param>
         /// <returns>GameNode at the location specified</returns>
-        public GameNode getNodeFromScreenCoordinates(Vector2 coordinates)
+        public GameNode getTileFromScreenCoordinates(Vector2 coordinates)
         {
             // TODO: needs to be able to grab elevated tiles
 
             coordinates = _camera.screenToIsometric(coordinates);
             Vector3 isoCoords = new Vector3(coordinates.X, 0.0f, coordinates.Y);
 
-            return getNodeFromIsometricCoordinates(isoCoords);
+            return getTileFromIsometricCoordinates(isoCoords);
         }
 
         /// <summary>
@@ -493,7 +418,7 @@ namespace GDD2Project1
         /// </summary>
         /// <param name="isoCoords">Isometric coordinates</param>
         /// <returns>Tile GameNode at position</returns>
-        public GameNode getNodeFromIsometricCoordinates(Vector3 isoCoords)
+        public GameNode getTileFromIsometricCoordinates(Vector3 isoCoords)
         {
             // Map to graph indices
             isoCoords.X += _tileOrigin.X;
@@ -513,7 +438,7 @@ namespace GDD2Project1
 
             isoCoords.X = (_numCols - 1) - isoCoords.X;
 
-            return getNodeFromIndex((int)isoCoords.Z, (int)isoCoords.X);
+            return getTileFromIndex((int)isoCoords.Z, (int)isoCoords.X);
         }
     }
 }

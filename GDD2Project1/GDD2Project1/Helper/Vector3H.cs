@@ -6,7 +6,7 @@ using Microsoft.Xna.Framework;
 
 namespace GDD2Project1
 {
-    class Vector3H
+    public class Vector3H
     {
         public static float Magnitude(Vector3 v)
         {

@@ -6,7 +6,7 @@ using Microsoft.Xna.Framework;
 
 namespace GDD2Project1
 {
-    class Camera2D : Actor
+    public class Camera2D : Actor
     {
         protected Matrix
             _transformation,
@@ -75,7 +75,7 @@ namespace GDD2Project1
         public Camera2D(GameLevelManager gameLevelMgr)
             : base(gameLevelMgr)
         {
-            _rotationZ = (float)(Math.PI / 2.0f);
+            _rotationZ = (float)(Math.PI / 4.0f);
             _rotationX = (float)(Math.PI / 6.0f);
             _zoom = 0.5f;
         }

@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework;
 
 namespace GDD2Project1
 {
-    class CameraController
+    public class CameraController : ActorController
     {
         protected const float   BASE_OFFSET         = (float)(Math.PI * 0.25);
         protected const float   ROTATION_INTERVAL   = (float)(Math.PI * 0.5f);
@@ -17,8 +17,6 @@ namespace GDD2Project1
         protected const float   MAX_ZOOM            = 1.0f;
         protected const float   TOLERANCE           = 0.005f;
         protected const float   SMOOTH_FACTOR       = 6.0f;
-
-        protected Camera2D      _camera;
 
         protected GameNode      _nodeTarget;
         protected bool          _followNodeTarget;
@@ -37,9 +35,9 @@ namespace GDD2Project1
         /// a Camera2D.
         /// </summary>
         /// <param name="camera">Camera to control</param>
-        public CameraController(Camera2D camera)
+        public CameraController(Camera2D camera, String name)
+            : base(camera, name)
         {
-            _camera = camera;
             setRotationIntervalTarget(2);
             setZoomTarget(MIN_ZOOM);
         }
@@ -47,29 +45,20 @@ namespace GDD2Project1
 
         //-------------------------------------------------------------------------
         /// <summary>
-        /// This update loop applies whatever influence to
-        /// the camera this controller is currently having
+        /// Shorthand function for returning the inherited actor as a Camera2D
         /// </summary>
-        /// <param name="dt">Delta time</param>
-        public void update(float dt)
+        /// <returns>Camera2D controlled by this controller</returns>
+        public Camera2D getCamera()
         {
-            pollUserInput();
-
-            if (_rotating)
-                applyRotation(dt);
-
-            if (_zooming)
-                applyZoom(dt);
-
-            if (_nodeTarget != null)
-                if (_followNodeTarget)
-                    applyFollowTarget(dt);
+            return _actor as Camera2D;
         }
 
+
+        //-------------------------------------------------------------------------
         /// <summary>
         /// Provide the player with input control of the camera
         /// </summary>
-        protected void pollUserInput()
+        public override void pollInput()
         {
             if (InputManager.GetOneKeyPressDown(Keys.Right))
                 setRotationIntervalTarget(_rotationIntervalTarget + 1);
@@ -80,6 +69,26 @@ namespace GDD2Project1
                 setZoomTarget(_zoomTarget + ZOOM_INTERVAL);
             if (InputManager.GetOneKeyPressDown(Keys.OemMinus))
                 setZoomTarget(_zoomTarget - ZOOM_INTERVAL);
+        }
+
+
+        //-------------------------------------------------------------------------
+        /// <summary>
+        /// This update loop applies whatever influence to
+        /// the camera this controller is currently having
+        /// </summary>
+        /// <param name="dt">Delta time</param>
+        public override void update(float dt)
+        {
+            if (_rotating)
+                applyRotation(dt);
+
+            if (_zooming)
+                applyZoom(dt);
+
+            if (_nodeTarget != null)
+                if (_followNodeTarget)
+                    applyFollowTarget(dt);
         }
 
 
@@ -113,10 +122,10 @@ namespace GDD2Project1
         protected void applyFollowTarget(float dt)
         {
             Vector2 nodePos = _nodeTarget.Position;
-            if (_camera.Position == nodePos)
+            if (getCamera().Position == nodePos)
                 return;
 
-            _camera.Position = nodePos;
+            getCamera().Position = nodePos;
 
             if (!_zooming)
                 setZoomTarget(1.0f);
@@ -146,7 +155,7 @@ namespace GDD2Project1
         /// <param name="dt">Delta time</param>
         protected void applyRotation(float dt)
         {
-            float diff = _rotationTarget - _camera.RotationZ;
+            float diff = _rotationTarget - getCamera().RotationZ;
 
             // If we reach the extremes of either rotation,
             // add or subtract a full rotation so we don't do
@@ -157,12 +166,12 @@ namespace GDD2Project1
                 diff += ((float)Math.PI * 2);
 
             // Apply the rotation
-            _camera.RotationZ += diff * SMOOTH_FACTOR * dt;
+            getCamera().RotationZ += diff * SMOOTH_FACTOR * dt;
 
             // Snap to our target if we've reached it
             if (Math.Abs(diff) < TOLERANCE)
             {
-                _camera.RotationZ = _rotationTarget;
+                getCamera().RotationZ = _rotationTarget;
                 _rotating = false;
                 return;
             }
@@ -192,14 +201,14 @@ namespace GDD2Project1
         /// <param name="dt">Delta time</param>
         protected void applyZoom(float dt)
         {
-            float diff      = _zoomTarget - _camera.Zoom;
+            float diff = _zoomTarget - getCamera().Zoom;
 
-            _camera.Zoom += diff * SMOOTH_FACTOR * dt;
+            getCamera().Zoom += diff * SMOOTH_FACTOR * dt;
 
             // Did we reach our target?
             if (Math.Abs(diff) < TOLERANCE)
             {
-                _camera.Zoom = _zoomTarget;
+                getCamera().Zoom = _zoomTarget;
                 _zooming = false;
             }
         }

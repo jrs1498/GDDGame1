@@ -15,7 +15,7 @@ namespace GDD2Project1
     /// This class also takes care of managing an isometric position, as well
     /// as a screen position cache.
     /// </summary>
-    class GameNode : Actor
+    public class GameNode : Actor
     {
         protected GameNode                      _parent;
         protected GameNode[]                    _neighbors;

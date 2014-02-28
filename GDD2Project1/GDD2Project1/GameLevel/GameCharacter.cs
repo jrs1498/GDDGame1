@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace GDD2Project1
 {
-    class GameCharacter : GameObject
+    public class GameCharacter : GameObject
     {
         protected float                 _moveSpeed;
         protected CharacterState        _chrState;

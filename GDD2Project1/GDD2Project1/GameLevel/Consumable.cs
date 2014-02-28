@@ -8,7 +8,7 @@ namespace GDD2Project1
     /// <summary>
     /// This class represents any items that may be consumed by a character.
     /// </summary>
-    class Consumable : GameObject
+    public class Consumable : GameObject
     {
         protected ConsumableType    _type;
         protected int               _amount;

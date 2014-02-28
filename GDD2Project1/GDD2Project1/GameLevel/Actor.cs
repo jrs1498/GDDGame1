@@ -11,7 +11,7 @@ namespace GDD2Project1
     /// however, that an actor class is a visible GameObject. A Camera, for example, needs
     /// to know only of its position.
     /// </summary>
-    class Actor
+    public class Actor
     {
         protected GameLevelManager _gameLevelMgr;
 

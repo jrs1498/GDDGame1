@@ -7,7 +7,7 @@ using Microsoft.Xna.Framework;
 
 namespace GDD2Project1
 {
-    class DrawableAnimated : Drawable
+    public class DrawableAnimated : Drawable
     {
         protected readonly int FRAME_WIDTH;
         protected readonly int FRAME_HEIGHT;

@@ -10,9 +10,9 @@ namespace GDD2Project1
         /// </summary>
         static void Main(string[] args)
         {
-            using (Game1 game = new Game1())
+            using (ScreenManager screenMgr = new ScreenManager())
             {
-                game.Run();
+                screenMgr.Run();
             }
         }
     }

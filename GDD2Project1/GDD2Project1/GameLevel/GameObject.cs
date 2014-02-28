@@ -10,7 +10,7 @@ namespace GDD2Project1
     /// <summary>
     /// GameObject class represent an actual object in the GameLevel.
     /// </summary>
-    class GameObject : GameNode
+    public class GameObject : GameNode
     {
         protected Drawable      _drawable;
         protected Color         _color;
@@ -207,7 +207,7 @@ namespace GDD2Project1
             if (_parent == null || _parent == _gameLevelMgr.Root)
                 return;
 
-            GameNode parentTile = _gameLevelMgr.getNodeFromIsometricCoordinates(_positionIsometric);
+            GameNode parentTile = _gameLevelMgr.getTileFromIsometricCoordinates(_positionIsometric);
 
             if (parentTile == _parent)
                 return;

@@ -7,10 +7,10 @@ using Microsoft.Xna.Framework;
 
 namespace GDD2Project1
 {
-    class Drawable
+    public class Drawable
     {
-        protected Texture2D _texture;
-        protected String _name;
+        protected Texture2D     _texture;
+        protected String        _name;
 
         //-------------------------------------------------------------------------
         /// <summary>
@@ -19,8 +19,8 @@ namespace GDD2Project1
         /// <param name="texture">The Drawable's texture</param>
         public Drawable(Texture2D texture, String name = "")
         {
-            _texture = texture;
-            _name = name;
+            _texture    = texture;
+            _name       = name;
         }
 
 
