@@ -42,19 +42,19 @@ namespace GDD2Project1
         }
 
 
-        //-------------------------------------------------------------------------
-        /// <summary>
-        /// Primary input functionality. This is where the User may control the GameCharacter
-        /// </summary>
-        public override void pollInput()
-        {
-            if (InputManager.GetOneLeftClickDown())
-            {
-                GameNode clickedNode =
-                    getGameLevelMgr().getTileFromScreenCoordinates(InputManager.GetMouseLocation());
-                if (clickedNode != null)
-                    getCharacter().setDestination(clickedNode);
-            }
-        }
+        ////-------------------------------------------------------------------------
+        ///// <summary>
+        ///// Primary input functionality. This is where the User may control the GameCharacter
+        ///// </summary>
+        //public override void pollInput()
+        //{
+        //    if (InputManager.GetOneLeftClickDown())
+        //    {
+        //        GameNode clickedNode =
+        //            getGameLevelMgr().getTileFromScreenCoordinates(InputManager.GetMouseLocation());
+        //        if (clickedNode != null)
+        //            getCharacter().setDestination(clickedNode);
+        //    }
+        //}
     }
 }

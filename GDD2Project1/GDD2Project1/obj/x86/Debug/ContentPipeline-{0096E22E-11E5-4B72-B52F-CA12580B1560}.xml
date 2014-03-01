@@ -91,6 +91,33 @@
       <Output>E:\Projects\GDD2Project1\GDD2Project1\GDD2Project1\bin\x86\Debug\Content\textures\interface\button.xnb</Output>
       <Time>2014-02-28T00:13:17.9931658-05:00</Time>
     </Item>
+    <Item>
+      <Source>textures\DefaultStyle.png</Source>
+      <Name>textures\DefaultStyle</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>E:\Projects\GDD2Project1\GDD2Project1\GDD2Project1\bin\x86\Debug\Content\textures\DefaultStyle.xnb</Output>
+      <Time>2014-02-28T22:28:11.1810716-05:00</Time>
+    </Item>
+    <Item>
+      <Source>Fonts\DefaultFont.spritefont</Source>
+      <Name>Fonts\DefaultFont</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+      <Options>None</Options>
+      <Output>E:\Projects\GDD2Project1\GDD2Project1\GDD2Project1\bin\x86\Debug\Content\Fonts\DefaultFont.xnb</Output>
+      <Time>2014-02-28T22:38:16.4236895-05:00</Time>
+    </Item>
+    <Item>
+      <Source>Fonts\DefaultHeading.spritefont</Source>
+      <Name>Fonts\DefaultHeading</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+      <Options>None</Options>
+      <Output>E:\Projects\GDD2Project1\GDD2Project1\GDD2Project1\bin\x86\Debug\Content\Fonts\DefaultHeading.xnb</Output>
+      <Time>2014-02-28T22:38:16.4236895-05:00</Time>
+    </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <ContentProjectGUID>{0096E22E-11E5-4B72-B52F-CA12580B1560}</ContentProjectGUID>

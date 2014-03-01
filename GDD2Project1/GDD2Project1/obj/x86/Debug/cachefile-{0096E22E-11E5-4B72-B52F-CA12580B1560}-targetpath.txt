@@ -8,3 +8,6 @@ Content\textures\tiles\tile4.xnb
 Content\textures\tiles\tile5.xnb
 Content\textures\consumables\consumable.xnb
 Content\textures\interface\button.xnb
+Content\textures\DefaultStyle.xnb
+Content\Fonts\DefaultFont.xnb
+Content\Fonts\DefaultHeading.xnb

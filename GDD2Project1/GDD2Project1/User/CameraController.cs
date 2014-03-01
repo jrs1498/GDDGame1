@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework.Input;
 using Microsoft.Xna.Framework;
+using InputEventSystem;
 
 namespace GDD2Project1
 {
@@ -28,6 +29,10 @@ namespace GDD2Project1
         protected bool          _rotating;
         protected bool          _zooming;
 
+        protected bool          _freeLook           = false;
+        protected float         _moveSpeed          = 200.0f;
+        protected Vector2       _velocity           = Vector2.Zero;
+
 
         //-------------------------------------------------------------------------
         /// <summary>
@@ -38,8 +43,9 @@ namespace GDD2Project1
         public CameraController(Camera2D camera, String name)
             : base(camera, name)
         {
-            setRotationIntervalTarget(2);
+            setRotationIntervalTarget(0);
             setZoomTarget(MIN_ZOOM);
+            setFreeLook(false);
         }
 
 
@@ -56,19 +62,100 @@ namespace GDD2Project1
 
         //-------------------------------------------------------------------------
         /// <summary>
-        /// Provide the player with input control of the camera
+        /// Local KeyDown event handler. This function should inject this event
+        /// to any components that check for input.
         /// </summary>
-        public override void pollInput()
+        /// <param name="e">Key event arguments</param>
+        public override void injectKeyDown(KeyEventArgs e)
         {
-            if (InputManager.GetOneKeyPressDown(Keys.Right))
-                setRotationIntervalTarget(_rotationIntervalTarget + 1);
-            if (InputManager.GetOneKeyPressDown(Keys.Left))
-                setRotationIntervalTarget(_rotationIntervalTarget - 1);
+            switch (e.Key)
+            { 
+                case Keys.Right:
+                    setRotationIntervalTarget(_rotationIntervalTarget + 1);
+                    break;
 
-            if (InputManager.GetOneKeyPressDown(Keys.OemPlus))
-                setZoomTarget(_zoomTarget + ZOOM_INTERVAL);
-            if (InputManager.GetOneKeyPressDown(Keys.OemMinus))
-                setZoomTarget(_zoomTarget - ZOOM_INTERVAL);
+                case Keys.Left:
+                    setRotationIntervalTarget(_rotationIntervalTarget - 1);
+                    break;
+
+                case Keys.OemPlus:
+                    setZoomTarget(_zoomTarget + ZOOM_INTERVAL);
+                    break;
+
+                case Keys.OemMinus:
+                    setZoomTarget(_zoomTarget - ZOOM_INTERVAL);
+                    break;
+
+                case Keys.W:
+                    _velocity.Y -= _moveSpeed;
+                    break;
+
+                case Keys.S:
+                    _velocity.Y += _moveSpeed;
+                    break;
+
+                case Keys.A:
+                    _velocity.X -= _moveSpeed;
+                    break;
+
+                case Keys.D:
+                    _velocity.X += _moveSpeed;
+                    break;
+            }
+        }
+
+        /// <summary>
+        /// Local KeyUp event handler. This function should inject this event
+        /// to any components that check for input.
+        /// </summary>
+        /// <param name="e">Key event arguments</param>
+        public override void injectKeyUp(KeyEventArgs e)
+        {
+            switch (e.Key)
+            {
+                case Keys.W:
+                    _velocity.Y += _moveSpeed;
+                    break;
+
+                case Keys.S:
+                    _velocity.Y -= _moveSpeed;
+                    break;
+
+                case Keys.A:
+                    _velocity.X += _moveSpeed;
+                    break;
+
+                case Keys.D:
+                    _velocity.X -= _moveSpeed;
+                    break;
+            }
+        }
+
+        /// <summary>
+        /// Local MouseDown event handler. This function should inject this event
+        /// to any components that check for input.
+        /// </summary>
+        /// <param name="e">Key event arguments</param>
+        public override void injectMouseDown(MouseEventArgs e)
+        {
+        }
+
+        /// <summary>
+        /// Local MouseUp event handler. This function should inject this event
+        /// to any components that check for input.
+        /// </summary>
+        /// <param name="e">Key event arguments</param>
+        public override void injectMouseUp(MouseEventArgs e)
+        {
+        }
+
+        /// <summary>
+        /// Local MouseMove event handler. This function should inject this event
+        /// to any components that check for input.
+        /// </summary>
+        /// <param name="e">Key event arguments</param>
+        public override void injectMouseMove(MouseEventArgs e)
+        {
         }
 
 
@@ -87,8 +174,13 @@ namespace GDD2Project1
                 applyZoom(dt);
 
             if (_nodeTarget != null)
+            {
                 if (_followNodeTarget)
                     applyFollowTarget(dt);
+            }
+            else if (_freeLook)
+                applyVelocity(dt);
+           
         }
 
 
@@ -211,6 +303,30 @@ namespace GDD2Project1
                 getCamera().Zoom = _zoomTarget;
                 _zooming = false;
             }
+        }
+
+
+        //-------------------------------------------------------------------------
+        /// <summary>
+        /// Set whether or not this camera is in free look mode
+        /// </summary>
+        /// <param name="value">Obvious</param>
+        public void setFreeLook(bool value)
+        {
+            _velocity = Vector2.Zero;
+            _freeLook = value;
+        }
+
+        /// <summary>
+        /// If the Camera is in free look mode, apply the velocity vector to it.
+        /// </summary>
+        /// <param name="dt">Delta time</param>
+        protected void applyVelocity(float dt)
+        {
+            if (_velocity == Vector2.Zero)
+                return;
+
+            getCamera().translate(_velocity * dt);
         }
     }
 }

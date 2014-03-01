@@ -204,7 +204,7 @@ namespace GDD2Project1
         /// </summary>
         protected void updateParentTile()
         {
-            if (_parent == null || _parent == _gameLevelMgr.Root)
+            if (_parent == null)
                 return;
 
             GameNode parentTile = _gameLevelMgr.getTileFromIsometricCoordinates(_positionIsometric);

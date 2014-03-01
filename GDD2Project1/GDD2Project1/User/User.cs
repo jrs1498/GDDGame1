@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework.Input;
+using InputEventSystem;
 
 namespace GDD2Project1
 {
@@ -23,15 +24,63 @@ namespace GDD2Project1
 
         //-------------------------------------------------------------------------
         /// <summary>
-        /// Primary input function. All input functionality should be handled
-        /// here. After checking for any user-specific input, this function
-        /// should then check for input within any of the contained tools.
+        /// Local KeyDown event handler. This function should inject this event
+        /// to any components that check for input.
         /// </summary>
-        public void pollInput()
+        /// <param name="e">Key event arguments</param>
+        public virtual void injectKeyDown(KeyEventArgs e)
         {
             if (_controllers != null)
                 foreach (KeyValuePair<String, ActorController> entry in _controllers)
-                    entry.Value.pollInput();
+                    entry.Value.injectKeyDown(e);
+        }
+
+        /// <summary>
+        /// Local KeyUp event handler. This function should inject this event
+        /// to any components that check for input.
+        /// </summary>
+        /// <param name="e">Key event arguments</param>
+        public virtual void injectKeyUp(KeyEventArgs e)
+        {
+            if (_controllers != null)
+                foreach (KeyValuePair<String, ActorController> entry in _controllers)
+                    entry.Value.injectKeyUp(e);
+        }
+
+        /// <summary>
+        /// Local MouseDown event handler. This function should inject this event
+        /// to any components that check for input.
+        /// </summary>
+        /// <param name="e">Key event arguments</param>
+        public virtual void injectMouseDown(MouseEventArgs e)
+        {
+            if (_controllers != null)
+                foreach (KeyValuePair<String, ActorController> entry in _controllers)
+                    entry.Value.injectMouseDown(e);
+        }
+
+        /// <summary>
+        /// Local MouseUp event handler. This function should inject this event
+        /// to any components that check for input.
+        /// </summary>
+        /// <param name="e">Key event arguments</param>
+        public virtual void injectMouseUp(MouseEventArgs e)
+        {
+            if (_controllers != null)
+                foreach (KeyValuePair<String, ActorController> entry in _controllers)
+                    entry.Value.injectMouseUp(e);
+        }
+
+        /// <summary>
+        /// Local MouseMove event handler. This function should inject this event
+        /// to any components that check for input.
+        /// </summary>
+        /// <param name="e">Key event arguments</param>
+        public virtual void injectMouseMove(MouseEventArgs e)
+        {
+            if (_controllers != null)
+                foreach (KeyValuePair<String, ActorController> entry in _controllers)
+                    entry.Value.injectMouseMove(e);
         }
 
 
@@ -58,18 +107,18 @@ namespace GDD2Project1
         /// <typeparam name="T">Type of controller</typeparam>
         /// <param name="name">Name of controllers</param>
         /// <returns>False if failed</returns>
-        public virtual bool createController<T>(Actor actor, String name)
+        public virtual T createController<T>(Actor actor, String name)
             where T : ActorController
         {
             if (_controllers == null)
                 _controllers = new Dictionary<string, ActorController>();
             else if (_controllers.ContainsKey(name))
-                return false;
+                return _controllers[name] as T;
 
             T controller = (T)Activator.CreateInstance(typeof(T), new object[] { actor, name });
             _controllers.Add(name, controller);
 
-            return true;
+            return controller;
         }
 
         /// <summary>

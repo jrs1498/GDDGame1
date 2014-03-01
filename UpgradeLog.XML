@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?><?xml-stylesheet type='text/xsl' href='_UpgradeReport_Files/UpgradeReport.xslt'?><UpgradeLog>
+<Properties><Property Name="Solution" Value="GDD2Project1">
+</Property><Property Name="Solution File" Value="E:\Projects\GDD2Project1\GDD2Project1.sln">
+</Property><Property Name="Date" Value="Friday, February 28, 2014">
+</Property><Property Name="Time" Value="22:09:06 PM">
+</Property></Properties><Event ErrorLevel="0" Project="InputEventSystem" Source="external\InputEventSystem\InputEventSystem.csproj" Description="Project file successfully backed up as E:\Projects\GDD2Project1\Backup\InputEventSystem.csproj">
+</Event><Event ErrorLevel="0" Project="InputEventSystem" Source="external\InputEventSystem\InputEventSystem.cs" Description="File successfully backed up as E:\Projects\GDD2Project1\Backup\InputEventSystem.cs">
+</Event><Event ErrorLevel="0" Project="InputEventSystem" Source="external\InputEventSystem\Properties\AssemblyInfo.cs" Description="File successfully backed up as E:\Projects\GDD2Project1\Backup\Properties\AssemblyInfo.cs">
+</Event><Event ErrorLevel="0" Project="InputEventSystem" Source="external\InputEventSystem\InputEventSystem.csproj" Description="Project converted successfully">
+</Event><Event ErrorLevel="3" Project="InputEventSystem" Source="external\InputEventSystem\InputEventSystem.csproj" Description="Converted">
+</Event><Event ErrorLevel="2" Project="" Source="external\InputEventSystem\InputEventSystem.csproj" Description="Unable to read the project file 'InputEventSystem.csproj'. &#xA;E:\Projects\GDD2Project1\external\InputEventSystem\InputEventSystem.csproj(65,3): The imported project &quot;C:\Program Files (x86)\MSBuild\Microsoft\XNA Game Studio\v2.0\Microsoft.Xna.GameStudio.Common.targets&quot; was not found. Confirm that the path in the &lt;Import&gt; declaration is correct, and that the file exists on disk.">
+</Event></UpgradeLog>

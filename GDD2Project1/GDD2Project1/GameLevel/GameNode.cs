@@ -18,11 +18,9 @@ namespace GDD2Project1
     public class GameNode : Actor
     {
         protected GameNode                      _parent;
-        protected GameNode[]                    _neighbors;
         protected Dictionary<String, GameNode>  _children;
 
         protected String                        _name;
-        protected int                           _graphIndex;
 
         protected Vector3                       _positionIsometric;
         protected Vector2                       _scale;
@@ -51,7 +49,6 @@ namespace GDD2Project1
             _scale                  = new Vector2(1.0f);
             _rotation               = 0;
 
-            _neighbors              = new GameNode[4];
             _children               = new Dictionary<string, GameNode>();
         }
 
@@ -130,28 +127,6 @@ namespace GDD2Project1
             get { return _parent; }
         }
 
-        /// <summary>
-        /// Returns this GameNode's neighbor array.
-        /// This array will hold a maximum of four adjacent nodes
-        /// and each node MAY be null. When iterating, you must
-        /// check that each node is not null.
-        /// </summary>
-        public GameNode[] getNeighbors
-        {
-            get { return _neighbors; }
-        }
-
-        /// <summary>
-        /// Attach a neighboring GameNode to this GameNode.
-        /// Neighboring GameNode's should only be node's adjacent to this one
-        /// </summary>
-        /// <param name="node">Neighboring node</param>
-        /// <param name="index">Index location</param>
-        public virtual void attachNeighbor(GameNode node, int index)
-        {
-            _neighbors[index] = node;
-        }
-
 
         //-------------------------------------------------------------------------
         /// <summary>
@@ -160,16 +135,6 @@ namespace GDD2Project1
         public String getName
         {
             get { return _name; }
-        }
-
-        /// <summary>
-        /// Get / Set this GameNode's graph index. This index is used
-        /// for graph traversal purposes, i.e. pathfinding.
-        /// </summary>
-        public int GraphIndex
-        {
-            get { return _graphIndex; }
-            set { _graphIndex = value; }
         }
 
 
@@ -192,26 +157,8 @@ namespace GDD2Project1
             get { return _position; }
         }
 
-        /// <summary>
-        /// Get / Set this GameNode's scale factor. This scale is applied to this node,
-        /// as well as all of its children nodes. (not yet functional)
-        /// </summary>
-        public Vector2 Scale
-        {
-            get { return _scale; }
-            set { _scale = value; }
-        }
 
-        /// <summary>
-        /// Get / Set this GameNode's rotation amount. This rotation is applied
-        /// to this GameNode, as well as all children nodes. (not yet functional)
-        /// </summary>
-        public float Rotation
-        {
-            get { return _rotation; }
-            set { _rotation = value; }
-        }
-
+        //-------------------------------------------------------------------------
         /// <summary>
         /// Translate this GameNode by some specified amount.
         /// Vector's X and Y coordinates correspond to isometric
@@ -243,15 +190,6 @@ namespace GDD2Project1
         public virtual void translate(float x, float y, float z)
         {
             translate(new Vector3(x, y, z));
-        }
-
-        /// <summary>
-        /// Translate this GameNode from it's current position to a target position
-        /// </summary>
-        /// <param name="target">Target position</param>
-        public virtual void translateTo(Vector3 target)
-        {
-            translate(target - _positionIsometric);
         }
 
         /// <summary>
@@ -323,16 +261,13 @@ namespace GDD2Project1
             node._parent = this;
             _children.Add(node.getName, node);
 
-            // Root node cannot fire events
-            if (this != _gameLevelMgr.Root)
-            {
-                // Fire event
-                if (ChildAttached != null)
-                    ChildAttached(this, node, e);
 
-                // Subscribe
-                node.subscribeToNode(this);
-            }
+            // Fire event
+            if (ChildAttached != null)
+                ChildAttached(this, node, e);
+
+            // Subscribe
+            node.subscribeToNode(this);
         }
 
         /// <summary>
@@ -350,16 +285,12 @@ namespace GDD2Project1
             _children.Remove(name);
             child._parent = null;
 
-            // Root node cannot fire events
-            if (this != _gameLevelMgr.Root)
-            {
-                // Unsubscribe
-                child.unsubscribeFromNode(this);
+            // Unsubscribe
+            child.unsubscribeFromNode(this);
 
-                // Fire event
-                if (ChildDetached != null)
-                    ChildDetached(this, child, e);
-            }
+            // Fire event
+            if (ChildDetached != null)
+                ChildDetached(this, child, e);
 
             return child;
         }

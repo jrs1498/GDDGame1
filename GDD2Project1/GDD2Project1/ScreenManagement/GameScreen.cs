@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using InputEventSystem;
+using WindowSystem;
 
 namespace GDD2Project1
 {
@@ -11,6 +13,7 @@ namespace GDD2Project1
     {
         protected GameContentManager    _gameContentMgr;
         protected GameLevelManager      _gameLevelMgr;
+        protected User                  _user;
 
 
         //-------------------------------------------------------------------------
@@ -19,11 +22,96 @@ namespace GDD2Project1
         /// </summary>
         /// <param name="screenMgr">ScreenManager containing this GameScreen</param>
         /// <param name="name">Name of this GameScreen</param>
-        public GameScreen(ScreenManager screenMgr, String name)
-            : base(screenMgr, name)
+        public GameScreen(ScreenManager screenMgr, GUIManager guiMgr, String name)
+            : base(screenMgr, guiMgr, name)
         {
             // Initialize GameContentManager, for content loading / unloading
             _gameContentMgr = new GameContentManager(screenMgr.Content);
+        }
+
+
+        //-------------------------------------------------------------------------
+        /// <summary>
+        /// Screen initialization function. Should handle setting up the screen,
+        /// members, displaying initial dialogs, etc.
+        /// </summary>
+        /// <returns>False if failed</returns>
+        public override bool init()
+        {
+            if (!initUser())
+                return false;
+
+            if (!base.init())
+                return false;
+
+            return true;
+        }
+
+        /// <summary>
+        /// Primary user initialization function. This is where the User class should
+        /// be instantiated, hooked up with controllers, etc. This function contains
+        /// general user initialization code, but it should be overridden in inherited
+        /// classes to implement specific user initialization. Inherited classes should
+        /// call base.initUser() before any specific initialization is done.
+        /// </summary>
+        /// <returns>False if failed</returns>
+        protected virtual bool initUser()
+        {
+            _user = new User();
+
+            return true;
+        }
+
+
+        //-------------------------------------------------------------------------
+        /// <summary>
+        /// Local KeyDown event handler. This function should inject this event
+        /// to any components that check for input.
+        /// </summary>
+        /// <param name="e">Key event arguments</param>
+        public override void injectKeyDown(KeyEventArgs e)
+        {
+            _user.injectKeyDown(e);
+        }
+
+        /// <summary>
+        /// Local KeyUp event handler. This function should inject this event
+        /// to any components that check for input.
+        /// </summary>
+        /// <param name="e">Key event arguments</param>
+        public override void injectKeyUp(KeyEventArgs e)
+        {
+            _user.injectKeyUp(e);
+        }
+
+        /// <summary>
+        /// Local MouseDown event handler. This function should inject this event
+        /// to any components that check for input.
+        /// </summary>
+        /// <param name="e">Key event arguments</param>
+        public override void injectMouseDown(MouseEventArgs e)
+        {
+            _user.injectMouseDown(e);
+        }
+
+        /// <summary>
+        /// Local MouseUp event handler. This function should inject this event
+        /// to any components that check for input.
+        /// </summary>
+        /// <param name="e">Key event arguments</param>
+        public override void injectMouseUp(InputEventSystem.MouseEventArgs e)
+        {
+            _user.injectMouseUp(e);
+        }
+
+        /// <summary>
+        /// Local MouseMove event handler. This function should inject this event
+        /// to any components that check for input.
+        /// </summary>
+        /// <param name="e">Key event arguments</param>
+        public override void injectMouseMove(InputEventSystem.MouseEventArgs e)
+        {
+            _user.injectMouseMove(e);
         }
 
 
@@ -36,7 +124,11 @@ namespace GDD2Project1
         {
             float dt = gameTime.ElapsedGameTime.Milliseconds / 1000.0f;
 
+            // Update GameLevel and User
             _gameLevelMgr.update(dt);
+            _user.update(dt);
+
+            // Base updates interface
             base.update(gameTime);
         }
 

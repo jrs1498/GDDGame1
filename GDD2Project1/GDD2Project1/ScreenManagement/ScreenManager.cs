@@ -4,6 +4,9 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using InputEventSystem;
+using WindowSystem;
+using Microsoft.Xna.Framework.Input;
 
 namespace GDD2Project1
 {
@@ -19,6 +22,11 @@ namespace GDD2Project1
         private Dictionary<String, Screen>      _screens;
         private String                          _currentScreen;
 
+        private InputEvents                     _input;
+        private GUIManager                      _gui;
+        private const int                       MAX_PRESSED_KEYS = 8;
+        private List<Keys>                      _pressedKeys;
+
         private const int INITIAL_WINDOW_WIDTH  = 1280;
         private const int INITIAL_WINDOW_HEIGHT = 720;
 
@@ -31,6 +39,14 @@ namespace GDD2Project1
         {
             _graphics                               = new GraphicsDeviceManager(this);
             Content.RootDirectory                   = "Content";
+
+            _input = new InputEvents(this);
+            Components.Add(this._input);
+
+            _gui = new GUIManager(this);
+            Components.Add(this._gui);
+
+            IsFixedTimeStep = false;
 
             _graphics.PreferredBackBufferWidth      = INITIAL_WINDOW_WIDTH;
             _graphics.PreferredBackBufferHeight     = INITIAL_WINDOW_HEIGHT;
@@ -45,6 +61,17 @@ namespace GDD2Project1
         /// </summary>
         protected override void Initialize()
         {
+            _gui.Initialize();
+
+            // Initialize buffered input event handlers
+            _input.KeyDown      += new KeyDownHandler(ReceiveKeyDown);
+            _input.KeyUp        += new KeyUpHandler(ReceiveKeyUp);
+            _input.MouseDown    += new MouseDownHandler(ReceiveMouseDown);
+            _input.MouseUp      += new MouseUpHandler(ReceiveMouseUp);
+            _input.MouseMove    += new MouseMoveHandler(ReceiveMouseMove);
+
+            _pressedKeys        = new List<Keys>();
+
             base.Initialize();
         }
 
@@ -58,9 +85,16 @@ namespace GDD2Project1
             _spriteBatch    = new SpriteBatch(GraphicsDevice);
             _screens        = new Dictionary<String, Screen>();
 
+            /*
             // Load a GamePlayScreen
             createScreen<GamePlayScreen>("gameScreen", true);
             getScreen<GamePlayScreen>("gameScreen").init("exampleLevel");
+            */
+            
+            // Load a GameEditorScreen
+            createScreen<GameEditorScreen>("editorScreen", true);
+            getScreen<GameEditorScreen>("editorScreen").init();
+            
         }
 
 
@@ -75,31 +109,19 @@ namespace GDD2Project1
 
         //-------------------------------------------------------------------------
         /// <summary>
-        /// Pass the command down through all contained objects to check for user input
-        /// </summary>
-        protected virtual void PollInput(Screen currentScreen)
-        {
-            InputManager.UpdateInput();
-            currentScreen.pollInput();
-        }
-
-
-        //-------------------------------------------------------------------------
-        /// <summary>
         /// Primary update function
         /// </summary>
         /// <param name="gameTime">Provides a snapshot of timing values</param>
         protected override void Update(GameTime gameTime)
         {
+            // Update input / gui
+            _input  .Update(gameTime);
+            _gui    .Update(gameTime);
+
+            // Update Screen
             Screen screen = getCurrentScreen();
             if (screen != null)
-            {
-                // Poll input
-                PollInput(screen);
-
-                if (screen != null)
-                    screen.update(gameTime);
-            }
+                screen.update(gameTime);
         }
 
 
@@ -111,11 +133,90 @@ namespace GDD2Project1
         protected override void Draw(GameTime gameTime)
         {
             // Clear the screen
-            GraphicsDevice.Clear(Color.White);
+            GraphicsDevice.Clear(Color.Black);
 
             Screen screen = getCurrentScreen();
             if (screen != null)
                 screen.draw(gameTime, _spriteBatch);
+
+            _gui.Draw(gameTime);
+        }
+
+
+        //-------------------------------------------------------------------------
+        /// <summary>
+        /// Root KeyDown event handler. This function needs to inject this event
+        /// into its current screen, which will further inject that event to its components
+        /// </summary>
+        /// <param name="e">Key event arguments</param>
+        protected virtual void ReceiveKeyDown(KeyEventArgs e)
+        {
+            // Check if we can press another key
+            if (_pressedKeys.Count >= MAX_PRESSED_KEYS) return;
+            if (_pressedKeys.Contains(e.Key))           return;
+
+            // Add key to our pressed keys
+            _pressedKeys.Add(e.Key);
+
+            // Fire the event
+            Screen screen = getCurrentScreen();
+            if (screen != null)
+                screen.injectKeyDown(e);
+        }
+
+        /// <summary>
+        /// Root KeyUp event handler. This function needs to inject this event
+        /// into its current screen, which will further inject that event to its components
+        /// </summary>
+        /// <param name="e">Key event arguments</param>
+        protected virtual void ReceiveKeyUp(KeyEventArgs e)
+        {
+            // Remove key from our pressed keys
+            if (!_pressedKeys.Remove(e.Key)) return;
+
+            // Fire the event
+            Screen screen = getCurrentScreen();
+            if (screen != null)
+                screen.injectKeyUp(e);
+        }
+
+        /// <summary>
+        /// Root MouseDown event handler. This function listens for the event,
+        /// and then passes the event down to its current screen and that screens
+        /// components.
+        /// </summary>
+        /// <param name="e">Mouse event arguments</param>
+        protected virtual void ReceiveMouseDown(MouseEventArgs e)
+        {
+            Screen screen = getCurrentScreen();
+            if (screen != null)
+                screen.injectMouseDown(e);
+        }
+
+        /// <summary>
+        /// Root MouseUp event handler. This function listens for the event,
+        /// and then passes the event down to its current screen and that screens
+        /// components.
+        /// </summary>
+        /// <param name="e">Mouse event arguments</param>
+        protected virtual void ReceiveMouseUp(MouseEventArgs e)
+        {
+            Screen screen = getCurrentScreen();
+            if (screen != null)
+                screen.injectMouseUp(e);
+        }
+
+        /// <summary>
+        /// Root MouseMoved event handler. This function listens for the event,
+        /// and then passes the event down to its current screen and that screens
+        /// components.
+        /// </summary>
+        /// <param name="e">Mouse event arguments</param>
+        protected virtual void ReceiveMouseMove(MouseEventArgs e)
+        {
+            Screen screen = getCurrentScreen();
+            if (screen != null)
+                screen.injectMouseMove(e);
         }
 
 
@@ -168,7 +269,7 @@ namespace GDD2Project1
             if (_screens.ContainsKey(name))
                 return false;
 
-            T screen = (T)Activator.CreateInstance(typeof(T), new object[]{this, name});
+            T screen = (T)Activator.CreateInstance(typeof(T), new object[]{this, _gui, name});
             _screens.Add(name, screen);
 
             if (setToCurrent)

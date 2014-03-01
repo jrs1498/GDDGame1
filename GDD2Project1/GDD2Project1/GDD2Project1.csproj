@@ -75,9 +75,8 @@
     <Reference Include="System.Net" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="GUI\InterfaceButton.cs" />
-    <Compile Include="GUI\InterfaceObject.cs" />
-    <Compile Include="GUI\InterfaceRoot.cs" />
+    <Compile Include="InputEventSys\InputEventSystem.cs" />
+    <Compile Include="ScreenManagement\GameEditorScreen.cs" />
     <Compile Include="User\ActorController.cs" />
     <Compile Include="User\CharacterController.cs" />
     <Compile Include="GameLevel\Camera2D.cs" />
@@ -93,13 +92,41 @@
     <Compile Include="GameLevel\GameObject.cs" />
     <Compile Include="ScreenManagement\GamePlayScreen.cs" />
     <Compile Include="ScreenManagement\GameScreen.cs" />
-    <Compile Include="Helper\InputManager.cs" />
     <Compile Include="User\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="ScreenManagement\Screen.cs" />
     <Compile Include="ScreenManagement\ScreenManager.cs" />
     <Compile Include="Helper\Vector3H.cs" />
+    <Compile Include="WindowSystem\Bar.cs" />
+    <Compile Include="WindowSystem\Box.cs" />
+    <Compile Include="WindowSystem\CheckBox.cs" />
+    <Compile Include="WindowSystem\ComboBox.cs" />
+    <Compile Include="WindowSystem\Dialog.cs" />
+    <Compile Include="WindowSystem\DisplaySettingsDialog.cs" />
+    <Compile Include="WindowSystem\Font.cs" />
+    <Compile Include="WindowSystem\GUIManager.cs" />
+    <Compile Include="WindowSystem\Icon.cs" />
+    <Compile Include="WindowSystem\Image.cs" />
+    <Compile Include="WindowSystem\ImageButton.cs" />
+    <Compile Include="WindowSystem\Label.cs" />
+    <Compile Include="WindowSystem\ListBox.cs" />
+    <Compile Include="WindowSystem\MenuBar.cs" />
+    <Compile Include="WindowSystem\MenuItem.cs" />
+    <Compile Include="WindowSystem\MessageBox.cs" />
+    <Compile Include="WindowSystem\MouseCursor.cs" />
+    <Compile Include="WindowSystem\MovableArea.cs" />
+    <Compile Include="WindowSystem\PopUpMenu.cs" />
+    <Compile Include="WindowSystem\RadioButton.cs" />
+    <Compile Include="WindowSystem\RadioGroup.cs" />
+    <Compile Include="WindowSystem\ResizableArea.cs" />
+    <Compile Include="WindowSystem\ScrollBar.cs" />
+    <Compile Include="WindowSystem\Skin.cs" />
+    <Compile Include="WindowSystem\SkinnedComponent.cs" />
+    <Compile Include="WindowSystem\TextBox.cs" />
+    <Compile Include="WindowSystem\TextButton.cs" />
+    <Compile Include="WindowSystem\UIComponent.cs" />
+    <Compile Include="WindowSystem\Window.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Game.ico" />

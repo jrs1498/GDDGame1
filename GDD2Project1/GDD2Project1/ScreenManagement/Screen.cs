@@ -4,14 +4,16 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using GDD2Project1.GUI;
+using Microsoft.Xna.Framework.Input;
+using InputEventSystem;
+using WindowSystem;
 
 namespace GDD2Project1
 {
     public abstract class Screen
     {
         protected ScreenManager     _screenMgr;
-        protected InterfaceRoot     _interface;
+        protected GUIManager        _guiMgr;
         protected String            _name;
 
 
@@ -20,22 +22,83 @@ namespace GDD2Project1
         /// Default Screen constructor
         /// </summary>
         /// <param name="screenMgr">Screen Manager containing this Screen</param>
-        public Screen(ScreenManager screenMgr, String name)
+        public Screen(ScreenManager screenMgr, GUIManager guiMgr, String name)
         {
             _screenMgr  = screenMgr;
-            _interface  = new InterfaceRoot();
+            _guiMgr     = guiMgr;
             _name       = name;
         }
 
 
         //-------------------------------------------------------------------------
         /// <summary>
-        /// Primary input checking method
+        /// Screen initialization function. Should handle setting up the screen,
+        /// members, displaying initial dialogs, etc.
         /// </summary>
-        public virtual void pollInput()
-        { 
-            // TODO: Override this function in inherited class.
-            // Used for checking user input
+        /// <returns>False if failed</returns>
+        public virtual bool init()
+        {
+            if (!initGUI())
+                return false;
+
+            return true;
+        }
+
+        /// <summary>
+        /// Each screen will implement its own GUI. This function should be overridden
+        /// by inherited classes, and should contain all GUI initialization.
+        /// <returns>False is failed</returns>
+        /// </summary>
+        protected virtual bool initGUI()
+        {
+            return true;
+        }
+
+
+        //-------------------------------------------------------------------------
+        /// <summary>
+        /// Local KeyDown event handler. This function should inject this event
+        /// to any components that check for input.
+        /// </summary>
+        /// <param name="e">Key event arguments</param>
+        public virtual void injectKeyDown(KeyEventArgs e)
+        {
+        }
+
+        /// <summary>
+        /// Local KeyUp event handler. This function should inject this event
+        /// to any components that check for input.
+        /// </summary>
+        /// <param name="e">Key event arguments</param>
+        public virtual void injectKeyUp(KeyEventArgs e)
+        {
+        }
+
+        /// <summary>
+        /// Local MouseDown event handler. This function should inject this event
+        /// to any components that check for input.
+        /// </summary>
+        /// <param name="e">Mouse event arguments</param>
+        public virtual void injectMouseDown(MouseEventArgs e)
+        {
+        }
+
+        /// <summary>
+        /// Local MouseUp event handler. This function should inject this event
+        /// to any components that check for input.
+        /// </summary>
+        /// <param name="e">Mouse event arguments</param>
+        public virtual void injectMouseUp(MouseEventArgs e)
+        {
+        }
+
+        /// <summary>
+        /// Local MouseMove event handler. This function should inject this event
+        /// to any components that check for input.
+        /// </summary>
+        /// <param name="e">Mouse event arguments</param>
+        public virtual void injectMouseMove(MouseEventArgs e)
+        {
         }
 
 
@@ -47,7 +110,6 @@ namespace GDD2Project1
         public virtual void update(GameTime gameTime)
         { 
             // TODO: Override and add screen update functionality
-            _interface.update(gameTime);
         }
 
 
@@ -60,7 +122,6 @@ namespace GDD2Project1
         public virtual void draw(GameTime gameTime, SpriteBatch spriteBatch)
         { 
             // TODO: Override and add screen draw functionality
-            _interface.draw(gameTime, spriteBatch);
         }
     }
 }

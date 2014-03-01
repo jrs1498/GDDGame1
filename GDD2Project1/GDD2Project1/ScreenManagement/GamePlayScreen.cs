@@ -4,23 +4,20 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using GDD2Project1.GUI;
+using WindowSystem;
 
 namespace GDD2Project1
 {
     public class GamePlayScreen : GameScreen
     {
-        protected User _user;
-
-
         //-------------------------------------------------------------------------
         /// <summary>
         /// Default GamePlayScreen constructor
         /// </summary>
         /// <param name="screenMgr">ScreenManager containing this GamePlayScreen</param>
         /// <param name="name">Name of this GamePlayScreen</param>
-        public GamePlayScreen(ScreenManager screenMgr, String name)
-            : base(screenMgr, name)
+        public GamePlayScreen(ScreenManager screenMgr, GUIManager guiMgr, String name)
+            : base(screenMgr, guiMgr, name)
         { 
             
         }
@@ -44,9 +41,6 @@ namespace GDD2Project1
             // Initialize the user
             initUser();
 
-            // Load an example interface (should be deleted later)
-            exampleInterface();
-
             return true;
         }
 
@@ -54,69 +48,26 @@ namespace GDD2Project1
         /// Initialize the user, setting controllers and controller attributes.
         /// </summary>
         /// <returns>False if failed</returns>
-        public virtual bool initUser()
+        protected override bool initUser()
         {
             // Initialize User
-            _user = new User();
+            if (!base.initUser())
+                return false;
 
             // Create User's controllers
             _user.createController<CameraController>(
                 _gameLevelMgr.Camera,
                 "camController");
-            _user.createController<CharacterController>(
-                _gameLevelMgr.getCharacter("dudetwo"),
-                "charController");
+            //_user.createController<CharacterController>(
+            //    _gameLevelMgr.getCharacter("dudetwo"),
+            //    "charController");
             
-            // Set controller attributes
-            _user.getController<CameraController>("camController").setCharacterTarget(
-                _gameLevelMgr.getCharacter("dudetwo"),
-                true);
+            //// Set controller attributes
+            //_user.getController<CameraController>("camController").setCharacterTarget(
+            //    _gameLevelMgr.getCharacter("dudetwo"),
+            //    true);
 
             return true;
-        }
-
-        private void exampleInterface()
-        {
-            // Create two buttons
-            _interface.createInterfaceObject<InterfaceButton>("mytestbutton");
-            _interface.createInterfaceObject<InterfaceButton>("mytestbutton2");
-
-            // Initialize the new buttons
-            InterfaceButton button = _interface.getInterfaceObject<InterfaceButton>("mytestbutton");
-            InterfaceButton button2 = _interface.getInterfaceObject<InterfaceButton>("mytestbutton2");
-            button.X = 50;
-            button.Y = 50;
-            button2.X = 125;
-            button2.Y = 50;
-            button.Width = button2.Width = 50;
-            button.Height = button2.Height = 30;
-            
-            // Give them some color and texture
-            Texture2D buttonTexture = _screenMgr.Content.Load<Texture2D>("textures/interface/button");
-            button.Texture = button2.Texture = buttonTexture;
-            button.Color = Color.Red;
-            button2.Color = Color.Green;
-
-            // Hook up the button's clicked event to do something
-            button.Clicked += delegate(InterfaceObject sender, EventArgs e)
-            {
-                Console.WriteLine(sender.Name + " was just clicked!");
-            };
-
-            button2.Clicked += delegate(InterfaceObject sender, EventArgs e)
-            {
-                Console.WriteLine(sender.Name + " was ALSO just clicked!");
-            };
-        }
-
-
-        //-------------------------------------------------------------------------
-        /// <summary>
-        /// Primary input checking method
-        /// </summary>
-        public override void pollInput()
-        {
-            _user.pollInput();
         }
 
 
@@ -129,10 +80,7 @@ namespace GDD2Project1
         {
             float dt = gameTime.ElapsedGameTime.Milliseconds / 1000.0f;
 
-            // Update user and all of their controllers
-            _user.update(dt);
-
-            // Base updates GameLevel
+            // Base updates GameLevel and User
             base.update(gameTime);
         }
 
@@ -146,7 +94,7 @@ namespace GDD2Project1
         public override void draw(GameTime gameTime, SpriteBatch spriteBatch)
         {
             base.draw(gameTime, spriteBatch);
-            // TODO: Add HUD drawing after gamelevel (base)
+            // TODO: Implement HUD drawing
         }
 
 

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using InputEventSystem;
 
 namespace GDD2Project1
 {
@@ -25,13 +26,48 @@ namespace GDD2Project1
 
         //-------------------------------------------------------------------------
         /// <summary>
-        /// Base user input function. Every controller has a pollInput function which
-        /// should be called in the User's update function.
+        /// Local KeyDown event handler. This function should inject this event
+        /// to any components that check for input.
         /// </summary>
-        public virtual void pollInput()
-        { 
-            // TODO: Override this method in inherited classes and
-            // provide controller functionality.
+        /// <param name="e">Key event arguments</param>
+        public virtual void injectKeyDown(KeyEventArgs e)
+        {
+        }
+
+        /// <summary>
+        /// Local KeyUp event handler. This function should inject this event
+        /// to any components that check for input.
+        /// </summary>
+        /// <param name="e">Key event arguments</param>
+        public virtual void injectKeyUp(KeyEventArgs e)
+        {
+        }
+
+        /// <summary>
+        /// Local MouseDown event handler. This function should inject this event
+        /// to any components that check for input.
+        /// </summary>
+        /// <param name="e">Key event arguments</param>
+        public virtual void injectMouseDown(MouseEventArgs e)
+        {
+        }
+
+        /// <summary>
+        /// Local MouseUp event handler. This function should inject this event
+        /// to any components that check for input.
+        /// </summary>
+        /// <param name="e">Key event arguments</param>
+        public virtual void injectMouseUp(MouseEventArgs e)
+        {
+        }
+
+        /// <summary>
+        /// Local MouseMove event handler. This function should inject this event
+        /// to any components that check for input.
+        /// </summary>
+        /// <param name="e">Key event arguments</param>
+        public virtual void injectMouseMove(MouseEventArgs e)
+        {
         }
 
 
