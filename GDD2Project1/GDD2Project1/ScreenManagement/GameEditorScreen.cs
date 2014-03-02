@@ -4,13 +4,18 @@ using System.Linq;
 using System.Text;
 using WindowSystem;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.GamerServices;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Storage;
 using InputEventSystem;
+using GameData;
 
 namespace GDD2Project1
 {
     public class GameEditorScreen : GameScreen
     {
+        protected const String LEVEL_DIRECTORY = "..\\..\\..\\..\\GDD2Project1Content\\levels\\";
+
         protected GUIManager        _guiMgr;
 
         protected EditMode          _editMode;
@@ -21,7 +26,7 @@ namespace GDD2Project1
         public enum EditMode
         {
             EDITMODE_NONE,
-            EDITMODE_TILE
+            EDITMODE_TERRAIN
         };
 
 
@@ -83,21 +88,88 @@ namespace GDD2Project1
             _screenMgr.Components.Add(_guiMgr);
             _guiMgr.Initialize();
 
-            // Internal Funcs for easy GUI item creation
-            Func<String, MenuItem> create_mi = (String text) =>
+            #region Shorthand GUI Creation
+            Func<String, MenuItem> create_mi = 
+                (String text) =>
                 {
                     MenuItem menuItem = new MenuItem(_screenMgr, _guiMgr);
                     menuItem.Text = text;
                     return menuItem;
                 };
-            Func<int, int, PopUpMenu> create_popup = (int width, int height) =>
+
+            Func<String, int, int, int, int, TextButton> create_button =
+                (String text, int w, int h, int x, int y) =>
                 {
-                    PopUpMenu menu = new PopUpMenu(_screenMgr, _guiMgr);
-                    menu.Width = width;
-                    menu.Height = height;
-                    _guiMgr.Add(menu);
-                    return menu;
+                    TextButton button = new TextButton(_screenMgr, _guiMgr);
+                    button.Text = text;
+                    button.Width = w;
+                    button.Height = h;
+                    button.X = x;
+                    button.Y = y;
+                    return button;
                 };
+
+            Func<String, int, int, Dialog> create_dialog = 
+                (String text, int w, int h) =>
+                {
+                    Dialog dialog = new Dialog(_screenMgr, _guiMgr);
+                    _guiMgr.Add(dialog);
+                    dialog.TitleText = text;
+                    dialog.Width = w;
+                    dialog.Height = h;
+                    dialog.X = 100;
+                    dialog.Y = 50;
+                    dialog.HasCloseButton = false;
+
+                    int buttonWidth = 50;
+                    int buttonHeight = 20;
+                    int buttonXoffset = 10;
+                    int buttonYoffset = dialog.Height - 60;
+
+                    // Ok button
+                    TextButton buttonOk = create_button
+                        ("Ok", buttonWidth, buttonHeight, buttonXoffset, buttonYoffset);
+                    buttonOk.Click += delegate(UIComponent sender)
+                    {
+                        dialog.DialogResult = DialogResult.OK;
+                        dialog.CloseWindow();
+                    };
+                    dialog.Add(buttonOk);
+
+                    // Cancel button
+                    TextButton buttonCancel = create_button
+                        ("Cancel", buttonWidth, buttonHeight, buttonXoffset * 2 + buttonWidth, buttonYoffset);
+                    buttonCancel.Click += delegate(UIComponent sender)
+                    {
+                        dialog.DialogResult = DialogResult.Cancel;
+                        dialog.CloseWindow();
+                    };
+                    dialog.Add(buttonCancel);
+
+                    return dialog;
+                };
+
+            Func<String, int, int, int, Dialog, TextBox> create_textbox = 
+                (String label, int w, int x, int y, Dialog d) =>
+                {
+                    TextBox textBox = new TextBox(_screenMgr, _guiMgr);
+                    textBox.Width = w;
+                    textBox.X = x;
+                    textBox.Y = y;
+
+                    Label textLabel = new Label(_screenMgr, _guiMgr);
+                    textLabel.Text = label;
+                    textLabel.Width = 100;
+                    textLabel.Height = 50;
+                    textLabel.X = x - textLabel.Width;
+                    textLabel.Y = y + 5;
+
+                    d.Add(textBox);
+                    d.Add(textLabel);
+
+                    return textBox;
+                };
+            #endregion
 
             MenuBar menuBar = new MenuBar(_screenMgr, _guiMgr);
             _guiMgr.Add(menuBar);
@@ -110,16 +182,74 @@ namespace GDD2Project1
                 {   // New
                     MenuItem newButton = create_mi("New");
                     fileButton.Add(newButton);
-                }
-                //-----------------------------------------------------------------
-                {   // Save
-                    MenuItem saveButton = create_mi("Save");
-                    fileButton.Add(saveButton);
+
+                    newButton.Click += delegate(UIComponent sender)
+                    {
+                        Dialog dialog = create_dialog("New", 300, 200);
+                        TextBox rows = create_textbox("Rows", 50, 150, 10, dialog);
+                        TextBox cols = create_textbox("Cols", 50, 150, 40, dialog);
+                        TextBox tile = create_textbox("Tile", 100, 150, 70, dialog);
+
+                        dialog.Close += delegate(UIComponent csender)
+                        {
+                            switch (dialog.DialogResult)
+                            { 
+                                case DialogResult.Cancel:
+                                    return;
+                                case DialogResult.OK:
+                                    int numRows = Convert.ToInt32(rows.Text);
+                                    int numCols = Convert.ToInt32(cols.Text);
+                                    _gameLevelMgr.newLevel(numRows, numCols, tile.Text);
+                                    return;
+                            }
+                        };
+                    };
                 }
                 //-----------------------------------------------------------------
                 {   // Save as
                     MenuItem saveAsButton = create_mi("Save as");
                     fileButton.Add(saveAsButton);
+
+                    saveAsButton.Click += delegate(UIComponent sender)
+                    {
+                        Dialog saveAsDialog = create_dialog("Save as", 300, 200);
+                        TextBox name = create_textbox("Name", 200, 100, 50, saveAsDialog);
+
+                        saveAsDialog.Close += delegate(UIComponent csender)
+                        {
+                            switch (saveAsDialog.DialogResult)
+                            { 
+                                case DialogResult.Cancel:
+                                    return;
+                                case DialogResult.OK:
+                                    _gameLevelMgr.saveLevel(LEVEL_DIRECTORY, name.Text);
+                                    return;
+                            }
+                        };
+                    };
+                }
+                //-----------------------------------------------------------------
+                {   // Load
+                    MenuItem loadButton = create_mi("Load");
+                    fileButton.Add(loadButton);
+
+                    loadButton.Click += delegate(UIComponent sender)
+                    {
+                        Dialog loadDialog = create_dialog("Load", 300, 200);
+                        TextBox name = create_textbox("Name", 200, 100, 50, loadDialog);
+
+                        loadDialog.Close += delegate(UIComponent csender)
+                        {
+                            switch (loadDialog.DialogResult)
+                            {
+                                case DialogResult.Cancel:
+                                    return;
+                                case DialogResult.OK:
+                                    _gameLevelMgr.loadLevel(LEVEL_DIRECTORY, name.Text);
+                                    return;
+                            }
+                        };
+                    };
                 }
                 //-----------------------------------------------------------------
                 {   // Quit to menu
@@ -243,7 +373,7 @@ namespace GDD2Project1
                 case EditMode.EDITMODE_NONE:
                     break;
 
-                case EditMode.EDITMODE_TILE:
+                case EditMode.EDITMODE_TERRAIN:
                     break;
             }
 

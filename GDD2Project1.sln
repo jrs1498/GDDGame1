@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 11.00
 # Visual C# Express 2010
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GDD2Project1", "GDD2Project1\GDD2Project1\GDD2Project1.csproj", "{3AAFC5B2-F2F9-4A3F-8922-9537679A825A}"
 EndProject
-Project("{96E2B04D-8817-42C6-938A-82C39BA4D311}") = "GDD2Project1Content", "GDD2Project1\GDD2Project1Content\GDD2Project1Content.contentproj", "{0096E22E-11E5-4B72-B52F-CA12580B1560}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GDD2Project1Content", "GDD2Project1\GDD2Project1Content\GDD2Project1Content.contentproj", "{0096E22E-11E5-4B72-B52F-CA12580B1560}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GameData", "GameData\GameData.csproj", "{5025ABBC-5E2F-413D-A672-F2C14C548245}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,6 +19,10 @@ Global
 		{3AAFC5B2-F2F9-4A3F-8922-9537679A825A}.Release|x86.Build.0 = Release|x86
 		{0096E22E-11E5-4B72-B52F-CA12580B1560}.Debug|x86.ActiveCfg = Debug|x86
 		{0096E22E-11E5-4B72-B52F-CA12580B1560}.Release|x86.ActiveCfg = Release|x86
+		{5025ABBC-5E2F-413D-A672-F2C14C548245}.Debug|x86.ActiveCfg = Debug|x86
+		{5025ABBC-5E2F-413D-A672-F2C14C548245}.Debug|x86.Build.0 = Debug|x86
+		{5025ABBC-5E2F-413D-A672-F2C14C548245}.Release|x86.ActiveCfg = Release|x86
+		{5025ABBC-5E2F-413D-A672-F2C14C548245}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

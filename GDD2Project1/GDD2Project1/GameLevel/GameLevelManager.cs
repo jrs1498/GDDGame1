@@ -2,9 +2,12 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Xml;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Storage;
+using Microsoft.Xna.Framework.Content.Pipeline.Serialization.Intermediate;
 
 namespace GDD2Project1
 {
@@ -61,7 +64,99 @@ namespace GDD2Project1
             _characters = new Dictionary<string, GameCharacter>();
 
             // Load an example level
-            loadLevel(20, 10);
+            //loadLevel(20, 10);
+        }
+
+
+        //-------------------------------------------------------------------------
+        /// <summary>
+        /// Save this GameLevel to the specified filename at the specified directory, relative to
+        /// the current working directory.
+        /// </summary>
+        /// <param name="directory">Directory relative to CWD</param>
+        /// <param name="filename">Filename to save as</param>
+        public void saveLevel(String directory, String filename)
+        {
+            XmlWriterSettings settings = new XmlWriterSettings();
+            settings.Indent = true;
+
+            GameLevelData data = new GameLevelData();
+            data.NumRows = _tileRows;
+            data.NumCols = _tileCols;
+            data.Tiles = new GameObjectData[_tileRows * _tileCols];
+
+            Func<GameObject, GameObjectData> save_obj = (GameObject gameObj) =>
+                { return gameObj.saveGameObject(); };
+
+            for (int x = 0; x < _tileRows; x++)
+                for (int y = 0; y < _tileCols; y++)
+                    data.Tiles[x * _tileCols + y] = save_obj(_tiles[x, y]);
+
+            // Write the level
+            using (XmlWriter writer = XmlWriter.Create(directory + filename, settings))
+                IntermediateSerializer.Serialize(writer, data, null);
+
+            // Write a line to console
+            Console.WriteLine("saved level " + directory + filename + ".xml");
+        }
+
+        /// <summary>
+        /// Load a GameLevel from a specified filename at directory.
+        /// </summary>
+        /// <param name="directory">Directory containing file</param>
+        /// <param name="filename">Saved level's filename</param>
+        public void loadLevel(String directory, String filename)
+        {
+            GameLevelData data = _gameContentMgr.loadLevelData(directory + filename);
+            _tileRows = data.NumRows;
+            _tileCols = data.NumCols;
+            _tiles = new GameObject[_tileRows, _tileCols];
+
+            // Load tile array
+            for (int x = 0; x < _tileRows; x++)
+                for (int y = 0; y < _tileCols; y++)
+                {
+                    GameObjectData objData = data.Tiles[x * _tileCols + y];
+                    Drawable drawable = _gameContentMgr.loadDrawable<Drawable>(
+                        "textures\\tiles\\", objData.Drawable);
+                    GameObject tile = new GameObject(this, objData.Name);
+                    tile.attachDrawable(drawable);
+                    tile.PositionIsometric = objData.PositionIsometric;
+                    _tiles[x, y] = tile;
+                }
+        }
+
+        /// <summary>
+        /// Create a new level
+        /// </summary>
+        /// <param name="rows">Number of tile rows</param>
+        /// <param name="cols">Number of tile columns</param>
+        /// <param name="drawable">Default tile drawable texture</param>
+        public void newLevel(int rows, int cols, String drawable)
+        {
+            _tiles = new GameObject[rows, cols];
+            _tileRows = rows;
+            _tileCols = cols;
+
+            Drawable tileDrawable = _gameContentMgr.loadDrawable<Drawable>(
+                "textures\\tiles\\", drawable);
+
+            for (int x = 0; x < rows; x++)
+                for (int y = 0; y < cols; y++)
+                {
+                    String tileName = ("r" + cols + "c" + rows);
+                    GameObject tile = new GameObject(this, tileName);
+
+                    tile.attachDrawable(tileDrawable);
+
+                    Vector3 positionIsometric;
+                    positionIsometric.X = x * TILE_SIZE;
+                    positionIsometric.Y = 0.0f;
+                    positionIsometric.Z = y * TILE_SIZE;
+                    tile.PositionIsometric = positionIsometric;
+
+                    _tiles[x, y] = tile;
+                }
         }
 
 
@@ -72,7 +167,7 @@ namespace GDD2Project1
             _tileRows = rows;
             _tileCols = cols;
 
-            _gameContentMgr.loadDrawable<Drawable>("textures/tiles/", "rocktile");
+            _gameContentMgr.loadDrawable<Drawable>("textures\\tiles\\", "rocktile");
             Drawable tileDrawable = _gameContentMgr.getDrawable<Drawable>("rocktile");
 
             for (int row = 0; row < rows; row++)
@@ -264,5 +359,19 @@ namespace GDD2Project1
             if (node is GameCharacter)
                 _characters.Remove(node.getName);
         }
+    }
+
+
+
+
+
+    public class GameLevelData
+    {
+        public int NumRows;
+        public int NumCols;
+        public GameObjectData[] Tiles;
+
+        public GameLevelData()
+        { }
     }
 }

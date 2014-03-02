@@ -75,6 +75,20 @@ namespace GDD2Project1
 
         //-------------------------------------------------------------------------
         /// <summary>
+        /// Save this GameNode
+        /// </summary>
+        /// <returns>Data corresponding to GameNode</returns>
+        public GameNodeData saveGameNode()
+        {
+            GameNodeData data = new GameNodeData();
+            data.Name = _name;
+            data.PositionIsometric = _positionIsometric;
+            return data;
+        }
+
+
+        //-------------------------------------------------------------------------
+        /// <summary>
         /// Subscribe to a node to receive events when that node attaches a new child.
         /// </summary>
         /// <param name="node">Node to receive events from</param>
@@ -294,5 +308,20 @@ namespace GDD2Project1
 
             return child;
         }
+    }
+
+
+
+
+    /// <summary>
+    /// Class used for saving a GameNode
+    /// </summary>
+    public class GameNodeData
+    {
+        public String Name;
+        public Vector3 PositionIsometric;
+
+        public GameNodeData()
+        { }
     }
 }

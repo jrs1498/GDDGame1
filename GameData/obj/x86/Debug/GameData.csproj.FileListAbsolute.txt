@@ -1,0 +1,6 @@
+E:\Projects\GDD2Project1\GameData\bin\x86\Debug\GameData.dll
+E:\Projects\GDD2Project1\GameData\bin\x86\Debug\GameData.pdb
+E:\Projects\GDD2Project1\GameData\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+E:\Projects\GDD2Project1\GameData\obj\x86\Debug\GameData.dll
+E:\Projects\GDD2Project1\GameData\obj\x86\Debug\GameData.pdb
+E:\Projects\GDD2Project1\GameData\obj\x86\Debug\GameData.csprojResolveAssemblyReference.cache

@@ -12,12 +12,17 @@ namespace GDD2Project1
         protected Texture2D     _texture;
         protected String        _name;
 
+
+        //-------------------------------------------------------------------------
+        public String Name { get { return _name; } }
+
+
         //-------------------------------------------------------------------------
         /// <summary>
         /// Default Drawable constructor
         /// </summary>
         /// <param name="texture">The Drawable's texture</param>
-        public Drawable(Texture2D texture, String name = "")
+        public Drawable(Texture2D texture, String name)
         {
             _texture    = texture;
             _name       = name;

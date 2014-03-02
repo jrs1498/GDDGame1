@@ -17,3 +17,5 @@ E:\Projects\GDD2Project1\GDD2Project1\GDD2Project1\bin\x86\Debug\Content\texture
 E:\Projects\GDD2Project1\GDD2Project1\GDD2Project1\bin\x86\Debug\Content\textures\DefaultStyle.xnb
 E:\Projects\GDD2Project1\GDD2Project1\GDD2Project1\bin\x86\Debug\Content\Fonts\DefaultFont.xnb
 E:\Projects\GDD2Project1\GDD2Project1\GDD2Project1\bin\x86\Debug\Content\Fonts\DefaultHeading.xnb
+E:\Projects\GDD2Project1\GDD2Project1\GDD2Project1\bin\x86\Debug\GameData.dll
+E:\Projects\GDD2Project1\GDD2Project1\GDD2Project1\bin\x86\Debug\GameData.pdb

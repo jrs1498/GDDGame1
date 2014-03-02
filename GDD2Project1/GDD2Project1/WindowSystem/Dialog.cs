@@ -76,6 +76,7 @@ namespace WindowSystem
         public DialogResult DialogResult
         {
             get { return this.result; }
+            set { result = value; }
         }
         #endregion
 

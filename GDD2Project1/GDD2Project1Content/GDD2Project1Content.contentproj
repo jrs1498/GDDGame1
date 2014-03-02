@@ -110,6 +110,18 @@
       <Processor>FontDescriptionProcessor</Processor>
     </Compile>
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="levels\example.xml">
+      <Name>example</Name>
+      <Importer>XmlImporter</Importer>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="levels\bananaphone.xml">
+      <Name>bananaphone</Name>
+      <Importer>XmlImporter</Importer>
+    </Content>
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\$(XnaFrameworkVersion)\Microsoft.Xna.GameStudio.ContentPipeline.targets" />
   <!--  To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

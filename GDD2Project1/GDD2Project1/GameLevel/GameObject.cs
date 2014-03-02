@@ -36,6 +36,21 @@ namespace GDD2Project1
 
         //-------------------------------------------------------------------------
         /// <summary>
+        /// Save this GameObject
+        /// </summary>
+        /// <returns>Data corresponding to GameObject</returns>
+        public GameObjectData saveGameObject()
+        {
+            GameObjectData data = new GameObjectData();
+            data.Name = _name;
+            data.PositionIsometric = _positionIsometric;
+            data.Drawable = _drawable.Name;
+            return data;
+        }
+
+
+        //-------------------------------------------------------------------------
+        /// <summary>
         /// Draws this GameObject's attached Drawable, if it exists. If there is no
         /// Drawable attached, then this function will immediately return.
         /// </summary>
@@ -215,5 +230,19 @@ namespace GDD2Project1
             _parent.detachChildNode(_name);
             parentTile.attachChildNode(this);
         }
+    }
+
+
+
+
+    /// <summary>
+    /// Class used for saving a GameObject
+    /// </summary>
+    public class GameObjectData : GameNodeData
+    {
+        public String Drawable;
+
+        public GameObjectData()
+        { }
     }
 }

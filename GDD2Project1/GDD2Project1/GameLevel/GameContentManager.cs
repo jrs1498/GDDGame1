@@ -46,17 +46,37 @@ namespace GDD2Project1
 
         //-------------------------------------------------------------------------
         /// <summary>
+        /// Loads an xml file containing level data, and returns the corresponding
+        /// deserialized GameLevelData
+        /// </summary>
+        /// <param name="loadPath">Path to file</param>
+        /// <returns>Deserialized XML level data</returns>
+        public GameLevelData loadLevelData(String loadPath)
+        {
+            return _contentMgr.Load<GameLevelData>(loadPath);
+        }
+
+
+        //-------------------------------------------------------------------------
+        /// <summary>
         /// Load a Drawable into memory so that it may be used in a GameLevel.
         /// </summary>
         /// <typeparam name="T">Type of Drawable</typeparam>
         /// <param name="directory">Relative directory containing drawable's texture</param>
         /// <param name="filename">Drawable's filename</param>
-        public void loadDrawable<T>(String directory, String filename)
+        public T loadDrawable<T>(String directory, String filename)
             where T : Drawable
         {
+            // If the drawable has already been loaded, simple return it
+            if (_drawables.ContainsKey(filename))
+                return _drawables[filename] as T;
+
+            // Otherwise, load it, and then return it
             Texture2D texture   = _contentMgr.Load<Texture2D>(directory + filename);
             T drawable          = (T)Activator.CreateInstance(typeof(T), new object[] { texture, filename });
             _drawables.Add(filename, drawable);
+
+            return drawable;
         }
 
         /// <summary>
