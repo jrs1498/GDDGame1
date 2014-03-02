@@ -17,7 +17,7 @@ namespace GDD2Project1
         /// <param name="screenMgr">ScreenManager containing this GamePlayScreen</param>
         /// <param name="name">Name of this GamePlayScreen</param>
         public GamePlayScreen(ScreenManager screenMgr, GUIManager guiMgr, String name)
-            : base(screenMgr, guiMgr, name)
+            : base(screenMgr, name)
         { 
             
         }

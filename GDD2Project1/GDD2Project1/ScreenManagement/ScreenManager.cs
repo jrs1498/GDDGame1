@@ -5,7 +5,6 @@ using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using InputEventSystem;
-using WindowSystem;
 using Microsoft.Xna.Framework.Input;
 
 namespace GDD2Project1
@@ -23,9 +22,10 @@ namespace GDD2Project1
         private String                          _currentScreen;
 
         private InputEvents                     _input;
-        private GUIManager                      _gui;
         private const int                       MAX_PRESSED_KEYS = 8;
         private List<Keys>                      _pressedKeys;
+
+        protected Vector2                       _mouseCoordinates;
 
         private const int INITIAL_WINDOW_WIDTH  = 1280;
         private const int INITIAL_WINDOW_HEIGHT = 720;
@@ -43,15 +43,10 @@ namespace GDD2Project1
             _input = new InputEvents(this);
             Components.Add(this._input);
 
-            _gui = new GUIManager(this);
-            Components.Add(this._gui);
-
             IsFixedTimeStep = false;
 
             _graphics.PreferredBackBufferWidth      = INITIAL_WINDOW_WIDTH;
             _graphics.PreferredBackBufferHeight     = INITIAL_WINDOW_HEIGHT;
-
-            IsMouseVisible                          = true;
         }
 
 
@@ -61,8 +56,6 @@ namespace GDD2Project1
         /// </summary>
         protected override void Initialize()
         {
-            _gui.Initialize();
-
             // Initialize buffered input event handlers
             _input.KeyDown      += new KeyDownHandler(ReceiveKeyDown);
             _input.KeyUp        += new KeyUpHandler(ReceiveKeyUp);
@@ -90,9 +83,10 @@ namespace GDD2Project1
             createScreen<GamePlayScreen>("gameScreen", true);
             getScreen<GamePlayScreen>("gameScreen").init("exampleLevel");
             */
+
             
             // Load a GameEditorScreen
-            createScreen<GameEditorScreen>("editorScreen", true);
+            createScreen<GameEditorScreen>("editorScreen", new object[]{this}, true);
             getScreen<GameEditorScreen>("editorScreen").init();
             
         }
@@ -116,7 +110,6 @@ namespace GDD2Project1
         {
             // Update input / gui
             _input  .Update(gameTime);
-            _gui    .Update(gameTime);
 
             // Update Screen
             Screen screen = getCurrentScreen();
@@ -138,8 +131,6 @@ namespace GDD2Project1
             Screen screen = getCurrentScreen();
             if (screen != null)
                 screen.draw(gameTime, _spriteBatch);
-
-            _gui.Draw(gameTime);
         }
 
 
@@ -214,6 +205,10 @@ namespace GDD2Project1
         /// <param name="e">Mouse event arguments</param>
         protected virtual void ReceiveMouseMove(MouseEventArgs e)
         {
+            // Update mouse coordinates
+            _mouseCoordinates.X = e.Position.X;
+            _mouseCoordinates.Y = e.Position.Y;
+
             Screen screen = getCurrentScreen();
             if (screen != null)
                 screen.injectMouseMove(e);
@@ -263,13 +258,13 @@ namespace GDD2Project1
         /// <typeparam name="T">Type of screen</typeparam>
         /// <param name="args">Constructor arguments corresponding to Screen type</param>
         /// <param name="name">Screen's name, used for referencing</param>
-        protected virtual bool createScreen<T>(String name, bool setToCurrent = false) 
+        protected virtual bool createScreen<T>(String name, object[] args = null, bool setToCurrent = false) 
             where T : Screen
         {
             if (_screens.ContainsKey(name))
                 return false;
-
-            T screen = (T)Activator.CreateInstance(typeof(T), new object[]{this, _gui, name});
+            
+            T screen = (T)Activator.CreateInstance(typeof(T), new object[]{this, name});
             _screens.Add(name, screen);
 
             if (setToCurrent)
@@ -312,6 +307,16 @@ namespace GDD2Project1
                 _currentScreen = null;
 
             return true;
+        }
+
+
+        //-------------------------------------------------------------------------
+        /// <summary>
+        /// Get the current known coordinates of the mouse cursor
+        /// </summary>
+        public Vector2 MouseCoordinates
+        {
+            get { return _mouseCoordinates; }
         }
     }
 }

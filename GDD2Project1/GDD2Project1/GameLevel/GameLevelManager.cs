@@ -61,7 +61,7 @@ namespace GDD2Project1
             _characters = new Dictionary<string, GameCharacter>();
 
             // Load an example level
-            loadLevel(10, 15);
+            loadLevel(20, 10);
         }
 
 
@@ -201,28 +201,13 @@ namespace GDD2Project1
         /// <param name="x">X index</param>
         /// <param name="y">Y index</param>
         /// <returns>Game node at corresponding index</returns>
-        public GameNode getTileAtIndex(int x, int y)
+        public GameObject getTileAtIndex(int x, int y)
         {
-            if (    x < 0 || x > _tileRows
-                ||  y < 0 || y > _tileCols)
+            if (    x < 0 || x >= _tileRows
+                ||  y < 0 || y >= _tileCols)
                 return null;
 
             return _tiles[x, y];
-        }
-
-        /// <summary>
-        /// Returns a node corresponding to the specified screen coordinates
-        /// </summary>
-        /// <param name="coordinates">Screen coordinates</param>
-        /// <returns>GameNode at the location specified</returns>
-        public GameNode getTileFromScreenCoordinates(Vector2 coordinates)
-        {
-            // TODO: needs to be able to grab elevated tiles
-
-            coordinates = _camera.screenToIsometric(coordinates);
-            Vector3 isoCoords = new Vector3(coordinates.X, 0.0f, coordinates.Y);
-
-            return getTileFromIsometricCoordinates(isoCoords);
         }
 
         /// <summary>
@@ -231,27 +216,36 @@ namespace GDD2Project1
         /// </summary>
         /// <param name="isoCoords">Isometric coordinates</param>
         /// <returns>Tile GameNode at position</returns>
-        public GameNode getTileFromIsometricCoordinates(Vector3 isoCoords)
+        public GameObject getTileFromIsometricCoordinates(Vector3 isoCoords)
         {
             // Map to graph indices
-            isoCoords.X += _tileOrigin.X;
-            isoCoords.Z += _tileOrigin.Y;
             isoCoords /= (float)TILE_SIZE;
-            isoCoords.X += _tileCols / 2;
-            isoCoords.Z += _tileRows / 2;
 
             // Drop the fractional portion
             isoCoords.X -= isoCoords.X % 1.0f;
             isoCoords.Z -= isoCoords.Z % 1.0f;
 
             // If we don't have a valid index, return null
-            if (isoCoords.X < 0 || isoCoords.X >= _tileCols
-                || isoCoords.Z < 0 || isoCoords.Z >= _tileRows)
+            if (isoCoords.X < 0 || isoCoords.X >= _tileRows
+                || isoCoords.Z < 0 || isoCoords.Z >= _tileCols)
                 return null;
 
-            isoCoords.X = (_tileCols - 1) - isoCoords.X;
+            return getTileAtIndex((int)isoCoords.X, (int)isoCoords.Z);
+        }
 
-            return getTileAtIndex((int)isoCoords.Z, (int)isoCoords.X);
+        /// <summary>
+        /// Returns a node corresponding to the specified screen coordinates
+        /// </summary>
+        /// <param name="coordinates">Screen coordinates</param>
+        /// <returns>GameNode at the location specified</returns>
+        public GameObject getTileFromScreenCoordinates(Vector2 coordinates)
+        {
+            // TODO: needs to be able to grab elevated tiles
+
+            coordinates = _camera.screenToIsometric(coordinates);
+            Vector3 isoCoords = new Vector3(coordinates.X, 0.0f, coordinates.Y);
+
+            return getTileFromIsometricCoordinates(isoCoords);
         }
 
 

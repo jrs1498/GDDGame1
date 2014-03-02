@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using InputEventSystem;
 
 namespace GDD2Project1
 {
@@ -40,21 +41,5 @@ namespace GDD2Project1
         {
             return getCharacter().GameLevelMgr;
         }
-
-
-        ////-------------------------------------------------------------------------
-        ///// <summary>
-        ///// Primary input functionality. This is where the User may control the GameCharacter
-        ///// </summary>
-        //public override void pollInput()
-        //{
-        //    if (InputManager.GetOneLeftClickDown())
-        //    {
-        //        GameNode clickedNode =
-        //            getGameLevelMgr().getTileFromScreenCoordinates(InputManager.GetMouseLocation());
-        //        if (clickedNode != null)
-        //            getCharacter().setDestination(clickedNode);
-        //    }
-        //}
     }
 }

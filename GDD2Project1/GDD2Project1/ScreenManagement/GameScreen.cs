@@ -22,8 +22,8 @@ namespace GDD2Project1
         /// </summary>
         /// <param name="screenMgr">ScreenManager containing this GameScreen</param>
         /// <param name="name">Name of this GameScreen</param>
-        public GameScreen(ScreenManager screenMgr, GUIManager guiMgr, String name)
-            : base(screenMgr, guiMgr, name)
+        public GameScreen(ScreenManager screenMgr, String name)
+            : base(screenMgr, name)
         {
             // Initialize GameContentManager, for content loading / unloading
             _gameContentMgr = new GameContentManager(screenMgr.Content);

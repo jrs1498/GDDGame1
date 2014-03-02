@@ -3,11 +3,28 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using WindowSystem;
+using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
+using InputEventSystem;
 
 namespace GDD2Project1
 {
     public class GameEditorScreen : GameScreen
     {
+        protected GUIManager        _guiMgr;
+
+        protected EditMode          _editMode;
+
+        protected List<GameObject>  _selection;
+        protected bool              _grabbingSelection = false;
+
+        public enum EditMode
+        {
+            EDITMODE_NONE,
+            EDITMODE_TILE
+        };
+
+
         //-------------------------------------------------------------------------
         /// <summary>
         /// Default GameEditorScreen constructor
@@ -15,10 +32,11 @@ namespace GDD2Project1
         /// <param name="screenMgr">ScreenManager containing this Screen</param>
         /// <param name="guiMgr">GUI Manager</param>
         /// <param name="name">Name of screen</param>
-        public GameEditorScreen(ScreenManager screenMgr, GUIManager guiMgr, String name)
-            : base(screenMgr, guiMgr, name)
-        { 
-            
+        public GameEditorScreen(ScreenManager screenMgr, String name)
+            : base(screenMgr, name)
+        {
+            setEditMode(EditMode.EDITMODE_NONE);
+            _selection = new List<GameObject>();
         }
 
 
@@ -30,6 +48,7 @@ namespace GDD2Project1
         /// <returns>False if failed</returns>
         public override bool init()
         {
+            // Initialize GameLevelManager
             _gameLevelMgr = new GameLevelManager(_gameContentMgr, _screenMgr.GraphicsDevice);
 
             if (!base.init())
@@ -59,6 +78,11 @@ namespace GDD2Project1
         /// <returns>Flase if failed</returns>
         protected override bool initGUI()
         {
+            // Initialize WindowSystem
+            _guiMgr = new GUIManager(_screenMgr);
+            _screenMgr.Components.Add(_guiMgr);
+            _guiMgr.Initialize();
+
             // Internal Funcs for easy GUI item creation
             Func<String, MenuItem> create_mi = (String text) =>
                 {
@@ -76,6 +100,7 @@ namespace GDD2Project1
                 };
 
             MenuBar menuBar = new MenuBar(_screenMgr, _guiMgr);
+            _guiMgr.Add(menuBar);
 
             //---------------------------------------------------------------------
             {   // File
@@ -117,9 +142,140 @@ namespace GDD2Project1
                     windowsButton.Add(contentBrowser);
                 }
             }
-            _guiMgr.Add(menuBar);
+
+            MenuBar toolsBar = new MenuBar(_screenMgr, _guiMgr);
+            toolsBar.Y = menuBar.Y + menuBar.Height;
+            _guiMgr.Add(toolsBar);
+            //---------------------------------------------------------------------
+            {   // Select
+                MenuItem selectButton = create_mi("Select");
+                toolsBar.Add(selectButton);
+            }
+            //---------------------------------------------------------------------
+            {   // Elevate
+                MenuItem elevateButton = create_mi("Elevate");
+                toolsBar.Add(elevateButton);
+            }
 
             return true;
+        }
+
+
+        //-------------------------------------------------------------------------
+        /// <summary>
+        /// Unload any data that will not be useful after this screen is no longer active
+        /// </summary>
+        /// <returns>False if failed</returns>
+        protected override bool unload()
+        {
+            if (_guiMgr != null)
+                _screenMgr.Components.Remove(_guiMgr);
+
+            return base.unload();
+        }
+
+
+        //-------------------------------------------------------------------------
+        /// <summary>
+        /// Local KeyDown event handler. This function should inject this event
+        /// to any components that check for input.
+        /// </summary>
+        /// <param name="e">Key event arguments</param>
+        public override void injectKeyDown(KeyEventArgs e)
+        {
+            base.injectKeyDown(e);
+        }
+
+        /// <summary>
+        /// Local KeyUp event handler. This function should inject this event
+        /// to any components that check for input.
+        /// </summary>
+        /// <param name="e">Key event arguments</param>
+        public override void injectKeyUp(KeyEventArgs e)
+        {
+            base.injectKeyUp(e);
+        }
+
+        /// <summary>
+        /// Local MouseDown event handler. This function should inject this event
+        /// to any components that check for input.
+        /// </summary>
+        /// <param name="e">Key event arguments</param>
+        public override void injectMouseDown(MouseEventArgs e)
+        {
+            base.injectMouseDown(e);
+        }
+
+        /// <summary>
+        /// Local MouseUp event handler. This function should inject this event
+        /// to any components that check for input.
+        /// </summary>
+        /// <param name="e">Key event arguments</param>
+        public override void injectMouseUp(InputEventSystem.MouseEventArgs e)
+        {
+            base.injectMouseUp(e);
+        }
+
+        /// <summary>
+        /// Local MouseMove event handler. This function should inject this event
+        /// to any components that check for input.
+        /// </summary>
+        /// <param name="e">Key event arguments</param>
+        public override void injectMouseMove(InputEventSystem.MouseEventArgs e)
+        {
+            base.injectMouseMove(e);
+        }
+
+
+        //-------------------------------------------------------------------------
+        /// <summary>
+        /// Primary GameEditorScreen update function
+        /// </summary>
+        /// <param name="gameTime">Provides a snapshot of timing values</param>
+        public override void update(GameTime gameTime)
+        {
+            // Update GUI
+            _guiMgr.Update(gameTime);
+
+            // Update based on EditMode
+            switch (_editMode)
+            { 
+                case EditMode.EDITMODE_NONE:
+                    break;
+
+                case EditMode.EDITMODE_TILE:
+                    break;
+            }
+
+            // Base updates GameLevel and User
+            base.update(gameTime);
+        }
+
+
+        //-------------------------------------------------------------------------
+        /// <summary>
+        /// Draw this GameEditorScreen and its GUI
+        /// </summary>
+        /// <param name="gameTime">Provides a snapshot of timing values</param>
+        /// <param name="spriteBatch">Draws textures</param>
+        public override void draw(GameTime gameTime, SpriteBatch spriteBatch)
+        { 
+            // Base draws gameLevel
+            base.draw(gameTime, spriteBatch);
+
+            // Draw GUI
+            _guiMgr.Draw(gameTime);
+        }
+
+
+        //-------------------------------------------------------------------------
+        /// <summary>
+        /// Set the current edit mode, which determines how this screen runs its updates
+        /// </summary>
+        /// <param name="editMode">New edit mode</param>
+        protected void setEditMode(EditMode editMode)
+        {
+            _editMode = editMode;
         }
     }
 }

@@ -6,14 +6,12 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using InputEventSystem;
-using WindowSystem;
 
 namespace GDD2Project1
 {
     public abstract class Screen
     {
         protected ScreenManager     _screenMgr;
-        protected GUIManager        _guiMgr;
         protected String            _name;
 
 
@@ -22,10 +20,9 @@ namespace GDD2Project1
         /// Default Screen constructor
         /// </summary>
         /// <param name="screenMgr">Screen Manager containing this Screen</param>
-        public Screen(ScreenManager screenMgr, GUIManager guiMgr, String name)
+        public Screen(ScreenManager screenMgr, String name)
         {
             _screenMgr  = screenMgr;
-            _guiMgr     = guiMgr;
             _name       = name;
         }
 
@@ -50,6 +47,17 @@ namespace GDD2Project1
         /// <returns>False is failed</returns>
         /// </summary>
         protected virtual bool initGUI()
+        {
+            return true;
+        }
+
+
+        //-------------------------------------------------------------------------
+        /// <summary>
+        /// Unload any data that will not be useful after this screen is no longer active
+        /// </summary>
+        /// <returns>False if failed</returns>
+        protected virtual bool unload()
         {
             return true;
         }
