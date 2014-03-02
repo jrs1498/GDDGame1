@@ -111,16 +111,18 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="levels\example.xml">
-      <Name>example</Name>
-      <Importer>XmlImporter</Importer>
-    </Content>
+    <ProjectReference Include="..\..\GameData\GameData.csproj">
+      <Project>{5025ABBC-5E2F-413D-A672-F2C14C548245}</Project>
+      <Name>GameData</Name>
+    </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Content Include="levels\bananaphone.xml">
-      <Name>bananaphone</Name>
+    <Compile Include="levels\rocktile.xml">
+      <Name>rocktile</Name>
       <Importer>XmlImporter</Importer>
-    </Content>
+      <Processor>PassThroughProcessor</Processor>
+    </Compile>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\XNA Game Studio\$(XnaFrameworkVersion)\Microsoft.Xna.GameStudio.ContentPipeline.targets" />
   <!--  To modify your build process, add your task inside one of the targets below and uncomment it. 

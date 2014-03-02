@@ -172,6 +172,15 @@ namespace GDD2Project1
         }
 
         /// <summary>
+        /// Check if a specified key is currently being held down
+        /// </summary>
+        /// <param name="key">Key to check</param>
+        public virtual bool IsKeyDown(Keys key)
+        {
+            return _pressedKeys.Contains(key);
+        }
+
+        /// <summary>
         /// Root MouseDown event handler. This function listens for the event,
         /// and then passes the event down to its current screen and that screens
         /// components.

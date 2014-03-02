@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using GameData;
 
 namespace GDD2Project1
 {
@@ -230,19 +231,5 @@ namespace GDD2Project1
             _parent.detachChildNode(_name);
             parentTile.attachChildNode(this);
         }
-    }
-
-
-
-
-    /// <summary>
-    /// Class used for saving a GameObject
-    /// </summary>
-    public class GameObjectData : GameNodeData
-    {
-        public String Drawable;
-
-        public GameObjectData()
-        { }
     }
 }

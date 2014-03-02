@@ -8,6 +8,7 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Storage;
 using Microsoft.Xna.Framework.Content.Pipeline.Serialization.Intermediate;
+using GameData;
 
 namespace GDD2Project1
 {
@@ -93,11 +94,11 @@ namespace GDD2Project1
                     data.Tiles[x * _tileCols + y] = save_obj(_tiles[x, y]);
 
             // Write the level
-            using (XmlWriter writer = XmlWriter.Create(directory + filename, settings))
+            using (XmlWriter writer = XmlWriter.Create(directory + filename + ".xml", settings))
                 IntermediateSerializer.Serialize(writer, data, null);
 
             // Write a line to console
-            Console.WriteLine("saved level " + directory + filename + ".xml");
+            Console.WriteLine("saved level " + directory + filename);
         }
 
         /// <summary>
@@ -343,6 +344,33 @@ namespace GDD2Project1
             return getTileFromIsometricCoordinates(isoCoords);
         }
 
+        /// <summary>
+        /// Returns a node corresponding to the specified screen coordinates
+        /// </summary>
+        /// <param name="coordinates">Screen coordinates</param>
+        /// <returns>GameNode at the location specified</returns>
+        public GameObject getTileFromScreenCoordinates(Point coordinates)
+        {
+            Vector2 vecCoordinates;
+            vecCoordinates.X = coordinates.X;
+            vecCoordinates.Y = coordinates.Y;
+            return getTileFromScreenCoordinates(vecCoordinates);
+        }
+
+        public Point getIndexFromPosition(Vector3 isoCoords)
+        {
+            isoCoords /= (float)TILE_SIZE;
+
+            isoCoords.X -= isoCoords.X % 1.0f;
+            isoCoords.Y -= isoCoords.Y % 1.0f;
+
+            Point index;
+            index.X = (int)isoCoords.X;
+            index.Y = (int)isoCoords.Y;
+
+            return index;
+        }
+
 
         //-------------------------------------------------------------------------
         /// <summary>
@@ -359,19 +387,5 @@ namespace GDD2Project1
             if (node is GameCharacter)
                 _characters.Remove(node.getName);
         }
-    }
-
-
-
-
-
-    public class GameLevelData
-    {
-        public int NumRows;
-        public int NumCols;
-        public GameObjectData[] Tiles;
-
-        public GameLevelData()
-        { }
     }
 }

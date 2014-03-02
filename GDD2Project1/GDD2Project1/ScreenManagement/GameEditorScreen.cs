@@ -7,6 +7,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.GamerServices;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Storage;
+using Microsoft.Xna.Framework.Input;
 using InputEventSystem;
 using GameData;
 
@@ -19,6 +20,7 @@ namespace GDD2Project1
         protected GUIManager        _guiMgr;
 
         protected EditMode          _editMode;
+        protected Tool              _tool = Tool.TOOL_NONE;
 
         protected List<GameObject>  _selection;
         protected bool              _grabbingSelection = false;
@@ -27,6 +29,13 @@ namespace GDD2Project1
         {
             EDITMODE_NONE,
             EDITMODE_TERRAIN
+        };
+
+        public enum Tool
+        {
+            TOOL_NONE,
+            TOOL_SELECT,
+            TOOL_ELEVATE
         };
 
 
@@ -89,7 +98,7 @@ namespace GDD2Project1
             _guiMgr.Initialize();
 
             #region Shorthand GUI Creation
-            Func<String, MenuItem> create_mi = 
+            Func<String, MenuItem> create_mi =
                 (String text) =>
                 {
                     MenuItem menuItem = new MenuItem(_screenMgr, _guiMgr);
@@ -109,7 +118,7 @@ namespace GDD2Project1
                     return button;
                 };
 
-            Func<String, int, int, Dialog> create_dialog = 
+            Func<String, int, int, Dialog> create_dialog =
                 (String text, int w, int h) =>
                 {
                     Dialog dialog = new Dialog(_screenMgr, _guiMgr);
@@ -149,7 +158,7 @@ namespace GDD2Project1
                     return dialog;
                 };
 
-            Func<String, int, int, int, Dialog, TextBox> create_textbox = 
+            Func<String, int, int, int, Dialog, TextBox> create_textbox =
                 (String label, int w, int x, int y, Dialog d) =>
                 {
                     TextBox textBox = new TextBox(_screenMgr, _guiMgr);
@@ -193,7 +202,7 @@ namespace GDD2Project1
                         dialog.Close += delegate(UIComponent csender)
                         {
                             switch (dialog.DialogResult)
-                            { 
+                            {
                                 case DialogResult.Cancel:
                                     return;
                                 case DialogResult.OK:
@@ -218,7 +227,7 @@ namespace GDD2Project1
                         saveAsDialog.Close += delegate(UIComponent csender)
                         {
                             switch (saveAsDialog.DialogResult)
-                            { 
+                            {
                                 case DialogResult.Cancel:
                                     return;
                                 case DialogResult.OK:
@@ -245,7 +254,7 @@ namespace GDD2Project1
                                 case DialogResult.Cancel:
                                     return;
                                 case DialogResult.OK:
-                                    _gameLevelMgr.loadLevel(LEVEL_DIRECTORY, name.Text);
+                                    _gameLevelMgr.loadLevel("levels\\", name.Text);
                                     return;
                             }
                         };
@@ -272,19 +281,20 @@ namespace GDD2Project1
                     windowsButton.Add(contentBrowser);
                 }
             }
+            //---------------------------------------------------------------------
+            {   // Edit
+                MenuItem editButton = create_mi("Edit");
+                menuBar.Add(editButton);
+                //---------------------------------------------------------------------
+                {   // Select
+                    MenuItem selectButton = create_mi("Select");
+                    editButton.Add(selectButton);
 
-            MenuBar toolsBar = new MenuBar(_screenMgr, _guiMgr);
-            toolsBar.Y = menuBar.Y + menuBar.Height;
-            _guiMgr.Add(toolsBar);
-            //---------------------------------------------------------------------
-            {   // Select
-                MenuItem selectButton = create_mi("Select");
-                toolsBar.Add(selectButton);
-            }
-            //---------------------------------------------------------------------
-            {   // Elevate
-                MenuItem elevateButton = create_mi("Elevate");
-                toolsBar.Add(elevateButton);
+                    selectButton.Click += delegate(UIComponent sender)
+                    {
+                        _tool = Tool.TOOL_SELECT;
+                    };
+                }
             }
 
             return true;
@@ -313,6 +323,7 @@ namespace GDD2Project1
         /// <param name="e">Key event arguments</param>
         public override void injectKeyDown(KeyEventArgs e)
         {
+
             base.injectKeyDown(e);
         }
 
@@ -333,6 +344,18 @@ namespace GDD2Project1
         /// <param name="e">Key event arguments</param>
         public override void injectMouseDown(MouseEventArgs e)
         {
+            switch (e.Button)
+            { 
+                case MouseButtons.Left:
+                    if (_tool == Tool.TOOL_SELECT)
+                    {
+                        clearSelection();
+                        _selection.Add(_gameLevelMgr.getTileFromScreenCoordinates(e.Position));
+                        _grabbingSelection = true;
+                    }
+                    break;
+            }
+
             base.injectMouseDown(e);
         }
 
@@ -343,6 +366,14 @@ namespace GDD2Project1
         /// <param name="e">Key event arguments</param>
         public override void injectMouseUp(InputEventSystem.MouseEventArgs e)
         {
+            switch (e.Button)
+            {
+                case MouseButtons.Left:
+                    if (_tool == Tool.TOOL_SELECT)
+                        _grabbingSelection = false;
+                    break;
+            }
+
             base.injectMouseUp(e);
         }
 
@@ -353,6 +384,9 @@ namespace GDD2Project1
         /// <param name="e">Key event arguments</param>
         public override void injectMouseMove(InputEventSystem.MouseEventArgs e)
         {
+            if (_grabbingSelection)
+                grabSelection(e.Position);
+
             base.injectMouseMove(e);
         }
 
@@ -406,6 +440,37 @@ namespace GDD2Project1
         protected void setEditMode(EditMode editMode)
         {
             _editMode = editMode;
+        }
+
+
+        //-------------------------------------------------------------------------
+        /// <summary>
+        /// Grab a selection of tiles. This will be called only when the mouse moves, so we will
+        /// grab a completely new selection based on the origin in this function.
+        /// </summary>
+        protected void grabSelection(Point mousePosition)
+        {
+            // Grab the origin tile and clear the selection
+            GameObject origin = _selection[0];
+            clearSelection();
+
+            // Grab the tile the mouse is hovering over
+            GameObject mouseTile = _gameLevelMgr.getTileFromScreenCoordinates(mousePosition);
+
+            // Grab start and end index
+            Point originIndex = _gameLevelMgr.getIndexFromPosition(origin.PositionIsometric);
+            Point mouseIndex = _gameLevelMgr.getIndexFromPosition(mouseTile.PositionIsometric);
+
+            origin.Color = Color.Red;
+            mouseTile.Color = Color.Red;
+        }
+
+        /// <summary>
+        /// Function handler for clearing the selection
+        /// </summary>
+        protected void clearSelection()
+        {
+            _selection.Clear();
         }
     }
 }

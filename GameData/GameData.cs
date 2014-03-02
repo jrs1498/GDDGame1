@@ -13,14 +13,37 @@ namespace GameData
 {
     public class GameLevelData
     {
-        public int numRows;
-        public int numCols;
+        public int NumRows;
+        public int NumCols;
+        public GameObjectData[] Tiles;
 
-        public GameLevelData(int rows, int cols)
-        {
-            numRows = rows;
-            numCols = cols;
-        }
+        public GameLevelData()
+        { }
+    }
+
+
+    /// <summary>
+    /// Class used for saving a GameNode
+    /// </summary>
+    public class GameNodeData
+    {
+        public String Name;
+        public Vector3 PositionIsometric;
+
+        public GameNodeData()
+        { }
+    }
+
+
+    /// <summary>
+    /// Class used for saving a GameObject
+    /// </summary>
+    public class GameObjectData : GameNodeData
+    {
+        public String Drawable;
+
+        public GameObjectData()
+        { }
     }
 
 

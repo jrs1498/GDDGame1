@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using GameData;
 
 namespace GDD2Project1
 {
@@ -308,20 +309,5 @@ namespace GDD2Project1
 
             return child;
         }
-    }
-
-
-
-
-    /// <summary>
-    /// Class used for saving a GameNode
-    /// </summary>
-    public class GameNodeData
-    {
-        public String Name;
-        public Vector3 PositionIsometric;
-
-        public GameNodeData()
-        { }
     }
 }
