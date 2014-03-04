@@ -24,6 +24,11 @@ namespace GDD2Project1
 
         protected List<GameObject>  _selection;
         protected bool              _grabbingSelection = false;
+        protected float         _elevateSnap = 20.0f;
+        protected float         _elevateIncr = 1.0f;
+        protected float         _elevateCurrent = 20.0f;
+
+        protected GameObject _selectedTile;
 
         public enum EditMode
         {
@@ -180,119 +185,142 @@ namespace GDD2Project1
                 };
             #endregion
 
-            MenuBar menuBar = new MenuBar(_screenMgr, _guiMgr);
-            _guiMgr.Add(menuBar);
+            {
+                MenuBar menuBar = new MenuBar(_screenMgr, _guiMgr);
+                _guiMgr.Add(menuBar);
 
-            //---------------------------------------------------------------------
-            {   // File
-                MenuItem fileButton = create_mi("File");
-                menuBar.Add(fileButton);
-                //-----------------------------------------------------------------
-                {   // New
-                    MenuItem newButton = create_mi("New");
-                    fileButton.Add(newButton);
-
-                    newButton.Click += delegate(UIComponent sender)
-                    {
-                        Dialog dialog = create_dialog("New", 300, 200);
-                        TextBox rows = create_textbox("Rows", 50, 150, 10, dialog);
-                        TextBox cols = create_textbox("Cols", 50, 150, 40, dialog);
-                        TextBox tile = create_textbox("Tile", 100, 150, 70, dialog);
-
-                        dialog.Close += delegate(UIComponent csender)
-                        {
-                            switch (dialog.DialogResult)
-                            {
-                                case DialogResult.Cancel:
-                                    return;
-                                case DialogResult.OK:
-                                    int numRows = Convert.ToInt32(rows.Text);
-                                    int numCols = Convert.ToInt32(cols.Text);
-                                    _gameLevelMgr.newLevel(numRows, numCols, tile.Text);
-                                    return;
-                            }
-                        };
-                    };
-                }
-                //-----------------------------------------------------------------
-                {   // Save as
-                    MenuItem saveAsButton = create_mi("Save as");
-                    fileButton.Add(saveAsButton);
-
-                    saveAsButton.Click += delegate(UIComponent sender)
-                    {
-                        Dialog saveAsDialog = create_dialog("Save as", 300, 200);
-                        TextBox name = create_textbox("Name", 200, 100, 50, saveAsDialog);
-
-                        saveAsDialog.Close += delegate(UIComponent csender)
-                        {
-                            switch (saveAsDialog.DialogResult)
-                            {
-                                case DialogResult.Cancel:
-                                    return;
-                                case DialogResult.OK:
-                                    _gameLevelMgr.saveLevel(LEVEL_DIRECTORY, name.Text);
-                                    return;
-                            }
-                        };
-                    };
-                }
-                //-----------------------------------------------------------------
-                {   // Load
-                    MenuItem loadButton = create_mi("Load");
-                    fileButton.Add(loadButton);
-
-                    loadButton.Click += delegate(UIComponent sender)
-                    {
-                        Dialog loadDialog = create_dialog("Load", 300, 200);
-                        TextBox name = create_textbox("Name", 200, 100, 50, loadDialog);
-
-                        loadDialog.Close += delegate(UIComponent csender)
-                        {
-                            switch (loadDialog.DialogResult)
-                            {
-                                case DialogResult.Cancel:
-                                    return;
-                                case DialogResult.OK:
-                                    _gameLevelMgr.loadLevel("levels\\", name.Text);
-                                    return;
-                            }
-                        };
-                    };
-                }
-                //-----------------------------------------------------------------
-                {   // Quit to menu
-                    MenuItem quitButton = create_mi("Quit to menu");
-                    fileButton.Add(quitButton);
-                }
-            }
-            //---------------------------------------------------------------------
-            {   // Windows
-                MenuItem windowsButton = create_mi("Windows");
-                menuBar.Add(windowsButton);
-                //-----------------------------------------------------------------
-                {   // Tools
-                    MenuItem tools = create_mi("Tools");
-                    windowsButton.Add(tools);
-                }
-                //-----------------------------------------------------------------
-                {   // Content browser
-                    MenuItem contentBrowser = create_mi("Content browser");
-                    windowsButton.Add(contentBrowser);
-                }
-            }
-            //---------------------------------------------------------------------
-            {   // Edit
-                MenuItem editButton = create_mi("Edit");
-                menuBar.Add(editButton);
                 //---------------------------------------------------------------------
-                {   // Select
-                    MenuItem selectButton = create_mi("Select");
-                    editButton.Add(selectButton);
+                {   // File
+                    MenuItem fileButton = create_mi("File");
+                    menuBar.Add(fileButton);
+                    //-----------------------------------------------------------------
+                    {   // New
+                        MenuItem newButton = create_mi("New");
+                        fileButton.Add(newButton);
 
-                    selectButton.Click += delegate(UIComponent sender)
+                        newButton.Click += delegate(UIComponent sender)
+                        {
+                            Dialog dialog = create_dialog("New", 300, 200);
+                            TextBox rows = create_textbox("Rows", 50, 150, 10, dialog);
+                            TextBox cols = create_textbox("Cols", 50, 150, 40, dialog);
+                            TextBox tile = create_textbox("Tile", 100, 150, 70, dialog);
+
+                            dialog.Close += delegate(UIComponent csender)
+                            {
+                                switch (dialog.DialogResult)
+                                {
+                                    case DialogResult.Cancel:
+                                        return;
+                                    case DialogResult.OK:
+                                        int numRows = Convert.ToInt32(rows.Text);
+                                        int numCols = Convert.ToInt32(cols.Text);
+                                        _gameLevelMgr.newLevel(numRows, numCols, tile.Text);
+                                        return;
+                                }
+                            };
+                        };
+                    }
+                    //-----------------------------------------------------------------
+                    {   // Save as
+                        MenuItem saveAsButton = create_mi("Save as");
+                        fileButton.Add(saveAsButton);
+
+                        saveAsButton.Click += delegate(UIComponent sender)
+                        {
+                            Dialog saveAsDialog = create_dialog("Save as", 300, 200);
+                            TextBox name = create_textbox("Name", 200, 100, 50, saveAsDialog);
+
+                            saveAsDialog.Close += delegate(UIComponent csender)
+                            {
+                                switch (saveAsDialog.DialogResult)
+                                {
+                                    case DialogResult.Cancel:
+                                        return;
+                                    case DialogResult.OK:
+                                        _gameLevelMgr.saveLevel(LEVEL_DIRECTORY, name.Text);
+                                        return;
+                                }
+                            };
+                        };
+                    }
+                    //-----------------------------------------------------------------
+                    {   // Load
+                        MenuItem loadButton = create_mi("Load");
+                        fileButton.Add(loadButton);
+
+                        loadButton.Click += delegate(UIComponent sender)
+                        {
+                            Dialog loadDialog = create_dialog("Load", 300, 200);
+                            TextBox name = create_textbox("Name", 200, 100, 50, loadDialog);
+
+                            loadDialog.Close += delegate(UIComponent csender)
+                            {
+                                switch (loadDialog.DialogResult)
+                                {
+                                    case DialogResult.Cancel:
+                                        return;
+                                    case DialogResult.OK:
+                                        _gameLevelMgr.loadLevel("levels\\", name.Text);
+                                        return;
+                                }
+                            };
+                        };
+                    }
+                    //-----------------------------------------------------------------
+                    {   // Quit to menu
+                        MenuItem quitButton = create_mi("Quit to menu");
+                        fileButton.Add(quitButton);
+                    }
+                }
+                //---------------------------------------------------------------------
+                {   // Windows
+                    MenuItem windowsButton = create_mi("Windows");
+                    menuBar.Add(windowsButton);
+                    //-----------------------------------------------------------------
+                    {   // Tools
+                        MenuItem tools = create_mi("Tools");
+                        windowsButton.Add(tools);
+                    }
+                    //-----------------------------------------------------------------
+                    {   // Content browser
+                        MenuItem contentBrowser = create_mi("Content browser");
+                        windowsButton.Add(contentBrowser);
+                    }
+                }
+                //---------------------------------------------------------------------
+                {   // Edit
+                    MenuItem editButton = create_mi("Edit");
+                    menuBar.Add(editButton);
+                    //---------------------------------------------------------------------
+                    {   // Select
+                        MenuItem selectButton = create_mi("Select");
+                        editButton.Add(selectButton);
+
+                        selectButton.Click += delegate(UIComponent sender)
+                        {
+                            _tool = Tool.TOOL_SELECT;
+                        };
+                    }
+                }
+            }
+
+            {
+                Window toolBar = new Window(_screenMgr, _guiMgr);
+                _guiMgr.Add(toolBar);
+                toolBar.Width = 600;
+                toolBar.Height = 72;
+                toolBar.Y = 50;
+                toolBar.HasCloseButton = false;
+                toolBar.Resizable = false;
+                toolBar.HasFullWindowMovableArea = false;
+                //---------------------------------------------------------------------
+                {   // Test button
+                    TextButton elevate = create_button("test", 50, 40, 0, 0);
+                    toolBar.Add(elevate);
+
+                    elevate.Click += delegate(UIComponent sender)
                     {
-                        _tool = Tool.TOOL_SELECT;
+                        setTool(Tool.TOOL_ELEVATE);
                     };
                 }
             }
@@ -323,7 +351,12 @@ namespace GDD2Project1
         /// <param name="e">Key event arguments</param>
         public override void injectKeyDown(KeyEventArgs e)
         {
-
+            switch (e.Key)
+            { 
+                case Keys.E:
+                    _elevateCurrent = _elevateSnap;
+                    break;
+            }
             base.injectKeyDown(e);
         }
 
@@ -334,6 +367,12 @@ namespace GDD2Project1
         /// <param name="e">Key event arguments</param>
         public override void injectKeyUp(KeyEventArgs e)
         {
+            switch (e.Key)
+            { 
+                case Keys.E:
+                    _elevateCurrent = _elevateIncr;
+                    break;
+            }
             base.injectKeyUp(e);
         }
 
@@ -347,11 +386,24 @@ namespace GDD2Project1
             switch (e.Button)
             { 
                 case MouseButtons.Left:
-                    if (_tool == Tool.TOOL_SELECT)
-                    {
-                        clearSelection();
-                        _selection.Add(_gameLevelMgr.getTileFromScreenCoordinates(e.Position));
-                        _grabbingSelection = true;
+                    switch (_tool)
+                    { 
+                        case Tool.TOOL_ELEVATE:
+                            if (_selectedTile != null)
+                            {
+                                _selectedTile.translate(new Vector3(0.0f, -_elevateCurrent, 0.0f));
+                            }
+                            break;
+                    }
+                    break;
+
+                case MouseButtons.Right:
+                    switch (_tool)
+                    { 
+                        case Tool.TOOL_ELEVATE:
+                            if (_selectedTile != null)
+                                _selectedTile.translate(new Vector3(0.0f, _elevateCurrent, 0.0f));
+                            break;
                     }
                     break;
             }
@@ -408,6 +460,7 @@ namespace GDD2Project1
                     break;
 
                 case EditMode.EDITMODE_TERRAIN:
+                    _grabbingSelection = true;
                     break;
             }
 
@@ -442,6 +495,16 @@ namespace GDD2Project1
             _editMode = editMode;
         }
 
+        /// <summary>
+        /// Set the terrain editing tool
+        /// </summary>
+        /// <param name="tool">Tool to use</param>
+        protected void setTool(Tool tool)
+        {
+            setEditMode(EditMode.EDITMODE_TERRAIN);
+            _tool = tool;
+        }
+
 
         //-------------------------------------------------------------------------
         /// <summary>
@@ -450,19 +513,16 @@ namespace GDD2Project1
         /// </summary>
         protected void grabSelection(Point mousePosition)
         {
-            // Grab the origin tile and clear the selection
-            GameObject origin = _selection[0];
-            clearSelection();
-
-            // Grab the tile the mouse is hovering over
-            GameObject mouseTile = _gameLevelMgr.getTileFromScreenCoordinates(mousePosition);
-
-            // Grab start and end index
-            Point originIndex = _gameLevelMgr.getIndexFromPosition(origin.PositionIsometric);
-            Point mouseIndex = _gameLevelMgr.getIndexFromPosition(mouseTile.PositionIsometric);
-
-            origin.Color = Color.Red;
-            mouseTile.Color = Color.Red;
+            GameObject selection = _gameLevelMgr.getTileFromScreenCoordinates(mousePosition);
+            if (selection != null)
+            {
+                if (_selectedTile != null)
+                {
+                    _selectedTile.Color = Color.White;
+                }
+                _selectedTile = selection;
+                _selectedTile.Color = Color.Red;
+            }
         }
 
         /// <summary>

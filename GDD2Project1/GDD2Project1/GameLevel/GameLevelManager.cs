@@ -26,7 +26,7 @@ namespace GDD2Project1
         protected const String      TILE_NAME_PREFIX    = "tile_";
         protected const char        TILE_ROW_PREFIX     = 'r';
         protected const char        TILE_COL_PREFIX     = 'c';
-        protected const int         TILE_SIZE           = 84;
+        protected const int         TILE_SIZE = 72;
         protected GameObject[,]     _tiles;
         protected int               _tileRows;
         protected int               _tileCols;

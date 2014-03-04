@@ -1,1 +1,2 @@
 E:\Projects\GDD2Project1\GDD2Project1\GDD2Project1Content\obj\x86\Debug\GDD2Project1Content.contentprojResolveAssemblyReference.cache
+D:\Users\jrs1498\GDDGame1\GDD2Project1\GDD2Project1Content\obj\x86\Debug\GDD2Project1Content.contentprojResolveAssemblyReference.cache

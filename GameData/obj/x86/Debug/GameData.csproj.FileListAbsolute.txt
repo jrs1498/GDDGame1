@@ -4,3 +4,9 @@ E:\Projects\GDD2Project1\GameData\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeP
 E:\Projects\GDD2Project1\GameData\obj\x86\Debug\GameData.dll
 E:\Projects\GDD2Project1\GameData\obj\x86\Debug\GameData.pdb
 E:\Projects\GDD2Project1\GameData\obj\x86\Debug\GameData.csprojResolveAssemblyReference.cache
+D:\Users\jrs1498\GDDGame1\GameData\bin\x86\Debug\GameData.dll
+D:\Users\jrs1498\GDDGame1\GameData\bin\x86\Debug\GameData.pdb
+D:\Users\jrs1498\GDDGame1\GameData\obj\x86\Debug\GameData.csprojResolveAssemblyReference.cache
+D:\Users\jrs1498\GDDGame1\GameData\obj\x86\Debug\Microsoft.Xna.Framework.RuntimeProfile.txt
+D:\Users\jrs1498\GDDGame1\GameData\obj\x86\Debug\GameData.dll
+D:\Users\jrs1498\GDDGame1\GameData\obj\x86\Debug\GameData.pdb
