@@ -11,6 +11,8 @@ namespace GDD2Project1
 {
     public abstract class GameScreen : Screen
     {
+        protected const String LEVEL_DIRECTORY = "..\\..\\..\\..\\GDD2Project1Content\\levels\\";
+
         protected GameContentManager    _gameContentMgr;
         protected GameLevelManager      _gameLevelMgr;
         protected User                  _user;

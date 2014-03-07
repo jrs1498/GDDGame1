@@ -108,6 +108,7 @@ namespace InputEventSystem
         public MouseState State;
         public MouseButtons Button;
         public Point Position;
+        public Point RelativePosition;
     }
     #endregion
 
@@ -275,6 +276,12 @@ namespace InputEventSystem
                 if (MouseMove != null)
                 {
                     MouseEventArgs mouseEvent = new MouseEventArgs();
+
+                    // Get relative mouse offset
+                    mouseEvent.RelativePosition = new Point(
+                        mouseState.X - currentMouseState.X,
+                        mouseState.Y - currentMouseState.Y);
+
                     mouseEvent.State = mouseState;
                     mouseEvent.Button = MouseButtons.None;
 

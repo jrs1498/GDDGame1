@@ -16,7 +16,7 @@ namespace GDD2Project1
         /// </summary>
         /// <param name="screenMgr">ScreenManager containing this GamePlayScreen</param>
         /// <param name="name">Name of this GamePlayScreen</param>
-        public GamePlayScreen(ScreenManager screenMgr, GUIManager guiMgr, String name)
+        public GamePlayScreen(ScreenManager screenMgr, String name)
             : base(screenMgr, name)
         { 
             
@@ -36,7 +36,8 @@ namespace GDD2Project1
                 return false;
 
             // Load the level passed in
-            loadLevel(gameLevel);
+            _gameLevelMgr = new GameLevelManager(_gameContentMgr, _screenMgr.GraphicsDevice);
+            _gameLevelMgr.loadLevel("levels\\", gameLevel);
 
             // Initialize the user
             initUser();
@@ -55,9 +56,9 @@ namespace GDD2Project1
                 return false;
 
             // Create User's controllers
-            _user.createController<CameraController>(
-                _gameLevelMgr.Camera,
-                "camController");
+            //_user.createController<CameraController>(
+            //    _gameLevelMgr.Camera,
+            //    "camController");
             //_user.createController<CharacterController>(
             //    _gameLevelMgr.getCharacter("dudetwo"),
             //    "charController");
@@ -95,19 +96,6 @@ namespace GDD2Project1
         {
             base.draw(gameTime, spriteBatch);
             // TODO: Implement HUD drawing
-        }
-
-
-        //-------------------------------------------------------------------------
-        /// <summary>
-        /// Load a new level
-        /// </summary>
-        /// <param name="gameLevel">Relative path to the GameLevel</param>
-        public virtual void loadLevel(String gameLevel)
-        {
-            // TODO: Implement level loading from GameLevel file
-            // Use _gameContentMgr to load content and pull content
-            _gameLevelMgr = new GameLevelManager(_gameContentMgr, _screenMgr.GraphicsDevice);
         }
     }
 }

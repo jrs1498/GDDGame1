@@ -44,6 +44,7 @@ namespace GDD2Project1
             Components.Add(this._input);
 
             IsFixedTimeStep = false;
+            IsMouseVisible = true;
 
             _graphics.PreferredBackBufferWidth      = INITIAL_WINDOW_WIDTH;
             _graphics.PreferredBackBufferHeight     = INITIAL_WINDOW_HEIGHT;
@@ -84,10 +85,15 @@ namespace GDD2Project1
             getScreen<GamePlayScreen>("gameScreen").init("exampleLevel");
             */
 
-            
+            /*
             // Load a GameEditorScreen
             createScreen<GameEditorScreen>("editorScreen", new object[]{this}, true);
             getScreen<GameEditorScreen>("editorScreen").init();
+             * */
+
+            // Create initial screen
+            createScreen<MainScreen>("mainScreen", new object[] { this }, true);
+            getScreen<MainScreen>("mainScreen").init();
             
         }
 
@@ -267,19 +273,22 @@ namespace GDD2Project1
         /// <typeparam name="T">Type of screen</typeparam>
         /// <param name="args">Constructor arguments corresponding to Screen type</param>
         /// <param name="name">Screen's name, used for referencing</param>
-        protected virtual bool createScreen<T>(String name, object[] args = null, bool setToCurrent = false) 
+        public virtual T createScreen<T>(String name, object[] args = null, bool setToCurrent = false, bool destroyCurrent = true) 
             where T : Screen
         {
             if (_screens.ContainsKey(name))
-                return false;
+                return null;
             
             T screen = (T)Activator.CreateInstance(typeof(T), new object[]{this, name});
             _screens.Add(name, screen);
 
+            if (destroyCurrent)
+                destroyScreen(_currentScreen);
+
             if (setToCurrent)
                 setCurrentScreen(name);
 
-            return true;
+            return screen;
         }
 
         /// <summary>
@@ -295,6 +304,9 @@ namespace GDD2Project1
         protected virtual T getScreen<T>(String name)
             where T : Screen
         {
+            if (name == null)
+                return null;
+
             if (!_screens.ContainsKey(name))
                 return null;
 
@@ -308,6 +320,9 @@ namespace GDD2Project1
         /// <returns>False if the screen did not exist</returns>
         protected virtual bool destroyScreen(String name)
         {
+            if (name == null)
+                return false;
+
             if (!_screens.ContainsKey(name))
                 return false;
 

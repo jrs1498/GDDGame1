@@ -14,6 +14,10 @@ namespace GDD2Project1
         protected ScreenManager     _screenMgr;
         protected String            _name;
 
+        public String Name
+        {
+            get { return _name; }
+        }
 
         //-------------------------------------------------------------------------
         /// <summary>

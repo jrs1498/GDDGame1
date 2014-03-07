@@ -4,11 +4,15 @@ Content\textures\decorative\tree.xnb
 Content\textures\consumables\consumable.xnb
 Content\textures\interface\button.xnb
 Content\textures\DefaultStyle.xnb
+Content\Fonts\DefaultFont.xnb
+Content\Fonts\DefaultHeading.xnb
+Content\levels\rocktile.xnb
+<<<<<<< HEAD
+Content\levels\test.xnb
+=======
 Content\textures\tiles\grasstile.xnb
 Content\textures\tiles\sandtile.xnb
 Content\textures\tiles\stonesandtile.xnb
 Content\textures\tiles\stonetile.xnb
-Content\Fonts\DefaultFont.xnb
-Content\Fonts\DefaultHeading.xnb
-Content\levels\rocktile.xnb
 Content\levels\testytest.xnb
+>>>>>>> 4eb90669aa44dc6201831a5ff4646d6c827f5645

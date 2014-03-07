@@ -15,20 +15,26 @@ namespace GDD2Project1
 {
     public class GameEditorScreen : GameScreen
     {
-        protected const String LEVEL_DIRECTORY = "..\\..\\..\\..\\GDD2Project1Content\\levels\\";
-
         protected GUIManager        _guiMgr;
 
         protected EditMode          _editMode;
         protected Tool              _tool = Tool.TOOL_NONE;
 
         protected List<GameObject>  _selection;
-        protected bool              _grabbingSelection = false;
-        protected float         _elevateSnap = 20.0f;
-        protected float         _elevateIncr = 1.0f;
-        protected float         _elevateCurrent = 20.0f;
 
-        protected GameObject _selectedTile;
+        protected Color             _colorSelected = new Color(255, 150, 150, 200);
+        protected Color             _colorUnselected = Color.White;
+        protected bool              _grabbingSelection = false;
+
+        protected float             _elevateSnap = 20.0f;
+        protected float             _elevateIncr = 1.0f;
+        protected float             _elevateCurrent = 20.0f;
+
+        protected GameObject        _selectedTile;
+
+        protected bool              _elevating      = false;
+        protected bool              _snapping       = false;
+        protected float             _snapHeight;
 
         public enum EditMode
         {
@@ -270,6 +276,13 @@ namespace GDD2Project1
                     {   // Quit to menu
                         MenuItem quitButton = create_mi("Quit to menu");
                         fileButton.Add(quitButton);
+
+                        quitButton.Click += delegate(UIComponent sender)
+                        {
+                            Screen mainScreen =
+                                _screenMgr.createScreen<MainScreen>("mainScreen", null, true, true);
+                            mainScreen.init();
+                        };
                     }
                 }
                 //---------------------------------------------------------------------

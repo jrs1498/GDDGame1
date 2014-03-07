@@ -78,8 +78,13 @@
     <Reference Include="System.Net" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GUI\InterfaceManager.cs" />
+    <Compile Include="GUI\InterfaceObject.cs" />
+    <Compile Include="GUI\TextButton.cs" />
+    <Compile Include="GUI\Window.cs" />
     <Compile Include="InputEventSys\InputEventSystem.cs" />
     <Compile Include="ScreenManagement\GameEditorScreen.cs" />
+    <Compile Include="ScreenManagement\MainScreen.cs" />
     <Compile Include="User\ActorController.cs" />
     <Compile Include="User\CharacterController.cs" />
     <Compile Include="GameLevel\Camera2D.cs" />
