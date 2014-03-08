@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using InputEventSystem;
+using Microsoft.Xna.Framework;
 
 namespace GDD2Project1
 {
@@ -19,6 +20,23 @@ namespace GDD2Project1
             : base(character, name)
         { 
             
+        }
+
+
+        //-------------------------------------------------------------------------
+        public override void injectMouseDown(MouseEventArgs e)
+        {
+            switch (e.Button)
+            { 
+                case MouseButtons.Left:
+                    GameObject tile = _actor.GameLevelMgr.getTileFromScreenCoordinates(e.Position);
+                    if (tile == null)
+                        return;
+
+                    (_actor as GameCharacter).setDestination(tile);
+                    tile.Color = Color.Green;
+                    break;
+            }
         }
 
 

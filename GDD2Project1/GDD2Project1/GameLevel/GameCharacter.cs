@@ -7,23 +7,24 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace GDD2Project1
 {
+    /// <summary>
+    /// CharacterState enum keeps track of this character's behavior.
+    /// </summary>
+    public enum CharacterState
+    {
+        CHRSTATE_IDLE,
+        CHRSTATE_MOVING
+    };
+
+
+    //-----------------------------------------------------------------------------
     public class GameCharacter : GameObject
     {
         protected float                 _moveSpeed;
         protected CharacterState        _chrState;
         protected GameNode              _destination;
         protected Queue<GameNode>       _movePath;
-
-
-        //-------------------------------------------------------------------------
-        /// <summary>
-        /// CharacterState enum keeps track of this character's behavior.
-        /// </summary>
-        public enum CharacterState
-        {
-            CHRSTATE_IDLE,
-            CHRSTATE_MOVING
-        };
+        protected float                 _stateTime;
 
 
         //-------------------------------------------------------------------------
@@ -33,15 +34,23 @@ namespace GDD2Project1
         /// <param name="gameLevelMgr">This Character's GameLevelManager</param>
         /// <param name="name">Character's name</param>
         /// <param name="drawable">Character's DrawableAnimated</param>
-        public GameCharacter(GameLevelManager gameLevelMgr, String name, Drawable drawable)
+        public GameCharacter(GameLevelManager gameLevelMgr, String name)
             : base(gameLevelMgr, name)
         {
-            attachDrawable(drawable);
-
             _movePath = new Queue<GameNode>();
             _moveSpeed = 240.0f;
+        }
+
+
+        //-------------------------------------------------------------------------
+        public override bool attachDrawable(Drawable drawable)
+        {
+            if (!base.attachDrawable(drawable))
+                return false;
 
             setCharacterState(CharacterState.CHRSTATE_IDLE);
+
+            return true;
         }
 
 
@@ -53,6 +62,26 @@ namespace GDD2Project1
         /// <param name="dt">Delta time</param>
         public override void drawContents(SpriteBatch spriteBatch, float dt)
         {
+            if (_drawable == null)
+                return;
+
+            _stateTime += dt;
+
+            if (_drawable is DrawableAnimated)
+            {
+                (_drawable as DrawableAnimated).draw(
+                    spriteBatch,
+                    _gameLevelMgr.Camera.isometricToCartesian(_positionIsometric),
+                    _color,
+                    _rotation,
+                    _scale,
+                    _stateTime,
+                    _chrState,
+                    _gameLevelMgr.Camera.getRelativeDirection(_isoDirection));
+
+                return;
+            }
+
             base.drawContents(spriteBatch, dt);
         }
 
@@ -169,23 +198,6 @@ namespace GDD2Project1
 
         //-------------------------------------------------------------------------
         /// <summary>
-        /// This function is fired any time the camera's isometric viewing angle changes.
-        /// This function should then preserve the GameCharacter's isometric direction
-        /// so we are looking at the correct side no matter what angle the camera is looking.
-        /// </summary>
-        /// <param name="cam">Camera which fired the event</param>
-        /// <param name="e">Event args</param>
-        protected override void camDirectionChanged(Camera2D cam, EventArgs e)
-        {
-            // Base calls updatePosition()
-            base.camDirectionChanged(cam, e);
-
-            updateCharacterAnimation();
-        }
-
-
-        //-------------------------------------------------------------------------
-        /// <summary>
         /// Handles all CharacterState changing logic. This function should be called
         /// once every time the character's state is changed.
         /// </summary>
@@ -193,63 +205,9 @@ namespace GDD2Project1
         public void setCharacterState(CharacterState state)
         {
             _chrState = state;
+            _stateTime = 0;
 
             updateDirection();
-            updateCharacterAnimation();
-        }
-
-        /// <summary>
-        /// Sets this GameCharacter's drawable's animation to match the current
-        /// character state.
-        /// </summary>
-        protected void updateCharacterAnimation()
-        {
-            string anim = "";
-
-            switch (_chrState)
-            { 
-                case CharacterState.CHRSTATE_IDLE:
-                    switch (_isoDirection)
-                    { 
-                        case Direction.DIR_NE:
-                            anim = "idleNE";
-                            break;
-                        case Direction.DIR_SE:
-                            anim = "idleSE";
-                            break;
-                        case Direction.DIR_SW:
-                            anim = "idleSW";
-                            break;
-                        case Direction.DIR_NW:
-                            anim = "idleNW";
-                            break;
-                    }
-                    break;
-
-                case CharacterState.CHRSTATE_MOVING:
-                    switch (_isoDirection)
-                    {
-                        case Direction.DIR_NE:
-                            anim = "walkNE";
-                            break;
-                        case Direction.DIR_SE:
-                            anim = "walkSE";
-                            break;
-                        case Direction.DIR_SW:
-                            anim = "walkSW";
-                            break;
-                        case Direction.DIR_NW:
-                            anim = "walkNW";
-                            break;
-                    }
-                    break;
-            }
-
-            if (anim != "")
-            {
-                DrawableAnimated drawable = _drawable as DrawableAnimated;
-                drawable.setAnimation(anim);
-            }
         }
     }
 }

@@ -70,7 +70,6 @@ namespace GDD2Project1
             _drawable.draw(
                 spriteBatch,
                 _position,
-                _origin,
                 _color,
                 _rotation,
                 _scale,

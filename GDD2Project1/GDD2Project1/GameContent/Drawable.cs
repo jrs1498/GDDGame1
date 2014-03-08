@@ -7,14 +7,18 @@ using Microsoft.Xna.Framework;
 
 namespace GDD2Project1
 {
-    public class Drawable
+    public class Drawable : ContentObject
     {
         protected Texture2D     _texture;
-        protected String        _name;
+        protected Vector2       _origin;
 
 
         //-------------------------------------------------------------------------
-        public String Name { get { return _name; } }
+        public Vector2 Origin
+        {
+            get { return _origin; }
+            set { _origin = value; }
+        }
 
 
         //-------------------------------------------------------------------------
@@ -22,10 +26,32 @@ namespace GDD2Project1
         /// Default Drawable constructor
         /// </summary>
         /// <param name="texture">The Drawable's texture</param>
-        public Drawable(Texture2D texture, String name)
+        public Drawable(String name, Texture2D texture)
+            : base(name)
         {
             _texture    = texture;
             _name       = name;
+            _origin     = new Vector2(0, 0);
+        }
+
+
+        //-------------------------------------------------------------------------
+        /// <summary>
+        /// Primary Drawable constructor. This object should only be created by a
+        /// GameContentManager from an XML file, using this constructor. See function
+        /// GameContentManager.loadDrawable.
+        /// </summary>
+        /// <param name="name">This object's name, for reference purposes</param>
+        /// <param name="texture">Texture used for drawing</param>
+        /// <param name="origin">Origin used for drawing</param>
+        public Drawable(
+            String      name,
+            Texture2D   texture,
+            Vector2     origin)
+            : base(name)
+        {
+            _texture    = texture;
+            _origin     = origin;
         }
 
 
@@ -42,7 +68,6 @@ namespace GDD2Project1
         public virtual void draw(
             SpriteBatch     spriteBatch, 
             Vector2         position, 
-            Vector2         origin,
             Color           color,
             float           rotation,
             Vector2         scale,
@@ -54,7 +79,7 @@ namespace GDD2Project1
                 null,
                 color,
                 rotation,
-                origin,
+                _origin,
                 scale,
                 SpriteEffects.None,
                 0);

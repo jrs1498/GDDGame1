@@ -1,0 +1,3134 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<XnaContent>
+  <Asset Type="GameData.GameLevelData">
+    <NumRows>25</NumRows>
+    <NumCols>25</NumCols>
+    <Tiles>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>0 0 0</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>0 0 82</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>0 0 164</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>0 0 246</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>0 0 328</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>0 0 410</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>0 0 492</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>0 0 574</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>0 0 656</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>0 0 738</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>0 0 820</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>0 0 902</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>0 0 984</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>0 0 1066</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>0 0 1148</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>0 0 1230</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>0 0 1312</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>0 0 1394</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>0 0 1476</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>0 0 1558</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>0 0 1640</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>0 0 1722</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>0 0 1804</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>0 0 1886</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>0 0 1968</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>82 0 0</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>82 0 82</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>82 0 164</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>82 0 246</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>82 0 328</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>82 0 410</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>82 0 492</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>82 0 574</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>82 0 656</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>82 0 738</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>82 0 820</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>82 0 902</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>82 0 984</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>82 0 1066</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>82 0 1148</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>82 0 1230</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>82 0 1312</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>82 0 1394</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>82 0 1476</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>82 0 1558</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>82 0 1640</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>82 0 1722</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>82 0 1804</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>82 0 1886</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>82 0 1968</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>164 0 0</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>164 0 82</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>164 0 164</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>164 0 246</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>164 0 328</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>164 0 410</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>164 0 492</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>164 0 574</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>164 0 656</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>164 0 738</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>164 0 820</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>164 0 902</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>164 0 984</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>164 0 1066</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>164 0 1148</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>164 0 1230</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>164 0 1312</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>164 0 1394</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>164 0 1476</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>164 0 1558</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>164 0 1640</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>164 0 1722</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>164 0 1804</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>164 0 1886</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>164 0 1968</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>246 0 0</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>246 0 82</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>246 0 164</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>246 0 246</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>246 0 328</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>246 0 410</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>246 0 492</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>246 0 574</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>246 0 656</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>246 0 738</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>246 0 820</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>246 0 902</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>246 0 984</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>246 0 1066</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>246 0 1148</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>246 0 1230</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>246 0 1312</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>246 0 1394</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>246 0 1476</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>246 0 1558</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>246 0 1640</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>246 0 1722</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>246 0 1804</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>246 0 1886</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>246 0 1968</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>328 0 0</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>328 0 82</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>328 0 164</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>328 0 246</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>328 0 328</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>328 0 410</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>328 0 492</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>328 0 574</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>328 0 656</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>328 0 738</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>328 0 820</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>328 0 902</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>328 0 984</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>328 0 1066</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>328 0 1148</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>328 0 1230</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>328 0 1312</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>328 0 1394</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>328 0 1476</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>328 0 1558</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>328 0 1640</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>328 0 1722</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>328 0 1804</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>328 0 1886</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>328 0 1968</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>410 0 0</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>410 0 82</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>410 0 164</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>410 0 246</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>410 0 328</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>410 0 410</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>410 0 492</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>410 0 574</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>410 0 656</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>410 0 738</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>410 0 820</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>410 0 902</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>410 0 984</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>410 0 1066</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>410 0 1148</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>410 0 1230</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>410 0 1312</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>410 0 1394</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>410 0 1476</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>410 0 1558</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>410 0 1640</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>410 0 1722</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>410 0 1804</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>410 0 1886</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>410 0 1968</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>492 0 0</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>492 0 82</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>492 0 164</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>492 0 246</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>492 0 328</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>492 0 410</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>492 0 492</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>492 0 574</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>492 0 656</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>492 0 738</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>492 0 820</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>492 0 902</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>492 0 984</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>492 0 1066</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>492 0 1148</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>492 0 1230</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>492 0 1312</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>492 0 1394</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>492 0 1476</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>492 0 1558</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>492 0 1640</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>492 0 1722</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>492 0 1804</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>492 0 1886</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>492 0 1968</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>574 0 0</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>574 0 82</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>574 0 164</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>574 0 246</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>574 0 328</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>574 0 410</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>574 0 492</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>574 0 574</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>574 0 656</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>574 0 738</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>574 0 820</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>574 0 902</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>574 0 984</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>574 0 1066</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>574 0 1148</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>574 0 1230</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>574 0 1312</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>574 0 1394</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>574 0 1476</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>574 0 1558</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>574 0 1640</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>574 0 1722</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>574 0 1804</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>574 0 1886</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>574 0 1968</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>656 0 0</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>656 0 82</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>656 0 164</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>656 0 246</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>656 0 328</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>656 0 410</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>656 0 492</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>656 0 574</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>656 0 656</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>656 0 738</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>656 0 820</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>656 0 902</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>656 0 984</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>656 0 1066</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>656 0 1148</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>656 0 1230</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>656 0 1312</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>656 0 1394</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>656 0 1476</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>656 0 1558</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>656 0 1640</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>656 0 1722</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>656 0 1804</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>656 0 1886</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>656 0 1968</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>738 0 0</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>738 0 82</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>738 0 164</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>738 0 246</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>738 0 328</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>738 0 410</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>738 0 492</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>738 0 574</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>738 0 656</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>738 0 738</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>738 0 820</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>738 0 902</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>738 0 984</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>738 0 1066</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>738 0 1148</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>738 0 1230</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>738 0 1312</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>738 0 1394</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>738 0 1476</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>738 0 1558</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>738 0 1640</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>738 0 1722</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>738 0 1804</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>738 0 1886</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>738 0 1968</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>820 0 0</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>820 0 82</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>820 0 164</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>820 0 246</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>820 0 328</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>820 0 410</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>820 0 492</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>820 0 574</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>820 0 656</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>820 0 738</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>820 0 820</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>820 0 902</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>820 0 984</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>820 0 1066</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>820 0 1148</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>820 0 1230</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>820 0 1312</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>820 0 1394</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>820 0 1476</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>820 0 1558</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>820 0 1640</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>820 0 1722</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>820 0 1804</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>820 0 1886</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>820 0 1968</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>902 0 0</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>902 0 82</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>902 0 164</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>902 0 246</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>902 0 328</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>902 0 410</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>902 0 492</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>902 0 574</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>902 0 656</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>902 0 738</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>902 0 820</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>902 0 902</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>902 0 984</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>902 0 1066</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>902 0 1148</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>902 0 1230</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>902 0 1312</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>902 0 1394</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>902 0 1476</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>902 0 1558</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>902 0 1640</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>902 0 1722</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>902 0 1804</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>902 0 1886</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>902 0 1968</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>984 0 0</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>984 0 82</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>984 0 164</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>984 0 246</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>984 0 328</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>984 0 410</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>984 0 492</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>984 0 574</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>984 0 656</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>984 0 738</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>984 0 820</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>984 0 902</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>984 0 984</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>984 0 1066</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>984 0 1148</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>984 0 1230</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>984 0 1312</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>984 0 1394</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>984 0 1476</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>984 0 1558</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>984 0 1640</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>984 0 1722</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>984 0 1804</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>984 0 1886</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>984 0 1968</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1066 0 0</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1066 0 82</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1066 0 164</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1066 0 246</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1066 0 328</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1066 0 410</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1066 0 492</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1066 0 574</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1066 0 656</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1066 0 738</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1066 0 820</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1066 0 902</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1066 0 984</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1066 0 1066</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1066 0 1148</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1066 0 1230</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1066 0 1312</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1066 0 1394</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1066 0 1476</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1066 0 1558</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1066 0 1640</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1066 0 1722</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1066 0 1804</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1066 0 1886</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1066 0 1968</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1148 0 0</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1148 0 82</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1148 0 164</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1148 0 246</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1148 0 328</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1148 0 410</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1148 0 492</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1148 0 574</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1148 0 656</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1148 0 738</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1148 0 820</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1148 0 902</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1148 0 984</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1148 0 1066</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1148 0 1148</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1148 0 1230</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1148 0 1312</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1148 0 1394</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1148 0 1476</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1148 0 1558</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1148 0 1640</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1148 0 1722</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1148 0 1804</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1148 0 1886</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1148 0 1968</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1230 0 0</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1230 0 82</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1230 0 164</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1230 0 246</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1230 0 328</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1230 0 410</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1230 0 492</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1230 0 574</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1230 0 656</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1230 0 738</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1230 0 820</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1230 0 902</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1230 0 984</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1230 0 1066</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1230 0 1148</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1230 0 1230</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1230 0 1312</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1230 0 1394</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1230 0 1476</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1230 0 1558</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1230 0 1640</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1230 0 1722</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1230 0 1804</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1230 0 1886</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1230 0 1968</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1312 0 0</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1312 0 82</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1312 0 164</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1312 0 246</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1312 0 328</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1312 0 410</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1312 0 492</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1312 0 574</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1312 0 656</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1312 0 738</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1312 0 820</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1312 0 902</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1312 0 984</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1312 0 1066</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1312 0 1148</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1312 0 1230</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1312 0 1312</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1312 0 1394</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1312 0 1476</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1312 0 1558</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1312 0 1640</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1312 0 1722</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1312 0 1804</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1312 0 1886</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1312 0 1968</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1394 0 0</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1394 0 82</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1394 0 164</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1394 0 246</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1394 0 328</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1394 0 410</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1394 0 492</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1394 0 574</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1394 0 656</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1394 0 738</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1394 0 820</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1394 0 902</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1394 0 984</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1394 0 1066</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1394 0 1148</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1394 0 1230</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1394 0 1312</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1394 0 1394</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1394 0 1476</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1394 0 1558</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1394 0 1640</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1394 0 1722</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1394 0 1804</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1394 0 1886</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1394 0 1968</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1476 0 0</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1476 0 82</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1476 0 164</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1476 0 246</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1476 0 328</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1476 0 410</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1476 0 492</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1476 0 574</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1476 0 656</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1476 0 738</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1476 0 820</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1476 0 902</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1476 0 984</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1476 0 1066</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1476 0 1148</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1476 0 1230</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1476 0 1312</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1476 0 1394</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1476 0 1476</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1476 0 1558</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1476 0 1640</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1476 0 1722</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1476 0 1804</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1476 0 1886</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1476 0 1968</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1558 0 0</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1558 0 82</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1558 0 164</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1558 0 246</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1558 0 328</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1558 0 410</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1558 0 492</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1558 0 574</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1558 0 656</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1558 0 738</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1558 0 820</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1558 0 902</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1558 0 984</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1558 0 1066</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1558 0 1148</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1558 0 1230</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1558 0 1312</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1558 0 1394</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1558 0 1476</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1558 0 1558</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1558 0 1640</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1558 0 1722</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1558 0 1804</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1558 0 1886</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1558 0 1968</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1640 0 0</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1640 0 82</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1640 0 164</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1640 0 246</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1640 0 328</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1640 0 410</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1640 0 492</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1640 0 574</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1640 0 656</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1640 0 738</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1640 0 820</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1640 0 902</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1640 0 984</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1640 0 1066</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1640 0 1148</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1640 0 1230</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1640 0 1312</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1640 0 1394</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1640 0 1476</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1640 0 1558</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1640 0 1640</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1640 0 1722</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1640 0 1804</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1640 0 1886</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1640 0 1968</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1722 0 0</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1722 0 82</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1722 0 164</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1722 0 246</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1722 0 328</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1722 0 410</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1722 0 492</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1722 0 574</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1722 0 656</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1722 0 738</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1722 0 820</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1722 0 902</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1722 0 984</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1722 0 1066</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1722 0 1148</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1722 0 1230</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1722 0 1312</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1722 0 1394</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1722 0 1476</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1722 0 1558</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1722 0 1640</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1722 0 1722</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1722 0 1804</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1722 0 1886</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1722 0 1968</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1804 0 0</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1804 0 82</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1804 0 164</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1804 0 246</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1804 0 328</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1804 0 410</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1804 0 492</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1804 0 574</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1804 0 656</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1804 0 738</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1804 0 820</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1804 0 902</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1804 0 984</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1804 0 1066</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1804 0 1148</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1804 0 1230</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1804 0 1312</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1804 0 1394</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1804 0 1476</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1804 0 1558</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1804 0 1640</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1804 0 1722</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1804 0 1804</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1804 0 1886</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1804 0 1968</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1886 0 0</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1886 0 82</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1886 0 164</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1886 0 246</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1886 0 328</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1886 0 410</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1886 0 492</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1886 0 574</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1886 0 656</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1886 0 738</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1886 0 820</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1886 0 902</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1886 0 984</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1886 0 1066</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1886 0 1148</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1886 0 1230</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1886 0 1312</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1886 0 1394</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1886 0 1476</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1886 0 1558</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1886 0 1640</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1886 0 1722</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1886 0 1804</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1886 0 1886</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1886 0 1968</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1968 0 0</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1968 0 82</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1968 0 164</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1968 0 246</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1968 0 328</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1968 0 410</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1968 0 492</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1968 0 574</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1968 0 656</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1968 0 738</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1968 0 820</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1968 0 902</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1968 0 984</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1968 0 1066</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1968 0 1148</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1968 0 1230</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1968 0 1312</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1968 0 1394</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1968 0 1476</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1968 0 1558</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1968 0 1640</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1968 0 1722</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1968 0 1804</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1968 0 1886</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r25c25</Name>
+        <PositionIsometric>1968 0 1968</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+    </Tiles>
+  </Asset>
+</XnaContent>

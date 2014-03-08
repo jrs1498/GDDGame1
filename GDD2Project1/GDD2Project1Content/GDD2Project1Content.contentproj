@@ -30,36 +30,15 @@
     <Reference Include="Microsoft.Xna.Framework.Content.Pipeline.VideoImporters, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=MSIL" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="textures\tiles\rocktile.png">
-      <Name>rocktile</Name>
+    <Compile Include="textures\tile_rock.png">
+      <Name>tile_rock</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="textures\characters\character.png">
-      <Name>character</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="textures\decorative\tree.png">
-      <Name>tree</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="textures\consumables\consumable.png">
+    <Compile Include="textures\consumable.png">
       <Name>consumable</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="textures\interface\button.png">
-      <Name>button</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
@@ -90,37 +69,66 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="textures\tiles\grasstile.png">
-      <Name>grasstile</Name>
+    <Compile Include="textures\tile_grass.png">
+      <Name>tile_grass</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="textures\tiles\sandtile.png">
-      <Name>sandtile</Name>
+    <Compile Include="textures\tile_sand.png">
+      <Name>tile_sand</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="textures\tiles\stonesandtile.png">
-      <Name>stonesandtile</Name>
+    <Compile Include="textures\tile_stonesand.png">
+      <Name>tile_stonesand</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
-    <Compile Include="textures\tiles\stonetile.png">
-      <Name>stonetile</Name>
+    <Compile Include="textures\tile_stone.png">
+      <Name>tile_stone</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="levels\rocktile.xml">
-      <Name>rocktile</Name>
+    <Compile Include="textures\tree.png">
+      <Name>tree</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="textures\playercharacter.png">
+      <Name>playercharacter</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="drawables\playercharacter.xml">
+      <Name>playercharacter</Name>
       <Importer>XmlImporter</Importer>
       <Processor>PassThroughProcessor</Processor>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="levels\testytest.xml">
-      <Name>testytest</Name>
+    <Compile Include="drawables\tree1.xml">
+      <Name>tree1</Name>
+      <Importer>XmlImporter</Importer>
+      <Processor>PassThroughProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <Compile Include="drawables\tile_rock.xml">
+      <Name>tile_rock</Name>
+      <Importer>XmlImporter</Importer>
+      <Processor>PassThroughProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="levels\testing.xml">
+      <Name>testing</Name>
       <Importer>XmlImporter</Importer>
       <Processor>PassThroughProcessor</Processor>
     </Compile>

@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<XnaContent>
+  <Asset Type="GameData.DrawableData">
+    <TextureName>tree</TextureName>
+    <Origin>36 120</Origin>
+  </Asset>
+</XnaContent>

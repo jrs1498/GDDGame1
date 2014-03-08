@@ -26,7 +26,7 @@ namespace GDD2Project1
         protected const String      TILE_NAME_PREFIX    = "tile_";
         protected const char        TILE_ROW_PREFIX     = 'r';
         protected const char        TILE_COL_PREFIX     = 'c';
-        protected const int         TILE_SIZE = 72;
+        protected const int         TILE_SIZE = 82;
         protected GameObject[,]     _tiles;
         protected int               _tileRows;
         protected int               _tileCols;
@@ -51,7 +51,9 @@ namespace GDD2Project1
         /// Default GameLevelManager constructor
         /// </summary>
         /// <param name="contentManager">ContentManager used for loading game data</param>
-        public GameLevelManager(GameContentManager gameContentMgr, GraphicsDevice graphicsDevice)
+        public GameLevelManager(
+            GameContentManager  gameContentMgr,
+            GraphicsDevice      graphicsDevice)
         {
             _gameContentMgr = gameContentMgr;
 
@@ -64,8 +66,10 @@ namespace GDD2Project1
             // Initialize dictionaries
             _characters = new Dictionary<string, GameCharacter>();
 
-            // Load an example level
-            //loadLevel(20, 10);
+            // Initialize tile origin
+            _tileOrigin = new Vector2(
+                (float)Math.Sqrt(TILE_SIZE * TILE_SIZE) / 2,
+                TILE_SIZE * _camera.ScaleY);
         }
 
 
@@ -118,13 +122,51 @@ namespace GDD2Project1
                 for (int y = 0; y < _tileCols; y++)
                 {
                     GameObjectData objData = data.Tiles[x * _tileCols + y];
-                    Drawable drawable = _gameContentMgr.loadDrawable<Drawable>(
-                        "textures\\tiles\\", objData.Drawable);
+                    //Drawable drawable = _gameContentMgr.loadDrawable<Drawable>(
+                    //    "textures\\tiles\\", objData.Drawable);
+                    Drawable drawable = _gameContentMgr.loadDrawable(objData.Drawable);
                     GameObject tile = new GameObject(this, objData.Name);
                     tile.attachDrawable(drawable);
                     tile.PositionIsometric = objData.PositionIsometric;
                     _tiles[x, y] = tile;
                 }
+
+
+            //----------------TEST-------------------------
+            Drawable tree = _gameContentMgr.loadDrawable("tree1");
+
+            GameObject obj1 = new GameObject(this, "obj1");
+            GameObject obj2 = new GameObject(this, "obj2");
+
+            obj1.attachDrawable(tree);
+            obj2.attachDrawable(tree);
+
+            GameObject tile1 = getTileAtIndex(5, 5);
+            GameObject tile2 = getTileAtIndex(8, 8);
+
+            tile1.attachChildNode(obj1);
+            tile2.attachChildNode(obj2);
+
+            obj1.PositionIsometric = tile1.PositionIsometric;
+            obj2.PositionIsometric = tile2.PositionIsometric;
+
+            tile1.Color = tile2.Color = Color.Green;
+
+
+
+            DrawableAnimated player = _gameContentMgr.loadDrawableAnimated("playercharacter");
+
+            GameCharacter character = new GameCharacter(this, "playercharacter");
+            character.attachDrawable(player);
+            _characters.Add(character.getName, character);
+
+            GameObject tile3 = getTileAtIndex(9, 2);
+            tile3.attachChildNode(character);
+
+            character.PositionIsometric = tile3.PositionIsometric;
+
+
+            //----------------END TEST---------------------
         }
 
         /// <summary>
@@ -139,8 +181,7 @@ namespace GDD2Project1
             _tileRows = rows;
             _tileCols = cols;
 
-            Drawable tileDrawable = _gameContentMgr.loadDrawable<Drawable>(
-                "textures\\tiles\\", drawable);
+            Drawable defaultTile = _gameContentMgr.loadDrawable(drawable);
 
             for (int x = 0; x < rows; x++)
                 for (int y = 0; y < cols; y++)
@@ -148,7 +189,7 @@ namespace GDD2Project1
                     String tileName = ("r" + cols + "c" + rows);
                     GameObject tile = new GameObject(this, tileName);
 
-                    tile.attachDrawable(tileDrawable);
+                    tile.attachDrawable(defaultTile);
 
                     Vector3 positionIsometric;
                     positionIsometric.X = x * TILE_SIZE;
@@ -157,35 +198,6 @@ namespace GDD2Project1
                     tile.PositionIsometric = positionIsometric;
 
                     _tiles[x, y] = tile;
-                }
-        }
-
-
-        //-------------------------------------------------------------------------
-        public void loadLevel(int rows, int cols)
-        {
-            _tiles = new GameObject[rows, cols];
-            _tileRows = rows;
-            _tileCols = cols;
-
-            _gameContentMgr.loadDrawable<Drawable>("textures\\tiles\\", "rocktile");
-            Drawable tileDrawable = _gameContentMgr.getDrawable<Drawable>("rocktile");
-
-            for (int row = 0; row < rows; row++)
-                for (int col = 0; col < cols; col++)
-                {
-                    String tileName = ("r" + col + "c" + row);
-                    GameObject tile = new GameObject(this, tileName);
-
-                    tile.attachDrawable(tileDrawable);
-
-                    Vector3 positionIsometric;
-                    positionIsometric.X = row * TILE_SIZE;
-                    positionIsometric.Y = 0.0f;
-                    positionIsometric.Z = col * TILE_SIZE;
-                    tile.PositionIsometric = positionIsometric;
-
-                    _tiles[row, col] = tile;
                 }
         }
 
@@ -386,6 +398,28 @@ namespace GDD2Project1
             // If it's a Character, remove it from the dictionary
             if (node is GameCharacter)
                 _characters.Remove(node.getName);
+        }
+
+
+        //-------------------------------------------------------------------------
+        /// <summary>
+        /// Return a GameObject previously added to this GameLevel
+        /// </summary>
+        /// <typeparam name="T">Type of GameObject</typeparam>
+        /// <param name="name">Name of object previously created</param>
+        /// <returns>Object corresponding to name</returns>
+        public T getGameObject<T>(String name)
+            where T : GameObject
+        {
+            // If the GameObject was never created, return null
+            if (!_characters.ContainsKey(name))
+                return null;
+
+            // If the GameObject is not of the type specified, return null
+            if (!(_characters[name] is T))
+                return null;
+
+            return _characters[name] as T;
         }
     }
 }

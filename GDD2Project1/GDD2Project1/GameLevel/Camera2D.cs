@@ -26,6 +26,8 @@ namespace GDD2Project1
             _dirE = (float)Math.PI * 0.5f,
             _dirW = (float)Math.PI * 1.5f;
 
+        protected Vector2 _origin;
+
         protected Direction _dir;
 
 
@@ -53,10 +55,21 @@ namespace GDD2Project1
             set { _rotationX = value; }
         }
 
+        public float ScaleY
+        {
+            get { return _scaleY; }
+        }
+
         public float Zoom
         {
             get { return _zoom; }
             set { _zoom = value; }
+        }
+
+        public Vector2 Origin
+        {
+            get { return _origin; }
+            set { _origin = value; }
         }
 
         public Direction Dir

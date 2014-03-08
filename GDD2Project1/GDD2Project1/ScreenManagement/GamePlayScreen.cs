@@ -55,18 +55,19 @@ namespace GDD2Project1
             if (!base.initUser())
                 return false;
 
+            // Grab the player's character from GameLevel
+            GameCharacter playerChar = 
+                _gameLevelMgr.getGameObject<GameCharacter>(PLAYER_CHARACTER);
+
             // Create User's controllers
-            //_user.createController<CameraController>(
-            //    _gameLevelMgr.Camera,
-            //    "camController");
-            //_user.createController<CharacterController>(
-            //    _gameLevelMgr.getCharacter("dudetwo"),
-            //    "charController");
-            
-            //// Set controller attributes
-            //_user.getController<CameraController>("camController").setCharacterTarget(
-            //    _gameLevelMgr.getCharacter("dudetwo"),
-            //    true);
+            CameraController camController = _user.createController<CameraController>(
+                _gameLevelMgr.Camera,
+                "camController");
+
+            CharacterController charController = _user.createController<CharacterController>(
+                playerChar, "charController");
+
+            camController.setCharacterTarget(playerChar, true);
 
             return true;
         }

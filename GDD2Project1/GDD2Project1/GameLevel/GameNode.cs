@@ -41,11 +41,10 @@ namespace GDD2Project1
         /// </summary>
         /// <param name="position">World position</param>
         /// <param name="origin">Origin used for draw location and pivot</param>
-        private void construct(String name, Vector3 position, Vector2 origin)
+        private void construct(String name, Vector3 position)
         {
             _name                   = name;
             _positionIsometric      = position;
-            _origin                 = origin;
 
             _scale                  = new Vector2(1.0f);
             _rotation               = 0;
@@ -59,7 +58,7 @@ namespace GDD2Project1
         public GameNode(GameLevelManager gameLevelMgr, String name)
             : base(gameLevelMgr)
         {
-            construct(name, Vector3.Zero, Vector2.Zero);
+            construct(name, Vector3.Zero);
         }
 
         /// <summary>
@@ -67,10 +66,10 @@ namespace GDD2Project1
         /// </summary>
         /// <param name="position">World position</param>
         /// <param name="origin">Origin used for draw location and pivot</param>
-        public GameNode(GameLevelManager gameLevelMgr, String name, Vector3 position, Vector2 origin)
+        public GameNode(GameLevelManager gameLevelMgr, String name, Vector3 position)
             : base(gameLevelMgr)
         {
-            construct(name, position, origin);
+            construct(name, position);
         }
 
 
@@ -248,7 +247,7 @@ namespace GDD2Project1
         /// <returns>Newly created child node</returns>
         public virtual GameNode createChildNode(String name)
         {
-            return createChildNode(name, Vector3.Zero, Vector2.Zero);
+            return createChildNode(name, Vector3.Zero);
         }
 
         /// <summary>
@@ -258,9 +257,9 @@ namespace GDD2Project1
         /// <param name="position">Node's position</param>
         /// <param name="origin">Node's origin</param>
         /// <returns>Newly created child node</returns>
-        public virtual GameNode createChildNode(String name, Vector3 position, Vector2 origin)
+        public virtual GameNode createChildNode(String name, Vector3 position)
         {
-            GameNode node = new GameNode(_gameLevelMgr, name, position, origin);
+            GameNode node = new GameNode(_gameLevelMgr, name, position);
 
             attachChildNode(node);
 

@@ -15,7 +15,7 @@ namespace GDD2Project1
     {
         protected GameLevelManager _gameLevelMgr;
 
-        protected Vector2 _position, _origin;
+        protected Vector2 _position;// _origin;
 
 
         //-------------------------------------------------------------------------
@@ -30,11 +30,11 @@ namespace GDD2Project1
             set { _position = value; }
         }
 
-        public virtual Vector2 Origin
-        {
-            get { return _origin; }
-            set { _origin = value; }
-        }
+        //public virtual Vector2 Origin
+        //{
+        //    get { return _origin; }
+        //    set { _origin = value; }
+        //}
 
 
         //-------------------------------------------------------------------------
@@ -43,11 +43,10 @@ namespace GDD2Project1
         /// </summary>
         /// <param name="position">This GameObject's position</param>
         /// <param name="origin">GameObject's origin and pivot point</param>
-        private void construct(GameLevelManager gameLevelMgr, Vector2 position, Vector2 origin)
+        private void construct(GameLevelManager gameLevelMgr, Vector2 position)
         {
             _gameLevelMgr   = gameLevelMgr;
             _position       = position;
-            _origin         = origin;
         }
 
         /// <summary>
@@ -55,7 +54,7 @@ namespace GDD2Project1
         /// </summary>
         public Actor(GameLevelManager gameLevelMgr)
         {
-            construct(gameLevelMgr, Vector2.Zero, Vector2.Zero);
+            construct(gameLevelMgr, Vector2.Zero);
         }
 
         /// <summary>
@@ -63,9 +62,9 @@ namespace GDD2Project1
         /// </summary>
         /// <param name="position">GameObject's position</param>
         /// <param name="origin">GameObject's origin</param>
-        public Actor(GameLevelManager gameLevelMgr, Vector2 position, Vector2 origin)
+        public Actor(GameLevelManager gameLevelMgr, Vector2 position)
         {
-            construct(gameLevelMgr, position, origin);
+            construct(gameLevelMgr, position);
         }
 
 

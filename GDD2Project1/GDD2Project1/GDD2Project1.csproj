@@ -78,6 +78,8 @@
     <Reference Include="System.Net" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="GameContent\Animation.cs" />
+    <Compile Include="GameContent\ContentObject.cs" />
     <Compile Include="GUI\InterfaceManager.cs" />
     <Compile Include="GUI\InterfaceObject.cs" />
     <Compile Include="GUI\TextButton.cs" />
@@ -90,10 +92,10 @@
     <Compile Include="GameLevel\Camera2D.cs" />
     <Compile Include="User\CameraController.cs" />
     <Compile Include="GameLevel\Consumable.cs" />
-    <Compile Include="GameLevel\Drawable.cs" />
-    <Compile Include="GameLevel\DrawableAnimated.cs" />
+    <Compile Include="GameContent\Drawable.cs" />
+    <Compile Include="GameContent\DrawableAnimated.cs" />
     <Compile Include="GameLevel\GameCharacter.cs" />
-    <Compile Include="GameLevel\GameContentManager.cs" />
+    <Compile Include="GameContent\GameContentManager.cs" />
     <Compile Include="GameLevel\GameLevelManager.cs" />
     <Compile Include="GameLevel\GameNode.cs" />
     <Compile Include="GameLevel\Actor.cs" />
