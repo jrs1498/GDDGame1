@@ -60,8 +60,6 @@ namespace GDD2Project1
         public GameEditorScreen(ScreenManager screenMgr, String name)
             : base(screenMgr, name)
         {
-            setEditMode(EditMode.EDITMODE_NONE);
-            _selection = new List<GameObject>();
         }
 
 
@@ -76,6 +74,12 @@ namespace GDD2Project1
             // Initialize GameLevelManager
             _gameLevelMgr = new GameLevelManager(_gameContentMgr, _screenMgr.GraphicsDevice);
 
+            // Initialize tools
+            setTool(Tool.TOOL_NONE);
+            _selection = new List<GameObject>();
+            _snapHeight = _gameLevelMgr.TileSize;
+
+            // Base initializes user
             if (!base.init())
                 return false;
 
@@ -327,8 +331,29 @@ namespace GDD2Project1
                 toolBar.Resizable = false;
                 toolBar.HasFullWindowMovableArea = false;
                 //---------------------------------------------------------------------
-                {   // Test button
-                    TextButton elevate = create_button("test", 50, 40, 0, 0);
+                {   // Select
+                    TextButton select = create_button("select", 60, 40, 0, 0);
+                    toolBar.Add(select);
+
+                    select.Click += delegate(UIComponent sender)
+                    {
+                        setTool(Tool.TOOL_SELECT);
+                    };
+                }
+                //---------------------------------------------------------------------
+                {   // Clear select
+                    TextButton clear = create_button("clear", 60, 40, 70, 0);
+                    toolBar.Add(clear);
+
+                    clear.Click += delegate(UIComponent sender)
+                    {
+                        clearSelection();
+                        endTileSelection();
+                    };
+                }
+                //---------------------------------------------------------------------
+                {   // Elevate 
+                    TextButton elevate = create_button("elevate", 60, 40, 140, 0);
                     toolBar.Add(elevate);
 
                     elevate.Click += delegate(UIComponent sender)
@@ -362,15 +387,32 @@ namespace GDD2Project1
         /// to any components that check for input.
         /// </summary>
         /// <param name="e">Key event arguments</param>
-        public override void injectKeyDown(KeyEventArgs e)
+        public override bool injectKeyDown(KeyEventArgs e)
         {
-            switch (e.Key)
-            { 
-                case Keys.E:
-                    _elevateCurrent = _elevateSnap;
-                    break;
+            // Ctrl hotkeys
+            if (e.Control)
+            {
+                switch (e.Key)
+                { 
+                    case Keys.S:
+                        setTool(Tool.TOOL_SELECT);
+                        return true;
+
+                    case Keys.E:
+                        setTool(Tool.TOOL_ELEVATE);
+                        return true;
+
+                    case Keys.D:
+                        clearSelection();
+                        endTileSelection();
+                        return true;
+
+                    default:
+                        break;
+                }
             }
-            base.injectKeyDown(e);
+
+            return base.injectKeyDown(e);
         }
 
         /// <summary>
@@ -378,15 +420,25 @@ namespace GDD2Project1
         /// to any components that check for input.
         /// </summary>
         /// <param name="e">Key event arguments</param>
-        public override void injectKeyUp(KeyEventArgs e)
+        public override bool injectKeyUp(KeyEventArgs e)
         {
-            switch (e.Key)
-            { 
-                case Keys.E:
-                    _elevateCurrent = _elevateIncr;
-                    break;
+            // Ctrl hotkeys
+            if (e.Control)
+            {
+                switch (e.Key)
+                { 
+                    case Keys.S:
+                        return true;
+
+                    case Keys.E:
+                        return true;
+
+                    case Keys.D:
+                        return true;
+                }
             }
-            base.injectKeyUp(e);
+
+            return base.injectKeyUp(e);
         }
 
         /// <summary>
@@ -394,34 +446,31 @@ namespace GDD2Project1
         /// to any components that check for input.
         /// </summary>
         /// <param name="e">Key event arguments</param>
-        public override void injectMouseDown(MouseEventArgs e)
+        public override bool injectMouseDown(MouseEventArgs e)
         {
             switch (e.Button)
             { 
                 case MouseButtons.Left:
-                    switch (_tool)
-                    { 
-                        case Tool.TOOL_ELEVATE:
-                            if (_selectedTile != null)
-                            {
-                                _selectedTile.translate(new Vector3(0.0f, -_elevateCurrent, 0.0f));
-                            }
-                            break;
-                    }
-                    break;
+                    if (_tool != Tool.TOOL_NONE)
+                    {
+                        switch (_tool)
+                        { 
+                            case Tool.TOOL_SELECT:
+                                beginTileSelection(e.Position);
+                                return true;
 
-                case MouseButtons.Right:
-                    switch (_tool)
-                    { 
-                        case Tool.TOOL_ELEVATE:
-                            if (_selectedTile != null)
-                                _selectedTile.translate(new Vector3(0.0f, _elevateCurrent, 0.0f));
-                            break;
+                            case Tool.TOOL_ELEVATE:
+                                _elevating = true;
+                                return true;
+
+                            default:
+                                break;
+                        }
                     }
                     break;
             }
 
-            base.injectMouseDown(e);
+            return base.injectMouseDown(e);
         }
 
         /// <summary>
@@ -429,17 +478,25 @@ namespace GDD2Project1
         /// to any components that check for input.
         /// </summary>
         /// <param name="e">Key event arguments</param>
-        public override void injectMouseUp(InputEventSystem.MouseEventArgs e)
+        public override bool injectMouseUp(InputEventSystem.MouseEventArgs e)
         {
             switch (e.Button)
-            {
+            { 
                 case MouseButtons.Left:
-                    if (_tool == Tool.TOOL_SELECT)
-                        _grabbingSelection = false;
+                    switch (_tool)
+                    { 
+                        case Tool.TOOL_SELECT:
+                            endTileSelection();
+                            return true;
+
+                        case Tool.TOOL_ELEVATE:
+                            _elevating = false;
+                            return true;
+                    }
                     break;
             }
 
-            base.injectMouseUp(e);
+            return base.injectMouseUp(e);
         }
 
         /// <summary>
@@ -447,12 +504,22 @@ namespace GDD2Project1
         /// to any components that check for input.
         /// </summary>
         /// <param name="e">Key event arguments</param>
-        public override void injectMouseMove(InputEventSystem.MouseEventArgs e)
+        public override bool injectMouseMove(InputEventSystem.MouseEventArgs e)
         {
-            if (_grabbingSelection)
-                grabSelection(e.Position);
+            switch (_tool)
+            { 
+                case Tool.TOOL_SELECT:
+                    if (_grabbingSelection)
+                        updateTileSelection(e.Position);
+                    return true;
 
-            base.injectMouseMove(e);
+                case Tool.TOOL_ELEVATE:
+                    if (_elevating)
+                        updateElevation(e);
+                    return true;
+            }
+
+            return base.injectMouseMove(e);
         }
 
 
@@ -465,17 +532,6 @@ namespace GDD2Project1
         {
             // Update GUI
             _guiMgr.Update(gameTime);
-
-            // Update based on EditMode
-            switch (_editMode)
-            { 
-                case EditMode.EDITMODE_NONE:
-                    break;
-
-                case EditMode.EDITMODE_TERRAIN:
-                    _grabbingSelection = true;
-                    break;
-            }
 
             // Base updates GameLevel and User
             base.update(gameTime);
@@ -516,34 +572,100 @@ namespace GDD2Project1
         {
             setEditMode(EditMode.EDITMODE_TERRAIN);
             _tool = tool;
+
+            Console.WriteLine("Tool: " + _tool);
         }
 
 
         //-------------------------------------------------------------------------
-        /// <summary>
-        /// Grab a selection of tiles. This will be called only when the mouse moves, so we will
-        /// grab a completely new selection based on the origin in this function.
-        /// </summary>
-        protected void grabSelection(Point mousePosition)
+        protected void beginTileSelection(Point mousePosition)
         {
-            GameObject selection = _gameLevelMgr.getTileFromScreenCoordinates(mousePosition);
-            if (selection != null)
+            Console.WriteLine("Tile selection started");
+            clearSelection();
+            GameObject originTile = _gameLevelMgr.getTileFromScreenCoordinates(mousePosition);
+            if (originTile != null)
             {
-                if (_selectedTile != null)
-                {
-                    _selectedTile.Color = Color.White;
-                }
-                _selectedTile = selection;
-                _selectedTile.Color = Color.Red;
+                _grabbingSelection = true;
+                _selection.Add(originTile);
+                updateTileSelection(mousePosition);
             }
         }
 
-        /// <summary>
-        /// Function handler for clearing the selection
-        /// </summary>
+        protected void updateTileSelection(Point mousePosition)
+        {
+            GameObject destTile = _gameLevelMgr.getTileFromScreenCoordinates(mousePosition);
+            if (destTile != null)
+            {
+                GameObject originTile = _selection[0];
+                clearSelection();
+                _selection.Add(originTile);
+
+                if (destTile != originTile)
+                {
+                    Point originIndex = _gameLevelMgr.getIndexFromPosition(originTile.PositionIsometric);
+                    Point destIndex = _gameLevelMgr.getIndexFromPosition(destTile.PositionIsometric);
+
+                    int diffx, diffy, signx, signy;
+
+                    diffx = destIndex.X - originIndex.X;
+                    diffy = destIndex.Y - originIndex.Y;
+                    signx = 1;
+                    signy = 1;
+
+                    if (diffx != 0) signx = diffx / Math.Abs(diffx);
+                    if (diffy != 0) signy = diffy / Math.Abs(diffy);
+
+                    switch (_gameLevelMgr.Camera.Dir)
+                    {
+                        case Direction.DIR_NE:
+                            for (int row = originIndex.X; row != destIndex.X + signx; row += signx)
+                                for (int col = originIndex.Y; col != destIndex.Y + signy; col += signy)
+                                {
+                                    GameObject tile = _gameLevelMgr.getTileAtIndex(row, col);
+                                    if (tile != null && tile != originTile)
+                                        _selection.Add(tile);
+                                }
+                            break;
+                    }
+                }
+
+                foreach (GameObject tile in _selection)
+                    tile.Color = _colorSelected;
+
+                Console.WriteLine("Updated selection: " + _selection.Count + " tiles");
+            }
+        }
+
+        protected void endTileSelection()
+        {
+            Console.WriteLine("Tile selection ended");
+            _grabbingSelection = false;
+        }
+
         protected void clearSelection()
         {
+            foreach (GameObject tile in _selection)
+                tile.Color = _colorUnselected;
             _selection.Clear();
+        }
+
+        protected void updateElevation(MouseEventArgs e)
+        {
+            if (_selection.Count == 0)
+                return;
+
+            if (!_snapping)
+            {
+                foreach (GameObject tile in _selection)
+                    tile.translate(0.0f, e.RelativePosition.Y
+                        / _gameLevelMgr.Camera.ScaleY
+                        / _gameLevelMgr.Camera.Zoom,
+                        0.0f);
+            }
+            else
+            { 
+                // Don't quite know how to make snapping work yet
+            }
         }
     }
 }

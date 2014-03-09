@@ -73,9 +73,9 @@ namespace GDD2Project1
         /// to any components that check for input.
         /// </summary>
         /// <param name="e">Key event arguments</param>
-        public override void injectKeyDown(KeyEventArgs e)
+        public override bool injectKeyDown(KeyEventArgs e)
         {
-            _user.injectKeyDown(e);
+            return _user.injectKeyDown(e);
         }
 
         /// <summary>
@@ -83,9 +83,9 @@ namespace GDD2Project1
         /// to any components that check for input.
         /// </summary>
         /// <param name="e">Key event arguments</param>
-        public override void injectKeyUp(KeyEventArgs e)
+        public override bool injectKeyUp(KeyEventArgs e)
         {
-            _user.injectKeyUp(e);
+            return _user.injectKeyUp(e);
         }
 
         /// <summary>
@@ -93,9 +93,9 @@ namespace GDD2Project1
         /// to any components that check for input.
         /// </summary>
         /// <param name="e">Key event arguments</param>
-        public override void injectMouseDown(MouseEventArgs e)
+        public override bool injectMouseDown(MouseEventArgs e)
         {
-            _user.injectMouseDown(e);
+            return _user.injectMouseDown(e);
         }
 
         /// <summary>
@@ -103,9 +103,9 @@ namespace GDD2Project1
         /// to any components that check for input.
         /// </summary>
         /// <param name="e">Key event arguments</param>
-        public override void injectMouseUp(InputEventSystem.MouseEventArgs e)
+        public override bool injectMouseUp(InputEventSystem.MouseEventArgs e)
         {
-            _user.injectMouseUp(e);
+            return _user.injectMouseUp(e);
         }
 
         /// <summary>
@@ -113,9 +113,9 @@ namespace GDD2Project1
         /// to any components that check for input.
         /// </summary>
         /// <param name="e">Key event arguments</param>
-        public override void injectMouseMove(InputEventSystem.MouseEventArgs e)
+        public override bool injectMouseMove(InputEventSystem.MouseEventArgs e)
         {
-            _user.injectMouseMove(e);
+            return _user.injectMouseMove(e);
         }
 
 

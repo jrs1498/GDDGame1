@@ -26,7 +26,7 @@ namespace GDD2Project1
         protected const String      TILE_NAME_PREFIX    = "tile_";
         protected const char        TILE_ROW_PREFIX     = 'r';
         protected const char        TILE_COL_PREFIX     = 'c';
-        protected const int         TILE_SIZE = 82;
+        protected const int         TILE_SIZE = 84;
         protected GameObject[,]     _tiles;
         protected int               _tileRows;
         protected int               _tileCols;
@@ -40,10 +40,9 @@ namespace GDD2Project1
 
 
         //-------------------------------------------------------------------------
-        public Camera2D Camera
-        {
-            get { return _camera; }
-        }
+        public int TileSize { get { return TILE_SIZE; } }
+
+        public Camera2D Camera { get { return _camera; } }
 
 
         //-------------------------------------------------------------------------
@@ -69,7 +68,7 @@ namespace GDD2Project1
             // Initialize tile origin
             _tileOrigin = new Vector2(
                 (float)Math.Sqrt(TILE_SIZE * TILE_SIZE) / 2,
-                TILE_SIZE * _camera.ScaleY);
+                (TILE_SIZE * _camera.ScaleY));
         }
 
 
@@ -106,33 +105,74 @@ namespace GDD2Project1
         }
 
         /// <summary>
-        /// Load a GameLevel from a specified filename at directory.
+        /// Load a GameLevel from specified file
         /// </summary>
         /// <param name="directory">Directory containing file</param>
-        /// <param name="filename">Saved level's filename</param>
+        /// <param name="filename">Filename of level</param>
         public void loadLevel(String directory, String filename)
         {
-            GameLevelData data = _gameContentMgr.loadLevelData(directory + filename);
-            _tileRows = data.NumRows;
-            _tileCols = data.NumCols;
-            _tiles = new GameObject[_tileRows, _tileCols];
+            GameLevelData lvldata = _gameContentMgr.loadLevelData(directory + filename);
+            initTileArray(lvldata.NumRows, lvldata.NumCols);
 
-            // Load tile array
-            for (int x = 0; x < _tileRows; x++)
-                for (int y = 0; y < _tileCols; y++)
+            // Pass through each tile, attaching drawables and applying elevation
+            for (int row = 0; row < lvldata.NumRows; row++)
+                for (int col = 0; col < lvldata.NumCols; col++)
                 {
-                    GameObjectData objData = data.Tiles[x * _tileCols + y];
-                    //Drawable drawable = _gameContentMgr.loadDrawable<Drawable>(
-                    //    "textures\\tiles\\", objData.Drawable);
-                    Drawable drawable = _gameContentMgr.loadDrawable(objData.Drawable);
-                    GameObject tile = new GameObject(this, objData.Name);
-                    tile.attachDrawable(drawable);
-                    tile.PositionIsometric = objData.PositionIsometric;
-                    _tiles[x, y] = tile;
+                    GameObjectData objData  = lvldata.Tiles[row * _tileCols + col];
+                    Drawable tileDrwble     = _gameContentMgr.loadDrawable(objData.Drawable);
+                    _tiles[row, col].attachDrawable(tileDrwble);
+                    _tiles[row, col].translate(0.0f, objData.PositionIsometric.Y, 0.0f);
                 }
 
+            addTestContent();
+        }
 
-            //----------------TEST-------------------------
+        /// <summary>
+        /// Create a new level
+        /// </summary>
+        /// <param name="rows">Number of tile rows</param>
+        /// <param name="cols">Number of tile columns</param>
+        /// <param name="drawable">Default tile drawable texture</param>
+        public void newLevel(int rows, int cols, String drawable)
+        {
+            initTileArray(rows, cols);
+
+            Drawable tileDrwble = _gameContentMgr.loadDrawable(drawable);
+            tileDrwble.Origin   = _tileOrigin;
+
+            foreach (GameObject tile in _tiles)
+                tile.attachDrawable(tileDrwble);
+        }
+
+        /// <summary>
+        /// Initialize the 2D tile array, placing tiles in correct locations
+        /// </summary>
+        /// <param name="rows">Number of rows</param>
+        /// <param name="cols">Number of columns</param>
+        public void initTileArray(int rows, int cols)
+        {
+            _tiles = new GameObject[rows, cols];
+            _tileRows = rows;
+            _tileCols = cols;
+
+            for (int row = 0; row < rows; row++)
+                for (int col = 0; col < cols; col++)
+                {
+                    String tileName = ("r" + cols + "c" + rows);
+                    GameObject tile = new GameObject(this, tileName);
+
+                    tile.translate(
+                        row * TILE_SIZE,
+                        0.0f,
+                        col * TILE_SIZE
+                        );
+
+                    _tiles[row, col] = tile;
+                }
+        }
+
+        private void addTestContent()
+        { 
             Drawable tree = _gameContentMgr.loadDrawable("tree1");
 
             GameObject obj1 = new GameObject(this, "obj1");
@@ -160,45 +200,10 @@ namespace GDD2Project1
             character.attachDrawable(player);
             _characters.Add(character.getName, character);
 
-            GameObject tile3 = getTileAtIndex(9, 2);
+            GameObject tile3 = getTileAtIndex(0, 0);
             tile3.attachChildNode(character);
 
             character.PositionIsometric = tile3.PositionIsometric;
-
-
-            //----------------END TEST---------------------
-        }
-
-        /// <summary>
-        /// Create a new level
-        /// </summary>
-        /// <param name="rows">Number of tile rows</param>
-        /// <param name="cols">Number of tile columns</param>
-        /// <param name="drawable">Default tile drawable texture</param>
-        public void newLevel(int rows, int cols, String drawable)
-        {
-            _tiles = new GameObject[rows, cols];
-            _tileRows = rows;
-            _tileCols = cols;
-
-            Drawable defaultTile = _gameContentMgr.loadDrawable(drawable);
-
-            for (int x = 0; x < rows; x++)
-                for (int y = 0; y < cols; y++)
-                {
-                    String tileName = ("r" + cols + "c" + rows);
-                    GameObject tile = new GameObject(this, tileName);
-
-                    tile.attachDrawable(defaultTile);
-
-                    Vector3 positionIsometric;
-                    positionIsometric.X = x * TILE_SIZE;
-                    positionIsometric.Y = 0.0f;
-                    positionIsometric.Z = y * TILE_SIZE;
-                    tile.PositionIsometric = positionIsometric;
-
-                    _tiles[x, y] = tile;
-                }
         }
 
 
@@ -333,11 +338,6 @@ namespace GDD2Project1
             isoCoords.X -= isoCoords.X % 1.0f;
             isoCoords.Z -= isoCoords.Z % 1.0f;
 
-            // If we don't have a valid index, return null
-            if (isoCoords.X < 0 || isoCoords.X >= _tileRows
-                || isoCoords.Z < 0 || isoCoords.Z >= _tileCols)
-                return null;
-
             return getTileAtIndex((int)isoCoords.X, (int)isoCoords.Z);
         }
 
@@ -351,7 +351,11 @@ namespace GDD2Project1
             // TODO: needs to be able to grab elevated tiles
 
             coordinates = _camera.screenToIsometric(coordinates);
-            Vector3 isoCoords = new Vector3(coordinates.X, 0.0f, coordinates.Y);
+            Vector3 isoCoords = new Vector3(
+                coordinates.X,
+                0.0f, 
+                coordinates.Y
+                );
 
             return getTileFromIsometricCoordinates(isoCoords);
         }
@@ -369,16 +373,21 @@ namespace GDD2Project1
             return getTileFromScreenCoordinates(vecCoordinates);
         }
 
+        /// <summary>
+        /// Get the x and y index of a tile at the specified coordinates
+        /// </summary>
+        /// <param name="isoCoords">Isometric coordinates</param>
+        /// <returns></returns>
         public Point getIndexFromPosition(Vector3 isoCoords)
         {
             isoCoords /= (float)TILE_SIZE;
 
             isoCoords.X -= isoCoords.X % 1.0f;
-            isoCoords.Y -= isoCoords.Y % 1.0f;
+            isoCoords.Z -= isoCoords.Y % 1.0f;
 
             Point index;
             index.X = (int)isoCoords.X;
-            index.Y = (int)isoCoords.Y;
+            index.Y = (int)isoCoords.Z;
 
             return index;
         }

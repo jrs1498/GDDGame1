@@ -28,11 +28,13 @@ namespace GDD2Project1
         /// to any components that check for input.
         /// </summary>
         /// <param name="e">Key event arguments</param>
-        public virtual void injectKeyDown(KeyEventArgs e)
+        public virtual bool injectKeyDown(KeyEventArgs e)
         {
             if (_controllers != null)
                 foreach (KeyValuePair<String, ActorController> entry in _controllers)
                     entry.Value.injectKeyDown(e);
+
+            return false;
         }
 
         /// <summary>
@@ -40,11 +42,13 @@ namespace GDD2Project1
         /// to any components that check for input.
         /// </summary>
         /// <param name="e">Key event arguments</param>
-        public virtual void injectKeyUp(KeyEventArgs e)
+        public virtual bool injectKeyUp(KeyEventArgs e)
         {
             if (_controllers != null)
                 foreach (KeyValuePair<String, ActorController> entry in _controllers)
                     entry.Value.injectKeyUp(e);
+
+            return false;
         }
 
         /// <summary>
@@ -52,11 +56,13 @@ namespace GDD2Project1
         /// to any components that check for input.
         /// </summary>
         /// <param name="e">Key event arguments</param>
-        public virtual void injectMouseDown(MouseEventArgs e)
+        public virtual bool injectMouseDown(MouseEventArgs e)
         {
             if (_controllers != null)
                 foreach (KeyValuePair<String, ActorController> entry in _controllers)
                     entry.Value.injectMouseDown(e);
+
+            return false;
         }
 
         /// <summary>
@@ -64,11 +70,13 @@ namespace GDD2Project1
         /// to any components that check for input.
         /// </summary>
         /// <param name="e">Key event arguments</param>
-        public virtual void injectMouseUp(MouseEventArgs e)
+        public virtual bool injectMouseUp(MouseEventArgs e)
         {
             if (_controllers != null)
                 foreach (KeyValuePair<String, ActorController> entry in _controllers)
                     entry.Value.injectMouseUp(e);
+
+            return false;
         }
 
         /// <summary>
@@ -76,11 +84,13 @@ namespace GDD2Project1
         /// to any components that check for input.
         /// </summary>
         /// <param name="e">Key event arguments</param>
-        public virtual void injectMouseMove(MouseEventArgs e)
+        public virtual bool injectMouseMove(MouseEventArgs e)
         {
             if (_controllers != null)
                 foreach (KeyValuePair<String, ActorController> entry in _controllers)
                     entry.Value.injectMouseMove(e);
+
+            return false;
         }
 
 

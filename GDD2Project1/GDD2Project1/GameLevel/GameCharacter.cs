@@ -99,7 +99,6 @@ namespace GDD2Project1
                 return;
 
             // Find our path
-            //_movePath = findPath(destination);
             _movePath.Enqueue(destination);
 
             // Set initial destination
@@ -109,29 +108,6 @@ namespace GDD2Project1
 
             // Set character state to kick off the movement
             setCharacterState(CharacterState.CHRSTATE_MOVING);
-        }
-
-        /// <summary>
-        /// Given a destination, this function finds the shortest path from
-        /// the GameCharacter's current parent node (_parent) to the destination
-        /// specified. This path is then returned as a queue to the setDestination()
-        /// function, which tells the character to begin walking this path.
-        /// </summary>
-        /// <param name="destination">Character's destination</param>
-        /// <returns></returns>
-        protected Queue<GameNode> findPath(GameNode destination)
-        {
-            Queue<GameNode> path = new Queue<GameNode>();
-
-            // TODO: 
-            // implement a pathfinding algorithm, and return that path
-            // as a queue of game nodes.
-            // 
-            // Use GameNode.getNeighbors to get an array of adjacent nodes.
-            // This will return an array of 4, with potential to contain null nodes,
-            // so make sure you check if(node != null) before doing anything with it.
-
-            return path;
         }
 
         /// <summary>
@@ -170,7 +146,7 @@ namespace GDD2Project1
                 Vector3.DistanceSquared(_destination.PositionIsometric, _positionIsometric))
             {
                 // We have reached our destination
-                _positionIsometric = _destination.PositionIsometric;
+                translateTo(_destination.PositionIsometric);
 
                 // Check if there's another destination in queue
                 if (_movePath.Count > 0)

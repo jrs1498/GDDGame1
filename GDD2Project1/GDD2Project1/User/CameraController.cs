@@ -66,42 +66,44 @@ namespace GDD2Project1
         /// to any components that check for input.
         /// </summary>
         /// <param name="e">Key event arguments</param>
-        public override void injectKeyDown(KeyEventArgs e)
+        public override bool injectKeyDown(KeyEventArgs e)
         {
             switch (e.Key)
             { 
                 case Keys.Right:
                     setRotationIntervalTarget(_rotationIntervalTarget + 1);
-                    break;
+                    return true;
 
                 case Keys.Left:
                     setRotationIntervalTarget(_rotationIntervalTarget - 1);
-                    break;
+                    return true;
 
                 case Keys.OemPlus:
                     setZoomTarget(_zoomTarget + ZOOM_INTERVAL);
-                    break;
+                    return true;
 
                 case Keys.OemMinus:
                     setZoomTarget(_zoomTarget - ZOOM_INTERVAL);
-                    break;
+                    return true;
 
                 case Keys.W:
                     _velocity.Y -= _moveSpeed;
-                    break;
+                    return true;
 
                 case Keys.S:
                     _velocity.Y += _moveSpeed;
-                    break;
+                    return true;
 
                 case Keys.A:
                     _velocity.X -= _moveSpeed;
-                    break;
+                    return true;
 
                 case Keys.D:
                     _velocity.X += _moveSpeed;
-                    break;
+                    return true;
             }
+
+            return base.injectKeyDown(e);
         }
 
         /// <summary>
@@ -109,26 +111,28 @@ namespace GDD2Project1
         /// to any components that check for input.
         /// </summary>
         /// <param name="e">Key event arguments</param>
-        public override void injectKeyUp(KeyEventArgs e)
+        public override bool injectKeyUp(KeyEventArgs e)
         {
             switch (e.Key)
             {
                 case Keys.W:
                     _velocity.Y += _moveSpeed;
-                    break;
+                    return true;
 
                 case Keys.S:
                     _velocity.Y -= _moveSpeed;
-                    break;
+                    return true;
 
                 case Keys.A:
                     _velocity.X += _moveSpeed;
-                    break;
+                    return true;
 
                 case Keys.D:
                     _velocity.X -= _moveSpeed;
-                    break;
+                    return true;
             }
+
+            return base.injectKeyUp(e);
         }
 
         /// <summary>
@@ -136,8 +140,9 @@ namespace GDD2Project1
         /// to any components that check for input.
         /// </summary>
         /// <param name="e">Key event arguments</param>
-        public override void injectMouseDown(MouseEventArgs e)
+        public override bool injectMouseDown(MouseEventArgs e)
         {
+            return base.injectMouseDown(e);
         }
 
         /// <summary>
@@ -145,8 +150,9 @@ namespace GDD2Project1
         /// to any components that check for input.
         /// </summary>
         /// <param name="e">Key event arguments</param>
-        public override void injectMouseUp(MouseEventArgs e)
+        public override bool injectMouseUp(MouseEventArgs e)
         {
+            return base.injectMouseUp(e);
         }
 
         /// <summary>
@@ -154,8 +160,9 @@ namespace GDD2Project1
         /// to any components that check for input.
         /// </summary>
         /// <param name="e">Key event arguments</param>
-        public override void injectMouseMove(MouseEventArgs e)
+        public override bool injectMouseMove(MouseEventArgs e)
         {
+            return base.injectMouseMove(e);
         }
 
 
@@ -180,7 +187,6 @@ namespace GDD2Project1
             }
             else if (_freeLook)
                 applyVelocity(dt);
-           
         }
 
 
@@ -213,7 +219,7 @@ namespace GDD2Project1
         /// <param name="dt">Delta time</param>
         protected void applyFollowTarget(float dt)
         {
-            Vector2 nodePos = _nodeTarget.Position;
+            Vector2 nodePos = (_actor as Camera2D).isometricToCartesian(_nodeTarget.PositionIsometric);
             if (getCamera().Position == nodePos)
                 return;
 

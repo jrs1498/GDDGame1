@@ -24,19 +24,24 @@ namespace GDD2Project1
 
 
         //-------------------------------------------------------------------------
-        public override void injectMouseDown(MouseEventArgs e)
+        public override bool injectMouseDown(MouseEventArgs e)
         {
             switch (e.Button)
             { 
                 case MouseButtons.Left:
                     GameObject tile = _actor.GameLevelMgr.getTileFromScreenCoordinates(e.Position);
                     if (tile == null)
-                        return;
+                        return false;
 
                     (_actor as GameCharacter).setDestination(tile);
                     tile.Color = Color.Green;
+                    return true;
+
+                default:
                     break;
             }
+
+            return base.injectMouseDown(e);
         }
 
 

@@ -88,7 +88,7 @@ namespace GDD2Project1
             set
             {
                 base.PositionIsometric = value;
-                updateParentTile();
+                grabParentTile();
             }
         }
 
@@ -100,7 +100,16 @@ namespace GDD2Project1
         public override void translate(Vector3 amount)
         {
             base.translate(amount);
-            updateParentTile();
+            grabParentTile();
+        }
+
+        /// <summary>
+        /// Translate this GameObject to the specified position
+        /// </summary>
+        /// <param name="position">Destination</param>
+        public virtual void translateTo(Vector3 position)
+        {
+            translate(position - _positionIsometric);
         }
 
 
@@ -158,32 +167,6 @@ namespace GDD2Project1
 
         //-------------------------------------------------------------------------
         /// <summary>
-        /// Subscribe this GameObject to the GameLevel's Camera2D. This causes the
-        /// camDirectionChanged() function to fire every time the camera's isometric
-        /// position state is updated. This is used to preserve the GameObject's drawing
-        /// angle when the camera rotates to a new viewing angle.
-        /// </summary>
-        /// <param name="cam">Camera2D to subscribe to</param>
-        public void subscribeToCamera(Camera2D cam)
-        {
-            cam.DirectionChanged += new Camera2D.DirectionHandler(camDirectionChanged);
-        }
-
-        /// <summary>
-        /// This function fires whenever the Camera2D's isometric viewing angle changes.
-        /// This is where the logic should go to tell the GameObject to change its
-        /// viewing angle to match that of the Camera's
-        /// </summary>
-        /// <param name="cam">Camera2D which fired the event</param>
-        /// <param name="e">Event args</param>
-        protected virtual void camDirectionChanged(Camera2D cam, EventArgs e)
-        {
-            updateDirection();
-        }
-
-
-        //-------------------------------------------------------------------------
-        /// <summary>
         /// Updates this GameObject's isometric (viewing) direction, according to its
         /// direction vector and the GameLevel's camera's viewing angle.
         /// This function should be called any time the GameObject changes direction,
@@ -192,37 +175,34 @@ namespace GDD2Project1
         protected void updateDirection()
         {
             // Grab the cosine of our direction vector and the x axis
-            Vector2 dir = new Vector2(_vecDirection.X, _vecDirection.Z);
-            dir = Vector2.Normalize(dir);
-            float cosTheta = Vector2.Dot(dir, Vector2.UnitX);
-
-            Direction tempDir;
+            Vector2 dir     = new Vector2(_vecDirection.X, _vecDirection.Z);
+            dir             = Vector2.Normalize(dir);
+            float cosTheta  = Vector2.Dot(dir, Vector2.UnitX);
 
             // Determine what way this GameObject is facing
             if (cosTheta < -0.707f)
-                tempDir = Direction.DIR_NW;
+                _isoDirection = Direction.DIR_NW;
             else if (cosTheta > 0.707f)
-                tempDir = Direction.DIR_SE;
+                _isoDirection = Direction.DIR_SE;
             else if (dir.Y > 0)
-                tempDir = Direction.DIR_SW;
+                _isoDirection = Direction.DIR_SW;
             else
-                tempDir = Direction.DIR_NE;
-
-            // Now update the direction relative to the camera's viewing angle
-            tempDir = _gameLevelMgr.Camera.getRelativeDirection(tempDir);
-            _isoDirection = tempDir;
+                _isoDirection = Direction.DIR_NE;
         }
 
         /// <summary>
         /// Find out which parent tile node should be holding onto this node.
         /// If it needs to change, then this function will change it.
         /// </summary>
-        protected void updateParentTile()
+        protected void grabParentTile()
         {
             if (_parent == null)
                 return;
 
             GameNode parentTile = _gameLevelMgr.getTileFromIsometricCoordinates(_positionIsometric);
+
+            if (parentTile == null)
+                return;
 
             if (parentTile == _parent)
                 return;

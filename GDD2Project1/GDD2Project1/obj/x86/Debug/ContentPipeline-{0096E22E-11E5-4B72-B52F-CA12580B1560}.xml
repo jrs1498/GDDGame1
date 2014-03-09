@@ -136,6 +136,15 @@
       <Output>E:\Projects\GDD2Project1\GDD2Project1\GDD2Project1\bin\x86\Debug\Content\levels\testing.xnb</Output>
       <Time>2014-03-08T04:17:20.6413087-05:00</Time>
     </Item>
+    <Item>
+      <Source>levels\random.xml</Source>
+      <Name>levels\random</Name>
+      <Importer>XmlImporter</Importer>
+      <Processor>PassThroughProcessor</Processor>
+      <Options>None</Options>
+      <Output>E:\Projects\GDD2Project1\GDD2Project1\GDD2Project1\bin\x86\Debug\Content\levels\random.xnb</Output>
+      <Time>2014-03-09T17:56:55.7890588-04:00</Time>
+    </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
       <ContentProjectGUID>{0096E22E-11E5-4B72-B52F-CA12580B1560}</ContentProjectGUID>

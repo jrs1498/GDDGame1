@@ -1,0 +1,414 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<XnaContent>
+  <Asset Type="GameData.GameLevelData">
+    <NumRows>9</NumRows>
+    <NumCols>9</NumCols>
+    <Tiles>
+      <Item>
+        <Name>r9c9</Name>
+        <PositionIsometric>0 -180 0</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r9c9</Name>
+        <PositionIsometric>0 -270 82</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r9c9</Name>
+        <PositionIsometric>0 -270 164</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r9c9</Name>
+        <PositionIsometric>0 -270 246</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r9c9</Name>
+        <PositionIsometric>0 -270 328</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r9c9</Name>
+        <PositionIsometric>0 -270 410</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r9c9</Name>
+        <PositionIsometric>0 -180 492</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r9c9</Name>
+        <PositionIsometric>0 -100 574</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r9c9</Name>
+        <PositionIsometric>0 0 656</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r9c9</Name>
+        <PositionIsometric>82 -180 0</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r9c9</Name>
+        <PositionIsometric>82 -180 82</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r9c9</Name>
+        <PositionIsometric>82 -180 164</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r9c9</Name>
+        <PositionIsometric>82 -180 246</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r9c9</Name>
+        <PositionIsometric>82 -180 328</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r9c9</Name>
+        <PositionIsometric>82 -180 410</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r9c9</Name>
+        <PositionIsometric>82 -180 492</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r9c9</Name>
+        <PositionIsometric>82 -100 574</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r9c9</Name>
+        <PositionIsometric>82 0 656</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r9c9</Name>
+        <PositionIsometric>164 -180 0</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r9c9</Name>
+        <PositionIsometric>164 -180 82</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r9c9</Name>
+        <PositionIsometric>164 -180 164</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r9c9</Name>
+        <PositionIsometric>164 -180 246</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r9c9</Name>
+        <PositionIsometric>164 -180 328</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r9c9</Name>
+        <PositionIsometric>164 -180 410</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r9c9</Name>
+        <PositionIsometric>164 -180 492</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r9c9</Name>
+        <PositionIsometric>164 -100 574</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r9c9</Name>
+        <PositionIsometric>164 0 656</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r9c9</Name>
+        <PositionIsometric>246 -180 0</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r9c9</Name>
+        <PositionIsometric>246 -280 82</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r9c9</Name>
+        <PositionIsometric>246 -280 164</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r9c9</Name>
+        <PositionIsometric>246 -280 246</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r9c9</Name>
+        <PositionIsometric>246 -180 328</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r9c9</Name>
+        <PositionIsometric>246 -245 410</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r9c9</Name>
+        <PositionIsometric>246 -245 492</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r9c9</Name>
+        <PositionIsometric>246 -165 574</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r9c9</Name>
+        <PositionIsometric>246 0 656</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r9c9</Name>
+        <PositionIsometric>328 -180 0</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r9c9</Name>
+        <PositionIsometric>328 -280 82</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r9c9</Name>
+        <PositionIsometric>328 -280 164</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r9c9</Name>
+        <PositionIsometric>328 -280 246</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r9c9</Name>
+        <PositionIsometric>328 -180 328</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r9c9</Name>
+        <PositionIsometric>328 -245 410</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r9c9</Name>
+        <PositionIsometric>328 -245 492</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r9c9</Name>
+        <PositionIsometric>328 -165 574</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r9c9</Name>
+        <PositionIsometric>328 0 656</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r9c9</Name>
+        <PositionIsometric>410 -180 0</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r9c9</Name>
+        <PositionIsometric>410 -280 82</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r9c9</Name>
+        <PositionIsometric>410 -280 164</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r9c9</Name>
+        <PositionIsometric>410 -280 246</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r9c9</Name>
+        <PositionIsometric>410 -180 328</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r9c9</Name>
+        <PositionIsometric>410 -245 410</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r9c9</Name>
+        <PositionIsometric>410 -245 492</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r9c9</Name>
+        <PositionIsometric>410 -165 574</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r9c9</Name>
+        <PositionIsometric>410 -65 656</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r9c9</Name>
+        <PositionIsometric>492 -180 0</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r9c9</Name>
+        <PositionIsometric>492 -280 82</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r9c9</Name>
+        <PositionIsometric>492 -280 164</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r9c9</Name>
+        <PositionIsometric>492 -280 246</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r9c9</Name>
+        <PositionIsometric>492 -180 328</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r9c9</Name>
+        <PositionIsometric>492 -180 410</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r9c9</Name>
+        <PositionIsometric>492 -180 492</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r9c9</Name>
+        <PositionIsometric>492 -100 574</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r9c9</Name>
+        <PositionIsometric>492 0 656</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r9c9</Name>
+        <PositionIsometric>574 -100 0</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r9c9</Name>
+        <PositionIsometric>574 -100 82</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r9c9</Name>
+        <PositionIsometric>574 -100 164</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r9c9</Name>
+        <PositionIsometric>574 -200 246</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r9c9</Name>
+        <PositionIsometric>574 -100 328</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r9c9</Name>
+        <PositionIsometric>574 -100 410</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r9c9</Name>
+        <PositionIsometric>574 -100 492</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r9c9</Name>
+        <PositionIsometric>574 -100 574</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r9c9</Name>
+        <PositionIsometric>574 0 656</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r9c9</Name>
+        <PositionIsometric>656 0 0</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r9c9</Name>
+        <PositionIsometric>656 0 82</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r9c9</Name>
+        <PositionIsometric>656 0 164</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r9c9</Name>
+        <PositionIsometric>656 0 246</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r9c9</Name>
+        <PositionIsometric>656 0 328</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r9c9</Name>
+        <PositionIsometric>656 0 410</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r9c9</Name>
+        <PositionIsometric>656 0 492</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r9c9</Name>
+        <PositionIsometric>656 0 574</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+      <Item>
+        <Name>r9c9</Name>
+        <PositionIsometric>656 0 656</PositionIsometric>
+        <Drawable>tile_rock</Drawable>
+      </Item>
+    </Tiles>
+  </Asset>
+</XnaContent>

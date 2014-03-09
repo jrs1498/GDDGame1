@@ -13,3 +13,4 @@ Content\textures\tile_stone.xnb
 Content\drawables\tile_rock.xnb
 Content\textures\consumable.xnb
 Content\levels\testing.xnb
+Content\levels\random.xnb

@@ -118,7 +118,13 @@
       <Processor>PassThroughProcessor</Processor>
     </Compile>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Compile Include="levels\random.xml">
+      <Name>random</Name>
+      <Importer>XmlImporter</Importer>
+      <Processor>PassThroughProcessor</Processor>
+    </Compile>
+  </ItemGroup>
   <ItemGroup>
     <Compile Include="drawables\tile_rock.xml">
       <Name>tile_rock</Name>

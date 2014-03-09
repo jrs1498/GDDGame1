@@ -11,7 +11,7 @@ namespace GDD2Project1
 {
     public class MainScreen : Screen
     {
-        private const string FIRST_LEVEL = "testing";
+        private const string FIRST_LEVEL = "random";
         private InterfaceManager _interfaceMgr;
 
         //-------------------------------------------------------------------------
@@ -73,18 +73,18 @@ namespace GDD2Project1
 
 
         //-------------------------------------------------------------------------
-        public override void injectMouseMove(MouseEventArgs e)
+        public override bool injectMouseMove(MouseEventArgs e)
         {
             _interfaceMgr.injectMouseMove(e.Position);
 
-            base.injectMouseMove(e);
+            return base.injectMouseMove(e);
         }
 
-        public override void injectMouseDown(MouseEventArgs e)
+        public override bool injectMouseDown(MouseEventArgs e)
         {
             _interfaceMgr.injectMouseDown(e.Position);
 
-            base.injectMouseDown(e);
+            return base.injectMouseDown(e);
         }
 
 

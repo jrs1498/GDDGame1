@@ -66,7 +66,6 @@ namespace GDD2Project1
 
             CharacterController charController = _user.createController<CharacterController>(
                 playerChar, "charController");
-
             camController.setCharacterTarget(playerChar, true);
 
             return true;
