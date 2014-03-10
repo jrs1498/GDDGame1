@@ -24,7 +24,7 @@ namespace GDD2Project1
         public bool Active
         {
             get { return _active; }
-            set { _active = true; }
+            set { _active = value; }
         }
 
 
@@ -56,6 +56,23 @@ namespace GDD2Project1
             data.PositionIsometric = _positionIsometric;
             data.Drawable = _drawable.Name;
             data.Active = _active;
+
+            data.Children = new GameObjectData[_children.Count];
+            int i = 0;
+            foreach (KeyValuePair<String, GameNode> entry in _children)
+            {
+                if (entry.Value is Consumable)
+                {
+                    data.Children[i] = (entry.Value as Consumable).saveConsumable();
+                }
+                else if (entry.Value is GameObject)
+                {
+                    data.Children[i] = (entry.Value as GameObject).saveGameObject();
+                }
+
+                i++;
+            }
+
             return data;
         }
 

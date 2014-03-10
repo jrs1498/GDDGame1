@@ -1,3 +1,11 @@
+Content\drawables\consumable.xnb
+Content\drawables\playercharacter.xnb
+Content\drawables\tile_rock.xnb
+Content\drawables\tile_sand.xnb
+Content\drawables\tile_stone.xnb
+Content\drawables\tree1.xnb
+Content\drawables\tile_grass.xnb
+Content\drawables\tile_stonesand.xnb
 Content\textures\tile_rock.xnb
 Content\textures\consumable.xnb
 Content\textures\DefaultStyle.xnb
@@ -9,10 +17,4 @@ Content\textures\tree.xnb
 Content\textures\playercharacter.xnb
 Content\Fonts\DefaultFont.xnb
 Content\Fonts\DefaultHeading.xnb
-Content\drawables\playercharacter.xnb
-Content\drawables\tree1.xnb
-Content\drawables\tile_rock.xnb
-Content\drawables\tile_sand.xnb
-Content\drawables\tile_stone.xnb
-Content\levels\random.xnb
-Content\drawables\consumable.xnb
+Content\levels\testlevel.xnb

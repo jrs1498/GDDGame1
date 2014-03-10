@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using GameData;
 
 namespace GDD2Project1
 {
@@ -35,6 +36,24 @@ namespace GDD2Project1
         {
             _type = type;
             _amount = amount;
+        }
+
+
+        //-------------------------------------------------------------------------
+        /// <summary>
+        /// Save this consumable and return its data
+        /// </summary>
+        /// <returns></returns>
+        public ConsumableData saveConsumable()
+        {
+            ConsumableData data = new ConsumableData();
+            data.Name = _name;
+            data.PositionIsometric = _positionIsometric;
+            data.Drawable = _drawable.Name;
+            data.Active = _active;
+            data.Amount = _amount;
+
+            return data;
         }
 
 

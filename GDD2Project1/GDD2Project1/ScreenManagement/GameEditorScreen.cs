@@ -36,6 +36,8 @@ namespace GDD2Project1
         protected bool              _snapping       = false;
         protected float             _snapHeight;
 
+        protected int               _objCount       = 0;
+
         public enum EditMode
         {
             EDITMODE_NONE,
@@ -302,13 +304,164 @@ namespace GDD2Project1
                     {   // Content browser
                         MenuItem contentBrowser = create_mi("Content browser");
                         windowsButton.Add(contentBrowser);
+
+                        contentBrowser.Click += delegate(UIComponent sender)
+                        {
+                            Window cbwin = new Window(_screenMgr, _guiMgr);
+                            _guiMgr.Add(cbwin);
+                            cbwin.Width = 400;
+                            cbwin.Height = 400;
+                            cbwin.X = 50;
+                            cbwin.Y = 50;
+                            //---------------------------------------------------------
+                            {   // Tiles
+                                #region Shorthand tile button creation
+                                Func<String, int, int, TextButton> create_tilebtn =
+                                    (String tile, int x, int y) =>
+                                    {
+                                        TextButton button = new TextButton(_screenMgr, _guiMgr);
+                                        cbwin.Add(button);
+                                        button.X = x;
+                                        button.Y = y;
+                                        button.Width = 80;
+                                        button.Height = 30;
+                                        button.Text = tile;
+
+                                        button.Click += delegate(UIComponent bsender)
+                                        {
+                                            foreach (GameObject tileobj in _selection)
+                                            {
+                                                tileobj.detachDrawable();
+                                                Drawable drwble = _gameContentMgr.loadDrawable(tile);
+                                                drwble.Origin = _gameLevelMgr.TileOrigin;
+                                                tileobj.attachDrawable(drwble);
+                                            }
+                                        };
+
+                                        return button;
+                                    };
+                                #endregion
+
+                                TextButton grassT = create_tilebtn("tile_grass", 10, 10);
+                                TextButton stoneT = create_tilebtn("tile_stone", 10, 50);
+                                TextButton sandT = create_tilebtn("tile_sand", 10, 90);
+                                TextButton stoneSandT = create_tilebtn("tile_stonesand", 10, 130);
+                                TextButton rock = create_tilebtn("tile_rock", 10, 170);
+
+                                TextButton deactivate = create_button("deactivate", 80, 30, 10, 210);
+                                cbwin.Add(deactivate);
+                                deactivate.Click += delegate(UIComponent bsender)
+                                {
+                                    foreach (GameObject tile in _selection)
+                                        tile.Active = false;
+                                };
+
+                                TextButton activate = create_button("activate", 80, 30, 10, 250);
+                                cbwin.Add(activate);
+                                activate.Click += delegate(UIComponent bsender)
+                                {
+                                    foreach (GameObject tile in _selection)
+                                        tile.Active = true;
+                                };
+
+                                TextButton removeItems = create_button("remove items", 80, 30, 10, 290);
+                                cbwin.Add(removeItems);
+                                removeItems.Click += delegate(UIComponent bsender)
+                                {
+                                    foreach (GameObject tile in _selection)
+                                        tile.detachAllChildren();
+                                };
+                            }
+                            //---------------------------------------------------------
+                            {   // General content
+                                #region Shorthand content button creation
+                                Func<String, int, int, TextButton> create_contentbtn =
+                                    (String cont, int x, int y) =>
+                                    {
+                                        TextButton button = new TextButton(_screenMgr, _guiMgr);
+                                        cbwin.Add(button);
+                                        button.X = x;
+                                        button.Y = y;
+                                        button.Width = 80;
+                                        button.Height = 30;
+                                        button.Text = cont;
+
+                                        button.Click += delegate(UIComponent bsender)
+                                        {
+                                            if (_selection.Count < 1)
+                                                return;
+
+                                            foreach (GameObject tile in _selection)
+                                            {
+                                                GameObject obj = new GameObject(_gameLevelMgr, cont + _objCount);
+                                                Drawable drwble = _gameContentMgr.loadDrawable(cont);
+                                                obj.attachDrawable(drwble);
+                                                tile.attachChildNode(obj);
+                                                obj.translateTo(tile.PositionIsometric);
+                                                _objCount++;
+                                            }
+                                        };
+
+                                        return button;
+                                    };
+                                #endregion
+
+                                TextButton treeC = create_contentbtn("tree1", 120, 10);
+                            }
+                            //---------------------------------------------------------
+                            {   // Consumable items
+                                #region Shorthand event-drive button creation
+                                Func<String, int, int, int, TextButton> create_eventbtn =
+                                    (String item, int x, int y, int amount) =>
+                                    {
+                                        TextButton button = new TextButton(_screenMgr, _guiMgr);
+                                        cbwin.Add(button);
+                                        button.X = x;
+                                        button.Y = y;
+                                        button.Width = 80;
+                                        button.Height = 30;
+                                        button.Text = item;
+
+                                        button.Click += delegate(UIComponent bsender)
+                                        {
+                                            if (_selection.Count < 1)
+                                                return;
+
+                                            foreach (GameObject tile in _selection)
+                                            {
+                                                Consumable cnsmble = new Consumable(_gameLevelMgr, item + _objCount, Consumable.ConsumableType.TYPE_POWER, amount);
+                                                Drawable drwble = _gameContentMgr.loadDrawable(item);
+                                                cnsmble.attachDrawable(drwble);
+                                                tile.attachChildNode(cnsmble);
+                                                cnsmble.translateTo(tile.PositionIsometric);
+                                                _objCount++;
+                                            }
+                                        };
+
+                                        return button;
+                                    };
+                                #endregion
+
+                                TextButton poweritem = create_eventbtn("consumable", 230, 10, 100);
+
+                                TextButton playerStart = create_button("player start", 80, 30, 230, 50);
+                                cbwin.Add(playerStart);
+                                playerStart.Click += delegate(UIComponent bsender)
+                                {
+                                    if (_selection.Count < 1)
+                                        return;
+                                    _gameLevelMgr.PlayerStart = _gameLevelMgr.getIndexFromPosition(_selection[0].PositionIsometric);
+                                    Console.WriteLine("Player start set to: " + _gameLevelMgr.PlayerStart);
+                                };
+                            }
+                        };
                     }
                 }
                 //---------------------------------------------------------------------
                 {   // Edit
                     MenuItem editButton = create_mi("Edit");
                     menuBar.Add(editButton);
-                    //---------------------------------------------------------------------
+                    //-----------------------------------------------------------------
                     {   // Select
                         MenuItem selectButton = create_mi("Select");
                         editButton.Add(selectButton);
@@ -468,6 +621,18 @@ namespace GDD2Project1
                         }
                     }
                     break;
+
+                case MouseButtons.Right:
+                    if (_tool != Tool.TOOL_NONE)
+                    {
+                        switch (_tool)
+                        { 
+                            case Tool.TOOL_SELECT:
+                                clearSelection();
+                                break;
+                        }
+                    }
+                    break;
             }
 
             return base.injectMouseDown(e);
@@ -581,10 +746,10 @@ namespace GDD2Project1
         protected void beginTileSelection(Point mousePosition)
         {
             Console.WriteLine("Tile selection started");
-            clearSelection();
             GameObject originTile = _gameLevelMgr.getTileFromScreenCoordinates(mousePosition);
             if (originTile != null)
             {
+                clearSelection();
                 _grabbingSelection = true;
                 _selection.Add(originTile);
                 updateTileSelection(mousePosition);

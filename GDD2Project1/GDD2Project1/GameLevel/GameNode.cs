@@ -308,5 +308,13 @@ namespace GDD2Project1
 
             return child;
         }
+
+        /// <summary>
+        /// Clear all children from this node
+        /// </summary>
+        public virtual void detachAllChildren()
+        {
+            _children.Clear();
+        }
     }
 }

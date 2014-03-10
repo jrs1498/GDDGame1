@@ -30,6 +30,36 @@
     <Reference Include="Microsoft.Xna.Framework.Content.Pipeline.VideoImporters, Version=4.0.0.0, Culture=neutral, PublicKeyToken=842cf8be1de50553, processorArchitecture=MSIL" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="drawables\consumable.xml">
+      <Name>consumable</Name>
+      <Importer>XmlImporter</Importer>
+      <Processor>PassThroughProcessor</Processor>
+    </Compile>
+    <Compile Include="drawables\playercharacter.xml">
+      <Name>playercharacter</Name>
+      <Importer>XmlImporter</Importer>
+      <Processor>PassThroughProcessor</Processor>
+    </Compile>
+    <Compile Include="drawables\tile_rock.xml">
+      <Name>tile_rock</Name>
+      <Importer>XmlImporter</Importer>
+      <Processor>PassThroughProcessor</Processor>
+    </Compile>
+    <Compile Include="drawables\tile_sand.xml">
+      <Name>tile_sand</Name>
+      <Importer>XmlImporter</Importer>
+      <Processor>PassThroughProcessor</Processor>
+    </Compile>
+    <Compile Include="drawables\tile_stone.xml">
+      <Name>tile_stone</Name>
+      <Importer>XmlImporter</Importer>
+      <Processor>PassThroughProcessor</Processor>
+    </Compile>
+    <Compile Include="drawables\tree1.xml">
+      <Name>tree1</Name>
+      <Importer>XmlImporter</Importer>
+      <Processor>PassThroughProcessor</Processor>
+    </Compile>
     <Compile Include="textures\tile_rock.png">
       <Name>tile_rock</Name>
       <Importer>TextureImporter</Importer>
@@ -105,48 +135,21 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="drawables\playercharacter.xml">
-      <Name>playercharacter</Name>
+    <Compile Include="drawables\tile_grass.xml">
+      <Name>tile_grass</Name>
+      <Importer>XmlImporter</Importer>
+      <Processor>PassThroughProcessor</Processor>
+    </Compile>
+    <Compile Include="drawables\tile_stonesand.xml">
+      <Name>tile_stonesand</Name>
       <Importer>XmlImporter</Importer>
       <Processor>PassThroughProcessor</Processor>
     </Compile>
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Compile Include="drawables\tree1.xml">
-      <Name>tree1</Name>
-      <Importer>XmlImporter</Importer>
-      <Processor>PassThroughProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="drawables\tile_rock.xml">
-      <Name>tile_rock</Name>
-      <Importer>XmlImporter</Importer>
-      <Processor>PassThroughProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="drawables\tile_sand.xml">
-      <Name>tile_sand</Name>
-      <Importer>XmlImporter</Importer>
-      <Processor>PassThroughProcessor</Processor>
-    </Compile>
-    <Compile Include="drawables\tile_stone.xml">
-      <Name>tile_stone</Name>
-      <Importer>XmlImporter</Importer>
-      <Processor>PassThroughProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="drawables\consumable.xml">
-      <Name>consumable</Name>
-      <Importer>XmlImporter</Importer>
-      <Processor>PassThroughProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="levels\random.xml">
-      <Name>random</Name>
+    <Compile Include="levels\testlevel.xml">
+      <Name>testlevel</Name>
       <Importer>XmlImporter</Importer>
       <Processor>PassThroughProcessor</Processor>
     </Compile>

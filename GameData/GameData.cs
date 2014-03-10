@@ -16,6 +16,7 @@ namespace GameData
         public int NumRows;
         public int NumCols;
         public GameObjectData[] Tiles;
+        public Point PlayerStart;
 
         public GameLevelData()
         { }
@@ -42,10 +43,21 @@ namespace GameData
     {
         public String Drawable;
         public bool Active;
+        public GameObjectData[] Children;
 
         public GameObjectData()
         { }
     }
 
 
+    /// <summary>
+    /// Represents a consumable item
+    /// </summary>
+    public class ConsumableData : GameObjectData
+    {
+        public int Amount;
+
+        public ConsumableData()
+        { }
+    }
 }

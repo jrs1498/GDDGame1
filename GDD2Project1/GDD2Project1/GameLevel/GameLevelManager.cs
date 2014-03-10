@@ -31,6 +31,7 @@ namespace GDD2Project1
         protected int               _tileRows;
         protected int               _tileCols;
         protected Vector2           _tileOrigin;
+        protected Point             _playerStart;
 
         protected GameContentManager _gameContentMgr;
 
@@ -42,7 +43,11 @@ namespace GDD2Project1
         //-------------------------------------------------------------------------
         public int TileSize { get { return TILE_SIZE; } }
 
+        public Vector2 TileOrigin { get { return _tileOrigin; } }
+
         public Camera2D Camera { get { return _camera; } }
+
+        public Point PlayerStart { get { return _playerStart; } set { _playerStart = value; } }
 
 
         //-------------------------------------------------------------------------
@@ -89,6 +94,11 @@ namespace GDD2Project1
             data.NumCols = _tileCols;
             data.Tiles = new GameObjectData[_tileRows * _tileCols];
 
+            if (_playerStart == null)
+                data.PlayerStart = new Point(0, 0);
+            else
+                data.PlayerStart = _playerStart;
+
             Func<GameObject, GameObjectData> save_obj = (GameObject gameObj) =>
                 { return gameObj.saveGameObject(); };
 
@@ -120,13 +130,43 @@ namespace GDD2Project1
                 {
                     GameObjectData objData  = lvldata.Tiles[row * _tileCols + col];
                     Drawable tileDrwble     = _gameContentMgr.loadDrawable(objData.Drawable);
+                    tileDrwble.Origin = _tileOrigin;
                     GameObject tile = _tiles[row, col];
                     tile.attachDrawable(tileDrwble);
                     tile.translate(0.0f, objData.PositionIsometric.Y, 0.0f);
                     tile.Active = objData.Active;
+
+                    foreach (GameObjectData childData in objData.Children)
+                    {
+                        Drawable childDrwble = _gameContentMgr.loadDrawable(childData.Drawable);
+                        if (childData is ConsumableData)
+                        {
+                            Consumable cnsmble = new Consumable(
+                                this, childData.Name, Consumable.ConsumableType.TYPE_POWER, (childData as ConsumableData).Amount);
+                            cnsmble.attachDrawable(childDrwble);
+                            cnsmble.translateTo(tile.PositionIsometric);
+                            cnsmble.Active = childData.Active;
+                            tile.attachChildNode(cnsmble);
+                        }
+                        else if (childData is GameObjectData)
+                        {
+                            GameObject gameobj = new GameObject(this, childData.Name);
+                            gameobj.attachDrawable(childDrwble);
+                            gameobj.translateTo(tile.PositionIsometric);
+                            gameobj.Active = childData.Active;
+                            tile.attachChildNode(gameobj);
+                        }
+                    }
                 }
 
-            addTestContent();
+            // Load player
+            DrawableAnimated playerDrwble = _gameContentMgr.loadDrawableAnimated("playercharacter");
+            GameCharacter playerCharacter = new GameCharacter(this, "playercharacter");
+            playerCharacter.attachDrawable(playerDrwble);
+            GameNode playerTile = getTileAtIndex(lvldata.PlayerStart.X, lvldata.PlayerStart.Y);
+            playerTile.attachChildNode(playerCharacter);
+            playerCharacter.translateTo(playerTile.PositionIsometric);
+            _characters.Add("playercharacter", playerCharacter);
         }
 
         /// <summary>
@@ -171,65 +211,6 @@ namespace GDD2Project1
 
                     _tiles[row, col] = tile;
                 }
-        }
-
-        private void addTestContent()
-        {
-            // Player
-            DrawableAnimated player = _gameContentMgr.loadDrawableAnimated("playercharacter");
-
-            GameCharacter character = new GameCharacter(this, "playercharacter");
-            character.attachDrawable(player);
-            _characters.Add(character.getName, character);
-
-            GameObject tile3 = getTileAtIndex(0, 0);
-            tile3.attachChildNode(character);
-
-            character.PositionIsometric = tile3.PositionIsometric;
-
-
-            // Some trees
-            Drawable tree = _gameContentMgr.loadDrawable("tree1");
-
-            GameObject obj1 = new GameObject(this, "obj1");
-            GameObject obj2 = new GameObject(this, "obj2");
-
-            obj1.attachDrawable(tree);
-            obj2.attachDrawable(tree);
-
-            GameObject tile1 = getTileAtIndex(5, 5);
-            GameObject tile2 = getTileAtIndex(8, 8);
-
-            tile1.attachChildNode(obj1);
-            tile2.attachChildNode(obj2);
-
-            obj1.PositionIsometric = tile1.PositionIsometric;
-            obj2.PositionIsometric = tile2.PositionIsometric;
-
-
-            // Some consumables
-            Drawable consumable = _gameContentMgr.loadDrawable("consumable");
-            Consumable cnsmble1 = new Consumable(this, "cnsmble1", Consumable.ConsumableType.TYPE_POWER, 100);
-            Consumable cnsmble2 = new Consumable(this, "cnsmble2", Consumable.ConsumableType.TYPE_POWER, 100);
-            Consumable cnsmble3 = new Consumable(this, "cnsmble3", Consumable.ConsumableType.TYPE_POWER, 100);
-            Consumable cnsmble4 = new Consumable(this, "cnsmble4", Consumable.ConsumableType.TYPE_POWER, 100);
-
-            cnsmble1.attachDrawable(consumable);
-            cnsmble2.attachDrawable(consumable);
-            cnsmble3.attachDrawable(consumable);
-            cnsmble4.attachDrawable(consumable);
-
-            getTileAtIndex(0, 8).attachChildNode(cnsmble1);
-            cnsmble1.translateTo(getTileAtIndex(0, 8).PositionIsometric);
-
-            getTileAtIndex(8, 4).attachChildNode(cnsmble2);
-            cnsmble2.translateTo(getTileAtIndex(8, 4).PositionIsometric);
-
-            getTileAtIndex(10, 2).attachChildNode(cnsmble3);
-            cnsmble3.translateTo(getTileAtIndex(10, 2).PositionIsometric);
-
-            getTileAtIndex(5, 8).attachChildNode(cnsmble4);
-            cnsmble4.translateTo(getTileAtIndex(5, 8).PositionIsometric);
         }
 
 
