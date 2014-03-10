@@ -17,6 +17,15 @@ namespace GDD2Project1
         protected Color         _color;
         protected Vector3       _vecDirection;
         protected Direction     _isoDirection;
+        protected bool          _active = true;
+
+
+        //-------------------------------------------------------------------------
+        public bool Active
+        {
+            get { return _active; }
+            set { _active = true; }
+        }
 
 
         //-------------------------------------------------------------------------
@@ -46,6 +55,7 @@ namespace GDD2Project1
             data.Name = _name;
             data.PositionIsometric = _positionIsometric;
             data.Drawable = _drawable.Name;
+            data.Active = _active;
             return data;
         }
 
@@ -59,7 +69,7 @@ namespace GDD2Project1
         /// <param name="dt">Delta time</param>
         public virtual void drawContents(SpriteBatch spriteBatch, float dt)
         {
-            if (_drawable == null)
+            if (_drawable == null || !_active)
                 return;
 
             // This line can be optimized.

@@ -1,413 +1,1742 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <XnaContent>
   <Asset Type="GameData.GameLevelData">
-    <NumRows>9</NumRows>
-    <NumCols>9</NumCols>
+    <NumRows>17</NumRows>
+    <NumCols>17</NumCols>
     <Tiles>
       <Item>
-        <Name>r9c9</Name>
-        <PositionIsometric>0 -180 0</PositionIsometric>
-        <Drawable>tile_rock</Drawable>
+        <Name>r17c17</Name>
+        <PositionIsometric>0 0 0</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
       </Item>
       <Item>
-        <Name>r9c9</Name>
-        <PositionIsometric>0 -270 82</PositionIsometric>
-        <Drawable>tile_rock</Drawable>
+        <Name>r17c17</Name>
+        <PositionIsometric>0 0 84</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
       </Item>
       <Item>
-        <Name>r9c9</Name>
-        <PositionIsometric>0 -270 164</PositionIsometric>
-        <Drawable>tile_rock</Drawable>
+        <Name>r17c17</Name>
+        <PositionIsometric>0 0 168</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
       </Item>
       <Item>
-        <Name>r9c9</Name>
-        <PositionIsometric>0 -270 246</PositionIsometric>
-        <Drawable>tile_rock</Drawable>
+        <Name>r17c17</Name>
+        <PositionIsometric>0 0 252</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
       </Item>
       <Item>
-        <Name>r9c9</Name>
-        <PositionIsometric>0 -270 328</PositionIsometric>
-        <Drawable>tile_rock</Drawable>
+        <Name>r17c17</Name>
+        <PositionIsometric>0 -305 336</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
       </Item>
       <Item>
-        <Name>r9c9</Name>
-        <PositionIsometric>0 -270 410</PositionIsometric>
-        <Drawable>tile_rock</Drawable>
+        <Name>r17c17</Name>
+        <PositionIsometric>0 -305 420</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
       </Item>
       <Item>
-        <Name>r9c9</Name>
-        <PositionIsometric>0 -180 492</PositionIsometric>
-        <Drawable>tile_rock</Drawable>
+        <Name>r17c17</Name>
+        <PositionIsometric>0 -305 504</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
       </Item>
       <Item>
-        <Name>r9c9</Name>
-        <PositionIsometric>0 -100 574</PositionIsometric>
-        <Drawable>tile_rock</Drawable>
+        <Name>r17c17</Name>
+        <PositionIsometric>0 -305 588</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
       </Item>
       <Item>
-        <Name>r9c9</Name>
-        <PositionIsometric>0 0 656</PositionIsometric>
-        <Drawable>tile_rock</Drawable>
+        <Name>r17c17</Name>
+        <PositionIsometric>0 -305 672</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
       </Item>
       <Item>
-        <Name>r9c9</Name>
-        <PositionIsometric>82 -180 0</PositionIsometric>
-        <Drawable>tile_rock</Drawable>
+        <Name>r17c17</Name>
+        <PositionIsometric>0 -305 756</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
       </Item>
       <Item>
-        <Name>r9c9</Name>
-        <PositionIsometric>82 -180 82</PositionIsometric>
-        <Drawable>tile_rock</Drawable>
+        <Name>r17c17</Name>
+        <PositionIsometric>0 -305 840</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
       </Item>
       <Item>
-        <Name>r9c9</Name>
-        <PositionIsometric>82 -180 164</PositionIsometric>
-        <Drawable>tile_rock</Drawable>
+        <Name>r17c17</Name>
+        <PositionIsometric>0 -305 924</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
       </Item>
       <Item>
-        <Name>r9c9</Name>
-        <PositionIsometric>82 -180 246</PositionIsometric>
-        <Drawable>tile_rock</Drawable>
+        <Name>r17c17</Name>
+        <PositionIsometric>0 -305 1008</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
       </Item>
       <Item>
-        <Name>r9c9</Name>
-        <PositionIsometric>82 -180 328</PositionIsometric>
-        <Drawable>tile_rock</Drawable>
+        <Name>r17c17</Name>
+        <PositionIsometric>0 -215 1092</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
       </Item>
       <Item>
-        <Name>r9c9</Name>
-        <PositionIsometric>82 -180 410</PositionIsometric>
-        <Drawable>tile_rock</Drawable>
+        <Name>r17c17</Name>
+        <PositionIsometric>0 -215 1176</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
       </Item>
       <Item>
-        <Name>r9c9</Name>
-        <PositionIsometric>82 -180 492</PositionIsometric>
-        <Drawable>tile_rock</Drawable>
+        <Name>r17c17</Name>
+        <PositionIsometric>0 -215 1260</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
       </Item>
       <Item>
-        <Name>r9c9</Name>
-        <PositionIsometric>82 -100 574</PositionIsometric>
-        <Drawable>tile_rock</Drawable>
+        <Name>r17c17</Name>
+        <PositionIsometric>0 -215 1344</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
       </Item>
       <Item>
-        <Name>r9c9</Name>
-        <PositionIsometric>82 0 656</PositionIsometric>
-        <Drawable>tile_rock</Drawable>
+        <Name>r17c17</Name>
+        <PositionIsometric>84 0 0</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
       </Item>
       <Item>
-        <Name>r9c9</Name>
-        <PositionIsometric>164 -180 0</PositionIsometric>
-        <Drawable>tile_rock</Drawable>
+        <Name>r17c17</Name>
+        <PositionIsometric>84 0 84</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
       </Item>
       <Item>
-        <Name>r9c9</Name>
-        <PositionIsometric>164 -180 82</PositionIsometric>
-        <Drawable>tile_rock</Drawable>
+        <Name>r17c17</Name>
+        <PositionIsometric>84 0 168</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
       </Item>
       <Item>
-        <Name>r9c9</Name>
-        <PositionIsometric>164 -180 164</PositionIsometric>
-        <Drawable>tile_rock</Drawable>
+        <Name>r17c17</Name>
+        <PositionIsometric>84 0 252</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
       </Item>
       <Item>
-        <Name>r9c9</Name>
-        <PositionIsometric>164 -180 246</PositionIsometric>
-        <Drawable>tile_rock</Drawable>
+        <Name>r17c17</Name>
+        <PositionIsometric>84 -305 336</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
       </Item>
       <Item>
-        <Name>r9c9</Name>
-        <PositionIsometric>164 -180 328</PositionIsometric>
-        <Drawable>tile_rock</Drawable>
+        <Name>r17c17</Name>
+        <PositionIsometric>84 -305 420</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
       </Item>
       <Item>
-        <Name>r9c9</Name>
-        <PositionIsometric>164 -180 410</PositionIsometric>
-        <Drawable>tile_rock</Drawable>
+        <Name>r17c17</Name>
+        <PositionIsometric>84 -305 504</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
       </Item>
       <Item>
-        <Name>r9c9</Name>
-        <PositionIsometric>164 -180 492</PositionIsometric>
-        <Drawable>tile_rock</Drawable>
+        <Name>r17c17</Name>
+        <PositionIsometric>84 -305 588</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
       </Item>
       <Item>
-        <Name>r9c9</Name>
-        <PositionIsometric>164 -100 574</PositionIsometric>
-        <Drawable>tile_rock</Drawable>
+        <Name>r17c17</Name>
+        <PositionIsometric>84 -305 672</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
       </Item>
       <Item>
-        <Name>r9c9</Name>
-        <PositionIsometric>164 0 656</PositionIsometric>
-        <Drawable>tile_rock</Drawable>
+        <Name>r17c17</Name>
+        <PositionIsometric>84 -305 756</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
       </Item>
       <Item>
-        <Name>r9c9</Name>
-        <PositionIsometric>246 -180 0</PositionIsometric>
-        <Drawable>tile_rock</Drawable>
+        <Name>r17c17</Name>
+        <PositionIsometric>84 -305 840</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
       </Item>
       <Item>
-        <Name>r9c9</Name>
-        <PositionIsometric>246 -280 82</PositionIsometric>
-        <Drawable>tile_rock</Drawable>
+        <Name>r17c17</Name>
+        <PositionIsometric>84 -305 924</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
       </Item>
       <Item>
-        <Name>r9c9</Name>
-        <PositionIsometric>246 -280 164</PositionIsometric>
-        <Drawable>tile_rock</Drawable>
+        <Name>r17c17</Name>
+        <PositionIsometric>84 -305 1008</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
       </Item>
       <Item>
-        <Name>r9c9</Name>
-        <PositionIsometric>246 -280 246</PositionIsometric>
-        <Drawable>tile_rock</Drawable>
+        <Name>r17c17</Name>
+        <PositionIsometric>84 -215 1092</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
       </Item>
       <Item>
-        <Name>r9c9</Name>
-        <PositionIsometric>246 -180 328</PositionIsometric>
-        <Drawable>tile_rock</Drawable>
+        <Name>r17c17</Name>
+        <PositionIsometric>84 -215 1176</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
       </Item>
       <Item>
-        <Name>r9c9</Name>
-        <PositionIsometric>246 -245 410</PositionIsometric>
-        <Drawable>tile_rock</Drawable>
+        <Name>r17c17</Name>
+        <PositionIsometric>84 -215 1260</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
       </Item>
       <Item>
-        <Name>r9c9</Name>
-        <PositionIsometric>246 -245 492</PositionIsometric>
-        <Drawable>tile_rock</Drawable>
+        <Name>r17c17</Name>
+        <PositionIsometric>84 -215 1344</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
       </Item>
       <Item>
-        <Name>r9c9</Name>
-        <PositionIsometric>246 -165 574</PositionIsometric>
-        <Drawable>tile_rock</Drawable>
+        <Name>r17c17</Name>
+        <PositionIsometric>168 0 0</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
       </Item>
       <Item>
-        <Name>r9c9</Name>
-        <PositionIsometric>246 0 656</PositionIsometric>
-        <Drawable>tile_rock</Drawable>
+        <Name>r17c17</Name>
+        <PositionIsometric>168 0 84</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
       </Item>
       <Item>
-        <Name>r9c9</Name>
-        <PositionIsometric>328 -180 0</PositionIsometric>
-        <Drawable>tile_rock</Drawable>
+        <Name>r17c17</Name>
+        <PositionIsometric>168 0 168</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
       </Item>
       <Item>
-        <Name>r9c9</Name>
-        <PositionIsometric>328 -280 82</PositionIsometric>
-        <Drawable>tile_rock</Drawable>
+        <Name>r17c17</Name>
+        <PositionIsometric>168 0 252</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
       </Item>
       <Item>
-        <Name>r9c9</Name>
-        <PositionIsometric>328 -280 164</PositionIsometric>
-        <Drawable>tile_rock</Drawable>
+        <Name>r17c17</Name>
+        <PositionIsometric>168 0 336</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
       </Item>
       <Item>
-        <Name>r9c9</Name>
-        <PositionIsometric>328 -280 246</PositionIsometric>
-        <Drawable>tile_rock</Drawable>
+        <Name>r17c17</Name>
+        <PositionIsometric>168 0 420</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
       </Item>
       <Item>
-        <Name>r9c9</Name>
-        <PositionIsometric>328 -180 328</PositionIsometric>
-        <Drawable>tile_rock</Drawable>
+        <Name>r17c17</Name>
+        <PositionIsometric>168 -220 504</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
       </Item>
       <Item>
-        <Name>r9c9</Name>
-        <PositionIsometric>328 -245 410</PositionIsometric>
-        <Drawable>tile_rock</Drawable>
+        <Name>r17c17</Name>
+        <PositionIsometric>168 -220 588</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
       </Item>
       <Item>
-        <Name>r9c9</Name>
-        <PositionIsometric>328 -245 492</PositionIsometric>
-        <Drawable>tile_rock</Drawable>
+        <Name>r17c17</Name>
+        <PositionIsometric>168 -220 672</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
       </Item>
       <Item>
-        <Name>r9c9</Name>
-        <PositionIsometric>328 -165 574</PositionIsometric>
-        <Drawable>tile_rock</Drawable>
+        <Name>r17c17</Name>
+        <PositionIsometric>168 -220 756</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
       </Item>
       <Item>
-        <Name>r9c9</Name>
-        <PositionIsometric>328 0 656</PositionIsometric>
-        <Drawable>tile_rock</Drawable>
+        <Name>r17c17</Name>
+        <PositionIsometric>168 0 840</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
       </Item>
       <Item>
-        <Name>r9c9</Name>
-        <PositionIsometric>410 -180 0</PositionIsometric>
-        <Drawable>tile_rock</Drawable>
+        <Name>r17c17</Name>
+        <PositionIsometric>168 0 924</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
       </Item>
       <Item>
-        <Name>r9c9</Name>
-        <PositionIsometric>410 -280 82</PositionIsometric>
-        <Drawable>tile_rock</Drawable>
+        <Name>r17c17</Name>
+        <PositionIsometric>168 0 1008</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
       </Item>
       <Item>
-        <Name>r9c9</Name>
-        <PositionIsometric>410 -280 164</PositionIsometric>
-        <Drawable>tile_rock</Drawable>
+        <Name>r17c17</Name>
+        <PositionIsometric>168 0 1092</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
       </Item>
       <Item>
-        <Name>r9c9</Name>
-        <PositionIsometric>410 -280 246</PositionIsometric>
-        <Drawable>tile_rock</Drawable>
+        <Name>r17c17</Name>
+        <PositionIsometric>168 0 1176</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
       </Item>
       <Item>
-        <Name>r9c9</Name>
-        <PositionIsometric>410 -180 328</PositionIsometric>
-        <Drawable>tile_rock</Drawable>
+        <Name>r17c17</Name>
+        <PositionIsometric>168 0 1260</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
       </Item>
       <Item>
-        <Name>r9c9</Name>
-        <PositionIsometric>410 -245 410</PositionIsometric>
-        <Drawable>tile_rock</Drawable>
+        <Name>r17c17</Name>
+        <PositionIsometric>168 0 1344</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
       </Item>
       <Item>
-        <Name>r9c9</Name>
-        <PositionIsometric>410 -245 492</PositionIsometric>
-        <Drawable>tile_rock</Drawable>
+        <Name>r17c17</Name>
+        <PositionIsometric>252 0 0</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
       </Item>
       <Item>
-        <Name>r9c9</Name>
-        <PositionIsometric>410 -165 574</PositionIsometric>
-        <Drawable>tile_rock</Drawable>
+        <Name>r17c17</Name>
+        <PositionIsometric>252 0 84</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
       </Item>
       <Item>
-        <Name>r9c9</Name>
-        <PositionIsometric>410 -65 656</PositionIsometric>
-        <Drawable>tile_rock</Drawable>
+        <Name>r17c17</Name>
+        <PositionIsometric>252 0 168</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
       </Item>
       <Item>
-        <Name>r9c9</Name>
-        <PositionIsometric>492 -180 0</PositionIsometric>
-        <Drawable>tile_rock</Drawable>
+        <Name>r17c17</Name>
+        <PositionIsometric>252 0 252</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
       </Item>
       <Item>
-        <Name>r9c9</Name>
-        <PositionIsometric>492 -280 82</PositionIsometric>
-        <Drawable>tile_rock</Drawable>
+        <Name>r17c17</Name>
+        <PositionIsometric>252 0 336</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
       </Item>
       <Item>
-        <Name>r9c9</Name>
-        <PositionIsometric>492 -280 164</PositionIsometric>
-        <Drawable>tile_rock</Drawable>
+        <Name>r17c17</Name>
+        <PositionIsometric>252 0 420</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
       </Item>
       <Item>
-        <Name>r9c9</Name>
-        <PositionIsometric>492 -280 246</PositionIsometric>
-        <Drawable>tile_rock</Drawable>
+        <Name>r17c17</Name>
+        <PositionIsometric>252 -220 504</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
       </Item>
       <Item>
-        <Name>r9c9</Name>
-        <PositionIsometric>492 -180 328</PositionIsometric>
-        <Drawable>tile_rock</Drawable>
+        <Name>r17c17</Name>
+        <PositionIsometric>252 -220 588</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
       </Item>
       <Item>
-        <Name>r9c9</Name>
-        <PositionIsometric>492 -180 410</PositionIsometric>
-        <Drawable>tile_rock</Drawable>
+        <Name>r17c17</Name>
+        <PositionIsometric>252 -220 672</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
       </Item>
       <Item>
-        <Name>r9c9</Name>
-        <PositionIsometric>492 -180 492</PositionIsometric>
-        <Drawable>tile_rock</Drawable>
+        <Name>r17c17</Name>
+        <PositionIsometric>252 -220 756</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
       </Item>
       <Item>
-        <Name>r9c9</Name>
-        <PositionIsometric>492 -100 574</PositionIsometric>
-        <Drawable>tile_rock</Drawable>
+        <Name>r17c17</Name>
+        <PositionIsometric>252 0 840</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
       </Item>
       <Item>
-        <Name>r9c9</Name>
-        <PositionIsometric>492 0 656</PositionIsometric>
-        <Drawable>tile_rock</Drawable>
+        <Name>r17c17</Name>
+        <PositionIsometric>252 0 924</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
       </Item>
       <Item>
-        <Name>r9c9</Name>
-        <PositionIsometric>574 -100 0</PositionIsometric>
-        <Drawable>tile_rock</Drawable>
+        <Name>r17c17</Name>
+        <PositionIsometric>252 -195 1008</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
       </Item>
       <Item>
-        <Name>r9c9</Name>
-        <PositionIsometric>574 -100 82</PositionIsometric>
-        <Drawable>tile_rock</Drawable>
+        <Name>r17c17</Name>
+        <PositionIsometric>252 -195 1092</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
       </Item>
       <Item>
-        <Name>r9c9</Name>
-        <PositionIsometric>574 -100 164</PositionIsometric>
-        <Drawable>tile_rock</Drawable>
+        <Name>r17c17</Name>
+        <PositionIsometric>252 -195 1176</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
       </Item>
       <Item>
-        <Name>r9c9</Name>
-        <PositionIsometric>574 -200 246</PositionIsometric>
-        <Drawable>tile_rock</Drawable>
+        <Name>r17c17</Name>
+        <PositionIsometric>252 -195 1260</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
       </Item>
       <Item>
-        <Name>r9c9</Name>
-        <PositionIsometric>574 -100 328</PositionIsometric>
-        <Drawable>tile_rock</Drawable>
+        <Name>r17c17</Name>
+        <PositionIsometric>252 0 1344</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
       </Item>
       <Item>
-        <Name>r9c9</Name>
-        <PositionIsometric>574 -100 410</PositionIsometric>
-        <Drawable>tile_rock</Drawable>
+        <Name>r17c17</Name>
+        <PositionIsometric>336 0 0</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
       </Item>
       <Item>
-        <Name>r9c9</Name>
-        <PositionIsometric>574 -100 492</PositionIsometric>
-        <Drawable>tile_rock</Drawable>
+        <Name>r17c17</Name>
+        <PositionIsometric>336 0 84</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
       </Item>
       <Item>
-        <Name>r9c9</Name>
-        <PositionIsometric>574 -100 574</PositionIsometric>
-        <Drawable>tile_rock</Drawable>
+        <Name>r17c17</Name>
+        <PositionIsometric>336 0 168</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
       </Item>
       <Item>
-        <Name>r9c9</Name>
-        <PositionIsometric>574 0 656</PositionIsometric>
-        <Drawable>tile_rock</Drawable>
+        <Name>r17c17</Name>
+        <PositionIsometric>336 0 252</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
       </Item>
       <Item>
-        <Name>r9c9</Name>
-        <PositionIsometric>656 0 0</PositionIsometric>
-        <Drawable>tile_rock</Drawable>
+        <Name>r17c17</Name>
+        <PositionIsometric>336 0 336</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
       </Item>
       <Item>
-        <Name>r9c9</Name>
-        <PositionIsometric>656 0 82</PositionIsometric>
-        <Drawable>tile_rock</Drawable>
+        <Name>r17c17</Name>
+        <PositionIsometric>336 0 420</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
       </Item>
       <Item>
-        <Name>r9c9</Name>
-        <PositionIsometric>656 0 164</PositionIsometric>
-        <Drawable>tile_rock</Drawable>
+        <Name>r17c17</Name>
+        <PositionIsometric>336 0 504</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
       </Item>
       <Item>
-        <Name>r9c9</Name>
-        <PositionIsometric>656 0 246</PositionIsometric>
-        <Drawable>tile_rock</Drawable>
+        <Name>r17c17</Name>
+        <PositionIsometric>336 -145 588</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
       </Item>
       <Item>
-        <Name>r9c9</Name>
-        <PositionIsometric>656 0 328</PositionIsometric>
-        <Drawable>tile_rock</Drawable>
+        <Name>r17c17</Name>
+        <PositionIsometric>336 -145 672</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
       </Item>
       <Item>
-        <Name>r9c9</Name>
-        <PositionIsometric>656 0 410</PositionIsometric>
-        <Drawable>tile_rock</Drawable>
+        <Name>r17c17</Name>
+        <PositionIsometric>336 0 756</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
       </Item>
       <Item>
-        <Name>r9c9</Name>
-        <PositionIsometric>656 0 492</PositionIsometric>
-        <Drawable>tile_rock</Drawable>
+        <Name>r17c17</Name>
+        <PositionIsometric>336 0 840</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
       </Item>
       <Item>
-        <Name>r9c9</Name>
-        <PositionIsometric>656 0 574</PositionIsometric>
-        <Drawable>tile_rock</Drawable>
+        <Name>r17c17</Name>
+        <PositionIsometric>336 0 924</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
       </Item>
       <Item>
-        <Name>r9c9</Name>
-        <PositionIsometric>656 0 656</PositionIsometric>
-        <Drawable>tile_rock</Drawable>
+        <Name>r17c17</Name>
+        <PositionIsometric>336 -195 1008</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>336 -195 1092</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>336 -195 1176</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>336 -195 1260</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>336 0 1344</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>420 0 0</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>420 0 84</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>420 0 168</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>420 0 252</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>420 0 336</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>420 0 420</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>420 0 504</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>420 -145 588</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>420 -145 672</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>420 0 756</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>420 0 840</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>420 0 924</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>420 -195 1008</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>420 -195 1092</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>420 -195 1176</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>420 -195 1260</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>420 0 1344</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>504 0 0</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>504 0 84</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>504 0 168</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>504 0 252</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>504 0 336</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>504 0 420</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>504 0 504</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>504 0 588</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>504 0 672</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>504 0 756</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>504 0 840</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>504 0 924</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>504 -195 1008</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>504 -195 1092</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>504 -195 1176</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>504 -195 1260</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>504 0 1344</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>588 -220 0</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>588 -220 84</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>588 -220 168</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>588 -220 252</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>588 -105 336</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>588 -105 420</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>588 -105 504</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>588 -35 588</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>588 -35 672</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>588 -35 756</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>588 0 840</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>588 0 924</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>588 -195 1008</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>588 -195 1092</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>588 -195 1176</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>588 -195 1260</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>588 0 1344</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>672 -220 0</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>672 -220 84</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>672 -220 168</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>672 -220 252</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>672 -105 336</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>672 -105 420</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>672 -105 504</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>672 -35 588</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>672 -35 672</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>672 -35 756</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>672 0 840</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>672 125 924</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>672 125 1008</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>672 125 1092</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>672 125 1176</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>672 125 1260</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>672 125 1344</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>756 -220 0</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>756 -220 84</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>756 -220 168</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>756 -220 252</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>756 -105 336</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>756 -105 420</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>756 -105 504</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>756 -35 588</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>756 -35 672</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>756 -35 756</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>756 0 840</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>756 125 924</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>756 125 1008</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>756 125 1092</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>756 125 1176</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>756 125 1260</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>756 125 1344</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>840 -220 0</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>840 -220 84</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>840 -220 168</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>840 -220 252</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>840 -105 336</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>840 -105 420</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>840 -105 504</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>840 -105 588</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>840 -105 672</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>840 0 756</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>840 0 840</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>840 125 924</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>840 125 1008</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>840 125 1092</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>840 125 1176</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>840 125 1260</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>840 125 1344</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>924 -370 0</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>924 -370 84</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>924 -370 168</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>924 -370 252</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>924 -370 336</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>924 0 420</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>924 0 504</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>924 0 588</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>924 0 672</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>924 0 756</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>924 0 840</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>924 125 924</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>924 125 1008</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>924 125 1092</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>924 125 1176</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>924 125 1260</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>924 125 1344</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>1008 -370 0</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>1008 -370 84</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>1008 -290 168</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>1008 -290 252</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>1008 -225 336</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>1008 -140 420</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>1008 -140 504</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>1008 -90 588</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>1008 -115 672</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>1008 -115 756</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>1008 -115 840</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>1008 -115 924</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>1008 0 1008</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>1008 0 1092</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>1008 0 1176</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>1008 0 1260</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>1008 0 1344</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>1092 -370 0</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>1092 -370 84</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>1092 -290 168</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>1092 -290 252</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>1092 -225 336</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>1092 -140 420</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>1092 -140 504</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>1092 -90 588</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>1092 -115 672</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>1092 -115 756</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>1092 -115 840</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>1092 -115 924</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>1092 0 1008</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>1092 0 1092</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>1092 0 1176</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>1092 0 1260</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>1092 0 1344</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>1176 -370 0</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>1176 -370 84</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>1176 -290 168</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>1176 -290 252</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>1176 -400 336</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>1176 -110 420</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>1176 -110 504</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>1176 0 588</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>1176 -115 672</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>1176 -115 756</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>1176 -115 840</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>1176 -115 924</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>1176 0 1008</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>1176 0 1092</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>1176 0 1176</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>1176 0 1260</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>1176 0 1344</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>1260 -370 0</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>1260 -370 84</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>1260 -370 168</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>1260 -370 252</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>1260 -480 336</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>1260 -260 420</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>1260 -260 504</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>1260 -150 588</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>1260 -150 672</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>1260 -150 756</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>1260 -255 840</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>1260 -255 924</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>1260 -255 1008</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>1260 -165 1092</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>1260 -165 1176</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>1260 -165 1260</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>1260 0 1344</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>1344 -370 0</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>1344 -370 84</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>1344 -370 168</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>1344 -370 252</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>1344 -480 336</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>1344 -260 420</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>1344 -260 504</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>1344 -150 588</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>1344 -150 672</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>1344 -150 756</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>1344 -255 840</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>1344 -255 924</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>1344 -255 1008</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>1344 -165 1092</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>1344 -165 1176</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>1344 -165 1260</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Name>r17c17</Name>
+        <PositionIsometric>1344 0 1344</PositionIsometric>
+        <Drawable>tile_sand</Drawable>
+        <Active>true</Active>
       </Item>
     </Tiles>
   </Asset>

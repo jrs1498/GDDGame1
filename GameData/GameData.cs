@@ -41,6 +41,7 @@ namespace GameData
     public class GameObjectData : GameNodeData
     {
         public String Drawable;
+        public bool Active;
 
         public GameObjectData()
         { }

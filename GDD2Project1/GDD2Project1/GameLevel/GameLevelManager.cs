@@ -120,8 +120,10 @@ namespace GDD2Project1
                 {
                     GameObjectData objData  = lvldata.Tiles[row * _tileCols + col];
                     Drawable tileDrwble     = _gameContentMgr.loadDrawable(objData.Drawable);
-                    _tiles[row, col].attachDrawable(tileDrwble);
-                    _tiles[row, col].translate(0.0f, objData.PositionIsometric.Y, 0.0f);
+                    GameObject tile = _tiles[row, col];
+                    tile.attachDrawable(tileDrwble);
+                    tile.translate(0.0f, objData.PositionIsometric.Y, 0.0f);
+                    tile.Active = objData.Active;
                 }
 
             addTestContent();
@@ -172,7 +174,21 @@ namespace GDD2Project1
         }
 
         private void addTestContent()
-        { 
+        {
+            // Player
+            DrawableAnimated player = _gameContentMgr.loadDrawableAnimated("playercharacter");
+
+            GameCharacter character = new GameCharacter(this, "playercharacter");
+            character.attachDrawable(player);
+            _characters.Add(character.getName, character);
+
+            GameObject tile3 = getTileAtIndex(0, 0);
+            tile3.attachChildNode(character);
+
+            character.PositionIsometric = tile3.PositionIsometric;
+
+
+            // Some trees
             Drawable tree = _gameContentMgr.loadDrawable("tree1");
 
             GameObject obj1 = new GameObject(this, "obj1");
@@ -190,20 +206,30 @@ namespace GDD2Project1
             obj1.PositionIsometric = tile1.PositionIsometric;
             obj2.PositionIsometric = tile2.PositionIsometric;
 
-            tile1.Color = tile2.Color = Color.Green;
 
+            // Some consumables
+            Drawable consumable = _gameContentMgr.loadDrawable("consumable");
+            Consumable cnsmble1 = new Consumable(this, "cnsmble1", Consumable.ConsumableType.TYPE_POWER, 100);
+            Consumable cnsmble2 = new Consumable(this, "cnsmble2", Consumable.ConsumableType.TYPE_POWER, 100);
+            Consumable cnsmble3 = new Consumable(this, "cnsmble3", Consumable.ConsumableType.TYPE_POWER, 100);
+            Consumable cnsmble4 = new Consumable(this, "cnsmble4", Consumable.ConsumableType.TYPE_POWER, 100);
 
+            cnsmble1.attachDrawable(consumable);
+            cnsmble2.attachDrawable(consumable);
+            cnsmble3.attachDrawable(consumable);
+            cnsmble4.attachDrawable(consumable);
 
-            DrawableAnimated player = _gameContentMgr.loadDrawableAnimated("playercharacter");
+            getTileAtIndex(0, 8).attachChildNode(cnsmble1);
+            cnsmble1.translateTo(getTileAtIndex(0, 8).PositionIsometric);
 
-            GameCharacter character = new GameCharacter(this, "playercharacter");
-            character.attachDrawable(player);
-            _characters.Add(character.getName, character);
+            getTileAtIndex(8, 4).attachChildNode(cnsmble2);
+            cnsmble2.translateTo(getTileAtIndex(8, 4).PositionIsometric);
 
-            GameObject tile3 = getTileAtIndex(0, 0);
-            tile3.attachChildNode(character);
+            getTileAtIndex(10, 2).attachChildNode(cnsmble3);
+            cnsmble3.translateTo(getTileAtIndex(10, 2).PositionIsometric);
 
-            character.PositionIsometric = tile3.PositionIsometric;
+            getTileAtIndex(5, 8).attachChildNode(cnsmble4);
+            cnsmble4.translateTo(getTileAtIndex(5, 8).PositionIsometric);
         }
 
 
@@ -390,6 +416,36 @@ namespace GDD2Project1
             index.Y = (int)isoCoords.Z;
 
             return index;
+        }
+
+        /// <summary>
+        /// Get a list of tiles adjacent to the tile located at isoCoords.
+        /// </summary>
+        /// <param name="isoCoords">Isometric coordinates of the tile</param>
+        /// <param name="heightTolerance">The difference in elevation permitted</param>
+        /// <returns>List of adjacent tiles</returns>
+        public List<GameObject> getAdjacentTiles(Vector3 isoCoords, float heightTolerance)
+        {
+            Point tileIndex = getIndexFromPosition(isoCoords);
+            List<GameObject> adjTiles = new List<GameObject>();
+
+            for (int row = tileIndex.X - 1; row <= tileIndex.X + 1; row++)
+                for (int col = tileIndex.Y - 1; col <= tileIndex.Y + 1; col++)
+                {
+                    GameObject tile = getTileAtIndex(row, col);
+                    // Verify non-null
+                    if (tile == null || !tile.Active)
+                        continue;
+                    // Verify not standing tile
+                    if (row == tileIndex.X && col == tileIndex.Y)
+                        continue;
+                    // Verify within height tolerance
+                    if (Math.Abs(tile.PositionIsometric.Y - isoCoords.Y) > heightTolerance)
+                        continue;
+                    adjTiles.Add(tile);
+                }
+
+            return adjTiles;
         }
 
 

@@ -77,4 +77,12 @@ namespace GameData
             Looping         = pLooping;
         }
     }
+
+    public class DrawablePackageData
+    {
+        public DrawableData[] _drawables;
+
+        public DrawablePackageData()
+        { }
+    }
 }

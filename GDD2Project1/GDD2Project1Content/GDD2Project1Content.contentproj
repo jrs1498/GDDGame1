@@ -119,13 +119,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="levels\random.xml">
-      <Name>random</Name>
-      <Importer>XmlImporter</Importer>
-      <Processor>PassThroughProcessor</Processor>
-    </Compile>
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="drawables\tile_rock.xml">
       <Name>tile_rock</Name>
       <Importer>XmlImporter</Importer>
@@ -133,8 +126,27 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="levels\testing.xml">
-      <Name>testing</Name>
+    <Compile Include="drawables\tile_sand.xml">
+      <Name>tile_sand</Name>
+      <Importer>XmlImporter</Importer>
+      <Processor>PassThroughProcessor</Processor>
+    </Compile>
+    <Compile Include="drawables\tile_stone.xml">
+      <Name>tile_stone</Name>
+      <Importer>XmlImporter</Importer>
+      <Processor>PassThroughProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="drawables\consumable.xml">
+      <Name>consumable</Name>
+      <Importer>XmlImporter</Importer>
+      <Processor>PassThroughProcessor</Processor>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="levels\random.xml">
+      <Name>random</Name>
       <Importer>XmlImporter</Importer>
       <Processor>PassThroughProcessor</Processor>
     </Compile>
