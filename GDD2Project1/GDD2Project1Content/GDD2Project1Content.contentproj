@@ -148,8 +148,8 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <Compile Include="levels\testlevel.xml">
-      <Name>testlevel</Name>
+    <Compile Include="levels\testing.xml">
+      <Name>testing</Name>
       <Importer>XmlImporter</Importer>
       <Processor>PassThroughProcessor</Processor>
     </Compile>

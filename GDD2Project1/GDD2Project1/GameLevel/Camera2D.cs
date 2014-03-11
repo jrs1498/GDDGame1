@@ -26,7 +26,9 @@ namespace GDD2Project1
             _dirE = (float)Math.PI * 0.5f,
             _dirW = (float)Math.PI * 1.5f;
 
-        protected Vector2 _origin;
+        protected Vector2
+            _origin,
+            _originIsometric;
 
         protected Direction _dir;
 
@@ -72,6 +74,12 @@ namespace GDD2Project1
             set { _origin = value; }
         }
 
+        public Vector2 OriginIsometric
+        {
+            get { return _originIsometric; }
+            set { _originIsometric = value; }
+        }
+
         public Direction Dir
         {
             get { return _dir; }
@@ -91,6 +99,7 @@ namespace GDD2Project1
             _rotationZ = (float)(Math.PI / 4.0f);
             _rotationX = (float)(Math.PI / 6.0f);
             _zoom = 0.5f;
+            _originIsometric = Vector2.Zero;
         }
 
 
@@ -153,7 +162,8 @@ namespace GDD2Project1
             _scaleY = 1.0f - (float)Math.Sin(_rotationX);
 
             _transformationIsometric =
-                Matrix.CreateRotationZ(_rotationZ)
+                Matrix.CreateTranslation(-_originIsometric.X, -_originIsometric.Y, 0.0f)
+                * Matrix.CreateRotationZ(_rotationZ)
                 * Matrix.CreateScale(1.0f, _scaleY, 1.0f);
 
             _transformationIsometricInverse =

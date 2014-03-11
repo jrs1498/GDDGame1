@@ -61,7 +61,11 @@ namespace GDD2Project1
             int i = 0;
             foreach (KeyValuePair<String, GameNode> entry in _children)
             {
-                if (entry.Value is Consumable)
+                if (entry.Value is GameCharacter)
+                {
+                    continue;
+                }
+                else if (entry.Value is Consumable)
                 {
                     data.Children[i] = (entry.Value as Consumable).saveConsumable();
                 }

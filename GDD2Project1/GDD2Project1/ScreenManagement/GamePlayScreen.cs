@@ -37,7 +37,7 @@ namespace GDD2Project1
 
             // Load the level passed in
             _gameLevelMgr = new GameLevelManager(_gameContentMgr, _screenMgr.GraphicsDevice);
-            _gameLevelMgr.loadLevel("levels\\", gameLevel);
+            _gameLevelMgr.loadLevel("levels\\", gameLevel, true);
 
             // Initialize the user
             initUser();
@@ -66,7 +66,7 @@ namespace GDD2Project1
 
             CharacterController charController = _user.createController<CharacterController>(
                 playerChar, "charController");
-            camController.setCharacterTarget(playerChar, true);
+            //camController.setCharacterTarget(playerChar, true);
 
             return true;
         }

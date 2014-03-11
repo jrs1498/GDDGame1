@@ -119,7 +119,7 @@ namespace GDD2Project1
         /// </summary>
         /// <param name="directory">Directory containing file</param>
         /// <param name="filename">Filename of level</param>
-        public void loadLevel(String directory, String filename)
+        public void loadLevel(String directory, String filename, bool player = false)
         {
             GameLevelData lvldata = _gameContentMgr.loadLevelData(directory + filename);
             initTileArray(lvldata.NumRows, lvldata.NumCols);
@@ -159,14 +159,17 @@ namespace GDD2Project1
                     }
                 }
 
-            // Load player
-            DrawableAnimated playerDrwble = _gameContentMgr.loadDrawableAnimated("playercharacter");
-            GameCharacter playerCharacter = new GameCharacter(this, "playercharacter");
-            playerCharacter.attachDrawable(playerDrwble);
-            GameNode playerTile = getTileAtIndex(lvldata.PlayerStart.X, lvldata.PlayerStart.Y);
-            playerTile.attachChildNode(playerCharacter);
-            playerCharacter.translateTo(playerTile.PositionIsometric);
-            _characters.Add("playercharacter", playerCharacter);
+            if (player)
+            {
+                // Load player
+                DrawableAnimated playerDrwble = _gameContentMgr.loadDrawableAnimated("playercharacter");
+                GameCharacter playerCharacter = new GameCharacter(this, "playercharacter");
+                playerCharacter.attachDrawable(playerDrwble);
+                GameNode playerTile = getTileAtIndex(lvldata.PlayerStart.X, lvldata.PlayerStart.Y);
+                playerTile.attachChildNode(playerCharacter);
+                playerCharacter.translateTo(playerTile.PositionIsometric);
+                _characters.Add("playercharacter", playerCharacter);
+            }
         }
 
         /// <summary>
@@ -211,6 +214,13 @@ namespace GDD2Project1
 
                     _tiles[row, col] = tile;
                 }
+
+            // Initialize Camera's Isometric Origin
+            Vector2 halfpoint;
+            halfpoint.X = _tileRows * TILE_SIZE / 2;
+            halfpoint.Y = _tileCols * TILE_SIZE / 2;
+            //halfpoint = _camera.screenToIsometric(halfpoint);
+            _camera.OriginIsometric = halfpoint;
         }
 
 

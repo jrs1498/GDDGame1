@@ -223,6 +223,8 @@ namespace GDD2Project1
             if (getCamera().Position == nodePos)
                 return;
 
+            getCamera().OriginIsometric = (_actor as Camera2D).isometricToCartesian(_nodeTarget.PositionIsometric);
+
             getCamera().Position = nodePos;
 
             if (!_zooming)

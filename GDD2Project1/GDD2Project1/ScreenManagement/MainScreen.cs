@@ -11,7 +11,7 @@ namespace GDD2Project1
 {
     public class MainScreen : Screen
     {
-        private const string FIRST_LEVEL = "testlevel";
+        private const string FIRST_LEVEL = "testing";
         private InterfaceManager _interfaceMgr;
 
         //-------------------------------------------------------------------------

@@ -173,13 +173,13 @@
       <Time>2014-02-28T22:38:16.4236895-05:00</Time>
     </Item>
     <Item>
-      <Source>levels\testlevel.xml</Source>
-      <Name>levels\testlevel</Name>
+      <Source>levels\testing.xml</Source>
+      <Name>levels\testing</Name>
       <Importer>XmlImporter</Importer>
       <Processor>PassThroughProcessor</Processor>
       <Options>None</Options>
-      <Output>E:\Projects\GDD2Project1\GDD2Project1\GDD2Project1\bin\x86\Debug\Content\levels\testlevel.xnb</Output>
-      <Time>2014-03-10T19:50:01.1914467-04:00</Time>
+      <Output>E:\Projects\GDD2Project1\GDD2Project1\GDD2Project1\bin\x86\Debug\Content\levels\testing.xnb</Output>
+      <Time>2014-03-10T23:08:24.569281-04:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using InputEventSystem;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Input;
 
 namespace GDD2Project1
 {

@@ -27,8 +27,8 @@ namespace GDD2Project1
 
         protected Vector2                       _mouseCoordinates;
 
-        private const int INITIAL_WINDOW_WIDTH  = 1600;
-        private const int INITIAL_WINDOW_HEIGHT = 900;
+        private const int INITIAL_WINDOW_WIDTH  = 1280;
+        private const int INITIAL_WINDOW_HEIGHT = 720;
 
 
         //-------------------------------------------------------------------------
