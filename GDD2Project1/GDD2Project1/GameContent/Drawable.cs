@@ -70,8 +70,7 @@ namespace GDD2Project1
             Vector2         position, 
             Color           color,
             float           rotation,
-            Vector2         scale,
-            float           dt)
+            Vector2         scale)
         {
             spriteBatch.Draw(
                 _texture,

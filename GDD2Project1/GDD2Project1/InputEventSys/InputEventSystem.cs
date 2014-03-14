@@ -299,8 +299,7 @@ namespace InputEventSystem
                     if (mouseEvent.Position.Y > bounds.Height)
                         mouseEvent.Position.Y = bounds.Height;
 
-
-                    MouseMove.Invoke(mouseEvent);
+                        MouseMove.Invoke(mouseEvent);
                 }
             }
 
@@ -358,7 +357,7 @@ namespace InputEventSystem
             // Update mouse state
             this.currentMouseState = mouseState;
             #endregion
-
+            
             base.Update(gameTime);
         }
 

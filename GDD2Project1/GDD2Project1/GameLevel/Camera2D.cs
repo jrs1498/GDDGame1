@@ -20,12 +20,6 @@ namespace GDD2Project1
             _scaleY,
             _zoom;
 
-        protected float
-            _dirN = 0,
-            _dirS = (float)Math.PI,
-            _dirE = (float)Math.PI * 0.5f,
-            _dirW = (float)Math.PI * 1.5f;
-
         protected Vector2
             _origin,
             _originIsometric;
@@ -87,19 +81,14 @@ namespace GDD2Project1
 
 
         //-------------------------------------------------------------------------
-        public delegate void DirectionHandler(Camera2D cam, EventArgs e);
-        public event DirectionHandler DirectionChanged;
-        public EventArgs e = null;
-
-
-        //-------------------------------------------------------------------------
         public Camera2D(GameLevelManager gameLevelMgr)
             : base(gameLevelMgr)
         {
-            _rotationZ = (float)(Math.PI / 4.0f);
+            _rotationZ = 0.0f;
             _rotationX = (float)(Math.PI / 6.0f);
             _zoom = 0.5f;
             _originIsometric = Vector2.Zero;
+            update(0.0f);
         }
 
 
@@ -118,23 +107,7 @@ namespace GDD2Project1
         /// </summary>
         protected void updateDirection()
         {
-            Direction dir;
-
-            if (_rotationZ > _dirN && _rotationZ < _dirE)
-                dir = Direction.DIR_NE;
-            else if (_rotationZ > _dirE && _rotationZ < _dirS)
-                dir = Direction.DIR_SE;
-            else if (_rotationZ > _dirS && _rotationZ < _dirW)
-                dir = Direction.DIR_SW;
-            else
-                dir = Direction.DIR_NW;
-
-            if (_dir != dir)
-            {
-                _dir = dir;
-                if (DirectionChanged != null)
-                    DirectionChanged(this, e);
-            }
+            _dir = GameLevelManager.directionViewFromAngle(_rotationZ);
         }
 
 
@@ -168,6 +141,27 @@ namespace GDD2Project1
 
             _transformationIsometricInverse =
                 Matrix.Invert(_transformationIsometric);
+        }
+
+
+        //-------------------------------------------------------------------------
+        /// <summary>
+        /// Apply a translation to this Camera's position.
+        /// </summary>
+        /// <param name="amount">Translation amount.</param>
+        public virtual void translate(Vector2 amount)
+        {
+            _position += amount;
+        }
+
+        /// <summary>
+        /// Apply a translation to this Camera's position.
+        /// </summary>
+        /// <param name="x">X translation amount.</param>
+        /// <param name="y">Y translation amount.</param>
+        public virtual void translate(float x, float y)
+        {
+            translate(new Vector2(x, y));
         }
 
 
@@ -208,9 +202,28 @@ namespace GDD2Project1
         /// </summary>
         /// <param name="dir">Relative direction</param>
         /// <returns>Adjusted direction</returns>
-        public Direction getRelativeDirection(Direction dir)
+        public Direction getRelativeDirectionView(Direction dir)
         {
-            return (Direction)(((int)dir + (int)_dir) % (int)Direction.DIR_COUNT);
+            return (Direction)(((int)dir + (int)Direction.DIR_COUNT - (int)_dir) % (int)Direction.DIR_COUNT);
+        }
+
+        /// <summary>
+        /// Get a direction vector relative to the current orientation of the Camera.
+        /// </summary>
+        /// <param name="dir">Direction vector.</param>
+        /// <returns>Relative direction vector.</returns>
+        public Vector3 getRelativeDirectionVector(Vector3 dir)
+        {
+            Matrix mat  = Matrix.Identity;
+            mat         = Matrix.CreateRotationY(_rotationZ);
+            dir         = Vector3.Transform(dir, mat);
+            dir         = Vector3.Normalize(dir);
+
+            if (Math.Abs(dir.X) < 0.005f) dir.X = 0;
+            if (Math.Abs(dir.Y) < 0.005f) dir.Y = 0;
+            if (Math.Abs(dir.Z) < 0.005f) dir.Z = 0;
+
+            return dir;
         }
     }
 }

@@ -2,63 +2,61 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using WindowSystem;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.GamerServices;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Storage;
 using Microsoft.Xna.Framework.Input;
 using InputEventSystem;
+using WindowSystem;
 using GameData;
 
 namespace GDD2Project1
 {
+    public enum EditorTool
+    { 
+        TOOL_NONE,
+        TOOL_SELECT,
+        TOOL_ELEVATE
+    };
+
+    /// <summary>
+    /// GameEditorScreen
+    /// 
+    /// Presents the user with a level editor.
+    /// </summary>
     public class GameEditorScreen : GameScreen
     {
-        protected GUIManager        _guiMgr;
+        protected               GUIManager          _guiMgr;
 
-        protected EditMode          _editMode;
-        protected Tool              _tool = Tool.TOOL_NONE;
+        protected               EditorTool          _tool;
+        protected               List<GameTile>      _selection;
+        protected               bool                _grabbingSelection;
+        protected               Color               _colorSelect;
+        protected               Color               _colorDeselect;
 
-        protected List<GameObject>  _selection;
+        protected               bool                _elevating;
+        protected               bool                _snapping;
 
-        protected Color             _colorSelected = new Color(255, 150, 150, 200);
-        protected Color             _colorUnselected = Color.White;
-        protected bool              _grabbingSelection = false;
 
-        protected float             _elevateSnap = 20.0f;
-        protected float             _elevateIncr = 1.0f;
-        protected float             _elevateCurrent = 20.0f;
-
-        protected GameObject        _selectedTile;
-
-        protected bool              _elevating      = false;
-        protected bool              _snapping       = false;
-        protected float             _snapHeight;
-
-        protected int               _objCount       = 0;
-
-        public enum EditMode
+        //-------------------------------------------------------------------------
+        private EditorTool Tool
         {
-            EDITMODE_NONE,
-            EDITMODE_TERRAIN
-        };
-
-        public enum Tool
-        {
-            TOOL_NONE,
-            TOOL_SELECT,
-            TOOL_ELEVATE
-        };
+            get { return _tool; }
+            set
+            {
+                _tool = value;
+                Console.WriteLine("TOOL: " + _tool);
+            }
+        }
 
 
         //-------------------------------------------------------------------------
         /// <summary>
-        /// Default GameEditorScreen constructor
+        /// GameEditorScreen constructor.
         /// </summary>
-        /// <param name="screenMgr">ScreenManager containing this Screen</param>
-        /// <param name="guiMgr">GUI Manager</param>
-        /// <param name="name">Name of screen</param>
+        /// <param name="screenMgr">ScreenManager containing this screen.</param>
+        /// <param name="name">This screen's name.</param>
         public GameEditorScreen(ScreenManager screenMgr, String name)
             : base(screenMgr, name)
         {
@@ -67,159 +65,163 @@ namespace GDD2Project1
 
         //-------------------------------------------------------------------------
         /// <summary>
-        /// Screen initialization function. Should handle setting up the screen,
-        /// members, displaying initial dialogs, etc.
+        /// Initialize this GameEditorScreen.
         /// </summary>
         /// <returns>False if failed</returns>
         public override bool init()
         {
-            // Initialize GameLevelManager
-            _gameLevelMgr = new GameLevelManager(_gameContentMgr, _screenMgr.GraphicsDevice);
+            _gameLevelMgr       = new GameLevelManager(_gameContentMgr, _screenMgr.GraphicsDevice);
+            Tool                = EditorTool.TOOL_NONE;
+            _selection          = new List<GameTile>();
+            _grabbingSelection  = false;
+            _colorSelect        = new Color(0.5f, 1.0f, 0.25f, 0.75f);
+            _colorDeselect      = Color.White;
 
-            // Initialize tools
-            setTool(Tool.TOOL_NONE);
-            _selection = new List<GameObject>();
-            _snapHeight = _gameLevelMgr.TileSize;
+            _elevating          = false;
+            _snapping           = false;
 
-            // Base initializes user
-            if (!base.init())
-                return false;
-
-            return true;
+            return base.init();
         }
 
         /// <summary>
-        /// Initialize user
+        /// Initialize the user.
         /// </summary>
-        /// <returns>False if failed</returns>
+        /// <returns>False if failed.</returns>
         protected override bool initUser()
         {
             if (!base.initUser())
                 return false;
 
-            _user.createController<CameraController>(_gameLevelMgr.Camera, "camController")
+            _user.createController<CameraController>("camController", _gameLevelMgr.Camera)
                 .setFreeLook(true);
 
             return true;
         }
 
-        /// <summary>
-        /// Initialize editor interface
-        /// </summary>
-        /// <returns>Flase if failed</returns>
         protected override bool initGUI()
         {
-            // Initialize WindowSystem
             _guiMgr = new GUIManager(_screenMgr);
             _screenMgr.Components.Add(_guiMgr);
             _guiMgr.Initialize();
 
-            #region Shorthand GUI Creation
-            Func<String, MenuItem> create_mi =
-                (String text) =>
+            #region Shorthand GUI item creation
+            // Create a MenuItem
+            Func<UIComponent, String, MenuItem> create_mi =
+                (UIComponent parent, String text) =>
                 {
-                    MenuItem menuItem = new MenuItem(_screenMgr, _guiMgr);
-                    menuItem.Text = text;
-                    return menuItem;
+                    MenuItem mi             = new MenuItem(_screenMgr, _guiMgr);
+                    mi.Text                 = text;
+
+                    if          (parent is MenuBar)     (parent as MenuBar).Add(mi);
+                    else if     (parent is MenuItem)    (parent as MenuItem).Add(mi);
+
+                    return mi;
                 };
 
-            Func<String, int, int, int, int, TextButton> create_button =
+            // Create a TextButton
+            Func<UIComponent, String, int, int, int, int, TextButton> create_btn =
+                (UIComponent parent, String text, int w, int h, int x, int y) =>
+                {
+                    TextButton btn = new TextButton(_screenMgr, _guiMgr);
+
+                    btn.Text                = text;
+                    btn.Width               = w;
+                    btn.Height              = h;
+                    btn.X                   = x;
+                    btn.Y                   = y;
+
+                    if          (parent is Dialog)      (parent as Dialog).Add(btn);
+                    else if     (parent is Window)      (parent as Window).Add(btn);
+
+                    return btn;
+                };
+
+            // Create a Dialog
+            Func<String, int, int, int, int, Dialog> create_dialog =
                 (String text, int w, int h, int x, int y) =>
-                {
-                    TextButton button = new TextButton(_screenMgr, _guiMgr);
-                    button.Text = text;
-                    button.Width = w;
-                    button.Height = h;
-                    button.X = x;
-                    button.Y = y;
-                    return button;
-                };
-
-            Func<String, int, int, Dialog> create_dialog =
-                (String text, int w, int h) =>
                 {
                     Dialog dialog = new Dialog(_screenMgr, _guiMgr);
                     _guiMgr.Add(dialog);
-                    dialog.TitleText = text;
-                    dialog.Width = w;
-                    dialog.Height = h;
-                    dialog.X = 100;
-                    dialog.Y = 50;
-                    dialog.HasCloseButton = false;
 
-                    int buttonWidth = 50;
-                    int buttonHeight = 20;
-                    int buttonXoffset = 10;
-                    int buttonYoffset = dialog.Height - 60;
+                    dialog.TitleText        = text;
+                    dialog.Width            = w;
+                    dialog.Height           = h;
+                    dialog.X                = x;
+                    dialog.Y                = y;
+                    dialog.HasCloseButton   = false;
+
+                    int bwidth              = 50;
+                    int bheight             = 20;
+                    int bxoffs              = 10;
+                    int byoffs              = dialog.Height - 60;
 
                     // Ok button
-                    TextButton buttonOk = create_button
-                        ("Ok", buttonWidth, buttonHeight, buttonXoffset, buttonYoffset);
-                    buttonOk.Click += delegate(UIComponent sender)
+                    TextButton btnOk = create_btn(
+                        dialog, "Ok", bwidth, bheight, bxoffs, byoffs);
+                    btnOk.Click += delegate(UIComponent sender)
                     {
                         dialog.DialogResult = DialogResult.OK;
                         dialog.CloseWindow();
                     };
-                    dialog.Add(buttonOk);
 
                     // Cancel button
-                    TextButton buttonCancel = create_button
-                        ("Cancel", buttonWidth, buttonHeight, buttonXoffset * 2 + buttonWidth, buttonYoffset);
-                    buttonCancel.Click += delegate(UIComponent sender)
+                    TextButton btnCancel = create_btn(
+                        dialog, "Cancel", bwidth, bheight, bxoffs * 2 + bwidth, byoffs);
+                    btnCancel.Click += delegate(UIComponent sender)
                     {
                         dialog.DialogResult = DialogResult.Cancel;
                         dialog.CloseWindow();
                     };
-                    dialog.Add(buttonCancel);
 
                     return dialog;
                 };
 
-            Func<String, int, int, int, Dialog, TextBox> create_textbox =
-                (String label, int w, int x, int y, Dialog d) =>
+            // Create a text box
+            Func<UIComponent, String, int, int, int, TextBox> create_textbox =
+                (UIComponent parent, String text, int w, int x, int y) =>
                 {
                     TextBox textBox = new TextBox(_screenMgr, _guiMgr);
-                    textBox.Width = w;
-                    textBox.X = x;
-                    textBox.Y = y;
 
-                    Label textLabel = new Label(_screenMgr, _guiMgr);
-                    textLabel.Text = label;
-                    textLabel.Width = 100;
-                    textLabel.Height = 50;
-                    textLabel.X = x - textLabel.Width;
-                    textLabel.Y = y + 5;
+                    textBox.Width           = w;
+                    textBox.X               = x;
+                    textBox.Y               = y;
 
-                    d.Add(textBox);
-                    d.Add(textLabel);
+                    Label label             = new Label(_screenMgr, _guiMgr);
+                    label.Text              = text;
+                    label.Width             = 100;
+                    label.Height            = 50;
+                    label.X                 = x - label.Width;
+                    label.Y                 = y + 5;
+
+                    if (parent is Dialog)
+                    {
+                        (parent as Dialog).Add(textBox);
+                        (parent as Dialog).Add(label);
+                    }
 
                     return textBox;
                 };
             #endregion
 
-            {
+            {   // Main menu bar
                 MenuBar menuBar = new MenuBar(_screenMgr, _guiMgr);
                 _guiMgr.Add(menuBar);
-
-                //---------------------------------------------------------------------
+                //-----------------------------------------------------------------
                 {   // File
-                    MenuItem fileButton = create_mi("File");
-                    menuBar.Add(fileButton);
-                    //-----------------------------------------------------------------
-                    {   // New
-                        MenuItem newButton = create_mi("New");
-                        fileButton.Add(newButton);
-
+                    MenuItem fileButton = create_mi(menuBar, "File");
+                    //-------------------------------------------------------------
+                    {   // New 
+                        MenuItem newButton = create_mi(fileButton, "New");
                         newButton.Click += delegate(UIComponent sender)
                         {
-                            Dialog dialog = create_dialog("New", 300, 200);
-                            TextBox rows = create_textbox("Rows", 50, 150, 10, dialog);
-                            TextBox cols = create_textbox("Cols", 50, 150, 40, dialog);
-                            TextBox tile = create_textbox("Tile", 100, 150, 70, dialog);
+                            Dialog d = create_dialog("New", 300, 200, 100, 100);
+                            TextBox rows = create_textbox(d, "Rows", 50, 150, 10);
+                            TextBox cols = create_textbox(d, "Cols", 50, 150, 40);
+                            TextBox tile = create_textbox(d, "Tile", 100, 150, 70);
 
-                            dialog.Close += delegate(UIComponent csender)
+                            d.Close += delegate(UIComponent dsender)
                             {
-                                switch (dialog.DialogResult)
+                                switch (d.DialogResult)
                                 {
                                     case DialogResult.Cancel:
                                         return;
@@ -232,453 +234,242 @@ namespace GDD2Project1
                             };
                         };
                     }
-                    //-----------------------------------------------------------------
-                    {   // Save as
-                        MenuItem saveAsButton = create_mi("Save as");
-                        fileButton.Add(saveAsButton);
 
+                    //-------------------------------------------------------------
+                    {   // Save as
+                        MenuItem saveAsButton = create_mi(fileButton, "Save as");
                         saveAsButton.Click += delegate(UIComponent sender)
                         {
-                            Dialog saveAsDialog = create_dialog("Save as", 300, 200);
-                            TextBox name = create_textbox("Name", 200, 100, 50, saveAsDialog);
+                            Dialog d = create_dialog("Save as", 300, 200, 100, 100);
+                            TextBox file = create_textbox(d, "Path", 200, 100, 50);
 
-                            saveAsDialog.Close += delegate(UIComponent csender)
+                            d.Close += delegate(UIComponent dsender)
                             {
-                                switch (saveAsDialog.DialogResult)
+                                switch (d.DialogResult)
                                 {
                                     case DialogResult.Cancel:
                                         return;
                                     case DialogResult.OK:
-                                        _gameLevelMgr.saveLevel(LEVEL_DIRECTORY, name.Text);
+                                        _gameLevelMgr.saveLevel(LEVEL_DIRECTORY + file.Text);
                                         return;
                                 }
                             };
                         };
                     }
-                    //-----------------------------------------------------------------
+                    //-------------------------------------------------------------
                     {   // Load
-                        MenuItem loadButton = create_mi("Load");
-                        fileButton.Add(loadButton);
-
+                        MenuItem loadButton = create_mi(fileButton, "Load");
                         loadButton.Click += delegate(UIComponent sender)
                         {
-                            Dialog loadDialog = create_dialog("Load", 300, 200);
-                            TextBox name = create_textbox("Name", 200, 100, 50, loadDialog);
+                            Dialog d = create_dialog("Load", 300, 200, 100, 100);
+                            TextBox file = create_textbox(d, "File", 200, 100, 50);
 
-                            loadDialog.Close += delegate(UIComponent csender)
+                            d.Close += delegate(UIComponent dsender)
                             {
-                                switch (loadDialog.DialogResult)
+                                switch (d.DialogResult)
                                 {
                                     case DialogResult.Cancel:
                                         return;
                                     case DialogResult.OK:
-                                        _gameLevelMgr.loadLevel("levels\\", name.Text);
+                                        _gameLevelMgr.loadLevel("levels\\" + file.Text);
                                         return;
                                 }
                             };
                         };
                     }
-                    //-----------------------------------------------------------------
+                    //-------------------------------------------------------------
                     {   // Quit to menu
-                        MenuItem quitButton = create_mi("Quit to menu");
-                        fileButton.Add(quitButton);
-
+                        MenuItem quitButton = create_mi(fileButton, "Quit to menu");
                         quitButton.Click += delegate(UIComponent sender)
                         {
-                            Screen mainScreen =
-                                _screenMgr.createScreen<MainScreen>("mainScreen", null, true, true);
-                            mainScreen.init();
+
                         };
                     }
                 }
-                //---------------------------------------------------------------------
-                {   // Windows
-                    MenuItem windowsButton = create_mi("Windows");
-                    menuBar.Add(windowsButton);
-                    //-----------------------------------------------------------------
-                    {   // Tools
-                        MenuItem tools = create_mi("Tools");
-                        windowsButton.Add(tools);
-                    }
-                    //-----------------------------------------------------------------
-                    {   // Content browser
-                        MenuItem contentBrowser = create_mi("Content browser");
-                        windowsButton.Add(contentBrowser);
+                //-----------------------------------------------------------------
+                {   // Tool bar
+                    Window toolBar = new Window(_screenMgr, _guiMgr);
+                    _guiMgr.Add(toolBar);
 
-                        contentBrowser.Click += delegate(UIComponent sender)
+                    toolBar.HasCloseButton = false;
+                    toolBar.Width = _screenMgr.GraphicsDevice.Viewport.Width;
+                    toolBar.Height = 60;
+                    toolBar.Y = menuBar.Y + menuBar.Height;
+                    toolBar.Resizable = false;
+                    toolBar.HasFullWindowMovableArea = false;
+                    toolBar.TitleBarHeight = 4;
+
+                    int btncount, btnx, btny, btnw, btnh;
+                    btncount = 0;
+                    btnx = 8;
+                    btny = 4;
+                    btnw = 60;
+                    btnh = 24;
+                    //-------------------------------------------------------------
+                    {   // Deselect
+                        TextButton noneButton = create_btn(toolBar, "None",
+                            btnw, btnh, ((btnx + btnw) * btncount++), btny);
+                        noneButton.Click += delegate(UIComponent sender)
                         {
-                            Window cbwin = new Window(_screenMgr, _guiMgr);
-                            _guiMgr.Add(cbwin);
-                            cbwin.Width = 400;
-                            cbwin.Height = 400;
-                            cbwin.X = 50;
-                            cbwin.Y = 50;
-                            //---------------------------------------------------------
-                            {   // Tiles
-                                #region Shorthand tile button creation
-                                Func<String, int, int, TextButton> create_tilebtn =
-                                    (String tile, int x, int y) =>
-                                    {
-                                        TextButton button = new TextButton(_screenMgr, _guiMgr);
-                                        cbwin.Add(button);
-                                        button.X = x;
-                                        button.Y = y;
-                                        button.Width = 80;
-                                        button.Height = 30;
-                                        button.Text = tile;
-
-                                        button.Click += delegate(UIComponent bsender)
-                                        {
-                                            foreach (GameObject tileobj in _selection)
-                                            {
-                                                tileobj.detachDrawable();
-                                                Drawable drwble = _gameContentMgr.loadDrawable(tile);
-                                                drwble.Origin = _gameLevelMgr.TileOrigin;
-                                                tileobj.attachDrawable(drwble);
-                                            }
-                                        };
-
-                                        return button;
-                                    };
-                                #endregion
-
-                                TextButton grassT = create_tilebtn("tile_grass", 10, 10);
-                                TextButton stoneT = create_tilebtn("tile_stone", 10, 50);
-                                TextButton sandT = create_tilebtn("tile_sand", 10, 90);
-                                TextButton stoneSandT = create_tilebtn("tile_stonesand", 10, 130);
-                                TextButton rock = create_tilebtn("tile_rock", 10, 170);
-
-                                TextButton deactivate = create_button("deactivate", 80, 30, 10, 210);
-                                cbwin.Add(deactivate);
-                                deactivate.Click += delegate(UIComponent bsender)
-                                {
-                                    foreach (GameObject tile in _selection)
-                                        tile.Active = false;
-                                };
-
-                                TextButton activate = create_button("activate", 80, 30, 10, 250);
-                                cbwin.Add(activate);
-                                activate.Click += delegate(UIComponent bsender)
-                                {
-                                    foreach (GameObject tile in _selection)
-                                        tile.Active = true;
-                                };
-
-                                TextButton removeItems = create_button("remove items", 80, 30, 10, 290);
-                                cbwin.Add(removeItems);
-                                removeItems.Click += delegate(UIComponent bsender)
-                                {
-                                    foreach (GameObject tile in _selection)
-                                        tile.detachAllChildren();
-                                };
-                            }
-                            //---------------------------------------------------------
-                            {   // General content
-                                #region Shorthand content button creation
-                                Func<String, int, int, TextButton> create_contentbtn =
-                                    (String cont, int x, int y) =>
-                                    {
-                                        TextButton button = new TextButton(_screenMgr, _guiMgr);
-                                        cbwin.Add(button);
-                                        button.X = x;
-                                        button.Y = y;
-                                        button.Width = 80;
-                                        button.Height = 30;
-                                        button.Text = cont;
-
-                                        button.Click += delegate(UIComponent bsender)
-                                        {
-                                            if (_selection.Count < 1)
-                                                return;
-
-                                            foreach (GameObject tile in _selection)
-                                            {
-                                                GameObject obj = new GameObject(_gameLevelMgr, cont + _objCount);
-                                                Drawable drwble = _gameContentMgr.loadDrawable(cont);
-                                                obj.attachDrawable(drwble);
-                                                tile.attachChildNode(obj);
-                                                obj.translateTo(tile.PositionIsometric);
-                                                _objCount++;
-                                            }
-                                        };
-
-                                        return button;
-                                    };
-                                #endregion
-
-                                TextButton treeC = create_contentbtn("tree1", 120, 10);
-                            }
-                            //---------------------------------------------------------
-                            {   // Consumable items
-                                #region Shorthand event-drive button creation
-                                Func<String, int, int, int, TextButton> create_eventbtn =
-                                    (String item, int x, int y, int amount) =>
-                                    {
-                                        TextButton button = new TextButton(_screenMgr, _guiMgr);
-                                        cbwin.Add(button);
-                                        button.X = x;
-                                        button.Y = y;
-                                        button.Width = 80;
-                                        button.Height = 30;
-                                        button.Text = item;
-
-                                        button.Click += delegate(UIComponent bsender)
-                                        {
-                                            if (_selection.Count < 1)
-                                                return;
-
-                                            foreach (GameObject tile in _selection)
-                                            {
-                                                Consumable cnsmble = new Consumable(_gameLevelMgr, item + _objCount, Consumable.ConsumableType.TYPE_POWER, amount);
-                                                Drawable drwble = _gameContentMgr.loadDrawable(item);
-                                                cnsmble.attachDrawable(drwble);
-                                                tile.attachChildNode(cnsmble);
-                                                cnsmble.translateTo(tile.PositionIsometric);
-                                                _objCount++;
-                                            }
-                                        };
-
-                                        return button;
-                                    };
-                                #endregion
-
-                                TextButton poweritem = create_eventbtn("consumable", 230, 10, 100);
-
-                                TextButton playerStart = create_button("player start", 80, 30, 230, 50);
-                                cbwin.Add(playerStart);
-                                playerStart.Click += delegate(UIComponent bsender)
-                                {
-                                    if (_selection.Count < 1)
-                                        return;
-                                    _gameLevelMgr.PlayerStart = _gameLevelMgr.getIndexFromPosition(_selection[0].PositionIsometric);
-                                    Console.WriteLine("Player start set to: " + _gameLevelMgr.PlayerStart);
-                                };
-                            }
+                            Tool = EditorTool.TOOL_NONE;
                         };
                     }
-                }
-                //---------------------------------------------------------------------
-                {   // Edit
-                    MenuItem editButton = create_mi("Edit");
-                    menuBar.Add(editButton);
-                    //-----------------------------------------------------------------
+                    //-------------------------------------------------------------
                     {   // Select
-                        MenuItem selectButton = create_mi("Select");
-                        editButton.Add(selectButton);
-
+                        TextButton selectButton = create_btn(toolBar, "Select",
+                            btnw, btnh, ((btnx + btnw) * btncount++), btny);
                         selectButton.Click += delegate(UIComponent sender)
                         {
-                            _tool = Tool.TOOL_SELECT;
+                            Tool = EditorTool.TOOL_SELECT;
+                        };
+                    }
+                    //-------------------------------------------------------------
+                    {   // Zero
+                        TextButton zeroButton = create_btn(toolBar, "Zero",
+                            btnw, btnh, ((btnx + btnw) * btncount++), btny);
+                        zeroButton.Click += delegate(UIComponent sender)
+                        {
+                            batchElevation(0.0f);
+                        };
+                    }
+                    //-------------------------------------------------------------
+                    {   // Elevate
+                        TextButton elevateButton = create_btn(toolBar, "Elevate",
+                            btnw, btnh, ((btnx + btnw) * btncount++), btny);
+                        elevateButton.Click += delegate(UIComponent sender)
+                        {
+                            Tool = EditorTool.TOOL_ELEVATE;
+                        };
+                    }
+                    //-------------------------------------------------------------
+                    {   // Activate
+                        TextButton activateButton = create_btn(toolBar, "Activate",
+                            btnw, btnh, ((btnx + btnw) * btncount++), btny);
+                        activateButton.Click += delegate(UIComponent sender)
+                        {
+                            batchActivate(true);
+                        };
+                    }
+                    //-------------------------------------------------------------
+                    {   // Deactivate
+                        TextButton deactivateButton = create_btn(toolBar, "Deact",
+                            btnw, btnh, ((btnx + btnw) * btncount++), btny);
+                        deactivateButton.Click += delegate(UIComponent sender)
+                        {
+                            batchActivate(false);
                         };
                     }
                 }
             }
 
-            {
-                Window toolBar = new Window(_screenMgr, _guiMgr);
-                _guiMgr.Add(toolBar);
-                toolBar.Width = 600;
-                toolBar.Height = 72;
-                toolBar.Y = 50;
-                toolBar.HasCloseButton = false;
-                toolBar.Resizable = false;
-                toolBar.HasFullWindowMovableArea = false;
-                //---------------------------------------------------------------------
-                {   // Select
-                    TextButton select = create_button("select", 60, 40, 0, 0);
-                    toolBar.Add(select);
-
-                    select.Click += delegate(UIComponent sender)
-                    {
-                        setTool(Tool.TOOL_SELECT);
-                    };
-                }
-                //---------------------------------------------------------------------
-                {   // Clear select
-                    TextButton clear = create_button("clear", 60, 40, 70, 0);
-                    toolBar.Add(clear);
-
-                    clear.Click += delegate(UIComponent sender)
-                    {
-                        clearSelection();
-                        endTileSelection();
-                    };
-                }
-                //---------------------------------------------------------------------
-                {   // Elevate 
-                    TextButton elevate = create_button("elevate", 60, 40, 140, 0);
-                    toolBar.Add(elevate);
-
-                    elevate.Click += delegate(UIComponent sender)
-                    {
-                        setTool(Tool.TOOL_ELEVATE);
-                    };
-                }
-            }
-
-            return true;
+            return base.initGUI();
         }
 
 
         //-------------------------------------------------------------------------
         /// <summary>
-        /// Unload any data that will not be useful after this screen is no longer active
+        /// KeyDown event handler function.
         /// </summary>
-        /// <returns>False if failed</returns>
-        protected override bool unload()
-        {
-            if (_guiMgr != null)
-                _screenMgr.Components.Remove(_guiMgr);
-
-            return base.unload();
-        }
-
-
-        //-------------------------------------------------------------------------
-        /// <summary>
-        /// Local KeyDown event handler. This function should inject this event
-        /// to any components that check for input.
-        /// </summary>
-        /// <param name="e">Key event arguments</param>
+        /// <param name="e">Keyboard event.</param>
+        /// <returns>True if handled.</returns>
         public override bool injectKeyDown(KeyEventArgs e)
         {
-            // Ctrl hotkeys
-            if (e.Control)
-            {
-                switch (e.Key)
-                { 
-                    case Keys.S:
-                        setTool(Tool.TOOL_SELECT);
-                        return true;
-
-                    case Keys.E:
-                        setTool(Tool.TOOL_ELEVATE);
-                        return true;
-
-                    case Keys.D:
-                        clearSelection();
-                        endTileSelection();
-                        return true;
-
-                    default:
-                        break;
-                }
-            }
-
             return base.injectKeyDown(e);
         }
 
         /// <summary>
-        /// Local KeyUp event handler. This function should inject this event
-        /// to any components that check for input.
+        /// KeyUp event handler function.
         /// </summary>
-        /// <param name="e">Key event arguments</param>
+        /// <param name="e">Keyboard event.</param>
+        /// <returns>True if handled.</returns>
         public override bool injectKeyUp(KeyEventArgs e)
         {
-            // Ctrl hotkeys
-            if (e.Control)
-            {
-                switch (e.Key)
-                { 
-                    case Keys.S:
-                        return true;
-
-                    case Keys.E:
-                        return true;
-
-                    case Keys.D:
-                        return true;
-                }
-            }
-
             return base.injectKeyUp(e);
         }
 
+
+        //-------------------------------------------------------------------------
         /// <summary>
-        /// Local MouseDown event handler. This function should inject this event
-        /// to any components that check for input.
+        /// MouseDown event handler function.
         /// </summary>
-        /// <param name="e">Key event arguments</param>
+        /// <param name="e">Mouse event</param>
+        /// <returns>True if handled</returns>
         public override bool injectMouseDown(MouseEventArgs e)
         {
             switch (e.Button)
             { 
                 case MouseButtons.Left:
-                    if (_tool != Tool.TOOL_NONE)
+                    if (_tool != EditorTool.TOOL_NONE)
                     {
                         switch (_tool)
                         { 
-                            case Tool.TOOL_SELECT:
+                            case EditorTool.TOOL_SELECT:
                                 beginTileSelection(e.Position);
                                 return true;
 
-                            case Tool.TOOL_ELEVATE:
-                                _elevating = true;
+                            case EditorTool.TOOL_ELEVATE:
+                                beginElevation();
                                 return true;
-
-                            default:
-                                break;
                         }
                     }
                     break;
 
                 case MouseButtons.Right:
-                    if (_tool != Tool.TOOL_NONE)
-                    {
-                        switch (_tool)
-                        { 
-                            case Tool.TOOL_SELECT:
-                                clearSelection();
-                                break;
-                        }
-                    }
-                    break;
+                    _user.getController<CameraController>("camController").RotateWithMouse = true;
+                    return true;
             }
 
             return base.injectMouseDown(e);
         }
 
         /// <summary>
-        /// Local MouseUp event handler. This function should inject this event
-        /// to any components that check for input.
+        /// MouseUp event handler function.
         /// </summary>
-        /// <param name="e">Key event arguments</param>
-        public override bool injectMouseUp(InputEventSystem.MouseEventArgs e)
+        /// <param name="e">Mouse event</param>
+        /// <returns>True if handled</returns>
+        public override bool injectMouseUp(MouseEventArgs e)
         {
             switch (e.Button)
-            { 
+            {
                 case MouseButtons.Left:
-                    switch (_tool)
-                    { 
-                        case Tool.TOOL_SELECT:
-                            endTileSelection();
-                            return true;
+                    if (_tool != EditorTool.TOOL_NONE)
+                    {
+                        switch (_tool)
+                        {
+                            case EditorTool.TOOL_SELECT:
+                                endTileSelection();
+                                return true;
 
-                        case Tool.TOOL_ELEVATE:
-                            _elevating = false;
-                            return true;
+                            case EditorTool.TOOL_ELEVATE:
+                                endElevation();
+                                return true;
+                        }
                     }
                     break;
+
+                case MouseButtons.Right:
+                    _user.getController<CameraController>("camController").RotateWithMouse = false;
+                    return true;
             }
 
             return base.injectMouseUp(e);
         }
 
         /// <summary>
-        /// Local MouseMove event handler. This function should inject this event
-        /// to any components that check for input.
+        /// MouseMove event handler function.
         /// </summary>
-        /// <param name="e">Key event arguments</param>
-        public override bool injectMouseMove(InputEventSystem.MouseEventArgs e)
+        /// <param name="e">Mouse event</param>
+        /// <returns>True if handled</returns>
+        public override bool injectMouseMove(MouseEventArgs e)
         {
             switch (_tool)
             { 
-                case Tool.TOOL_SELECT:
+                case EditorTool.TOOL_SELECT:
                     if (_grabbingSelection)
                         updateTileSelection(e.Position);
                     return true;
 
-                case Tool.TOOL_ELEVATE:
+                case EditorTool.TOOL_ELEVATE:
                     if (_elevating)
                         updateElevation(e);
                     return true;
@@ -690,28 +481,28 @@ namespace GDD2Project1
 
         //-------------------------------------------------------------------------
         /// <summary>
-        /// Primary GameEditorScreen update function
+        /// Primary GameEditorScreen update function.
         /// </summary>
-        /// <param name="gameTime">Provides a snapshot of timing values</param>
+        /// <param name="gameTime">Provides a snapshot of timing values.</param>
         public override void update(GameTime gameTime)
-        {
+        { 
             // Update GUI
             _guiMgr.Update(gameTime);
 
-            // Base updates GameLevel and User
+            // Base updates the rest
             base.update(gameTime);
         }
 
 
         //-------------------------------------------------------------------------
         /// <summary>
-        /// Draw this GameEditorScreen and its GUI
+        /// Primary GameEditorScreen draw function.
         /// </summary>
-        /// <param name="gameTime">Provides a snapshot of timing values</param>
-        /// <param name="spriteBatch">Draws textures</param>
+        /// <param name="gameTime">Provides a snapshot of timing values.</param>
+        /// <param name="spriteBatch">Draws textures.</param>
         public override void draw(GameTime gameTime, SpriteBatch spriteBatch)
-        { 
-            // Base draws gameLevel
+        {
+            // Base draws the game level
             base.draw(gameTime, spriteBatch);
 
             // Draw GUI
@@ -721,32 +512,12 @@ namespace GDD2Project1
 
         //-------------------------------------------------------------------------
         /// <summary>
-        /// Set the current edit mode, which determines how this screen runs its updates
+        /// Begin a click and drag tile selection.
         /// </summary>
-        /// <param name="editMode">New edit mode</param>
-        protected void setEditMode(EditMode editMode)
-        {
-            _editMode = editMode;
-        }
-
-        /// <summary>
-        /// Set the terrain editing tool
-        /// </summary>
-        /// <param name="tool">Tool to use</param>
-        protected void setTool(Tool tool)
-        {
-            setEditMode(EditMode.EDITMODE_TERRAIN);
-            _tool = tool;
-
-            Console.WriteLine("Tool: " + _tool);
-        }
-
-
-        //-------------------------------------------------------------------------
+        /// <param name="mousePosition">Current position of mouse.</param>
         protected void beginTileSelection(Point mousePosition)
         {
-            Console.WriteLine("Tile selection started");
-            GameObject originTile = _gameLevelMgr.getTileFromScreenCoordinates(mousePosition);
+            GameTile originTile = _gameLevelMgr.tileAtScreenCoords(mousePosition);
             if (originTile != null)
             {
                 clearSelection();
@@ -756,37 +527,77 @@ namespace GDD2Project1
             }
         }
 
+        /// <summary>
+        /// Update selection to match mouse position.
+        /// </summary>
+        /// <param name="mousePosition">Current mouse position.</param>
         protected void updateTileSelection(Point mousePosition)
         {
-            GameObject destTile = _gameLevelMgr.getTileFromScreenCoordinates(mousePosition);
+            GameTile destTile = _gameLevelMgr.tileAtScreenCoords(mousePosition);
             if (destTile != null)
             {
-                GameObject originTile = _selection[0];
+                GameTile originTile = _selection[0];
                 clearSelection();
                 _selection.Add(originTile);
 
                 if (destTile != originTile)
                 {
-                    Point originIndex = _gameLevelMgr.getIndexFromPosition(originTile.PositionIsometric);
-                    Point destIndex = _gameLevelMgr.getIndexFromPosition(destTile.PositionIsometric);
+                    int originX, originY, destX, destY;
+                    _gameLevelMgr.tileAtIsoCoords(
+                        originTile.Node.PositionIsometric, out originX, out originY);
+                    _gameLevelMgr.tileAtIsoCoords(
+                        destTile.Node.PositionIsometric, out destX, out destY);
 
-                    int diffx, diffy, signx, signy;
+                    int dx, dy, sx, sy;
+                    dx = destX - originX;
+                    dy = destY - originY;
+                    sx = 1;
+                    sy = 1;
 
-                    diffx = destIndex.X - originIndex.X;
-                    diffy = destIndex.Y - originIndex.Y;
-                    signx = 1;
-                    signy = 1;
-
-                    if (diffx != 0) signx = diffx / Math.Abs(diffx);
-                    if (diffy != 0) signy = diffy / Math.Abs(diffy);
+                    if (dx != 0) sx = dx / Math.Abs(dx);
+                    if (dy != 0) sy = dy / Math.Abs(dy);
 
                     switch (_gameLevelMgr.Camera.Dir)
-                    {
+                    { 
+                        case Direction.DIR_N:
                         case Direction.DIR_NE:
-                            for (int row = originIndex.X; row != destIndex.X + signx; row += signx)
-                                for (int col = originIndex.Y; col != destIndex.Y + signy; col += signy)
+                            for (int col = originY; col != destY + sy; col += sy)
+                                for (int row = originX; row != destX + sx; row += sx)
                                 {
-                                    GameObject tile = _gameLevelMgr.getTileAtIndex(row, col);
+                                    GameTile tile = _gameLevelMgr.tileAtIndex(row, col);
+                                    if (tile != null && tile != originTile)
+                                        _selection.Add(tile);
+                                }
+                            break;
+
+                        case Direction.DIR_E:
+                        case Direction.DIR_SE:
+                            for (int row = destX; row != originX - sx; row -= sx)
+                                for (int col = destY; col != originY - sy; col -= sy)
+                                {
+                                    GameTile tile = _gameLevelMgr.tileAtIndex(row, col);
+                                    if (tile != null && tile != originTile)
+                                        _selection.Add(tile);
+                                }
+                            break;
+
+                        case Direction.DIR_S:
+                        case Direction.DIR_SW:
+                            for (int col = destY; col != originY - sy; col -= sy)
+                                for (int row = originX; row != destX + sx; row += sx)
+                                {
+                                    GameTile tile = _gameLevelMgr.tileAtIndex(row, col);
+                                    if (tile != null && tile != originTile)
+                                        _selection.Add(tile);
+                                }
+                            break;
+
+                        case Direction.DIR_W:
+                        case Direction.DIR_NW:
+                            for (int row = originX; row != destX + sx; row += sx)
+                                for (int col = originY; col != destY + sy; col += sy)
+                                {
+                                    GameTile tile = _gameLevelMgr.tileAtIndex(row, col);
                                     if (tile != null && tile != originTile)
                                         _selection.Add(tile);
                                 }
@@ -794,26 +605,43 @@ namespace GDD2Project1
                     }
                 }
 
-                foreach (GameObject tile in _selection)
-                    tile.Color = _colorSelected;
-
-                Console.WriteLine("Updated selection: " + _selection.Count + " tiles");
+                foreach (GameTile tile in _selection)
+                    tile.Entity.Color = _colorSelect;
             }
         }
 
+        /// <summary>
+        /// End click and drag tile selection.
+        /// </summary>
         protected void endTileSelection()
         {
-            Console.WriteLine("Tile selection ended");
             _grabbingSelection = false;
         }
 
+        /// <summary>
+        /// Clear the tile selection
+        /// </summary>
         protected void clearSelection()
         {
-            foreach (GameObject tile in _selection)
-                tile.Color = _colorUnselected;
+            foreach (GameTile tile in _selection)
+                tile.Entity.Color = _colorDeselect;
             _selection.Clear();
         }
 
+
+        //-------------------------------------------------------------------------
+        /// <summary>
+        /// Begin elevating according to mouse coordinates.
+        /// </summary>
+        protected void beginElevation()
+        {
+            _elevating = true;
+        }
+
+        /// <summary>
+        /// Causes selected tiles to elevate according to mouse movement.
+        /// </summary>
+        /// <param name="e">Mouse event</param>
         protected void updateElevation(MouseEventArgs e)
         {
             if (_selection.Count == 0)
@@ -821,16 +649,49 @@ namespace GDD2Project1
 
             if (!_snapping)
             {
-                foreach (GameObject tile in _selection)
-                    tile.translate(0.0f, e.RelativePosition.Y
-                        / _gameLevelMgr.Camera.ScaleY
-                        / _gameLevelMgr.Camera.Zoom,
+                foreach (GameTile tileNode in _selection)
+                    tileNode.Node.translate(
+                        0.0f,
+                        e.RelativePosition.Y / _gameLevelMgr.Camera.ScaleY / _gameLevelMgr.Camera.Zoom,
                         0.0f);
             }
             else
             { 
-                // Don't quite know how to make snapping work yet
+                
             }
+        }
+
+        /// <summary>
+        /// Stop elevating according to mouse coordinates.
+        /// </summary>
+        protected void endElevation()
+        {
+            _elevating = false;
+        }
+
+
+        //-------------------------------------------------------------------------
+        /// <summary>
+        /// Set every tile in the selection to the specified elevation.
+        /// </summary>
+        /// <param name="elevation">Tile elevation</param>
+        protected void batchElevation(float elevation)
+        {
+            foreach (GameTile tile in _selection)
+            {
+                float dy = elevation - tile.Node.PositionIsometric.Y;
+                tile.Node.translate(0.0f, dy, 0.0f);
+            }
+        }
+
+        /// <summary>
+        /// Set the activation for all tiles in the selection.
+        /// </summary>
+        /// <param name="value">Activation value.</param>
+        protected void batchActivate(bool value)
+        {
+            foreach (GameTile tile in _selection)
+                tile.Active = value;
         }
     }
 }

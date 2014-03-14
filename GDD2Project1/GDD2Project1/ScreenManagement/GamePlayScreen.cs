@@ -4,7 +4,9 @@ using System.Linq;
 using System.Text;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Input;
 using WindowSystem;
+using InputEventSystem;
 
 namespace GDD2Project1
 {
@@ -37,7 +39,7 @@ namespace GDD2Project1
 
             // Load the level passed in
             _gameLevelMgr = new GameLevelManager(_gameContentMgr, _screenMgr.GraphicsDevice);
-            _gameLevelMgr.loadLevel("levels\\", gameLevel, true);
+            _gameLevelMgr.loadLevel("levels\\" + gameLevel);
 
             // Initialize the user
             initUser();
@@ -55,18 +57,19 @@ namespace GDD2Project1
             if (!base.initUser())
                 return false;
 
-            // Grab the player's character from GameLevel
-            GameCharacter playerChar = 
-                _gameLevelMgr.getGameObject<GameCharacter>(PLAYER_CHARACTER);
-
-            // Create User's controllers
-            CameraController camController = _user.createController<CameraController>(
-                _gameLevelMgr.Camera,
-                "camController");
-
+            // Give the user control of their character
+            GameCharacter playerChar = _gameLevelMgr.getGameObject<GameCharacter>(GameLevelManager.PLAYER_NAME);
             CharacterController charController = _user.createController<CharacterController>(
-                playerChar, "charController");
-            //camController.setCharacterTarget(playerChar, true);
+                "charController",
+                playerChar);
+
+            // Lock the camera onto the user's character
+            CameraController camController = _user.createController<CameraController>(
+                "camController",
+                _gameLevelMgr.Camera);
+            camController.setCharacterTarget(playerChar.Node, true);
+            camController.RotateWithMouse = true;
+
 
             return true;
         }

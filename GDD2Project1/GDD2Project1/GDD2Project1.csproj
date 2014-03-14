@@ -80,6 +80,9 @@
   <ItemGroup>
     <Compile Include="GameContent\Animation.cs" />
     <Compile Include="GameContent\ContentObject.cs" />
+    <Compile Include="GameLevel\Entity.cs" />
+    <Compile Include="GameLevel\GameObjectMovable.cs" />
+    <Compile Include="GameLevel\GameTile.cs" />
     <Compile Include="GUI\InterfaceManager.cs" />
     <Compile Include="GUI\InterfaceObject.cs" />
     <Compile Include="GUI\TextButton.cs" />
@@ -87,11 +90,8 @@
     <Compile Include="InputEventSys\InputEventSystem.cs" />
     <Compile Include="ScreenManagement\GameEditorScreen.cs" />
     <Compile Include="ScreenManagement\MainScreen.cs" />
-    <Compile Include="User\ActorController.cs" />
-    <Compile Include="User\CharacterController.cs" />
     <Compile Include="GameLevel\Camera2D.cs" />
     <Compile Include="User\CameraController.cs" />
-    <Compile Include="GameLevel\Consumable.cs" />
     <Compile Include="GameContent\Drawable.cs" />
     <Compile Include="GameContent\DrawableAnimated.cs" />
     <Compile Include="GameLevel\GameCharacter.cs" />
@@ -102,12 +102,14 @@
     <Compile Include="GameLevel\GameObject.cs" />
     <Compile Include="ScreenManagement\GamePlayScreen.cs" />
     <Compile Include="ScreenManagement\GameScreen.cs" />
+    <Compile Include="User\CharacterController.cs" />
     <Compile Include="User\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="ScreenManagement\Screen.cs" />
     <Compile Include="ScreenManagement\ScreenManager.cs" />
     <Compile Include="Helper\Vector3H.cs" />
+    <Compile Include="User\UserController.cs" />
     <Compile Include="WindowSystem\Bar.cs" />
     <Compile Include="WindowSystem\Box.cs" />
     <Compile Include="WindowSystem\CheckBox.cs" />

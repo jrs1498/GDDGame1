@@ -2,12 +2,26 @@
 <XnaContent>
   <Asset Type="GameData.DrawableAnimatedData">
     <TextureName>playercharacter</TextureName>
-    <Origin>0 80</Origin>
+    <Origin>39 98</Origin>
     <Animations>
       <Item>
+        <Name>idleN</Name>
+        <StartFrame>12</StartFrame>
+        <EndFrame>12</EndFrame>
+        <FrameTime>0.6</FrameTime>
+        <Looping>false</Looping>
+      </Item>
+    <Item>
         <Name>idleNE</Name>
         <StartFrame>28</StartFrame>
         <EndFrame>28</EndFrame>
+        <FrameTime>0.6</FrameTime>
+        <Looping>false</Looping>
+      </Item>
+    <Item>
+        <Name>idleE</Name>
+        <StartFrame>8</StartFrame>
+        <EndFrame>8</EndFrame>
         <FrameTime>0.6</FrameTime>
         <Looping>false</Looping>
       </Item>
@@ -18,10 +32,24 @@
         <FrameTime>0.6</FrameTime>
         <Looping>false</Looping>
       </Item>
+    <Item>
+        <Name>idleS</Name>
+        <StartFrame>0</StartFrame>
+        <EndFrame>0</EndFrame>
+        <FrameTime>0.6</FrameTime>
+        <Looping>false</Looping>
+      </Item>
 	  <Item>
         <Name>idleSW</Name>
         <StartFrame>16</StartFrame>
         <EndFrame>16</EndFrame>
+        <FrameTime>0.6</FrameTime>
+        <Looping>false</Looping>
+      </Item>
+    <Item>
+        <Name>idleW</Name>
+        <StartFrame>4</StartFrame>
+        <EndFrame>4</EndFrame>
         <FrameTime>0.6</FrameTime>
         <Looping>false</Looping>
       </Item>
@@ -32,29 +60,57 @@
         <FrameTime>0.6</FrameTime>
         <Looping>false</Looping>
       </Item>
+    <Item>
+        <Name>moveslowN</Name>
+        <StartFrame>12</StartFrame>
+        <EndFrame>15</EndFrame>
+        <FrameTime>0.6</FrameTime>
+        <Looping>true</Looping>
+      </Item>
 	  <Item>
-        <Name>moveNE</Name>
+        <Name>moveslowNE</Name>
         <StartFrame>28</StartFrame>
         <EndFrame>31</EndFrame>
         <FrameTime>0.6</FrameTime>
         <Looping>true</Looping>
       </Item>
+     <Item>
+        <Name>moveslowE</Name>
+        <StartFrame>8</StartFrame>
+        <EndFrame>11</EndFrame>
+        <FrameTime>0.6</FrameTime>
+        <Looping>true</Looping>
+      </Item>
 	  <Item>
-        <Name>moveSE</Name>
+        <Name>moveslowSE</Name>
         <StartFrame>20</StartFrame>
         <EndFrame>23</EndFrame>
         <FrameTime>0.6</FrameTime>
         <Looping>true</Looping>
       </Item>
+    <Item>
+        <Name>moveslowS</Name>
+        <StartFrame>0</StartFrame>
+        <EndFrame>3</EndFrame>
+        <FrameTime>0.6</FrameTime>
+        <Looping>true</Looping>
+      </Item>
 	  <Item>
-        <Name>moveSW</Name>
+        <Name>moveslowSW</Name>
         <StartFrame>16</StartFrame>
         <EndFrame>19</EndFrame>
         <FrameTime>0.6</FrameTime>
         <Looping>true</Looping>
       </Item>
+    <Item>
+        <Name>moveslowW</Name>
+        <StartFrame>4</StartFrame>
+        <EndFrame>7</EndFrame>
+        <FrameTime>0.6</FrameTime>
+        <Looping>true</Looping>
+      </Item>
 	  <Item>
-        <Name>moveNW</Name>
+        <Name>moveslowNW</Name>
         <StartFrame>24</StartFrame>
         <EndFrame>27</EndFrame>
         <FrameTime>0.6</FrameTime>

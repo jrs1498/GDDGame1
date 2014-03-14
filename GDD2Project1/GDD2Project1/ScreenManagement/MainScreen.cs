@@ -11,7 +11,7 @@ namespace GDD2Project1
 {
     public class MainScreen : Screen
     {
-        private const string FIRST_LEVEL = "testing";
+        private const string FIRST_LEVEL = "randomtest";
         private InterfaceManager _interfaceMgr;
 
         //-------------------------------------------------------------------------
@@ -47,14 +47,12 @@ namespace GDD2Project1
 
             }
             //---------------------------------------------------------------------
-            {   // Level Editor
+            {   //// Level Editor
                 TextButton levelEditor = _interfaceMgr.create<TextButton>(100, 200, 300, 150);
                 levelEditor.changeText("Level Editor");
                 levelEditor.onClick += delegate()
                 {
-                    Screen editorScreen =
-                        _screenMgr.createScreen<GameEditorScreen>("editorScreen", null, true, true);
-                    editorScreen.init();
+                    _screenMgr.createScreen<GameEditorScreen>("editorScreen", null, true, true).init();
                 };
 
             }

@@ -11,53 +11,40 @@ using Microsoft.Xna.Framework.Media;
 
 namespace GameData
 {
+    //-------------------------------------------------------------------------
     public class GameLevelData
     {
-        public int NumRows;
-        public int NumCols;
-        public GameObjectData[] Tiles;
-        public Point PlayerStart;
+        public int              NumRows;
+        public int              NumCols;
+        public GameTileData[]   Tiles;
+        public GameObjectData[] GameObjs;
 
         public GameLevelData()
         { }
     }
 
-
-    /// <summary>
-    /// Class used for saving a GameNode
-    /// </summary>
-    public class GameNodeData
+    //-------------------------------------------------------------------------
+    public class GameObjectData
     {
-        public String Name;
-        public Vector3 PositionIsometric;
-
-        public GameNodeData()
-        { }
-    }
-
-
-    /// <summary>
-    /// Class used for saving a GameObject
-    /// </summary>
-    public class GameObjectData : GameNodeData
-    {
-        public String Drawable;
-        public bool Active;
-        public GameObjectData[] Children;
+        public  int             ObjType;
+        public  String          Name;
+        public  String          Drawable;
+        public  Vector3         Position;
+        public  Vector3         Direction;
+        public  bool            Active;
 
         public GameObjectData()
         { }
     }
 
-
-    /// <summary>
-    /// Represents a consumable item
-    /// </summary>
-    public class ConsumableData : GameObjectData
+    //-------------------------------------------------------------------------
+    public class GameTileData
     {
-        public int Amount;
+        public  String          Drawable;
+        public  float           Elevation;
+        public  bool            Active;
 
-        public ConsumableData()
+        public GameTileData()
         { }
     }
 }

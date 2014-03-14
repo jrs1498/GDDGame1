@@ -47,4 +47,7 @@ E:\Projects\GDD2Project1\GDD2Project1\GDD2Project1\bin\x86\Debug\Content\drawabl
 E:\Projects\GDD2Project1\GDD2Project1\GDD2Project1\bin\x86\Debug\Content\drawables\consumable.xnb
 E:\Projects\GDD2Project1\GDD2Project1\GDD2Project1\bin\x86\Debug\Content\drawables\tile_grass.xnb
 E:\Projects\GDD2Project1\GDD2Project1\GDD2Project1\bin\x86\Debug\Content\drawables\tile_stonesand.xnb
-E:\Projects\GDD2Project1\GDD2Project1\GDD2Project1\bin\x86\Debug\Content\levels\testing.xnb
+E:\Projects\GDD2Project1\GDD2Project1\GDD2Project1\bin\x86\Debug\Content\drawables\debugdrawable.xnb
+E:\Projects\GDD2Project1\GDD2Project1\GDD2Project1\bin\x86\Debug\Content\textures\debugcircle.xnb
+E:\Projects\GDD2Project1\GDD2Project1\GDD2Project1\bin\x86\Debug\Content\levels\test.xnb
+E:\Projects\GDD2Project1\GDD2Project1\GDD2Project1\bin\x86\Debug\Content\levels\randomtest.xnb

@@ -9,237 +9,101 @@ using GameData;
 namespace GDD2Project1
 {
     /// <summary>
-    /// GameObject class represent an actual object in the GameLevel.
+    /// GameObject
+    /// 
+    /// This class acts as a controller for a GameNode, providing a GameObject
+    /// specific interface and behavior.
     /// </summary>
-    public class GameObject : GameNode
+    public class GameObject
     {
-        protected Drawable      _drawable;
-        protected Color         _color;
-        protected Vector3       _vecDirection;
-        protected Direction     _isoDirection;
-        protected bool          _active = true;
+        protected String        _name;
+        protected GameNode      _node;
+        protected Entity        _entityObj;
+        protected Vector3       _directionVector;
+        protected bool          _active;
 
 
         //-------------------------------------------------------------------------
-        public bool Active
+        public              String          Name            { get { return _name; } }
+        public              GameNode        Node            { get { return _node; } }
+        public              Entity          Entity
         {
-            get { return _active; }
-            set { _active = value; }
-        }
-
-
-        //-------------------------------------------------------------------------
-        /// <summary>
-        /// Default GameObject constructor.
-        /// </summary>
-        /// <param name="gameLevelMgr"></param>
-        /// <param name="name"></param>
-        public GameObject(GameLevelManager gameLevelMgr, String name)
-            : base(gameLevelMgr, name)
-        {
-            // Defaults
-            _color = Color.White;
-            _vecDirection = new Vector3(1.0f, 0.0f, 0.0f);
-            _isoDirection = Direction.DIR_SW;
-        }
-
-
-        //-------------------------------------------------------------------------
-        /// <summary>
-        /// Save this GameObject
-        /// </summary>
-        /// <returns>Data corresponding to GameObject</returns>
-        public GameObjectData saveGameObject()
-        {
-            GameObjectData data = new GameObjectData();
-            data.Name = _name;
-            data.PositionIsometric = _positionIsometric;
-            data.Drawable = _drawable.Name;
-            data.Active = _active;
-
-            data.Children = new GameObjectData[_children.Count];
-            int i = 0;
-            foreach (KeyValuePair<String, GameNode> entry in _children)
-            {
-                if (entry.Value is GameCharacter)
-                {
-                    continue;
-                }
-                else if (entry.Value is Consumable)
-                {
-                    data.Children[i] = (entry.Value as Consumable).saveConsumable();
-                }
-                else if (entry.Value is GameObject)
-                {
-                    data.Children[i] = (entry.Value as GameObject).saveGameObject();
-                }
-
-                i++;
-            }
-
-            return data;
-        }
-
-
-        //-------------------------------------------------------------------------
-        /// <summary>
-        /// Draws this GameObject's attached Drawable, if it exists. If there is no
-        /// Drawable attached, then this function will immediately return.
-        /// </summary>
-        /// <param name="spriteBatch">SpriteBatch used for drawing</param>
-        /// <param name="dt">Delta time</param>
-        public virtual void drawContents(SpriteBatch spriteBatch, float dt)
-        {
-            if (_drawable == null || !_active)
-                return;
-
-            // This line can be optimized.
-            // _position only needs to update if the GameObject moved, or
-            // if the camera moved.
-            _position = _gameLevelMgr.Camera.isometricToCartesian(_positionIsometric);
-
-            _drawable.draw(
-                spriteBatch,
-                _position,
-                _color,
-                _rotation,
-                _scale,
-                dt);
-        }
-
-
-        //-------------------------------------------------------------------------
-        /// <summary>
-        /// Set / Get isometric position vector. Overridden to ensure that when
-        /// a GameObject is moved, it will select the correct parent tile.
-        /// </summary>
-        public override Vector3 PositionIsometric
-        {
-            get { return base.PositionIsometric; }
+            get { return _entityObj; }
             set
             {
-                base.PositionIsometric = value;
-                grabParentTile();
+                _entityObj          = value;
+                _entityObj.Active   = _active;
+                _node.attachEntity(value);
+            }
+        }
+        public virtual      Vector3         DirectionVector
+        {
+            get { return _directionVector; }
+            set
+            {
+                value = Vector3.Normalize(value);
+                _directionVector = value;
+                _entityObj.updateDirectionView(value);
             }
         }
 
-        /// <summary>
-        /// Translate this GameNode by some specified amount.
-        /// A GameObject should be moved only through this method.
-        /// </summary>
-        /// <param name="amount">Amount to translate</param>
-        public override void translate(Vector3 amount)
-        {
-            base.translate(amount);
-            grabParentTile();
-        }
+        public              float           X               { get { return _node.PositionIsometric.X; } }
+        public              float           Y               { get { return _node.PositionIsometric.Y; } }
+        public              float           Z               { get { return _node.PositionIsometric.Z; } }
 
-        /// <summary>
-        /// Translate this GameObject to the specified position
-        /// </summary>
-        /// <param name="position">Destination</param>
-        public virtual void translateTo(Vector3 position)
+        public              bool            Active
         {
-            translate(position - _positionIsometric);
+            get { return _active; }
+            set
+            {
+                _active = value;
+                if (_entityObj != null)
+                    _entityObj.Active = value;
+            }
         }
 
 
         //-------------------------------------------------------------------------
         /// <summary>
-        /// Attaches a Drawable to this GameObject. A GameObject may have only one Drawable
-        /// at a time, and if this GameObject is currently holding a Drawable, it must be
-        /// detached before a different Drawable may be attached.
+        /// GameObject constructor.
         /// </summary>
-        /// <param name="drawable">Drawable to attach</param>
-        /// <returns>True if Drawable is now attached</returns>
-        public virtual bool attachDrawable(Drawable drawable)
+        /// <param name="node">GameNode controlled by this GameObject.</param>
+        public GameObject(String name, GameNode node)
         {
-            if (_drawable != null)
-                return false;
-
-            _drawable = drawable;
-
-            return true;
-        }
-
-        /// <summary>
-        /// Detaches and returns this GameObject's Drawable. This has the potential
-        /// to return a null Drawable, which would happen in the case that there is no Drawable
-        /// currently attached to this GameObject.
-        /// </summary>
-        /// <returns>Detached Drawable</returns>
-        public Drawable detachDrawable()
-        {
-            Drawable drawable = _drawable;
-            _drawable = null;
-            return drawable;
-        }
-
-        /// <summary>
-        /// Get this GameObject's drawable
-        /// </summary>
-        /// <returns>GameObject's drawable</returns>
-        public Drawable getDrawable()
-        {
-            return _drawable;
+            _name               = name;
+            _node               = node;
+            _entityObj          = node.Entity;
+            Active              = true;
         }
 
 
         //-------------------------------------------------------------------------
         /// <summary>
-        /// Get / Set this GameObject's drawing color.
+        /// GameObject update function.
         /// </summary>
-        public Color Color
+        /// <param name="gameTime">Provides a snapshot of timing values.</param>
+        /// <param name="dt">Precomputed delta time.</param>
+        public virtual void update(GameTime gameTime, float dt)
         {
-            get { return _color; }
-            set { _color = value; }
         }
 
 
         //-------------------------------------------------------------------------
         /// <summary>
-        /// Updates this GameObject's isometric (viewing) direction, according to its
-        /// direction vector and the GameLevel's camera's viewing angle.
-        /// This function should be called any time the GameObject changes direction,
-        /// or any time the camera changing viewing angle.
+        /// Save and return the current state of this GameObject.
         /// </summary>
-        protected void updateDirection()
+        /// <returns>GameObject state data.</returns>
+        public virtual GameObjectData save()
         {
-            // Grab the cosine of our direction vector and the x axis
-            Vector2 dir     = new Vector2(_vecDirection.X, _vecDirection.Z);
-            dir             = Vector2.Normalize(dir);
-            float cosTheta  = Vector2.Dot(dir, Vector2.UnitX);
+            GameObjectData data     = new GameObjectData();
+            data.ObjType            = 0;
+            data.Name               = _name;
+            data.Drawable           = _entityObj.Drawable.Name;
+            data.Position           = _node.PositionIsometric;
+            data.Direction          = _directionVector;
+            data.Active             = _active;
 
-            // Determine what way this GameObject is facing
-            if (cosTheta < -0.707f)
-                _isoDirection = Direction.DIR_NW;
-            else if (cosTheta > 0.707f)
-                _isoDirection = Direction.DIR_SE;
-            else if (dir.Y > 0)
-                _isoDirection = Direction.DIR_SW;
-            else
-                _isoDirection = Direction.DIR_NE;
-        }
-
-        /// <summary>
-        /// Find out which parent tile node should be holding onto this node.
-        /// If it needs to change, then this function will change it.
-        /// </summary>
-        protected void grabParentTile()
-        {
-            if (_parent == null)
-                return;
-
-            GameNode parentTile = _gameLevelMgr.getTileFromIsometricCoordinates(_positionIsometric);
-
-            if (parentTile == null)
-                return;
-
-            if (parentTile == _parent)
-                return;
-
-            _parent.detachChildNode(_name);
-            parentTile.attachChildNode(this);
+            return data;
         }
     }
 }

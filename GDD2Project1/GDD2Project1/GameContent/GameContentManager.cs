@@ -76,33 +76,6 @@ namespace GDD2Project1
         }
 
 
-        //-------------------------------------------------------------------------
-        
-        /// <summary>
-        /// Load a Drawable into memory so that it may be used in a GameLevel.
-        /// </summary>
-        /// <typeparam name="T">Type of Drawable</typeparam>
-        /// <param name="directory">Relative directory containing drawable's texture</param>
-        /// <param name="filename">Drawable's filename</param>
-        public T loadDrawable<T>(String directory, String filename)
-            where T : Drawable
-        {
-            // If the drawable has already been loaded, simple return it
-            if (_drawables.ContainsKey(filename))
-                return _drawables[filename] as T;
-
-            // Otherwise, load it, and then return it
-            Texture2D texture   = _contentMgr.Load<Texture2D>(directory + filename);
-            T drawable          = (T)Activator.CreateInstance(typeof(T), new object[] { filename, texture });
-            _drawables.Add(filename, drawable);
-
-            return drawable;
-        }
-
-
-
-
-
 
 
 
@@ -155,12 +128,7 @@ namespace GDD2Project1
         {
             // Verify this Drawable has not already been loaded
             if (_objects.ContainsKey(name))
-            {
-#if DEBUG
-                Console.WriteLine("Drawable: " + name + " already loaded, returning data");
-#endif
                 return _objects[name] as Drawable;
-            }
 
 #if DEBUG
             Console.WriteLine("Loading Drawable: " + name);
@@ -189,12 +157,7 @@ namespace GDD2Project1
         { 
             // Verify this DrawableAnimated has not already been loaded
             if (_objects.ContainsKey(name))
-            {
-#if DEBUG
-                Console.WriteLine("DrawableAnimated: " + name + " already loaded, returning data");
-#endif
                 return _objects[name] as DrawableAnimated;
-            }
 
 #if DEBUG
             Console.WriteLine("Loading DrawableAnimated: " + name);
@@ -232,6 +195,20 @@ namespace GDD2Project1
             // Add to ContentManager
             addContentObject(drawable);
             return drawable;
+        }
+
+        public Entity createEntity(
+            String drawableName,
+            bool animated)
+        {
+            Drawable drawable;
+            if (animated)
+                drawable = loadDrawableAnimated(drawableName);
+            else
+                drawable = loadDrawable(drawableName);
+
+            Entity entity = new Entity(drawable);
+            return entity;
         }
     }
 }

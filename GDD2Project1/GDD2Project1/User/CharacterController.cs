@@ -2,95 +2,166 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using InputEventSystem;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
+using InputEventSystem;
 
 namespace GDD2Project1
 {
-    public class CharacterController : ActorController
+    /// <summary>
+    /// CharacterController
+    /// 
+    /// Provides GameCharacter controller interface.
+    /// </summary>
+    public class CharacterController : UserController
     {
-        List<GameObject> _adjTiles;
-        GameObject _hoveringTile;
+        protected GameCharacter     _character;
+        protected Vector3           _moveDirection;
+
+
+        //-------------------------------------------------------------------------
+        protected Vector3 MoveDirection
+        {
+            get { return _moveDirection; }
+            set
+            {
+                _moveDirection = value;
+                if (_moveDirection == Vector3.Zero)
+                    _character.setState(AnimationState.ANIMSTATE_IDLE);
+                else
+                {
+                    _character.DirectionVector =
+                        _character.Node.GameLevelMgr.Camera.getRelativeDirectionVector(_moveDirection);
+                    _character.setState(AnimationState.ANIMSTATE_MOVE_SLOW);
+                }
+            }
+        }
+
 
         //-------------------------------------------------------------------------
         /// <summary>
-        /// Default CharacterController constructor.
+        /// CharacterController constructor.
         /// </summary>
-        /// <param name="character">GameCharacter to be controlled</param>
-        public CharacterController(GameCharacter character, String name)
-            : base(character, name)
+        /// <param name="name">Name of this controller.</param>
+        /// <param name="character">Character controlled by this controller.</param>
+        public CharacterController(String name, GameCharacter character)
+            : base(name)
         {
-            _adjTiles = new List<GameObject>();
+            _character = character;
         }
 
 
         //-------------------------------------------------------------------------
-        public override void update(float dt)
+        /// <summary>
+        /// KeyDown input event handler function.
+        /// </summary>
+        /// <param name="e">KeyEvent arguments.</param>
+        /// <returns>True if handled.</returns>
+        public override bool injectKeyDown(KeyEventArgs e)
         {
-            foreach (GameObject tile in _adjTiles)
-                if(_hoveringTile != null && tile != _hoveringTile)
-                    tile.Color = Color.White;
-
-            _adjTiles = (_actor as GameCharacter).GameLevelMgr.getAdjacentTiles(
-                (_actor as GameCharacter).PositionIsometric, 200.0f);
-
-            foreach (GameObject tile in _adjTiles)
-                if (_hoveringTile != null && tile != _hoveringTile)
-                    tile.Color = Color.Green;
-        }
-
-
-        //-------------------------------------------------------------------------
-        public override bool injectMouseDown(MouseEventArgs e)
-        {
-            switch (e.Button)
+            switch (e.Key)
             { 
-                case MouseButtons.Left:
-                    GameObject tile = _actor.GameLevelMgr.getTileFromScreenCoordinates(e.Position);
-                    if (tile == null || !_adjTiles.Contains(tile))
-                        return false;
+                case Keys.W:
+                    MoveDirection += GameLevelManager.directionVectorFromView(Direction.DIR_N);
+                    break;
 
-                    (_actor as GameCharacter).setDestination(tile);
-                    return true;
+                case Keys.A:
+                    MoveDirection += GameLevelManager.directionVectorFromView(Direction.DIR_W);
+                    break;
 
-                default:
+                case Keys.S:
+                    MoveDirection += GameLevelManager.directionVectorFromView(Direction.DIR_S);
+                    break;
+
+                case Keys.D:
+                    MoveDirection += GameLevelManager.directionVectorFromView(Direction.DIR_E);
+                    break;
+
+                case Keys.Space:
+                    _character.jump();
                     break;
             }
 
-            return base.injectMouseDown(e);
+            return base.injectKeyDown(e);
+        }
+
+        /// <summary>
+        /// KeyUp input event handler function.
+        /// </summary>
+        /// <param name="e">KeyEvent arguments.</param>
+        /// <returns>True if handled.</returns>
+        public override bool injectKeyUp(KeyEventArgs e)
+        {
+            switch (e.Key)
+            {
+                case Keys.W:
+                    MoveDirection -= GameLevelManager.directionVectorFromView(Direction.DIR_N);
+                    break;
+
+                case Keys.A:
+                    MoveDirection -= GameLevelManager.directionVectorFromView(Direction.DIR_W);
+                    break;
+
+                case Keys.S:
+                    MoveDirection -= GameLevelManager.directionVectorFromView(Direction.DIR_S);
+                    break;
+
+                case Keys.D:
+                    MoveDirection -= GameLevelManager.directionVectorFromView(Direction.DIR_E);
+                    break;
+            }
+
+            return base.injectKeyUp(e);
         }
 
 
         //-------------------------------------------------------------------------
-        public override bool injectMouseMove(MouseEventArgs e)
+        /// <summary>
+        /// MouseDown input event handler function.
+        /// </summary>
+        /// <param name="e">MouseEvent arguments.</param>
+        /// <returns>True if handled.</returns>
+        public override bool injectMouseDown(MouseEventArgs e)
         {
-            _hoveringTile = _actor.GameLevelMgr.getTileFromScreenCoordinates(e.Position);
-            if (_adjTiles.Contains(_hoveringTile))
-                _hoveringTile.Color = Color.Blue;
+            return base.injectMouseDown(e);
+        }
 
+        /// <summary>
+        /// MouseUp input event handler function.
+        /// </summary>
+        /// <param name="e">MouseEvent arguments.</param>
+        /// <returns>True if handled.</returns>
+        public override bool injectMouseUp(MouseEventArgs e)
+        {
+            return base.injectMouseUp(e);
+        }
+
+        /// <summary>
+        /// MouseMove input event handler function.
+        /// </summary>
+        /// <param name="e">MouseEvent arguments.</param>
+        /// <returns>True if handled.</returns>
+        public override bool injectMouseMove(InputEventSystem.MouseEventArgs e)
+        {
             return base.injectMouseMove(e);
         }
 
 
         //-------------------------------------------------------------------------
         /// <summary>
-        /// Shorthand function to return the inherited actor as a GameCharacter
+        /// UserController update function. Applies controller influence on an object.
         /// </summary>
-        /// <returns>GameCharacter controlled by this controller</returns>
-        protected virtual GameCharacter getCharacter()
+        /// <param name="gameTime">Provides a snapshot of timing values.</param>
+        /// <param name="dt">Precomputed delta time.</param>
+        public override void update(GameTime gameTime, float dt)
         {
-            return _actor as GameCharacter;
-        }
+            if (_moveDirection != Vector3.Zero)
+            {
+                Vector3 dir = _character.Node.GameLevelMgr.Camera.getRelativeDirectionVector(_moveDirection);
+                _character.DirectionVector = dir;
+            }
 
-        /// <summary>
-        /// Shorthand function returning the controlled GameCharacter's
-        /// GameLevelManager
-        /// </summary>
-        /// <returns>GameLevelManager containing the GameCharacter</returns>
-        protected virtual GameLevelManager getGameLevelMgr()
-        {
-            return getCharacter().GameLevelMgr;
+            return;
         }
     }
 }

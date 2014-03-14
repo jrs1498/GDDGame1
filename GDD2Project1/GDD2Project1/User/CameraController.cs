@@ -8,16 +8,23 @@ using InputEventSystem;
 
 namespace GDD2Project1
 {
-    public class CameraController : ActorController
+    /// <summary>
+    /// CameraController
+    /// 
+    /// Provides Camera2D controller interface.
+    /// </summary>
+    public class CameraController : UserController
     {
         protected const float   BASE_OFFSET         = (float)(Math.PI * 0.25);
-        protected const float   ROTATION_INTERVAL   = (float)(Math.PI * 0.5f);
+        protected const float   ROTATION_INTERVAL   = (float)(Math.PI * 0.25f);
         protected const int     MAX_ROTATIONS       = (int)((Math.PI * 2) / ROTATION_INTERVAL + 1);
         protected const float   ZOOM_INTERVAL       = 0.2f;
         protected const float   MIN_ZOOM            = 0.4f;
         protected const float   MAX_ZOOM            = 1.0f;
         protected const float   TOLERANCE           = 0.005f;
         protected const float   SMOOTH_FACTOR       = 6.0f;
+
+        protected Camera2D      _camera;
 
         protected GameNode      _nodeTarget;
         protected bool          _followNodeTarget;
@@ -30,8 +37,13 @@ namespace GDD2Project1
         protected bool          _zooming;
 
         protected bool          _freeLook           = false;
+        protected bool          _rotateWithMouse    = false;
         protected float         _moveSpeed          = 200.0f;
         protected Vector2       _velocity           = Vector2.Zero;
+
+
+        //-------------------------------------------------------------------------
+        public bool RotateWithMouse { get { return _rotateWithMouse; } set { _rotateWithMouse = value; } }
 
 
         //-------------------------------------------------------------------------
@@ -40,23 +52,13 @@ namespace GDD2Project1
         /// a Camera2D.
         /// </summary>
         /// <param name="camera">Camera to control</param>
-        public CameraController(Camera2D camera, String name)
-            : base(camera, name)
+        public CameraController(String name, Camera2D camera)
+            : base(name)
         {
-            setRotationIntervalTarget(0);
+            _camera = camera;
+            setRotationIntervalTarget(7);
             setZoomTarget(MIN_ZOOM);
             setFreeLook(false);
-        }
-
-
-        //-------------------------------------------------------------------------
-        /// <summary>
-        /// Shorthand function for returning the inherited actor as a Camera2D
-        /// </summary>
-        /// <returns>Camera2D controlled by this controller</returns>
-        public Camera2D getCamera()
-        {
-            return _actor as Camera2D;
         }
 
 
@@ -135,6 +137,8 @@ namespace GDD2Project1
             return base.injectKeyUp(e);
         }
 
+
+        //-------------------------------------------------------------------------
         /// <summary>
         /// Local MouseDown event handler. This function should inject this event
         /// to any components that check for input.
@@ -162,6 +166,15 @@ namespace GDD2Project1
         /// <param name="e">Key event arguments</param>
         public override bool injectMouseMove(MouseEventArgs e)
         {
+            if (_rotateWithMouse)
+            {
+                float rotation = e.RelativePosition.X * (float)Math.PI / 200.0f;
+
+                _rotationTarget = _camera.RotationZ + rotation;
+
+                _rotating = true;
+            }
+
             return base.injectMouseMove(e);
         }
 
@@ -172,7 +185,7 @@ namespace GDD2Project1
         /// the camera this controller is currently having
         /// </summary>
         /// <param name="dt">Delta time</param>
-        public override void update(float dt)
+        public override void update(GameTime gameTime, float dt)
         {
             if (_rotating)
                 applyRotation(dt);
@@ -219,13 +232,11 @@ namespace GDD2Project1
         /// <param name="dt">Delta time</param>
         protected void applyFollowTarget(float dt)
         {
-            Vector2 nodePos = (_actor as Camera2D).isometricToCartesian(_nodeTarget.PositionIsometric);
-            if (getCamera().Position == nodePos)
+            Vector2 nodePos = _camera.isometricToCartesian(_nodeTarget.PositionIsometric);
+            if (_camera.Position == nodePos)
                 return;
 
-            getCamera().OriginIsometric = (_actor as Camera2D).isometricToCartesian(_nodeTarget.PositionIsometric);
-
-            getCamera().Position = nodePos;
+            _camera.translate(nodePos - _camera.Position);
 
             if (!_zooming)
                 setZoomTarget(1.0f);
@@ -255,7 +266,7 @@ namespace GDD2Project1
         /// <param name="dt">Delta time</param>
         protected void applyRotation(float dt)
         {
-            float diff = _rotationTarget - getCamera().RotationZ;
+            float diff = _rotationTarget - _camera.RotationZ;
 
             // If we reach the extremes of either rotation,
             // add or subtract a full rotation so we don't do
@@ -266,12 +277,12 @@ namespace GDD2Project1
                 diff += ((float)Math.PI * 2);
 
             // Apply the rotation
-            getCamera().RotationZ += diff * SMOOTH_FACTOR * dt;
+            _camera.RotationZ += diff * SMOOTH_FACTOR * dt;
 
             // Snap to our target if we've reached it
             if (Math.Abs(diff) < TOLERANCE)
             {
-                getCamera().RotationZ = _rotationTarget;
+                _camera.RotationZ = _rotationTarget;
                 _rotating = false;
                 return;
             }
@@ -301,14 +312,14 @@ namespace GDD2Project1
         /// <param name="dt">Delta time</param>
         protected void applyZoom(float dt)
         {
-            float diff = _zoomTarget - getCamera().Zoom;
+            float diff = _zoomTarget - _camera.Zoom;
 
-            getCamera().Zoom += diff * SMOOTH_FACTOR * dt;
+            _camera.Zoom += diff * SMOOTH_FACTOR * dt;
 
             // Did we reach our target?
             if (Math.Abs(diff) < TOLERANCE)
             {
-                getCamera().Zoom = _zoomTarget;
+                _camera.Zoom = _zoomTarget;
                 _zooming = false;
             }
         }
@@ -334,7 +345,7 @@ namespace GDD2Project1
             if (_velocity == Vector2.Zero)
                 return;
 
-            getCamera().translate(_velocity * dt);
+            _camera.translate(_velocity * dt);
         }
     }
 }

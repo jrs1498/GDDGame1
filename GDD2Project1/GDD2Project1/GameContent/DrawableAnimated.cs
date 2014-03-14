@@ -7,28 +7,75 @@ using Microsoft.Xna.Framework;
 
 namespace GDD2Project1
 {
+    public enum AnimationState
+    { 
+        ANIMSTATE_IDLE,
+        ANIMSTATE_MOVE_SLOW,
+        ANIMSTATE_MOVE_FAST,
+        ANIMSTATE_JUMP,
+        ANIMSTATE_ATTACK,
+        ANIMSTATE_HURT
+    };
+
     public class DrawableAnimated : Drawable
     {
-        // Animation identifiers
-        public const String ANIM_IDLE_N      = "idleN";
-        public const String ANIM_IDLE_NE     = "idleNE";
-        public const String ANIM_IDLE_E      = "idleE";
-        public const String ANIM_IDLE_SE     = "idleSE";
-        public const String ANIM_IDLE_S      = "idleS";
-        public const String ANIM_IDLE_SW     = "idleSW";
-        public const String ANIM_IDLE_W      = "idleW";
-        public const String ANIM_IDLE_NW     = "idleNW";
+        #region Animation identifiers
+        public const String ANIM_IDLE_N             = "idleN";
+        public const String ANIM_IDLE_NE            = "idleNE";
+        public const String ANIM_IDLE_E             = "idleE";
+        public const String ANIM_IDLE_SE            = "idleSE";
+        public const String ANIM_IDLE_S             = "idleS";
+        public const String ANIM_IDLE_SW            = "idleSW";
+        public const String ANIM_IDLE_W             = "idleW";
+        public const String ANIM_IDLE_NW            = "idleNW";
 
-        public const String ANIM_MOVE_N      = "moveN";
-        public const String ANIM_MOVE_NE     = "moveNE";
-        public const String ANIM_MOVE_E      = "moveE";
-        public const String ANIM_MOVE_SE     = "moveSE";
-        public const String ANIM_MOVE_S      = "moveS";
-        public const String ANIM_MOVE_SW     = "moveSW";
-        public const String ANIM_MOVE_W      = "moveW";
-        public const String ANIM_MOVE_NW     = "moveNW";
+        public const String ANIM_MOVE_SLOW_N        = "moveslowN";
+        public const String ANIM_MOVE_SLOW_NE       = "moveslowNE";
+        public const String ANIM_MOVE_SLOW_E        = "moveslowE";
+        public const String ANIM_MOVE_SLOW_SE       = "moveslowSE";
+        public const String ANIM_MOVE_SLOW_S        = "moveslowS";
+        public const String ANIM_MOVE_SLOW_SW       = "moveslowSW";
+        public const String ANIM_MOVE_SLOW_W        = "moveslowW";
+        public const String ANIM_MOVE_SLOW_NW       = "moveslowNW";
 
-        public const String ANIM_DEFAULT     = ANIM_IDLE_N;
+        public const String ANIM_MOVE_FAST_N        = "movefastN";
+        public const String ANIM_MOVE_FAST_NE       = "movefastNE";
+        public const String ANIM_MOVE_FAST_E        = "movefastE";
+        public const String ANIM_MOVE_FAST_SE       = "movefastSE";
+        public const String ANIM_MOVE_FAST_S        = "movefastS";
+        public const String ANIM_MOVE_FAST_SW       = "movefastSW";
+        public const String ANIM_MOVE_FAST_W        = "movefastW";
+        public const String ANIM_MOVE_FAST_NW       = "movefastNW";
+
+        public const String ANIM_JUMP_N             = "jumpN";
+        public const String ANIM_JUMP_NE            = "jumpNE";
+        public const String ANIM_JUMP_E             = "jumpE";
+        public const String ANIM_JUMP_SE            = "jumpSE";
+        public const String ANIM_JUMP_S             = "jumpS";
+        public const String ANIM_JUMP_SW            = "jumpSW";
+        public const String ANIM_JUMP_W             = "jumpW";
+        public const String ANIM_JUMP_NW            = "jumpNW";
+
+        public const String ANIM_ATTACK_N           = "attackN";
+        public const String ANIM_ATTACK_NE          = "attackNE";
+        public const String ANIM_ATTACK_E           = "attackE";
+        public const String ANIM_ATTACK_SE          = "attackSE";
+        public const String ANIM_ATTACK_S           = "attackS";
+        public const String ANIM_ATTACK_SW          = "attackSW";
+        public const String ANIM_ATTACK_W           = "attackW";
+        public const String ANIM_ATTACK_NW          = "attackNW";
+
+        public const String ANIM_HURT_N             = "hurtN";
+        public const String ANIM_HURT_NE            = "hurtNE";
+        public const String ANIM_HURT_E             = "hurtE";
+        public const String ANIM_HURT_SE            = "hurtSE";
+        public const String ANIM_HURT_S             = "hurtS";
+        public const String ANIM_HURT_SW            = "hurtSW";
+        public const String ANIM_HURT_W             = "hurtW";
+        public const String ANIM_HURT_NW            = "hurtNW";
+
+        public const String ANIM_DEFAULT            = ANIM_IDLE_NE;
+        #endregion
 
         // Frame attributes
         protected readonly int FRAME_WIDTH;
@@ -96,7 +143,7 @@ namespace GDD2Project1
             float           rotation,
             Vector2         scale,
             float           time,
-            CharacterState  state,
+            AnimationState  state,
             Direction       direction)
         {
             Rectangle frame = getAnimation(state, direction).getFrame(
@@ -127,57 +174,100 @@ namespace GDD2Project1
         /// <param name="state">State of the object containing this DrawableAnimated</param>
         /// <param name="direction">Direction of the object containing this DrawableAnimated</param>
         /// <returns>Appropriate animation</returns>
-        protected Animation getAnimation(
-            CharacterState  state,
-            Direction       direction)
+        protected Animation getAnimation(AnimationState state, Direction direction)
         {
             String anim = ANIM_DEFAULT;
 
             switch (state)
             { 
-                case CharacterState.CHRSTATE_IDLE:
+                case AnimationState.ANIMSTATE_IDLE:
                     switch (direction)
-                    { 
-                        case Direction.DIR_NE:
-                            anim = ANIM_IDLE_NE;
-                            break;
-
-                        case Direction.DIR_SE:
-                            anim = ANIM_IDLE_SE;
-                            break;
-
-                        case Direction.DIR_SW:
-                            anim = ANIM_IDLE_SW;
-                            break;
-
-                        case Direction.DIR_NW:
-                            anim = ANIM_IDLE_NW;
-                            break;
+                    {
+                        case Direction.DIR_N:       anim = ANIM_IDLE_N;         break;
+                        case Direction.DIR_NE:      anim = ANIM_IDLE_NE;        break;
+                        case Direction.DIR_E:       anim = ANIM_IDLE_E;         break;
+                        case Direction.DIR_SE:      anim = ANIM_IDLE_SE;        break;
+                        case Direction.DIR_S:       anim = ANIM_IDLE_S;         break;
+                        case Direction.DIR_SW:      anim = ANIM_IDLE_SW;        break;
+                        case Direction.DIR_W:       anim = ANIM_IDLE_W;         break;
+                        case Direction.DIR_NW:      anim = ANIM_IDLE_NW;        break;
                     }
                     break;
 
-                case CharacterState.CHRSTATE_MOVING:
+                case AnimationState.ANIMSTATE_MOVE_SLOW:
                     switch (direction)
                     {
-                        case Direction.DIR_NE:
-                            anim = ANIM_MOVE_NE;
-                            break;
+                        case Direction.DIR_N:       anim = ANIM_MOVE_SLOW_N;    break;
+                        case Direction.DIR_NE:      anim = ANIM_MOVE_SLOW_NE;   break;
+                        case Direction.DIR_E:       anim = ANIM_MOVE_SLOW_E;    break;
+                        case Direction.DIR_SE:      anim = ANIM_MOVE_SLOW_SE;   break;
+                        case Direction.DIR_S:       anim = ANIM_MOVE_SLOW_S;    break;
+                        case Direction.DIR_SW:      anim = ANIM_MOVE_SLOW_SW;   break;
+                        case Direction.DIR_W:       anim = ANIM_MOVE_SLOW_W;    break;
+                        case Direction.DIR_NW:      anim = ANIM_MOVE_SLOW_NW;   break;
+                    }
+                    break;
 
-                        case Direction.DIR_SE:
-                            anim = ANIM_MOVE_SE;
-                            break;
+                case AnimationState.ANIMSTATE_MOVE_FAST:
+                    switch (direction)
+                    {
+                        case Direction.DIR_N:       anim = ANIM_MOVE_FAST_N;    break;
+                        case Direction.DIR_NE:      anim = ANIM_MOVE_FAST_NE;   break;
+                        case Direction.DIR_E:       anim = ANIM_MOVE_FAST_E;    break;
+                        case Direction.DIR_SE:      anim = ANIM_MOVE_FAST_SE;   break;
+                        case Direction.DIR_S:       anim = ANIM_MOVE_FAST_S;    break;
+                        case Direction.DIR_SW:      anim = ANIM_MOVE_FAST_SW;   break;
+                        case Direction.DIR_W:       anim = ANIM_MOVE_FAST_W;    break;
+                        case Direction.DIR_NW:      anim = ANIM_MOVE_FAST_NW;   break;
+                    }
+                    break;
 
-                        case Direction.DIR_SW:
-                            anim = ANIM_MOVE_SW;
-                            break;
+                case AnimationState.ANIMSTATE_JUMP:
+                    switch (direction)
+                    {
+                        case Direction.DIR_N:       anim = ANIM_JUMP_N;         break;
+                        case Direction.DIR_NE:      anim = ANIM_JUMP_NE;        break;
+                        case Direction.DIR_E:       anim = ANIM_JUMP_E;         break;
+                        case Direction.DIR_SE:      anim = ANIM_JUMP_SE;        break;
+                        case Direction.DIR_S:       anim = ANIM_JUMP_S;         break;
+                        case Direction.DIR_SW:      anim = ANIM_JUMP_SW;        break;
+                        case Direction.DIR_W:       anim = ANIM_JUMP_W;         break;
+                        case Direction.DIR_NW:      anim = ANIM_JUMP_NW;        break;
+                    }
 
-                        case Direction.DIR_NW:
-                            anim = ANIM_MOVE_NW;
-                            break;
+                    break;
+
+                case AnimationState.ANIMSTATE_ATTACK:
+                    switch (direction)
+                    {
+                        case Direction.DIR_N:       anim = ANIM_ATTACK_N;       break;
+                        case Direction.DIR_NE:      anim = ANIM_ATTACK_NE;      break;
+                        case Direction.DIR_E:       anim = ANIM_ATTACK_E;       break;
+                        case Direction.DIR_SE:      anim = ANIM_ATTACK_SE;      break;
+                        case Direction.DIR_S:       anim = ANIM_ATTACK_S;       break;
+                        case Direction.DIR_SW:      anim = ANIM_ATTACK_SW;      break;
+                        case Direction.DIR_W:       anim = ANIM_ATTACK_W;       break;
+                        case Direction.DIR_NW:      anim = ANIM_ATTACK_NW;      break;
+                    }
+                    break;
+
+                case AnimationState.ANIMSTATE_HURT:
+                    switch (direction)
+                    {
+                        case Direction.DIR_N:       anim = ANIM_HURT_N;         break;
+                        case Direction.DIR_NE:      anim = ANIM_HURT_NE;        break;
+                        case Direction.DIR_E:       anim = ANIM_HURT_E;         break;
+                        case Direction.DIR_SE:      anim = ANIM_HURT_SE;        break;
+                        case Direction.DIR_S:       anim = ANIM_HURT_S;         break;
+                        case Direction.DIR_SW:      anim = ANIM_HURT_SW;        break;
+                        case Direction.DIR_W:       anim = ANIM_HURT_W;         break;
+                        case Direction.DIR_NW:      anim = ANIM_HURT_NW;        break;
                     }
                     break;
             }
 
+            if (!_animations.ContainsKey(anim))
+                return _animations[ANIM_DEFAULT];
             return _animations[anim];
         }
     }

@@ -17,7 +17,7 @@
       <Processor>PassThroughProcessor</Processor>
       <Options>None</Options>
       <Output>E:\Projects\GDD2Project1\GDD2Project1\GDD2Project1\bin\x86\Debug\Content\drawables\playercharacter.xnb</Output>
-      <Time>2014-03-08T04:30:16.7601698-05:00</Time>
+      <Time>2014-03-12T18:31:57.2935124-04:00</Time>
     </Item>
     <Item>
       <Source>drawables\tile_rock.xml</Source>
@@ -26,7 +26,7 @@
       <Processor>PassThroughProcessor</Processor>
       <Options>None</Options>
       <Output>E:\Projects\GDD2Project1\GDD2Project1\GDD2Project1\bin\x86\Debug\Content\drawables\tile_rock.xnb</Output>
-      <Time>2014-03-08T03:01:57.3262388-05:00</Time>
+      <Time>2014-03-12T18:19:54.230783-04:00</Time>
     </Item>
     <Item>
       <Source>drawables\tile_sand.xml</Source>
@@ -74,13 +74,22 @@
       <Time>2014-03-10T17:29:47.7512255-04:00</Time>
     </Item>
     <Item>
+      <Source>drawables\debugdrawable.xml</Source>
+      <Name>drawables\debugdrawable</Name>
+      <Importer>XmlImporter</Importer>
+      <Processor>PassThroughProcessor</Processor>
+      <Options>None</Options>
+      <Output>E:\Projects\GDD2Project1\GDD2Project1\GDD2Project1\bin\x86\Debug\Content\drawables\debugdrawable.xnb</Output>
+      <Time>2014-03-12T17:59:37.8554562-04:00</Time>
+    </Item>
+    <Item>
       <Source>textures\tile_rock.png</Source>
       <Name>textures\tile_rock</Name>
       <Importer>TextureImporter</Importer>
       <Processor>TextureProcessor</Processor>
       <Options>None</Options>
       <Output>E:\Projects\GDD2Project1\GDD2Project1\GDD2Project1\bin\x86\Debug\Content\textures\tile_rock.xnb</Output>
-      <Time>2014-02-21T20:49:06.4964647-05:00</Time>
+      <Time>2014-03-12T17:37:16.1997623-04:00</Time>
     </Item>
     <Item>
       <Source>textures\consumable.png</Source>
@@ -155,6 +164,15 @@
       <Time>2014-03-07T18:30:40.6109628-05:00</Time>
     </Item>
     <Item>
+      <Source>textures\debugcircle.png</Source>
+      <Name>textures\debugcircle</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>E:\Projects\GDD2Project1\GDD2Project1\GDD2Project1\bin\x86\Debug\Content\textures\debugcircle.xnb</Output>
+      <Time>2014-03-12T17:43:52.1419409-04:00</Time>
+    </Item>
+    <Item>
       <Source>Fonts\DefaultFont.spritefont</Source>
       <Name>Fonts\DefaultFont</Name>
       <Importer>FontDescriptionImporter</Importer>
@@ -173,13 +191,22 @@
       <Time>2014-02-28T22:38:16.4236895-05:00</Time>
     </Item>
     <Item>
-      <Source>levels\testing.xml</Source>
-      <Name>levels\testing</Name>
+      <Source>levels\test.xml</Source>
+      <Name>levels\test</Name>
       <Importer>XmlImporter</Importer>
       <Processor>PassThroughProcessor</Processor>
       <Options>None</Options>
-      <Output>E:\Projects\GDD2Project1\GDD2Project1\GDD2Project1\bin\x86\Debug\Content\levels\testing.xnb</Output>
-      <Time>2014-03-10T23:08:24.569281-04:00</Time>
+      <Output>E:\Projects\GDD2Project1\GDD2Project1\GDD2Project1\bin\x86\Debug\Content\levels\test.xnb</Output>
+      <Time>2014-03-14T05:42:56.3023912-04:00</Time>
+    </Item>
+    <Item>
+      <Source>levels\randomtest.xml</Source>
+      <Name>levels\randomtest</Name>
+      <Importer>XmlImporter</Importer>
+      <Processor>PassThroughProcessor</Processor>
+      <Options>None</Options>
+      <Output>E:\Projects\GDD2Project1\GDD2Project1\GDD2Project1\bin\x86\Debug\Content\levels\randomtest.xnb</Output>
+      <Time>2014-03-14T08:27:06.8908126-04:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
@@ -220,7 +247,7 @@
       </Assembly>
       <Assembly>
         <Key>E:\Projects\GDD2Project1\GameData\bin\x86\Debug\GameData.dll</Key>
-        <Value>2014-03-10T19:22:45.263877-04:00</Value>
+        <Value>2014-03-14T05:42:32.4630277-04:00</Value>
       </Assembly>
       <Assembly>
         <Key>C:\Windows\Microsoft.Net\assembly\GAC_32\Microsoft.Xna.Framework.Content.Pipeline\v4.0_4.0.0.0__842cf8be1de50553\Microsoft.Xna.Framework.Content.Pipeline.dll</Key>

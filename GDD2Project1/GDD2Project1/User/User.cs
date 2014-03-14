@@ -9,7 +9,7 @@ namespace GDD2Project1
 {
     public class User
     {
-        protected Dictionary<String, ActorController> _controllers;
+        protected Dictionary<String, UserController> _controllers;
 
 
         //-------------------------------------------------------------------------
@@ -31,7 +31,7 @@ namespace GDD2Project1
         public virtual bool injectKeyDown(KeyEventArgs e)
         {
             if (_controllers != null)
-                foreach (KeyValuePair<String, ActorController> entry in _controllers)
+                foreach (KeyValuePair<String, UserController> entry in _controllers)
                     entry.Value.injectKeyDown(e);
 
             return false;
@@ -45,7 +45,7 @@ namespace GDD2Project1
         public virtual bool injectKeyUp(KeyEventArgs e)
         {
             if (_controllers != null)
-                foreach (KeyValuePair<String, ActorController> entry in _controllers)
+                foreach (KeyValuePair<String, UserController> entry in _controllers)
                     entry.Value.injectKeyUp(e);
 
             return false;
@@ -59,7 +59,7 @@ namespace GDD2Project1
         public virtual bool injectMouseDown(MouseEventArgs e)
         {
             if (_controllers != null)
-                foreach (KeyValuePair<String, ActorController> entry in _controllers)
+                foreach (KeyValuePair<String, UserController> entry in _controllers)
                     entry.Value.injectMouseDown(e);
 
             return false;
@@ -73,7 +73,7 @@ namespace GDD2Project1
         public virtual bool injectMouseUp(MouseEventArgs e)
         {
             if (_controllers != null)
-                foreach (KeyValuePair<String, ActorController> entry in _controllers)
+                foreach (KeyValuePair<String, UserController> entry in _controllers)
                     entry.Value.injectMouseUp(e);
 
             return false;
@@ -87,7 +87,7 @@ namespace GDD2Project1
         public virtual bool injectMouseMove(MouseEventArgs e)
         {
             if (_controllers != null)
-                foreach (KeyValuePair<String, ActorController> entry in _controllers)
+                foreach (KeyValuePair<String, UserController> entry in _controllers)
                     entry.Value.injectMouseMove(e);
 
             return false;
@@ -103,8 +103,8 @@ namespace GDD2Project1
         public virtual void update(float dt)
         {
             if (_controllers != null)
-                foreach (KeyValuePair<String, ActorController> entry in _controllers)
-                    entry.Value.update(dt);
+                foreach (KeyValuePair<String, UserController> entry in _controllers)
+                    entry.Value.update(null, dt);
         }
 
 
@@ -117,15 +117,15 @@ namespace GDD2Project1
         /// <typeparam name="T">Type of controller</typeparam>
         /// <param name="name">Name of controllers</param>
         /// <returns>False if failed</returns>
-        public virtual T createController<T>(Actor actor, String name)
-            where T : ActorController
+        public virtual T createController<T>(String name, object obj)
+            where T : UserController
         {
             if (_controllers == null)
-                _controllers = new Dictionary<string, ActorController>();
+                _controllers = new Dictionary<string, UserController>();
             else if (_controllers.ContainsKey(name))
                 return _controllers[name] as T;
 
-            T controller = (T)Activator.CreateInstance(typeof(T), new object[] { actor, name });
+            T controller = (T)Activator.CreateInstance(typeof(T), new object[] { name, obj });
             _controllers.Add(name, controller);
 
             return controller;
@@ -140,7 +140,7 @@ namespace GDD2Project1
         /// <param name="name">Name of Controller</param>
         /// <returns>Controller specified by name and type</returns>
         public virtual T getController<T>(String name)
-            where T : ActorController
+            where T : UserController
         {
             if (!_controllers.ContainsKey(name))
                 return null;

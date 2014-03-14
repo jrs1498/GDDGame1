@@ -13,52 +13,51 @@ using GameData;
 namespace GDD2Project1
 {
     public enum Direction
-    { 
-        DIR_NE = 0,
-        DIR_SE = 1,
-        DIR_SW = 2,
-        DIR_NW = 3,
-        DIR_COUNT = 4
+    {
+        DIR_N,
+        DIR_NE,
+        DIR_E,
+        DIR_SE,
+        DIR_S,
+        DIR_SW,
+        DIR_W,
+        DIR_NW,
+        DIR_COUNT
     };
 
     public class GameLevelManager
     {
-        protected const String      TILE_NAME_PREFIX    = "tile_";
-        protected const char        TILE_ROW_PREFIX     = 'r';
-        protected const char        TILE_COL_PREFIX     = 'c';
-        protected const int         TILE_SIZE = 84;
-        protected GameObject[,]     _tiles;
-        protected int               _tileRows;
-        protected int               _tileCols;
-        protected Vector2           _tileOrigin;
-        protected Point             _playerStart;
+        public      const       String          PLAYER_NAME             = "playercharacter";
 
-        protected GameContentManager _gameContentMgr;
+        public      const       int             UNIT_SIZE = 16;
+        private     const       String          TILE_NAME_PREFIX        = "tile_";
+        private     const       char            TILE_ROW_PREFIX         = 'r';
+        private     const       char            TILE_COL_PREFIX         = 'c';
+        public      const       int             TILE_SIZE               = 84;
+        protected               GameTile[,]     _tiles;
+        protected               int             _tileRows;
+        protected               int             _tileCols;
 
-        protected Camera2D          _camera;
 
-        protected Dictionary<String, GameCharacter>     _characters;
+        protected   GameContentManager                  _gameContentMgr;
+        protected   Dictionary<String, GameObject>      _gameObjs;
+        protected   Camera2D                            _camera;
+        protected   Drawable                            _debugDrawable;
 
 
         //-------------------------------------------------------------------------
-        public int TileSize { get { return TILE_SIZE; } }
-
-        public Vector2 TileOrigin { get { return _tileOrigin; } }
-
         public Camera2D Camera { get { return _camera; } }
-
-        public Point PlayerStart { get { return _playerStart; } set { _playerStart = value; } }
 
 
         //-------------------------------------------------------------------------
         /// <summary>
-        /// Default GameLevelManager constructor
+        /// GameLevelManager constructor.
         /// </summary>
-        /// <param name="contentManager">ContentManager used for loading game data</param>
-        public GameLevelManager(
-            GameContentManager  gameContentMgr,
-            GraphicsDevice      graphicsDevice)
+        /// <param name="gameContentMgr">Handles loading and saving of game data.</param>
+        /// <param name="graphicsDevice">Provides values for screen dimensions.</param>
+        public GameLevelManager(GameContentManager gameContentMgr, GraphicsDevice graphicsDevice)
         {
+            // Initialize game content handler
             _gameContentMgr = gameContentMgr;
 
             // Initialize camera
@@ -67,176 +66,177 @@ namespace GDD2Project1
                 graphicsDevice.Viewport.Width / 2,
                 graphicsDevice.Viewport.Height / 2);
 
-            // Initialize dictionaries
-            _characters = new Dictionary<string, GameCharacter>();
-
-            // Initialize tile origin
-            _tileOrigin = new Vector2(
-                (float)Math.Sqrt(TILE_SIZE * TILE_SIZE) / 2,
-                (TILE_SIZE * _camera.ScaleY));
+            // Initialize game objects
+            _gameObjs = new Dictionary<string, GameObject>();
         }
 
 
         //-------------------------------------------------------------------------
         /// <summary>
-        /// Save this GameLevel to the specified filename at the specified directory, relative to
-        /// the current working directory.
-        /// </summary>
-        /// <param name="directory">Directory relative to CWD</param>
-        /// <param name="filename">Filename to save as</param>
-        public void saveLevel(String directory, String filename)
-        {
-            XmlWriterSettings settings = new XmlWriterSettings();
-            settings.Indent = true;
-
-            GameLevelData data = new GameLevelData();
-            data.NumRows = _tileRows;
-            data.NumCols = _tileCols;
-            data.Tiles = new GameObjectData[_tileRows * _tileCols];
-
-            if (_playerStart == null)
-                data.PlayerStart = new Point(0, 0);
-            else
-                data.PlayerStart = _playerStart;
-
-            Func<GameObject, GameObjectData> save_obj = (GameObject gameObj) =>
-                { return gameObj.saveGameObject(); };
-
-            for (int x = 0; x < _tileRows; x++)
-                for (int y = 0; y < _tileCols; y++)
-                    data.Tiles[x * _tileCols + y] = save_obj(_tiles[x, y]);
-
-            // Write the level
-            using (XmlWriter writer = XmlWriter.Create(directory + filename + ".xml", settings))
-                IntermediateSerializer.Serialize(writer, data, null);
-
-            // Write a line to console
-            Console.WriteLine("saved level " + directory + filename);
-        }
-
-        /// <summary>
-        /// Load a GameLevel from specified file
-        /// </summary>
-        /// <param name="directory">Directory containing file</param>
-        /// <param name="filename">Filename of level</param>
-        public void loadLevel(String directory, String filename, bool player = false)
-        {
-            GameLevelData lvldata = _gameContentMgr.loadLevelData(directory + filename);
-            initTileArray(lvldata.NumRows, lvldata.NumCols);
-
-            // Pass through each tile, attaching drawables and applying elevation
-            for (int row = 0; row < lvldata.NumRows; row++)
-                for (int col = 0; col < lvldata.NumCols; col++)
-                {
-                    GameObjectData objData  = lvldata.Tiles[row * _tileCols + col];
-                    Drawable tileDrwble     = _gameContentMgr.loadDrawable(objData.Drawable);
-                    tileDrwble.Origin = _tileOrigin;
-                    GameObject tile = _tiles[row, col];
-                    tile.attachDrawable(tileDrwble);
-                    tile.translate(0.0f, objData.PositionIsometric.Y, 0.0f);
-                    tile.Active = objData.Active;
-
-                    foreach (GameObjectData childData in objData.Children)
-                    {
-                        Drawable childDrwble = _gameContentMgr.loadDrawable(childData.Drawable);
-                        if (childData is ConsumableData)
-                        {
-                            Consumable cnsmble = new Consumable(
-                                this, childData.Name, Consumable.ConsumableType.TYPE_POWER, (childData as ConsumableData).Amount);
-                            cnsmble.attachDrawable(childDrwble);
-                            cnsmble.translateTo(tile.PositionIsometric);
-                            cnsmble.Active = childData.Active;
-                            tile.attachChildNode(cnsmble);
-                        }
-                        else if (childData is GameObjectData)
-                        {
-                            GameObject gameobj = new GameObject(this, childData.Name);
-                            gameobj.attachDrawable(childDrwble);
-                            gameobj.translateTo(tile.PositionIsometric);
-                            gameobj.Active = childData.Active;
-                            tile.attachChildNode(gameobj);
-                        }
-                    }
-                }
-
-            if (player)
-            {
-                // Load player
-                DrawableAnimated playerDrwble = _gameContentMgr.loadDrawableAnimated("playercharacter");
-                GameCharacter playerCharacter = new GameCharacter(this, "playercharacter");
-                playerCharacter.attachDrawable(playerDrwble);
-                GameNode playerTile = getTileAtIndex(lvldata.PlayerStart.X, lvldata.PlayerStart.Y);
-                playerTile.attachChildNode(playerCharacter);
-                playerCharacter.translateTo(playerTile.PositionIsometric);
-                _characters.Add("playercharacter", playerCharacter);
-            }
-        }
-
-        /// <summary>
-        /// Create a new level
-        /// </summary>
-        /// <param name="rows">Number of tile rows</param>
-        /// <param name="cols">Number of tile columns</param>
-        /// <param name="drawable">Default tile drawable texture</param>
-        public void newLevel(int rows, int cols, String drawable)
-        {
-            initTileArray(rows, cols);
-
-            Drawable tileDrwble = _gameContentMgr.loadDrawable(drawable);
-            tileDrwble.Origin   = _tileOrigin;
-
-            foreach (GameObject tile in _tiles)
-                tile.attachDrawable(tileDrwble);
-        }
-
-        /// <summary>
-        /// Initialize the 2D tile array, placing tiles in correct locations
+        /// Initialize the 2D tile array, placing tiles in correct locations.
         /// </summary>
         /// <param name="rows">Number of rows</param>
         /// <param name="cols">Number of columns</param>
-        public void initTileArray(int rows, int cols)
+        public void initLevel(int rows, int cols)
         {
-            _tiles = new GameObject[rows, cols];
-            _tileRows = rows;
-            _tileCols = cols;
+            // Initialize array size
+            _tiles      = new GameTile[rows, cols];
+            _tileRows   = rows;
+            _tileCols   = cols;
 
+            // Populate tile array
             for (int row = 0; row < rows; row++)
                 for (int col = 0; col < cols; col++)
                 {
-                    String tileName = ("r" + cols + "c" + rows);
-                    GameObject tile = new GameObject(this, tileName);
+                    String tileName =
+                        TILE_NAME_PREFIX
+                        + TILE_ROW_PREFIX + row
+                        + TILE_COL_PREFIX + col;
 
-                    tile.translate(
+                    GameNode tileNode   = new GameNode(this, tileName);
+                    GameTile tile       = new GameTile(tileName, tileNode);
+                    _tiles[row, col]    = tile;
+
+                    tileNode.PositionIsometric = new Vector3(
                         row * TILE_SIZE,
                         0.0f,
-                        col * TILE_SIZE
-                        );
-
-                    _tiles[row, col] = tile;
+                        col * TILE_SIZE);
                 }
 
-            // Initialize Camera's Isometric Origin
+            // Set Camera's origin to the center of the level
             Vector2 halfpoint;
             halfpoint.X = _tileRows * TILE_SIZE / 2;
             halfpoint.Y = _tileCols * TILE_SIZE / 2;
-            //halfpoint = _camera.screenToIsometric(halfpoint);
             _camera.OriginIsometric = halfpoint;
+        }
+
+        /// <summary>
+        /// Create a new level.
+        /// </summary>
+        /// <param name="rows">Number of rows.</param>
+        /// <param name="cols">Number of columns.</param>
+        /// <param name="drawable">Default tile drawable.</param>
+        public void newLevel(int rows, int cols, String drawable)
+        {
+            // Initialize level
+            initLevel(rows, cols);
+
+            // Load default drawable
+            Drawable tileDrawable = _gameContentMgr.loadDrawable(drawable);
+
+            // Attach entities to tiles
+            for (int row = 0; row < rows; row++)
+                for (int col = 0; col < cols; col++)
+                    _tiles[row, col].Entity = new Entity(tileDrawable);
+        }
+
+        /// <summary>
+        /// Save the current state of this GameLevel as an XML file.
+        /// </summary>
+        /// <param name="path">File path to save this GameLevel.</param>
+        public void saveLevel(String path)
+        {
+            // XML writer settings for serialization
+            XmlWriterSettings settings = new XmlWriterSettings();
+            settings.Indent = true;
+
+            // GameLevelData to hold state data
+            GameLevelData data = new GameLevelData();
+
+            // Save GameTiles
+            data.NumRows    = _tileRows;
+            data.NumCols    = _tileCols;
+            data.Tiles      = new GameTileData[_tileRows * _tileCols];
+            for (int row = 0; row < _tileRows; row++)
+                for (int col = 0; col < _tileCols; col++)
+                    data.Tiles[row * _tileCols + col] = _tiles[row, col].save();
+
+            // Save GameObjects
+            data.GameObjs = new GameObjectData[_gameObjs.Count];
+            int i = 0;
+            foreach (KeyValuePair<String, GameObject> entry in _gameObjs)
+            {
+                data.GameObjs[i] = entry.Value.save();
+                i++;
+            }
+
+            // Write XML file
+            using(XmlWriter writer = XmlWriter.Create(path + ".xml", settings))
+                IntermediateSerializer.Serialize(writer, data, null);
+
+            // Print success message to console
+            Console.WriteLine("Current level saved to: " + path);
+        }
+
+        /// <summary>
+        /// Load a GameLevel from an XML file.
+        /// </summary>
+        /// <param name="data">Serialized GameLevelData XML file.</param>
+        public void loadLevel(String path)
+        {
+            // Load GameLevel data
+            GameLevelData data = _gameContentMgr.loadLevelData(path);
+
+            // Initialize level
+            initLevel(data.NumRows, data.NumCols);
+
+            // Load all GameTiles
+            for (int row = 0; row < _tileRows; row++)
+                for (int col = 0; col < _tileCols; col++)
+                {
+                    GameTileData    tileData        = data.Tiles[row * _tileCols + col];
+                    GameTile        tile            = _tiles[row, col];
+                    Entity          tileEntity      = new Entity(_gameContentMgr.loadDrawable(tileData.Drawable));
+            
+                    tile.Entity     = tileEntity;
+                    tile.Active     = tileData.Active;
+                    tile.Node.translate(0.0f, tileData.Elevation, 0.0f);
+                }
+
+            // Load all GameObjects
+            foreach (GameObjectData gobjData in data.GameObjs)
+            {
+                GameObject  gobj        = null;
+
+                switch (gobjData.ObjType)
+                { 
+                    case 0:     // GameObject
+                        gobj = createGameObject<GameObject>(gobjData.Name, gobjData.Drawable);
+                        break;
+
+                    case 1:     // GameObjectMovable
+                        gobj = createGameObject<GameObjectMovable>(gobjData.Name, gobjData.Drawable);
+                        break;
+
+                    case 2:     // GameCharacter
+                        gobj = createGameObject<GameCharacter>(gobjData.Name, gobjData.Drawable);
+                        break;
+                }
+
+                tileAtIndex(0, 0).Node.attachChildNode(gobj.Node);
+                gobj.Node.translateTo(gobjData.Position);
+
+                gobj.DirectionVector    = gobjData.Direction;
+                gobj.Active             = gobjData.Active;
+            }
+
+            Console.WriteLine("Level loaded: " + path);
         }
 
 
         //-------------------------------------------------------------------------
         /// <summary>
-        /// Apply one update to the entire GameLevel
+        /// Apply one frame update to the entire GameLevel.
         /// </summary>
-        /// <param name="gameTime">Used to determine time delta</param>
+        /// <param name="dt">Precomputed delta time.</param>
         public void update(float dt)
         {
             // Update camera
             _camera.update(dt);
 
-            // Update all character movement
-            foreach (KeyValuePair<String, GameCharacter> entry in _characters)
-                entry.Value.applyDisplacement(dt);
+            // Perform all GameObject updates
+            foreach (KeyValuePair<String, GameObject> entry in _gameObjs)
+                entry.Value.update(null, dt);
         }
 
 
@@ -274,190 +274,164 @@ namespace GDD2Project1
         {
             switch (_camera.Dir)
             { 
+                case Direction.DIR_N:
                 case Direction.DIR_NE:
-                    for (int row = 0; row < _tileRows; row++)
-                        for (int col = 0; col < _tileCols; col++)
-                            drawNode(spriteBatch, _tiles[row, col], dt, true);
-                    break;
-
-                case Direction.DIR_SE:
-                    for (int col = _tileCols - 1; col >= 0; col--)
-                        for (int row = 0; row < _tileRows; row++)
-                            drawNode(spriteBatch, _tiles[row, col], dt, true);
-                    break;
-
-                case Direction.DIR_SW:
-                    for (int row = _tileRows - 1; row >= 0; row--)
-                        for (int col = _tileCols - 1; col >= 0; col--)
-                            drawNode(spriteBatch, _tiles[row, col], dt, true);
-                    break;
-
-                case Direction.DIR_NW:
                     for (int col = 0; col < _tileCols; col++)
                         for (int row = _tileRows - 1; row >= 0; row--)
-                            drawNode(spriteBatch, _tiles[row, col], dt, true);
+                            drawNode(spriteBatch, _tiles[row, col].Node, dt, true);
+                    break;
+
+                case Direction.DIR_E:
+                case Direction.DIR_SE:
+                    for (int row = _tileRows - 1; row >= 0; row--)
+                        for (int col = _tileCols - 1; col >= 0; col--)
+                            drawNode(spriteBatch, _tiles[row, col].Node, dt, true);
+                    break;
+
+                case Direction.DIR_S:
+                case Direction.DIR_SW:
+                    for (int col = _tileCols - 1; col >= 0; col--)
+                        for (int row = 0; row < _tileRows; row++)
+                            drawNode(spriteBatch, _tiles[row, col].Node, dt, true);
+                    break;
+
+                case Direction.DIR_W:
+                case Direction.DIR_NW:
+                    for (int row = 0; row < _tileRows; row++)
+                        for (int col = 0; col < _tileCols; col++)
+                            drawNode(spriteBatch, _tiles[row, col].Node, dt, true);
                     break;
             }
-            
         }
 
         /// <summary>
-        /// Draws a GameNode's Drawable, if it contains one
+        /// Issue a call to draw on a GameNode.
         /// </summary>
-        /// <param name="node">GameNode to draw</param>
-        /// <param name="recursive">If true, all of this nodes children will be drawn</param>
+        /// <param name="node">GameNode to draw.</param>
+        /// <param name="recursive">If true, all of this nodes children will be drawn.</param>
         protected void drawNode(SpriteBatch spriteBatch, GameNode node, float dt, bool recursive = true)
         {
             if (node == null)
                 return;
 
-            if(!(node is GameObject))
-                return;
-
-            (node as GameObject).drawContents(spriteBatch, dt);
+            node.draw(spriteBatch, null, dt);
 
             if (recursive)
-                foreach (KeyValuePair<String, GameNode> childEntry in node.getChildren)
+                foreach (KeyValuePair<String, GameNode> childEntry in node.Children)
                     drawNode(spriteBatch, childEntry.Value, dt, true);
         }
 
 
         //-------------------------------------------------------------------------
         /// <summary>
-        /// Returns a previously created GameNode  through a specified index.
-        /// The GameNode returned must have been previously created by the loadLevel
-        /// function, and the index must be within the bounds of the GameLevel.
+        /// Get tile GameNode at index.
         /// </summary>
-        /// <param name="x">X index</param>
-        /// <param name="y">Y index</param>
-        /// <returns>Game node at corresponding index</returns>
-        public GameObject getTileAtIndex(int x, int y)
+        /// <param name="row">Row index</param>
+        /// <param name="col">Column index</param>
+        /// <returns></returns>
+        public GameTile tileAtIndex(int row, int col)
         {
-            if (    x < 0 || x >= _tileRows
-                ||  y < 0 || y >= _tileCols)
+            if (    row < 0 || row >= _tileRows
+                ||  col < 0 || col >= _tileCols)
                 return null;
 
-            return _tiles[x, y];
+            return _tiles[row, col];
         }
 
         /// <summary>
-        /// Retrieve a tile GameNode from this level based on the
-        /// specified isometric coordinates.
+        /// Get a tile GameNode from isometric coordinates.
         /// </summary>
-        /// <param name="isoCoords">Isometric coordinates</param>
-        /// <returns>Tile GameNode at position</returns>
-        public GameObject getTileFromIsometricCoordinates(Vector3 isoCoords)
+        /// <param name="isoCoords">Isometric GameLevel coordinates.</param>
+        /// <returns>Tile GameNode nearest the provided coordinates.</returns>
+        public GameTile tileAtIsoCoords(Vector3 isoCoords)
         {
             // Map to graph indices
             isoCoords /= (float)TILE_SIZE;
 
-            // Drop the fractional portion
-            isoCoords.X -= isoCoords.X % 1.0f;
-            isoCoords.Z -= isoCoords.Z % 1.0f;
+            // Round to nearest index
+            isoCoords.X = (int)Math.Round(isoCoords.X);
+            isoCoords.Z = (int)Math.Round(isoCoords.Z);
 
-            return getTileAtIndex((int)isoCoords.X, (int)isoCoords.Z);
+            return tileAtIndex((int)isoCoords.X, (int)isoCoords.Z);
         }
 
         /// <summary>
-        /// Returns a node corresponding to the specified screen coordinates
+        /// Get a tile GameNode and its index from isometric coordinates.
         /// </summary>
-        /// <param name="coordinates">Screen coordinates</param>
-        /// <returns>GameNode at the location specified</returns>
-        public GameObject getTileFromScreenCoordinates(Vector2 coordinates)
+        /// <param name="isoCoords">Isometric GameLevel coordinates.</param>
+        /// <param name="row">Outputs GameNode's row index.</param>
+        /// <param name="col">Outputs GameNode's column index.</param>
+        /// <returns></returns>
+        public GameTile tileAtIsoCoords(Vector3 isoCoords, out int row, out int col)
+        {
+            // Map to graph indices
+            isoCoords /= (float)TILE_SIZE;
+
+            // Round to nearest index
+            isoCoords.X = (int)Math.Round(isoCoords.X);
+            isoCoords.Z = (int)Math.Round(isoCoords.Z);
+
+            // Output row and col
+            row = (int)isoCoords.X;
+            col = (int)isoCoords.Z;
+
+            return tileAtIndex(row, col);
+        }
+
+        /// <summary>
+        /// Get a tile GameNode from screen coordinates.
+        /// </summary>
+        /// <param name="screenCoords">Screen coordinates.</param>
+        /// <returns>Tile GameNode at the specified screen coordinates.</returns>
+        public GameTile tileAtScreenCoords(Point screenCoords)
         {
             // TODO: needs to be able to grab elevated tiles
 
-            coordinates = _camera.screenToIsometric(coordinates);
+            // Generate coordinate vector so we can transform
+            Vector2 vecScreenCoords = new Vector2(
+                screenCoords.X,
+                screenCoords.Y);
+
+            // Transform into isometric coordinates
+            vecScreenCoords = _camera.screenToIsometric(vecScreenCoords);
+
+            // Coordinates as Vector3 so we can grab the index
             Vector3 isoCoords = new Vector3(
-                coordinates.X,
-                0.0f, 
-                coordinates.Y
-                );
+                vecScreenCoords.X,
+                0.0f,
+                vecScreenCoords.Y);
 
-            return getTileFromIsometricCoordinates(isoCoords);
-        }
-
-        /// <summary>
-        /// Returns a node corresponding to the specified screen coordinates
-        /// </summary>
-        /// <param name="coordinates">Screen coordinates</param>
-        /// <returns>GameNode at the location specified</returns>
-        public GameObject getTileFromScreenCoordinates(Point coordinates)
-        {
-            Vector2 vecCoordinates;
-            vecCoordinates.X = coordinates.X;
-            vecCoordinates.Y = coordinates.Y;
-            return getTileFromScreenCoordinates(vecCoordinates);
-        }
-
-        /// <summary>
-        /// Get the x and y index of a tile at the specified coordinates
-        /// </summary>
-        /// <param name="isoCoords">Isometric coordinates</param>
-        /// <returns></returns>
-        public Point getIndexFromPosition(Vector3 isoCoords)
-        {
-            isoCoords /= (float)TILE_SIZE;
-
-            isoCoords.X -= isoCoords.X % 1.0f;
-            isoCoords.Z -= isoCoords.Y % 1.0f;
-
-            Point index;
-            index.X = (int)isoCoords.X;
-            index.Y = (int)isoCoords.Z;
-
-            return index;
-        }
-
-        /// <summary>
-        /// Get a list of tiles adjacent to the tile located at isoCoords.
-        /// </summary>
-        /// <param name="isoCoords">Isometric coordinates of the tile</param>
-        /// <param name="heightTolerance">The difference in elevation permitted</param>
-        /// <returns>List of adjacent tiles</returns>
-        public List<GameObject> getAdjacentTiles(Vector3 isoCoords, float heightTolerance)
-        {
-            Point tileIndex = getIndexFromPosition(isoCoords);
-            List<GameObject> adjTiles = new List<GameObject>();
-
-            for (int row = tileIndex.X - 1; row <= tileIndex.X + 1; row++)
-                for (int col = tileIndex.Y - 1; col <= tileIndex.Y + 1; col++)
-                {
-                    GameObject tile = getTileAtIndex(row, col);
-                    // Verify non-null
-                    if (tile == null || !tile.Active)
-                        continue;
-                    // Verify not standing tile
-                    if (row == tileIndex.X && col == tileIndex.Y)
-                        continue;
-                    // Verify within height tolerance
-                    if (Math.Abs(tile.PositionIsometric.Y - isoCoords.Y) > heightTolerance)
-                        continue;
-                    adjTiles.Add(tile);
-                }
-
-            return adjTiles;
+            return tileAtIsoCoords(isoCoords);
         }
 
 
         //-------------------------------------------------------------------------
         /// <summary>
-        /// Remove a GameNode from this GameLevel
+        /// Creates a new GameObject and inserts it into our GameLevel.
         /// </summary>
-        /// <param name="node">Node to remove</param>
-        public void destroyNode(GameNode node)
+        /// <typeparam name="T">Type of GameObject.</typeparam>
+        /// <param name="name">Name of GameObject.</param>
+        /// <param name="drawable">GameObject's drawable.</param>
+        /// <returns>Newly created GameObject.</returns>
+        public T createGameObject<T>(String name, String drawable)
+            where T : GameObject
         {
-            // Detach the node from its parent
-            if (node.getParent != null)
-                node.getParent.detachChildNode(node.getName);
+            GameNode gobjNode = new GameNode(this, name);
+            Drawable gobjDrawable = null;
 
-            // If it's a Character, remove it from the dictionary
-            if (node is GameCharacter)
-                _characters.Remove(node.getName);
+            if (typeof(T) == typeof(GameObject) || typeof(T) == typeof(GameObjectMovable))
+                gobjDrawable = _gameContentMgr.loadDrawable(drawable);
+            else if (typeof(T) == typeof(GameCharacter))
+                gobjDrawable = _gameContentMgr.loadDrawableAnimated(drawable);
+
+            gobjNode.attachEntity(new Entity(gobjDrawable));
+            T gobj = (T)Activator.CreateInstance(typeof(T), new object[] { name, gobjNode });
+
+            _gameObjs.Add(gobj.Name, gobj);
+
+            return gobj;
         }
 
-
-        //-------------------------------------------------------------------------
         /// <summary>
         /// Return a GameObject previously added to this GameLevel
         /// </summary>
@@ -468,14 +442,61 @@ namespace GDD2Project1
             where T : GameObject
         {
             // If the GameObject was never created, return null
-            if (!_characters.ContainsKey(name))
+            if (!_gameObjs.ContainsKey(name))
                 return null;
 
             // If the GameObject is not of the type specified, return null
-            if (!(_characters[name] is T))
+            if (!(_gameObjs[name] is T))
                 return null;
 
-            return _characters[name] as T;
+            return _gameObjs[name] as T;
+        }
+
+
+        //-------------------------------------------------------------------------
+        /// <summary>
+        /// Get isometric direction from a specified rotation.
+        /// </summary>
+        /// <param name="radians">Rotation amount.</param>
+        /// <returns>Isometric direction</returns>
+        public static Direction directionViewFromAngle(float radians)
+        {
+            radians     +=  (float)Math.PI * 0.125f;
+            float offs  =   (float)Math.PI * 0.25f;
+
+            if (radians < offs * 1
+                || radians > offs * 8)      return Direction.DIR_N;
+            else if (radians < offs * 2)    return Direction.DIR_NW;
+            else if (radians < offs * 3)    return Direction.DIR_W;
+            else if (radians < offs * 4)    return Direction.DIR_SW;
+            else if (radians < offs * 5)    return Direction.DIR_S;
+            else if (radians < offs * 6)    return Direction.DIR_SE;
+            else if (radians < offs * 7)    return Direction.DIR_E;
+            else                            return Direction.DIR_NE;
+        }
+
+        /// <summary>
+        /// Get an isometric vector pointing in the indicated view direction.
+        /// </summary>
+        /// <param name="dir">Direction to point towards.</param>
+        /// <returns>Direction vector.</returns>
+        public static Vector3 directionVectorFromView(Direction dir)
+        {
+            Vector3 v = Vector3.Zero;
+
+            switch (dir)
+            {
+                case Direction.DIR_N:   v.Z = -1.0f;                    break;
+                case Direction.DIR_NE:  v.X = 1.0f;     v.Z = -1.0f;    break;
+                case Direction.DIR_E:   v.X = 1.0f;                     break;
+                case Direction.DIR_SE:  v.X = 1.0f;     v.Z = 1.0f;     break;
+                case Direction.DIR_S:   v.Z = 1.0f;                     break;
+                case Direction.DIR_SW:  v.X = -1.0f;    v.Z = 1.0f;     break;
+                case Direction.DIR_W:   v.X = -1.0f;                    break;
+                case Direction.DIR_NW:  v.X = -1.0f;    v.Z = -1.0f;    break;
+            }
+
+            return v;
         }
     }
 }

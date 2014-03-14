@@ -15,8 +15,10 @@ namespace GDD2Project1
     /// </summary>
     public class ScreenManager : Game
     {
-        GraphicsDeviceManager                   _graphics;
-        SpriteBatch                             _spriteBatch;
+        private bool                            _windowHasFocus;
+
+        private GraphicsDeviceManager           _graphics;
+        private SpriteBatch                     _spriteBatch;
 
         private Dictionary<String, Screen>      _screens;
         private String                          _currentScreen;
@@ -32,19 +34,26 @@ namespace GDD2Project1
 
 
         //-------------------------------------------------------------------------
+        public bool WindowHasFocus { get { return _windowHasFocus; } }
+        public InputEvents InputSystem { get { return _input; } }
+
+
+        //-------------------------------------------------------------------------
         /// <summary>
         /// Default ScreenManager constructor
         /// </summary>
         public ScreenManager()
         {
+            _windowHasFocus                         = true;
+
             _graphics                               = new GraphicsDeviceManager(this);
             Content.RootDirectory                   = "Content";
 
-            _input = new InputEvents(this);
+            _input                                  = new InputEvents(this);
             Components.Add(this._input);
 
-            IsFixedTimeStep = false;
-            IsMouseVisible = true;
+            IsFixedTimeStep                         = false;
+            IsMouseVisible                          = true;
 
             _graphics.PreferredBackBufferWidth      = INITIAL_WINDOW_WIDTH;
             _graphics.PreferredBackBufferHeight     = INITIAL_WINDOW_HEIGHT;
@@ -79,18 +88,6 @@ namespace GDD2Project1
             _spriteBatch    = new SpriteBatch(GraphicsDevice);
             _screens        = new Dictionary<String, Screen>();
 
-            /*
-            // Load a GamePlayScreen
-            createScreen<GamePlayScreen>("gameScreen", true);
-            getScreen<GamePlayScreen>("gameScreen").init("exampleLevel");
-            */
-
-            /*
-            // Load a GameEditorScreen
-            createScreen<GameEditorScreen>("editorScreen", new object[]{this}, true);
-            getScreen<GameEditorScreen>("editorScreen").init();
-             * */
-
             // Create initial screen
             createScreen<MainScreen>("mainScreen", new object[] { this }, true);
             getScreen<MainScreen>("mainScreen").init();
@@ -114,8 +111,8 @@ namespace GDD2Project1
         /// <param name="gameTime">Provides a snapshot of timing values</param>
         protected override void Update(GameTime gameTime)
         {
-            // Update input / gui
-            _input  .Update(gameTime);
+            // Update input
+            _input.Update(gameTime);
 
             // Update Screen
             Screen screen = getCurrentScreen();
