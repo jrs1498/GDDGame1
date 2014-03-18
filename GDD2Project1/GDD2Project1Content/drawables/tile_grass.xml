@@ -2,6 +2,6 @@
 <XnaContent>
   <Asset Type="GameData.DrawableData">
     <TextureName>tile_grass</TextureName>
-    <Origin>0 0</Origin>
+    <Origin>52 24</Origin>
   </Asset>
 </XnaContent>

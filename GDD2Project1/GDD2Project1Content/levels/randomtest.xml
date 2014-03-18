@@ -545,22 +545,22 @@
         <Active>false</Active>
       </Item>
       <Item>
-        <Drawable>tile_rock</Drawable>
+        <Drawable>tile_grass</Drawable>
         <Elevation>0</Elevation>
         <Active>true</Active>
       </Item>
       <Item>
-        <Drawable>tile_rock</Drawable>
+        <Drawable>tile_grass</Drawable>
         <Elevation>0</Elevation>
         <Active>true</Active>
       </Item>
       <Item>
-        <Drawable>tile_rock</Drawable>
+        <Drawable>tile_grass</Drawable>
         <Elevation>0</Elevation>
         <Active>true</Active>
       </Item>
       <Item>
-        <Drawable>tile_rock</Drawable>
+        <Drawable>tile_grass</Drawable>
         <Elevation>0</Elevation>
         <Active>false</Active>
       </Item>
@@ -593,81 +593,6 @@
         <Drawable>tile_rock</Drawable>
         <Elevation>0</Elevation>
         <Active>false</Active>
-      </Item>
-      <Item>
-        <Drawable>tile_rock</Drawable>
-        <Elevation>0</Elevation>
-        <Active>true</Active>
-      </Item>
-      <Item>
-        <Drawable>tile_rock</Drawable>
-        <Elevation>0</Elevation>
-        <Active>false</Active>
-      </Item>
-      <Item>
-        <Drawable>tile_rock</Drawable>
-        <Elevation>0</Elevation>
-        <Active>false</Active>
-      </Item>
-      <Item>
-        <Drawable>tile_rock</Drawable>
-        <Elevation>0</Elevation>
-        <Active>false</Active>
-      </Item>
-      <Item>
-        <Drawable>tile_rock</Drawable>
-        <Elevation>0</Elevation>
-        <Active>false</Active>
-      </Item>
-      <Item>
-        <Drawable>tile_rock</Drawable>
-        <Elevation>0</Elevation>
-        <Active>true</Active>
-      </Item>
-      <Item>
-        <Drawable>tile_rock</Drawable>
-        <Elevation>0</Elevation>
-        <Active>false</Active>
-      </Item>
-      <Item>
-        <Drawable>tile_rock</Drawable>
-        <Elevation>0</Elevation>
-        <Active>false</Active>
-      </Item>
-      <Item>
-        <Drawable>tile_rock</Drawable>
-        <Elevation>0</Elevation>
-        <Active>false</Active>
-      </Item>
-      <Item>
-        <Drawable>tile_rock</Drawable>
-        <Elevation>0</Elevation>
-        <Active>true</Active>
-      </Item>
-      <Item>
-        <Drawable>tile_rock</Drawable>
-        <Elevation>0</Elevation>
-        <Active>false</Active>
-      </Item>
-      <Item>
-        <Drawable>tile_rock</Drawable>
-        <Elevation>0</Elevation>
-        <Active>false</Active>
-      </Item>
-      <Item>
-        <Drawable>tile_rock</Drawable>
-        <Elevation>0</Elevation>
-        <Active>true</Active>
-      </Item>
-      <Item>
-        <Drawable>tile_rock</Drawable>
-        <Elevation>0</Elevation>
-        <Active>true</Active>
-      </Item>
-      <Item>
-        <Drawable>tile_rock</Drawable>
-        <Elevation>0</Elevation>
-        <Active>true</Active>
       </Item>
       <Item>
         <Drawable>tile_rock</Drawable>
@@ -722,6 +647,56 @@
       <Item>
         <Drawable>tile_rock</Drawable>
         <Elevation>0</Elevation>
+        <Active>false</Active>
+      </Item>
+      <Item>
+        <Drawable>tile_rock</Drawable>
+        <Elevation>0</Elevation>
+        <Active>false</Active>
+      </Item>
+      <Item>
+        <Drawable>tile_rock</Drawable>
+        <Elevation>0</Elevation>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Drawable>tile_rock</Drawable>
+        <Elevation>0</Elevation>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Drawable>tile_rock</Drawable>
+        <Elevation>0</Elevation>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Drawable>tile_rock</Drawable>
+        <Elevation>0</Elevation>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Drawable>tile_rock</Drawable>
+        <Elevation>0</Elevation>
+        <Active>false</Active>
+      </Item>
+      <Item>
+        <Drawable>tile_rock</Drawable>
+        <Elevation>0</Elevation>
+        <Active>false</Active>
+      </Item>
+      <Item>
+        <Drawable>tile_rock</Drawable>
+        <Elevation>0</Elevation>
+        <Active>false</Active>
+      </Item>
+      <Item>
+        <Drawable>tile_rock</Drawable>
+        <Elevation>0</Elevation>
+        <Active>false</Active>
+      </Item>
+      <Item>
+        <Drawable>tile_rock</Drawable>
+        <Elevation>0</Elevation>
         <Active>true</Active>
       </Item>
       <Item>
@@ -742,57 +717,22 @@
       <Item>
         <Drawable>tile_rock</Drawable>
         <Elevation>0</Elevation>
-        <Active>false</Active>
-      </Item>
-      <Item>
-        <Drawable>tile_rock</Drawable>
-        <Elevation>0</Elevation>
-        <Active>false</Active>
-      </Item>
-      <Item>
-        <Drawable>tile_rock</Drawable>
-        <Elevation>0</Elevation>
-        <Active>false</Active>
-      </Item>
-      <Item>
-        <Drawable>tile_rock</Drawable>
-        <Elevation>0</Elevation>
-        <Active>false</Active>
-      </Item>
-      <Item>
-        <Drawable>tile_rock</Drawable>
-        <Elevation>0</Elevation>
-        <Active>false</Active>
-      </Item>
-      <Item>
-        <Drawable>tile_rock</Drawable>
-        <Elevation>0</Elevation>
-        <Active>false</Active>
-      </Item>
-      <Item>
-        <Drawable>tile_rock</Drawable>
-        <Elevation>0</Elevation>
-        <Active>true</Active>
-      </Item>
-      <Item>
-        <Drawable>tile_rock</Drawable>
-        <Elevation>0</Elevation>
-        <Active>false</Active>
-      </Item>
-      <Item>
-        <Drawable>tile_rock</Drawable>
-        <Elevation>0</Elevation>
-        <Active>false</Active>
-      </Item>
-      <Item>
-        <Drawable>tile_rock</Drawable>
-        <Elevation>0</Elevation>
         <Active>true</Active>
       </Item>
       <Item>
         <Drawable>tile_rock</Drawable>
         <Elevation>0</Elevation>
         <Active>true</Active>
+      </Item>
+      <Item>
+        <Drawable>tile_rock</Drawable>
+        <Elevation>0</Elevation>
+        <Active>false</Active>
+      </Item>
+      <Item>
+        <Drawable>tile_rock</Drawable>
+        <Elevation>0</Elevation>
+        <Active>false</Active>
       </Item>
       <Item>
         <Drawable>tile_rock</Drawable>
@@ -867,11 +807,6 @@
       <Item>
         <Drawable>tile_rock</Drawable>
         <Elevation>0</Elevation>
-        <Active>true</Active>
-      </Item>
-      <Item>
-        <Drawable>tile_rock</Drawable>
-        <Elevation>0</Elevation>
         <Active>false</Active>
       </Item>
       <Item>
@@ -895,79 +830,9 @@
         <Active>false</Active>
       </Item>
       <Item>
-        <Drawable>tile_rock</Drawable>
-        <Elevation>0</Elevation>
-        <Active>false</Active>
-      </Item>
-      <Item>
-        <Drawable>tile_rock</Drawable>
-        <Elevation>0</Elevation>
-        <Active>false</Active>
-      </Item>
-      <Item>
-        <Drawable>tile_rock</Drawable>
+        <Drawable>tile_grass</Drawable>
         <Elevation>0</Elevation>
         <Active>true</Active>
-      </Item>
-      <Item>
-        <Drawable>tile_rock</Drawable>
-        <Elevation>0</Elevation>
-        <Active>false</Active>
-      </Item>
-      <Item>
-        <Drawable>tile_rock</Drawable>
-        <Elevation>0</Elevation>
-        <Active>true</Active>
-      </Item>
-      <Item>
-        <Drawable>tile_rock</Drawable>
-        <Elevation>0</Elevation>
-        <Active>true</Active>
-      </Item>
-      <Item>
-        <Drawable>tile_rock</Drawable>
-        <Elevation>0</Elevation>
-        <Active>true</Active>
-      </Item>
-      <Item>
-        <Drawable>tile_rock</Drawable>
-        <Elevation>0</Elevation>
-        <Active>true</Active>
-      </Item>
-      <Item>
-        <Drawable>tile_rock</Drawable>
-        <Elevation>0</Elevation>
-        <Active>true</Active>
-      </Item>
-      <Item>
-        <Drawable>tile_rock</Drawable>
-        <Elevation>0</Elevation>
-        <Active>true</Active>
-      </Item>
-      <Item>
-        <Drawable>tile_rock</Drawable>
-        <Elevation>0</Elevation>
-        <Active>true</Active>
-      </Item>
-      <Item>
-        <Drawable>tile_rock</Drawable>
-        <Elevation>0</Elevation>
-        <Active>false</Active>
-      </Item>
-      <Item>
-        <Drawable>tile_rock</Drawable>
-        <Elevation>0</Elevation>
-        <Active>false</Active>
-      </Item>
-      <Item>
-        <Drawable>tile_rock</Drawable>
-        <Elevation>0</Elevation>
-        <Active>false</Active>
-      </Item>
-      <Item>
-        <Drawable>tile_rock</Drawable>
-        <Elevation>0</Elevation>
-        <Active>false</Active>
       </Item>
       <Item>
         <Drawable>tile_rock</Drawable>
@@ -987,17 +852,7 @@
       <Item>
         <Drawable>tile_rock</Drawable>
         <Elevation>0</Elevation>
-        <Active>false</Active>
-      </Item>
-      <Item>
-        <Drawable>tile_rock</Drawable>
-        <Elevation>0</Elevation>
         <Active>true</Active>
-      </Item>
-      <Item>
-        <Drawable>tile_rock</Drawable>
-        <Elevation>0</Elevation>
-        <Active>false</Active>
       </Item>
       <Item>
         <Drawable>tile_rock</Drawable>
@@ -1050,12 +905,47 @@
         <Active>false</Active>
       </Item>
       <Item>
+        <Drawable>tile_grass</Drawable>
+        <Elevation>0</Elevation>
+        <Active>true</Active>
+      </Item>
+      <Item>
         <Drawable>tile_rock</Drawable>
         <Elevation>0</Elevation>
         <Active>false</Active>
       </Item>
       <Item>
-        <Drawable>tile_rock</Drawable>
+        <Drawable>tile_grass</Drawable>
+        <Elevation>0</Elevation>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Drawable>tile_grass</Drawable>
+        <Elevation>0</Elevation>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Drawable>tile_grass</Drawable>
+        <Elevation>0</Elevation>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Drawable>tile_grass</Drawable>
+        <Elevation>0</Elevation>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Drawable>tile_grass</Drawable>
+        <Elevation>0</Elevation>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Drawable>tile_grass</Drawable>
+        <Elevation>0</Elevation>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Drawable>tile_grass</Drawable>
         <Elevation>0</Elevation>
         <Active>true</Active>
       </Item>
@@ -1067,6 +957,41 @@
       <Item>
         <Drawable>tile_rock</Drawable>
         <Elevation>0</Elevation>
+        <Active>false</Active>
+      </Item>
+      <Item>
+        <Drawable>tile_rock</Drawable>
+        <Elevation>0</Elevation>
+        <Active>false</Active>
+      </Item>
+      <Item>
+        <Drawable>tile_rock</Drawable>
+        <Elevation>0</Elevation>
+        <Active>false</Active>
+      </Item>
+      <Item>
+        <Drawable>tile_rock</Drawable>
+        <Elevation>0</Elevation>
+        <Active>false</Active>
+      </Item>
+      <Item>
+        <Drawable>tile_rock</Drawable>
+        <Elevation>0</Elevation>
+        <Active>false</Active>
+      </Item>
+      <Item>
+        <Drawable>tile_grass</Drawable>
+        <Elevation>0</Elevation>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Drawable>tile_rock</Drawable>
+        <Elevation>0</Elevation>
+        <Active>false</Active>
+      </Item>
+      <Item>
+        <Drawable>tile_grass</Drawable>
+        <Elevation>0</Elevation>
         <Active>true</Active>
       </Item>
       <Item>
@@ -1078,91 +1003,6 @@
         <Drawable>tile_rock</Drawable>
         <Elevation>0</Elevation>
         <Active>false</Active>
-      </Item>
-      <Item>
-        <Drawable>tile_rock</Drawable>
-        <Elevation>0</Elevation>
-        <Active>false</Active>
-      </Item>
-      <Item>
-        <Drawable>tile_rock</Drawable>
-        <Elevation>0</Elevation>
-        <Active>true</Active>
-      </Item>
-      <Item>
-        <Drawable>tile_rock</Drawable>
-        <Elevation>0</Elevation>
-        <Active>true</Active>
-      </Item>
-      <Item>
-        <Drawable>tile_rock</Drawable>
-        <Elevation>0</Elevation>
-        <Active>true</Active>
-      </Item>
-      <Item>
-        <Drawable>tile_rock</Drawable>
-        <Elevation>0</Elevation>
-        <Active>false</Active>
-      </Item>
-      <Item>
-        <Drawable>tile_rock</Drawable>
-        <Elevation>0</Elevation>
-        <Active>false</Active>
-      </Item>
-      <Item>
-        <Drawable>tile_rock</Drawable>
-        <Elevation>0</Elevation>
-        <Active>false</Active>
-      </Item>
-      <Item>
-        <Drawable>tile_rock</Drawable>
-        <Elevation>0</Elevation>
-        <Active>false</Active>
-      </Item>
-      <Item>
-        <Drawable>tile_rock</Drawable>
-        <Elevation>0</Elevation>
-        <Active>false</Active>
-      </Item>
-      <Item>
-        <Drawable>tile_rock</Drawable>
-        <Elevation>0</Elevation>
-        <Active>false</Active>
-      </Item>
-      <Item>
-        <Drawable>tile_rock</Drawable>
-        <Elevation>0</Elevation>
-        <Active>true</Active>
-      </Item>
-      <Item>
-        <Drawable>tile_rock</Drawable>
-        <Elevation>0</Elevation>
-        <Active>false</Active>
-      </Item>
-      <Item>
-        <Drawable>tile_rock</Drawable>
-        <Elevation>0</Elevation>
-        <Active>true</Active>
-      </Item>
-      <Item>
-        <Drawable>tile_rock</Drawable>
-        <Elevation>0</Elevation>
-        <Active>false</Active>
-      </Item>
-      <Item>
-        <Drawable>tile_rock</Drawable>
-        <Elevation>0</Elevation>
-        <Active>true</Active>
-      </Item>
-      <Item>
-        <Drawable>tile_rock</Drawable>
-        <Elevation>0</Elevation>
-        <Active>false</Active>
-      </Item>
-      <Item>
-        <Drawable>tile_rock</Drawable>
-        <Elevation>0</Elevation>
-        <Active>true</Active>
       </Item>
       <Item>
         <Drawable>tile_rock</Drawable>
@@ -1207,6 +1047,46 @@
       <Item>
         <Drawable>tile_rock</Drawable>
         <Elevation>0</Elevation>
+        <Active>false</Active>
+      </Item>
+      <Item>
+        <Drawable>tile_rock</Drawable>
+        <Elevation>0</Elevation>
+        <Active>false</Active>
+      </Item>
+      <Item>
+        <Drawable>tile_grass</Drawable>
+        <Elevation>0</Elevation>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Drawable>tile_rock</Drawable>
+        <Elevation>0</Elevation>
+        <Active>false</Active>
+      </Item>
+      <Item>
+        <Drawable>tile_grass</Drawable>
+        <Elevation>0</Elevation>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Drawable>tile_rock</Drawable>
+        <Elevation>0</Elevation>
+        <Active>false</Active>
+      </Item>
+      <Item>
+        <Drawable>tile_rock</Drawable>
+        <Elevation>0</Elevation>
+        <Active>false</Active>
+      </Item>
+      <Item>
+        <Drawable>tile_rock</Drawable>
+        <Elevation>0</Elevation>
+        <Active>false</Active>
+      </Item>
+      <Item>
+        <Drawable>tile_rock</Drawable>
+        <Elevation>0</Elevation>
         <Active>true</Active>
       </Item>
       <Item>
@@ -1216,6 +1096,126 @@
       </Item>
       <Item>
         <Drawable>tile_rock</Drawable>
+        <Elevation>0</Elevation>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Drawable>tile_rock</Drawable>
+        <Elevation>0</Elevation>
+        <Active>false</Active>
+      </Item>
+      <Item>
+        <Drawable>tile_rock</Drawable>
+        <Elevation>0</Elevation>
+        <Active>false</Active>
+      </Item>
+      <Item>
+        <Drawable>tile_rock</Drawable>
+        <Elevation>0</Elevation>
+        <Active>false</Active>
+      </Item>
+      <Item>
+        <Drawable>tile_rock</Drawable>
+        <Elevation>0</Elevation>
+        <Active>false</Active>
+      </Item>
+      <Item>
+        <Drawable>tile_rock</Drawable>
+        <Elevation>0</Elevation>
+        <Active>false</Active>
+      </Item>
+      <Item>
+        <Drawable>tile_rock</Drawable>
+        <Elevation>0</Elevation>
+        <Active>false</Active>
+      </Item>
+      <Item>
+        <Drawable>tile_grass</Drawable>
+        <Elevation>0</Elevation>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Drawable>tile_rock</Drawable>
+        <Elevation>0</Elevation>
+        <Active>false</Active>
+      </Item>
+      <Item>
+        <Drawable>tile_grass</Drawable>
+        <Elevation>0</Elevation>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Drawable>tile_rock</Drawable>
+        <Elevation>0</Elevation>
+        <Active>false</Active>
+      </Item>
+      <Item>
+        <Drawable>tile_rock</Drawable>
+        <Elevation>0</Elevation>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Drawable>tile_rock</Drawable>
+        <Elevation>0</Elevation>
+        <Active>false</Active>
+      </Item>
+      <Item>
+        <Drawable>tile_rock</Drawable>
+        <Elevation>0</Elevation>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Drawable>tile_rock</Drawable>
+        <Elevation>0</Elevation>
+        <Active>false</Active>
+      </Item>
+      <Item>
+        <Drawable>tile_rock</Drawable>
+        <Elevation>0</Elevation>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Drawable>tile_rock</Drawable>
+        <Elevation>0</Elevation>
+        <Active>false</Active>
+      </Item>
+      <Item>
+        <Drawable>tile_rock</Drawable>
+        <Elevation>0</Elevation>
+        <Active>false</Active>
+      </Item>
+      <Item>
+        <Drawable>tile_rock</Drawable>
+        <Elevation>0</Elevation>
+        <Active>false</Active>
+      </Item>
+      <Item>
+        <Drawable>tile_rock</Drawable>
+        <Elevation>0</Elevation>
+        <Active>false</Active>
+      </Item>
+      <Item>
+        <Drawable>tile_rock</Drawable>
+        <Elevation>0</Elevation>
+        <Active>false</Active>
+      </Item>
+      <Item>
+        <Drawable>tile_rock</Drawable>
+        <Elevation>0</Elevation>
+        <Active>false</Active>
+      </Item>
+      <Item>
+        <Drawable>tile_grass</Drawable>
+        <Elevation>0</Elevation>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Drawable>tile_grass</Drawable>
+        <Elevation>0</Elevation>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <Drawable>tile_grass</Drawable>
         <Elevation>0</Elevation>
         <Active>true</Active>
       </Item>
@@ -1245,7 +1245,7 @@
         <Active>false</Active>
       </Item>
       <Item>
-        <Drawable>tile_rock</Drawable>
+        <Drawable>tile_grass</Drawable>
         <Elevation>0</Elevation>
         <Active>true</Active>
       </Item>
@@ -1287,6 +1287,62 @@
         <Drawable>playercharacter</Drawable>
         <Position>252 0 252</Position>
         <Direction>NaN NaN NaN</Direction>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <ObjType>0</ObjType>
+        <Name>tree1</Name>
+        <Drawable>tree1</Drawable>
+        <Position>588 0 588</Position>
+        <Direction>0 0 0</Direction>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <ObjType>0</ObjType>
+        <Name>tree2</Name>
+        <Drawable>tree1</Drawable>
+        <Position>672 0 588</Position>
+        <Direction>0 0 0</Direction>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <ObjType>0</ObjType>
+        <Name>tree3</Name>
+        <Drawable>tree1</Drawable>
+        <Position>756 0 588</Position>
+        <Direction>0 0 0</Direction>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <ObjType>0</ObjType>
+        <Name>tree4</Name>
+        <Drawable>tree1</Drawable>
+        <Position>840 0 588</Position>
+        <Direction>0 0 0</Direction>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <ObjType>0</ObjType>
+        <Name>tree5</Name>
+        <Drawable>tree1</Drawable>
+        <Position>420 0 840</Position>
+        <Direction>0 0 0</Direction>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <ObjType>0</ObjType>
+        <Name>tree6</Name>
+        <Drawable>tree1</Drawable>
+        <Position>588 0 252</Position>
+        <Direction>0 0 0</Direction>
+        <Active>true</Active>
+      </Item>
+      <Item>
+        <ObjType>0</ObjType>
+        <Name>tree7</Name>
+        <Drawable>tree1</Drawable>
+        <Position>1344 0 0</Position>
+        <Direction>0 0 0</Direction>
         <Active>true</Active>
       </Item>
     </GameObjs>

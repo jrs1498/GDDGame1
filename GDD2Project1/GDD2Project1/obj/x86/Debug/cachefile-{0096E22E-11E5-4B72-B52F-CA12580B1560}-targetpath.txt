@@ -6,7 +6,9 @@ Content\drawables\tile_stone.xnb
 Content\drawables\tree1.xnb
 Content\drawables\tile_grass.xnb
 Content\drawables\tile_stonesand.xnb
+Content\levels\randomtest.xnb
 Content\drawables\debugdrawable.xnb
+Content\levels\test.xnb
 Content\textures\tile_rock.xnb
 Content\textures\consumable.xnb
 Content\textures\DefaultStyle.xnb
@@ -19,5 +21,4 @@ Content\textures\playercharacter.xnb
 Content\textures\debugcircle.xnb
 Content\Fonts\DefaultFont.xnb
 Content\Fonts\DefaultHeading.xnb
-Content\levels\test.xnb
-Content\levels\randomtest.xnb
+Content\textures\tile_stone_front.xnb

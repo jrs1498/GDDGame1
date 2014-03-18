@@ -48,6 +48,8 @@ namespace GDD2Project1
         //-------------------------------------------------------------------------
         public Camera2D Camera { get { return _camera; } }
 
+        public int GameObjectCount { get { return _gameObjs.Count; } }
+
 
         //-------------------------------------------------------------------------
         /// <summary>

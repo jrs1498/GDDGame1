@@ -287,6 +287,95 @@ namespace GDD2Project1
                     }
                 }
                 //-----------------------------------------------------------------
+                {   // Windows
+                    MenuItem windows = create_mi(menuBar, "Windows");
+
+                    Func<String, int, int, int, int, Window> create_win =
+                        (String text, int w, int h, int x, int y) =>
+                        {
+                            Window win = new Window(_screenMgr, _guiMgr);
+                            _guiMgr.Add(win);
+                            win.Width = w;
+                            win.Height = h;
+                            win.X = x;
+                            win.Y = y;
+                            win.TitleText = text;
+
+                            return win;
+                        };
+
+                    //-------------------------------------------------------------
+                    {   // Tile browser
+                        MenuItem tbrowser = create_mi(windows, "Tile Browser");
+                        tbrowser.Click += delegate(UIComponent sender)
+                        {
+                            Window tbwin = create_win("Tile Browser", 300, 500, 400, 100);
+                            //-----------------------------------------------------
+                            {   // Tile buttons
+                                TextButton stoneButton = create_btn(tbwin, "Stone", 60, 30, 10, 10);
+                                stoneButton.Click += delegate(UIComponent bsender)
+                                {
+                                    Drawable tdrwble = _gameContentMgr.loadDrawable("tile_stone");
+                                    foreach (GameTile tile in _selection) tile.Entity.Drawable = tdrwble;
+                                };
+                                TextButton grassButton = create_btn(tbwin, "Grass", 60, 30, 10, 50);
+                                grassButton.Click += delegate(UIComponent bsender)
+                                {
+                                    Drawable tdrwble = _gameContentMgr.loadDrawable("tile_grass");
+                                    foreach (GameTile tile in _selection) tile.Entity.Drawable = tdrwble;
+                                };
+                                TextButton rockButton = create_btn(tbwin, "Rock", 60, 30, 10, 90);
+                                rockButton.Click += delegate(UIComponent bsender)
+                                {
+                                    Drawable tdrwble = _gameContentMgr.loadDrawable("tile_rock");
+                                    foreach (GameTile tile in _selection) tile.Entity.Drawable = tdrwble;
+                                };
+                                TextButton sandButton = create_btn(tbwin, "Sand", 60, 30, 10, 130);
+                                sandButton.Click += delegate(UIComponent bsender)
+                                {
+                                    Drawable tdrwble = _gameContentMgr.loadDrawable("tile_sand");
+                                    foreach (GameTile tile in _selection) tile.Entity.Drawable = tdrwble;
+                                };
+                                TextButton stoneSandButton = create_btn(tbwin, "S-Sand", 60, 30, 10, 170);
+                                stoneSandButton.Click += delegate(UIComponent bsender)
+                                {
+                                    Drawable tdrwble = _gameContentMgr.loadDrawable("tile_stonesand");
+                                    foreach (GameTile tile in _selection) tile.Entity.Drawable = tdrwble;
+                                };
+                            }
+                        };
+                    }
+                    //-------------------------------------------------------------
+                    {   // Character browser
+                        MenuItem chrbrowser = create_mi(windows, "Character Browser");
+                        chrbrowser.Click += delegate(UIComponent sender)
+                        {
+                            Window chrbwin = create_win("Character Browser", 300, 500, 400, 100);
+                        };
+                    }
+                    //-------------------------------------------------------------
+                    {   // Object browser
+                        MenuItem itembrowser = create_mi(windows, "Item Browser");
+                        itembrowser.Click += delegate(UIComponent sender)
+                        {
+                            Window ibwin = create_win("Item Browser", 300, 500, 400, 100);
+                            //-----------------------------------------------------
+                            {   // Item buttons
+                                TextButton tree1btn = create_btn(ibwin, "Tree1", 60, 30, 10, 10);
+                                tree1btn.Click += delegate(UIComponent bsender)
+                                {
+                                    foreach (GameTile tile in _selection)
+                                    {
+                                        GameObject tree = _gameLevelMgr.createGameObject<GameObject>("tree" + _gameLevelMgr.GameObjectCount, "tree1");
+                                        tile.Node.attachChildNode(tree.Node);
+                                        tree.Node.translateTo(tile.Node.PositionIsometric);
+                                    }
+                                };
+                            }
+                        };
+                    }
+                }
+                //-----------------------------------------------------------------
                 {   // Tool bar
                     Window toolBar = new Window(_screenMgr, _guiMgr);
                     _guiMgr.Add(toolBar);

@@ -7,8 +7,8 @@
       <Importer>XmlImporter</Importer>
       <Processor>PassThroughProcessor</Processor>
       <Options>None</Options>
-      <Output>E:\Projects\GDD2Project1\GDD2Project1\GDD2Project1\bin\x86\Debug\Content\drawables\consumable.xnb</Output>
-      <Time>2014-03-10T14:06:02.5979458-04:00</Time>
+      <Output>E:\Projects\GDD2Project1\GDDGame1\GDD2Project1\GDD2Project1\bin\x86\Debug\Content\drawables\consumable.xnb</Output>
+      <Time>2014-03-18T16:11:43.7616327-04:00</Time>
     </Item>
     <Item>
       <Source>drawables\playercharacter.xml</Source>
@@ -16,8 +16,8 @@
       <Importer>XmlImporter</Importer>
       <Processor>PassThroughProcessor</Processor>
       <Options>None</Options>
-      <Output>E:\Projects\GDD2Project1\GDD2Project1\GDD2Project1\bin\x86\Debug\Content\drawables\playercharacter.xnb</Output>
-      <Time>2014-03-12T18:31:57.2935124-04:00</Time>
+      <Output>E:\Projects\GDD2Project1\GDDGame1\GDD2Project1\GDD2Project1\bin\x86\Debug\Content\drawables\playercharacter.xnb</Output>
+      <Time>2014-03-18T16:11:43.7626327-04:00</Time>
     </Item>
     <Item>
       <Source>drawables\tile_rock.xml</Source>
@@ -25,8 +25,8 @@
       <Importer>XmlImporter</Importer>
       <Processor>PassThroughProcessor</Processor>
       <Options>None</Options>
-      <Output>E:\Projects\GDD2Project1\GDD2Project1\GDD2Project1\bin\x86\Debug\Content\drawables\tile_rock.xnb</Output>
-      <Time>2014-03-12T18:19:54.230783-04:00</Time>
+      <Output>E:\Projects\GDD2Project1\GDDGame1\GDD2Project1\GDD2Project1\bin\x86\Debug\Content\drawables\tile_rock.xnb</Output>
+      <Time>2014-03-18T16:11:43.7626327-04:00</Time>
     </Item>
     <Item>
       <Source>drawables\tile_sand.xml</Source>
@@ -34,8 +34,8 @@
       <Importer>XmlImporter</Importer>
       <Processor>PassThroughProcessor</Processor>
       <Options>None</Options>
-      <Output>E:\Projects\GDD2Project1\GDD2Project1\GDD2Project1\bin\x86\Debug\Content\drawables\tile_sand.xnb</Output>
-      <Time>2014-03-09T18:23:07.273465-04:00</Time>
+      <Output>E:\Projects\GDD2Project1\GDDGame1\GDD2Project1\GDD2Project1\bin\x86\Debug\Content\drawables\tile_sand.xnb</Output>
+      <Time>2014-03-18T16:47:29.1250765-04:00</Time>
     </Item>
     <Item>
       <Source>drawables\tile_stone.xml</Source>
@@ -43,8 +43,8 @@
       <Importer>XmlImporter</Importer>
       <Processor>PassThroughProcessor</Processor>
       <Options>None</Options>
-      <Output>E:\Projects\GDD2Project1\GDD2Project1\GDD2Project1\bin\x86\Debug\Content\drawables\tile_stone.xnb</Output>
-      <Time>2014-03-09T18:23:24.3334889-04:00</Time>
+      <Output>E:\Projects\GDD2Project1\GDDGame1\GDD2Project1\GDD2Project1\bin\x86\Debug\Content\drawables\tile_stone.xnb</Output>
+      <Time>2014-03-18T16:47:25.9258935-04:00</Time>
     </Item>
     <Item>
       <Source>drawables\tree1.xml</Source>
@@ -52,8 +52,8 @@
       <Importer>XmlImporter</Importer>
       <Processor>PassThroughProcessor</Processor>
       <Options>None</Options>
-      <Output>E:\Projects\GDD2Project1\GDD2Project1\GDD2Project1\bin\x86\Debug\Content\drawables\tree1.xnb</Output>
-      <Time>2014-03-10T18:32:19.2738003-04:00</Time>
+      <Output>E:\Projects\GDD2Project1\GDDGame1\GDD2Project1\GDD2Project1\bin\x86\Debug\Content\drawables\tree1.xnb</Output>
+      <Time>2014-03-18T16:59:02.3917291-04:00</Time>
     </Item>
     <Item>
       <Source>drawables\tile_grass.xml</Source>
@@ -61,8 +61,8 @@
       <Importer>XmlImporter</Importer>
       <Processor>PassThroughProcessor</Processor>
       <Options>None</Options>
-      <Output>E:\Projects\GDD2Project1\GDD2Project1\GDD2Project1\bin\x86\Debug\Content\drawables\tile_grass.xnb</Output>
-      <Time>2014-03-10T17:29:00.1575033-04:00</Time>
+      <Output>E:\Projects\GDD2Project1\GDDGame1\GDD2Project1\GDD2Project1\bin\x86\Debug\Content\drawables\tile_grass.xnb</Output>
+      <Time>2014-03-18T16:47:32.4842686-04:00</Time>
     </Item>
     <Item>
       <Source>drawables\tile_stonesand.xml</Source>
@@ -70,134 +70,8 @@
       <Importer>XmlImporter</Importer>
       <Processor>PassThroughProcessor</Processor>
       <Options>None</Options>
-      <Output>E:\Projects\GDD2Project1\GDD2Project1\GDD2Project1\bin\x86\Debug\Content\drawables\tile_stonesand.xnb</Output>
-      <Time>2014-03-10T17:29:47.7512255-04:00</Time>
-    </Item>
-    <Item>
-      <Source>drawables\debugdrawable.xml</Source>
-      <Name>drawables\debugdrawable</Name>
-      <Importer>XmlImporter</Importer>
-      <Processor>PassThroughProcessor</Processor>
-      <Options>None</Options>
-      <Output>E:\Projects\GDD2Project1\GDD2Project1\GDD2Project1\bin\x86\Debug\Content\drawables\debugdrawable.xnb</Output>
-      <Time>2014-03-12T17:59:37.8554562-04:00</Time>
-    </Item>
-    <Item>
-      <Source>textures\tile_rock.png</Source>
-      <Name>textures\tile_rock</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>E:\Projects\GDD2Project1\GDD2Project1\GDD2Project1\bin\x86\Debug\Content\textures\tile_rock.xnb</Output>
-      <Time>2014-03-12T17:37:16.1997623-04:00</Time>
-    </Item>
-    <Item>
-      <Source>textures\consumable.png</Source>
-      <Name>textures\consumable</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>E:\Projects\GDD2Project1\GDD2Project1\GDD2Project1\bin\x86\Debug\Content\textures\consumable.xnb</Output>
-      <Time>2014-02-23T21:14:36.4043153-05:00</Time>
-    </Item>
-    <Item>
-      <Source>textures\DefaultStyle.png</Source>
-      <Name>textures\DefaultStyle</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>E:\Projects\GDD2Project1\GDD2Project1\GDD2Project1\bin\x86\Debug\Content\textures\DefaultStyle.xnb</Output>
-      <Time>2014-02-28T22:28:11.1810716-05:00</Time>
-    </Item>
-    <Item>
-      <Source>textures\tile_grass.png</Source>
-      <Name>textures\tile_grass</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>E:\Projects\GDD2Project1\GDD2Project1\GDD2Project1\bin\x86\Debug\Content\textures\tile_grass.xnb</Output>
-      <Time>2014-03-04T19:42:36.6726357-05:00</Time>
-    </Item>
-    <Item>
-      <Source>textures\tile_sand.png</Source>
-      <Name>textures\tile_sand</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>E:\Projects\GDD2Project1\GDD2Project1\GDD2Project1\bin\x86\Debug\Content\textures\tile_sand.xnb</Output>
-      <Time>2014-03-04T19:42:36.6726357-05:00</Time>
-    </Item>
-    <Item>
-      <Source>textures\tile_stonesand.png</Source>
-      <Name>textures\tile_stonesand</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>E:\Projects\GDD2Project1\GDD2Project1\GDD2Project1\bin\x86\Debug\Content\textures\tile_stonesand.xnb</Output>
-      <Time>2014-03-04T19:42:36.6736358-05:00</Time>
-    </Item>
-    <Item>
-      <Source>textures\tile_stone.png</Source>
-      <Name>textures\tile_stone</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>E:\Projects\GDD2Project1\GDD2Project1\GDD2Project1\bin\x86\Debug\Content\textures\tile_stone.xnb</Output>
-      <Time>2014-03-04T19:42:36.6736358-05:00</Time>
-    </Item>
-    <Item>
-      <Source>textures\tree.png</Source>
-      <Name>textures\tree</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>E:\Projects\GDD2Project1\GDD2Project1\GDD2Project1\bin\x86\Debug\Content\textures\tree.xnb</Output>
-      <Time>2014-03-07T18:45:57.8766319-05:00</Time>
-    </Item>
-    <Item>
-      <Source>textures\playercharacter.png</Source>
-      <Name>textures\playercharacter</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>E:\Projects\GDD2Project1\GDD2Project1\GDD2Project1\bin\x86\Debug\Content\textures\playercharacter.xnb</Output>
-      <Time>2014-03-07T18:30:40.6109628-05:00</Time>
-    </Item>
-    <Item>
-      <Source>textures\debugcircle.png</Source>
-      <Name>textures\debugcircle</Name>
-      <Importer>TextureImporter</Importer>
-      <Processor>TextureProcessor</Processor>
-      <Options>None</Options>
-      <Output>E:\Projects\GDD2Project1\GDD2Project1\GDD2Project1\bin\x86\Debug\Content\textures\debugcircle.xnb</Output>
-      <Time>2014-03-12T17:43:52.1419409-04:00</Time>
-    </Item>
-    <Item>
-      <Source>Fonts\DefaultFont.spritefont</Source>
-      <Name>Fonts\DefaultFont</Name>
-      <Importer>FontDescriptionImporter</Importer>
-      <Processor>FontDescriptionProcessor</Processor>
-      <Options>None</Options>
-      <Output>E:\Projects\GDD2Project1\GDD2Project1\GDD2Project1\bin\x86\Debug\Content\Fonts\DefaultFont.xnb</Output>
-      <Time>2014-03-07T14:40:16.7124239-05:00</Time>
-    </Item>
-    <Item>
-      <Source>Fonts\DefaultHeading.spritefont</Source>
-      <Name>Fonts\DefaultHeading</Name>
-      <Importer>FontDescriptionImporter</Importer>
-      <Processor>FontDescriptionProcessor</Processor>
-      <Options>None</Options>
-      <Output>E:\Projects\GDD2Project1\GDD2Project1\GDD2Project1\bin\x86\Debug\Content\Fonts\DefaultHeading.xnb</Output>
-      <Time>2014-02-28T22:38:16.4236895-05:00</Time>
-    </Item>
-    <Item>
-      <Source>levels\test.xml</Source>
-      <Name>levels\test</Name>
-      <Importer>XmlImporter</Importer>
-      <Processor>PassThroughProcessor</Processor>
-      <Options>None</Options>
-      <Output>E:\Projects\GDD2Project1\GDD2Project1\GDD2Project1\bin\x86\Debug\Content\levels\test.xnb</Output>
-      <Time>2014-03-14T05:42:56.3023912-04:00</Time>
+      <Output>E:\Projects\GDD2Project1\GDDGame1\GDD2Project1\GDD2Project1\bin\x86\Debug\Content\drawables\tile_stonesand.xnb</Output>
+      <Time>2014-03-18T16:47:22.6017034-04:00</Time>
     </Item>
     <Item>
       <Source>levels\randomtest.xml</Source>
@@ -205,8 +79,143 @@
       <Importer>XmlImporter</Importer>
       <Processor>PassThroughProcessor</Processor>
       <Options>None</Options>
-      <Output>E:\Projects\GDD2Project1\GDD2Project1\GDD2Project1\bin\x86\Debug\Content\levels\randomtest.xnb</Output>
-      <Time>2014-03-14T08:27:06.8908126-04:00</Time>
+      <Output>E:\Projects\GDD2Project1\GDDGame1\GDD2Project1\GDD2Project1\bin\x86\Debug\Content\levels\randomtest.xnb</Output>
+      <Time>2014-03-18T16:59:50.4054753-04:00</Time>
+    </Item>
+    <Item>
+      <Source>drawables\debugdrawable.xml</Source>
+      <Name>drawables\debugdrawable</Name>
+      <Importer>XmlImporter</Importer>
+      <Processor>PassThroughProcessor</Processor>
+      <Options>None</Options>
+      <Output>E:\Projects\GDD2Project1\GDDGame1\GDD2Project1\GDD2Project1\bin\x86\Debug\Content\drawables\debugdrawable.xnb</Output>
+      <Time>2014-03-18T16:11:43.7616327-04:00</Time>
+    </Item>
+    <Item>
+      <Source>levels\test.xml</Source>
+      <Name>levels\test</Name>
+      <Importer>XmlImporter</Importer>
+      <Processor>PassThroughProcessor</Processor>
+      <Options>None</Options>
+      <Output>E:\Projects\GDD2Project1\GDDGame1\GDD2Project1\GDD2Project1\bin\x86\Debug\Content\levels\test.xnb</Output>
+      <Time>2014-03-18T16:11:43.7656329-04:00</Time>
+    </Item>
+    <Item>
+      <Source>textures\tile_rock.png</Source>
+      <Name>textures\tile_rock</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>E:\Projects\GDD2Project1\GDDGame1\GDD2Project1\GDD2Project1\bin\x86\Debug\Content\textures\tile_rock.xnb</Output>
+      <Time>2014-03-18T16:11:43.820636-04:00</Time>
+    </Item>
+    <Item>
+      <Source>textures\consumable.png</Source>
+      <Name>textures\consumable</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>E:\Projects\GDD2Project1\GDDGame1\GDD2Project1\GDD2Project1\bin\x86\Debug\Content\textures\consumable.xnb</Output>
+      <Time>2014-03-18T16:11:43.8086353-04:00</Time>
+    </Item>
+    <Item>
+      <Source>textures\DefaultStyle.png</Source>
+      <Name>textures\DefaultStyle</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>E:\Projects\GDD2Project1\GDDGame1\GDD2Project1\GDD2Project1\bin\x86\Debug\Content\textures\DefaultStyle.xnb</Output>
+      <Time>2014-03-18T16:11:43.7696331-04:00</Time>
+    </Item>
+    <Item>
+      <Source>textures\tile_grass.png</Source>
+      <Name>textures\tile_grass</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>E:\Projects\GDD2Project1\GDDGame1\GDD2Project1\GDD2Project1\bin\x86\Debug\Content\textures\tile_grass.xnb</Output>
+      <Time>2014-03-18T16:11:43.819636-04:00</Time>
+    </Item>
+    <Item>
+      <Source>textures\tile_sand.png</Source>
+      <Name>textures\tile_sand</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>E:\Projects\GDD2Project1\GDDGame1\GDD2Project1\GDD2Project1\bin\x86\Debug\Content\textures\tile_sand.xnb</Output>
+      <Time>2014-03-18T16:11:43.820636-04:00</Time>
+    </Item>
+    <Item>
+      <Source>textures\tile_stonesand.png</Source>
+      <Name>textures\tile_stonesand</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>E:\Projects\GDD2Project1\GDDGame1\GDD2Project1\GDD2Project1\bin\x86\Debug\Content\textures\tile_stonesand.xnb</Output>
+      <Time>2014-03-18T16:11:43.8216361-04:00</Time>
+    </Item>
+    <Item>
+      <Source>textures\tile_stone.png</Source>
+      <Name>textures\tile_stone</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>E:\Projects\GDD2Project1\GDDGame1\GDD2Project1\GDD2Project1\bin\x86\Debug\Content\textures\tile_stone.xnb</Output>
+      <Time>2014-03-18T16:11:43.820636-04:00</Time>
+    </Item>
+    <Item>
+      <Source>textures\tree.png</Source>
+      <Name>textures\tree</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>E:\Projects\GDD2Project1\GDDGame1\GDD2Project1\GDD2Project1\bin\x86\Debug\Content\textures\tree.xnb</Output>
+      <Time>2014-03-18T16:11:43.8216361-04:00</Time>
+    </Item>
+    <Item>
+      <Source>textures\playercharacter.png</Source>
+      <Name>textures\playercharacter</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>E:\Projects\GDD2Project1\GDDGame1\GDD2Project1\GDD2Project1\bin\x86\Debug\Content\textures\playercharacter.xnb</Output>
+      <Time>2014-03-18T16:11:43.8096354-04:00</Time>
+    </Item>
+    <Item>
+      <Source>textures\debugcircle.png</Source>
+      <Name>textures\debugcircle</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>E:\Projects\GDD2Project1\GDDGame1\GDD2Project1\GDD2Project1\bin\x86\Debug\Content\textures\debugcircle.xnb</Output>
+      <Time>2014-03-18T16:11:43.8096354-04:00</Time>
+    </Item>
+    <Item>
+      <Source>Fonts\DefaultFont.spritefont</Source>
+      <Name>Fonts\DefaultFont</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+      <Options>None</Options>
+      <Output>E:\Projects\GDD2Project1\GDDGame1\GDD2Project1\GDD2Project1\bin\x86\Debug\Content\Fonts\DefaultFont.xnb</Output>
+      <Time>2014-03-18T16:11:43.7596325-04:00</Time>
+    </Item>
+    <Item>
+      <Source>Fonts\DefaultHeading.spritefont</Source>
+      <Name>Fonts\DefaultHeading</Name>
+      <Importer>FontDescriptionImporter</Importer>
+      <Processor>FontDescriptionProcessor</Processor>
+      <Options>None</Options>
+      <Output>E:\Projects\GDD2Project1\GDDGame1\GDD2Project1\GDD2Project1\bin\x86\Debug\Content\Fonts\DefaultHeading.xnb</Output>
+      <Time>2014-03-18T16:11:43.7606326-04:00</Time>
+    </Item>
+    <Item>
+      <Source>textures\tile_stone_front.png</Source>
+      <Name>textures\tile_stone_front</Name>
+      <Importer>TextureImporter</Importer>
+      <Processor>TextureProcessor</Processor>
+      <Options>None</Options>
+      <Output>E:\Projects\GDD2Project1\GDDGame1\GDD2Project1\GDD2Project1\bin\x86\Debug\Content\textures\tile_stone_front.xnb</Output>
+      <Time>2014-03-18T16:13:35.4477568-04:00</Time>
     </Item>
     <BuildSuccessful>true</BuildSuccessful>
     <Settings>
@@ -215,10 +224,10 @@
       <TargetProfile>Reach</TargetProfile>
       <BuildConfiguration>Debug</BuildConfiguration>
       <CompressContent>false</CompressContent>
-      <RootDirectory>E:\Projects\GDD2Project1\GDD2Project1\GDD2Project1Content\</RootDirectory>
-      <LoggerRootDirectory>E:\Projects\GDD2Project1\GDD2Project1\GDD2Project1\</LoggerRootDirectory>
-      <IntermediateDirectory>E:\Projects\GDD2Project1\GDD2Project1\GDD2Project1\obj\x86\Debug\</IntermediateDirectory>
-      <OutputDirectory>E:\Projects\GDD2Project1\GDD2Project1\GDD2Project1\bin\x86\Debug\Content\</OutputDirectory>
+      <RootDirectory>E:\Projects\GDD2Project1\GDDGame1\GDD2Project1\GDD2Project1Content\</RootDirectory>
+      <LoggerRootDirectory>E:\Projects\GDD2Project1\GDDGame1\GDD2Project1\GDD2Project1\</LoggerRootDirectory>
+      <IntermediateDirectory>E:\Projects\GDD2Project1\GDDGame1\GDD2Project1\GDD2Project1\obj\x86\Debug\</IntermediateDirectory>
+      <OutputDirectory>E:\Projects\GDD2Project1\GDDGame1\GDD2Project1\GDD2Project1\bin\x86\Debug\Content\</OutputDirectory>
     </Settings>
     <Assemblies>
       <Assembly>
@@ -246,8 +255,8 @@
         <Value>2011-09-01T17:22:30-04:00</Value>
       </Assembly>
       <Assembly>
-        <Key>E:\Projects\GDD2Project1\GameData\bin\x86\Debug\GameData.dll</Key>
-        <Value>2014-03-14T05:42:32.4630277-04:00</Value>
+        <Key>E:\Projects\GDD2Project1\GDDGame1\GameData\bin\x86\Debug\GameData.dll</Key>
+        <Value>2014-03-18T16:12:10.291145-04:00</Value>
       </Assembly>
       <Assembly>
         <Key>C:\Windows\Microsoft.Net\assembly\GAC_32\Microsoft.Xna.Framework.Content.Pipeline\v4.0_4.0.0.0__842cf8be1de50553\Microsoft.Xna.Framework.Content.Pipeline.dll</Key>

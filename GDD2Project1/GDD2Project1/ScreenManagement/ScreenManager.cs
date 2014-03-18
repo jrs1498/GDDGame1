@@ -129,7 +129,7 @@ namespace GDD2Project1
         protected override void Draw(GameTime gameTime)
         {
             // Clear the screen
-            GraphicsDevice.Clear(Color.Black);
+            GraphicsDevice.Clear(Color.CornflowerBlue);
 
             Screen screen = getCurrentScreen();
             if (screen != null)

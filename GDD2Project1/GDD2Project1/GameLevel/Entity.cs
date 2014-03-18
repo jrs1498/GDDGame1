@@ -25,7 +25,7 @@ namespace GDD2Project1
 
 
         //-------------------------------------------------------------------------
-        public      Drawable        Drawable        { get { return _drawable; } }
+        public      Drawable        Drawable        { get { return _drawable; } set { _drawable = value; } }
         public      Color           Color           { get { return _color; } set { _color = value; } }
         public      bool            Active          { get { return _active; } set { _active = value; } }
         public      AnimationState  AnimState

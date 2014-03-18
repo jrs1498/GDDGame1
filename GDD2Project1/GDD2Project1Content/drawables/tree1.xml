@@ -2,6 +2,6 @@
 <XnaContent>
   <Asset Type="GameData.DrawableData">
     <TextureName>tree</TextureName>
-    <Origin>64 120</Origin>
+    <Origin>77 140</Origin>
   </Asset>
 </XnaContent>
